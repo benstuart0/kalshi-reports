@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalshi MM — Analytics Overview: 20260312_040739_316fef98</title>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0f0f1a;
+    color: #e0e0e0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+header {
+    background: linear-gradient(135deg, #1a1a3e 0%, #16213e 100%);
+    padding: 24px 32px;
+    border-bottom: 2px solid #2a2a5a;
+}
+header h1 { font-size: 1.6rem; font-weight: 700; color: #ffffff; }
+header p { color: #8888aa; margin-top: 4px; font-size: 0.85rem; }
+.container { max-width: 1400px; margin: 0 auto; padding: 24px 32px; }
+.section {
+    background: #16213e;
+    border: 1px solid #2a2a5a;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.section-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    background: #1a1a3e;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid #2a2a5a;
+    gap: 10px;
+}
+.section-header h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #c0c0f0;
+    flex: 1;
+}
+.section-header .toggle { color: #6666aa; font-size: 1.1rem; transition: transform 0.2s; }
+.section-body { padding: 20px; }
+.section.collapsed .section-body { display: none; }
+.section.collapsed .toggle { transform: rotate(-90deg); }
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.stat-card {
+    background: #1a1a3e;
+    border: 1px solid #2a2a5a;
+    border-radius: 8px;
+    padding: 14px 16px;
+}
+.stat-card .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6677aa;
+    margin-bottom: 4px;
+}
+.stat-card .value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #e0e0ff;
+    font-variant-numeric: tabular-nums;
+}
+.stat-card .sub {
+    font-size: 0.78rem;
+    color: #7788aa;
+    margin-top: 2px;
+}
+.stat-card.positive .value { color: #2ecc71; }
+.stat-card.negative .value { color: #e74c3c; }
+.stat-card.neutral .value { color: #3498db; }
+.stat-card.warn { border-color: #f39c12; }
+.stat-card.warn .value { color: #f39c12; }
+.warning-box {
+    background: #2a1a0a;
+    border: 1px solid #f39c12;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    color: #f5c842;
+    font-size: 0.85rem;
+}
+.warning-box .icon { margin-right: 6px; }
+.ok-box {
+    background: #0a1e0a;
+    border: 1px solid #2ecc71;
+    border-radius: 6px;
+    padding: 10px 16px;
+    margin-bottom: 12px;
+    color: #7dffa0;
+    font-size: 0.82rem;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+    margin-top: 8px;
+}
+thead th {
+    background: #1a1a3e;
+    color: #9090cc;
+    text-align: right;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.72rem;
+    border-bottom: 1px solid #2a2a5a;
+}
+thead th:first-child { text-align: left; }
+tbody td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #1a1a2a;
+    text-align: right;
+    color: #c0c0d8;
+    font-variant-numeric: tabular-nums;
+}
+tbody td:first-child { text-align: left; color: #d0d0f0; }
+tbody tr:hover { background: #1e1e3a; }
+.chart-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.chart-row.single { grid-template-columns: 1fr; }
+.chart-wrap {
+    background: #16213e;
+    border: 1px solid #2a2a5a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.divider {
+    border: none;
+    border-top: 1px solid #2a2a5a;
+    margin: 16px 0;
+}
+</style>
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+</head>
+<body>
+  
+    <header>
+      <h1>Kalshi MM — Analytics Overview</h1>
+      <p>Session: <strong>20260312_040739_316fef98</strong> &nbsp;|&nbsp; Started: 2026-03-12 04:07:39 UTC &nbsp;|&nbsp; Duration: 23m &nbsp;|&nbsp; Generated: 2026-03-12 04:32:49 UTC</p>
+    </header>
+  <div class="container">
+    <div class="section">
+  <div class="section-header">
+    <h2>0. Session Info</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Session ID</div>
+  <div class="value"><span style="font-size:0.85rem;word-break:break-all">20260312_040739_316fef98</span></div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Start Time</div>
+  <div class="value">2026-03-12 04:07:39 UTC</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">End Time</div>
+  <div class="value">2026-03-12 04:31:37 UTC</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Duration</div>
+  <div class="value">0h 23m 58s</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Exit Reason</div>
+  <div class="value">signal</div>
+  
+</div>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Starting Balance</div>
+  <div class="value">$18933.11</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Ending Balance</div>
+  <div class="value">$18670.50</div>
+  
+</div>
+          <div class="stat-card negative">
+  <div class="label">Session P&amp;L</div>
+  <div class="value">$-262.61</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Fills</div>
+  <div class="value">466</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Orders Placed</div>
+  <div class="value">5178</div>
+  
+</div>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Read Throttled</div>
+  <div class="value">972</div>
+  <div class="sub">blocking waits</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Read Skipped</div>
+  <div class="value">0</div>
+  <div class="sub">non-blocking misses</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Read Wait</div>
+  <div class="value">14.9s</div>
+  <div class="sub">total blocked time</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Throttled</div>
+  <div class="value">281</div>
+  <div class="sub">blocking waits</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Skipped</div>
+  <div class="value">14</div>
+  <div class="sub">non-blocking misses</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Wait</div>
+  <div class="value">4.0s</div>
+  <div class="sub">total blocked time</div>
+</div>
+        </div>
+        <details style="margin-top:12px"><summary style="cursor:pointer;color:#aaa">Config JSON</summary><pre style="font-size:0.72rem;overflow:auto;max-height:300px;background:#111;padding:10px;border-radius:4px">{
+  "max_subscriptions": 250,
+  "trade_tracker_startup_delay_seconds": 15,
+  "trade_volume_lookback_minutes": 5.0,
+  "min_recent_volume": 1,
+  "market_rescan_interval_seconds": 180,
+  "fee_waiver_only": false,
+  "simple_max_contracts": 30,
+  "max_spread_cents": 15,
+  "max_order_size_balance_fraction": 150,
+  "max_position_per_market": 170,
+  "max_risk_per_market_dollars": null,
+  "microprice_levels": 5,
+  "microprice_lambda": 0.6,
+  "as_gamma": 0.01,
+  "size_taper_exponent": 3,
+  "size_taper_hard_zero_price": 97,
+  "min_edge_cents": 0.5,
+  "capital_recovery_fraction": 0.2,
+  "capital_exhaustion_fraction": 0.05,
+  "stop_loss_limit": 1500.0,
+  "stale_order_seconds": 60,
+  "batch_size_cap": 20,
+  "balance_cache_seconds": 10,
+  "write_tokens_per_order": 1.5,
+  "enable_analytics_logging": true,
+  "analytics_output_dir": "analytics_data",
+  "analytics_flush_interval_seconds": 30,
+  "analytics_buffer_size": 1000
+}</pre></details></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>1. Activity Summary</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Fills</div>
+  <div class="value">466</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">New Orders</div>
+  <div class="value">1,560</div>
+  <div class="sub">place_order API calls</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Amends</div>
+  <div class="value">3,653</div>
+  <div class="sub">amend_order API calls</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / New Order</div>
+  <div class="value">0.2987</div>
+  <div class="sub">fill rate on fresh placements</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Order Touch</div>
+  <div class="value">0.0894</div>
+  <div class="sub">fill rate incl. amends</div>
+</div>
+    </div>
+    <hr class="divider">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Fills / min</div>
+  <div class="value">19.44</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Orders / min</div>
+  <div class="value">65.08</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Amends / min</div>
+  <div class="value">152.40</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">API Calls / min</div>
+  <div class="value">251.6</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Session Duration</div>
+  <div class="value">23m</div>
+  
+</div>
+    </div></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>2. EV &amp; Volume</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="warning-box"><span class="icon">&#9888;</span>EV recomputation discrepancy: 0.2051¢ mean absolute error vs stored values (best match at fee rate 0.0175). Stored values may use a different fee model or inventory-skewed microprice.</div>
+    <div class="warning-box" style="border-color:#8855ff;background:#1a0a2e;color:#c0a0ff;"><span class="icon">&#9432;</span><strong>EV distribution is right-skewed:</strong> 6 fills (1.3%) have EV &gt;20¢ and account for 13.7% of total EV. These are likely fills against stale orders in wide-spread or near-expiry markets. <strong>Median (+1.724¢) is the representative per-fill edge; mean (+2.951¢) is inflated by outliers.</strong></div>
+    <div class="stats-grid">
+      <div class="stat-card positive">
+  <div class="label">EV / Contract (median)</div>
+  <div class="value">+1.7244¢</div>
+  <div class="sub">p25=+0.582¢  p75=+4.238¢</div>
+</div>
+      <div class="stat-card">
+  <div class="label">EV / Contract (mean)</div>
+  <div class="value">+2.9508¢</div>
+  <div class="sub">inflated by high-EV outliers</div>
+</div>
+      <div class="stat-card">
+  <div class="label">EV / Order Placed</div>
+  <div class="value">+11.9689¢</div>
+  <div class="sub">$0.119689/order</div>
+</div>
+      <div class="stat-card positive">
+  <div class="label">Total EV</div>
+  <div class="value">+18671.51¢</div>
+  <div class="sub">= $186.7151</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Total Volume</div>
+  <div class="value">$3,467.83</div>
+  <div class="sub">346,783¢ notional</div>
+</div>
+      <div class="stat-card positive">
+  <div class="label">Net Edge</div>
+  <div class="value">+5.3842%</div>
+  <div class="sub">538.42 bps</div>
+</div>
+    </div>
+    <hr class="divider">
+    <div id="chart_ev_dist" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "histogram", "x": [-0.3047772848069835, 0.8361324791814839, 1.198400552213785, 11.26475040806529, 1.7423679935443963, 1.8041079872552124, 3.6977417259530565, 2.1355123670825784, 1.6531124259149235, -0.703692078576454, -0.05632237779918545, 1.3635477024428577, 3.2839486560648132, -0.8613473643866154, -0.5062784752760656, 0.6403794948491562, 2.5764445086705203, 1.6506623987579787, 0.580872829071978, 1.644118627193889, -0.005304433046890503, 1.19190371246845, 1.7251216733656412, -0.5341799080190914, 3.403956729698145, -0.5063794277348799, 3.4715206898975524, 4.244610895825865, 0.6072869831546793, 5.785929446071374, 1.8304091894357193, -7.775431302485492, 1.6252509285369467, 1.364456184443537, 5.882789518725717, 2.215619830762788, -0.6829759687034357, 11.205368435372387, 2.0566215572282025, 1.7360108657152415, 1.7415030976452752, 2.4866153766596826, 6.849850947281707, 5.207814559706902, -1.6599181974018806, 1.3750411283975834, 5.122602937662084, 0.12045534970857552, 10.432834936082145, 0.04728985240212874, 1.5156983614006199, 2.4838892471854113, 6.25312630664141, 1.302899524566084, 2.1454108136355137, -0.7829914219365173, -0.7829914219365173, 3.4096208013747407, 2.1628623543852874, 6.439696352063721, 5.632985861239013, 1.6846735735435263, 1.6815507018136688, -0.6050681995323475, 5.877993429266123, 1.619688368802059, 7.237107331111781, 9.12228069619905, 3.4481203342618385, -2.140283778966132, 2.0397944787754483, 15.754756873667388, 3.0538205560570106, 1.4115365299272158, -0.42279767567054594, 4.556703133493898, 7.499506974107048, 7.269634314604913, 1.3492574970323543, 4.953660443202385, 4.794247474467103, 3.0519188937268757, 7.787027961805288, 5.474629076602379, 6.543670834058856, -0.05843356293048915, 5.903656120329584, 4.990347874839812, 1.4333613144117638, 1.9605515164906107, 0.7334920081497952, 1.5788205623957152, 1.2379049917068123, 1.2376542786813538, 6.456902935846321, 1.2368405851865056, 6.31363735909823, -0.4497452716297786, 9.7002638078016, 0.6396891764358437, -0.5003153846153785, 2.477652539720429, -0.8329153278272475, 0.25648610939591454, 0.8874094416788034, 2.5168934617184298, -0.08757719488401991, 4.107761361653226, 3.5502709887064547, 5.616886027950347, 1.8981836711312352, 4.549770723521865, 1.4390722602452701, 1.8975166475972527, -0.8297126669533239, 1.9721673323137288, 1.3121037368252926, 0.5246895106876228, 1.220333359627588, 1.3107793022511485, 2.5233653520356163, 4.228060873277375, 1.3711940660505062, 1.03806315789474, 3.366628757410552, 1.4135417974322448, 1.6791663062707867, 1.091826240910535, 1.770901470679277, 2.0093013576157244, 1.1492384429692284, 0.4196792232758715, 5.299256645555087, 1.6479643610075525, 0.23863042585536376, 1.673393407936286, 0.8983531794670591, 0.023412796920476486, 1.9664214291643842, 1.8224796942135628, 1.5028298159313065, 2.646243107620682, 3.9040115669373896, -0.01983243397781237, 1.3122404564697232, 2.380822079116839, 4.393991343897705, -0.9972488733181226, -0.1252123054860327, 0.42156072325175226, -0.9819324756515585, 0.23979185945493922, 1.5237987533336506, 0.3834429582602108, 0.37837334837025294, 0.04717552971215569, -0.8325248719447491, -0.346522485512232, -3.7984388406819964, 2.113003642193177, 1.9709699830213434, 7.849145102142092, 0.8170830838959514, 2.080504447781685, 0.4432329692388781, 0.5178574109680656, 1.8187019332133638, 0.23893072023022244, 0.06006098366174675, 0.06006098366174675, 1.4757082042072045, -1.7703975075891205, -2.5950486883942765, -0.4234763956946882, 0.08756104421846134, 1.5673574829890653, 3.4155633500351144, -4.073108974358964, 0.664805895756385, 0.5986989721725539, 1.307557778750728, 5.029574193548386, 0.6921094852857116, 0.48278467919167156, -51.03191948269206, 1.4594136243090077, 2.2917498023181997, 3.962486772292899, 9.412074654281724, 7.2282086070722755, 5.347160680288341, 9.99219021539064, 4.70760407290729, 1.2137386405547241, -5.7836571054717165, 6.3951802459260785, 4.869554258186262, 10.002595527292517, 3.7075622309197636, 3.5744218430678734, 13.963945484949832, 7.817793790128741, 2.150962494535092, 8.199576315789475, 0.5840330244253431, 7.09130601319638, 0.854736731347363, 0.7805461510227265, 7.865007278738688, 1.1178201691396694, 0.47398612077400104, 5.799657365865378, 0.6755606898012572, 16.551842375878255, 11.068681974248925, 6.216432913428032, -4.821182550573587, 15.854024601652407, 1.8518074872893933, 3.1607026769779893, 1.124091895223598, 0.778822865941291, 2.2168763574479313, 3.3752807033774856, 4.393093226255326, 10.95916979537811, 6.09074785568591, 1.2148799976650775, 11.012763157894739, 1.0540435004213504, 0.5332331677666939, 4.924531586876531, 1.3235358281191858, 5.792417516799069, 2.5479420087018996, 4.869772662617612, 26.75319834717643, 3.685348250996509, 4.693715180719579, 9.226245670660813, -1.2405232730255333, 0.5314815100711616, 2.3508968877702845, 13.38058510481289, 0.4586967964358859, -1.1571573948007994, 3.001207667042763, 0.6446576820444806, 0.5435295387169449, 1.7130477797444477, 0.253093763398901, -0.19874445841309774, -0.09506854923238026, 5.015770556624055, 0.3319381537021328, -0.46874132398258156, 0.8337132859128484, 3.7175270214236344, 2.109520382276698, 2.829627360296933, 2.9837222035323814, 5.239793663368081, 0.6447154922351791, 3.4146305360021216, 7.145697713333391, -0.47153236994220205, 4.402055124237094, 0.33154317091643287, 2.4014637101497835, 3.4667634928404323, 3.3062757071266486, 1.7237302661903584, -0.787441152763741, 9.176933580702908, 7.223229111212537, 1.4995051697978172, -0.7574874559931423, 1.3736926380368093, 1.0777705882352953, 1.0917761904761898, 0.9013000000000009, -0.932033333333333, 3.3317512580088646, -2.922663480439383, 1.3418090090090116, 0.7669092074300305, 1.9720791270708742, 1.4861141210374595, 3.064900396301183, -0.02186167085297261, -1.7523096986903335, 2.030289359921425, 7.707435457131848, -0.3007676979656918, 4.4478758594199945, 2.833486121311438, -0.3169927710843371, 4.241219497784343, 12.259412215152008, 0.3301068838618874, 1.2775017324111766, 1.9219338145078617, 5.004246021830009, 3.299160115166849, -0.5584580608584144, 1.2792153229910306, 0.7034077828576346, 14.85477308917198, 4.589188165680475, 8.498422728757642, 8.618818538843197, 0.28183250257259645, 9.138992791135635, 0.24471958463592855, 2.8930059925093627, -0.8951736263736264, 12.140720792079208, 32.77889709187488, -1.7325063316565303, 0.5262418200654522, 0.20113644679209908, 8.465006225310237, 9.615606020245064, 9.614972784891048, 2.3636780775299173, -1.249921666951622, 1.9027783961032003, -0.14434484337399267, 1.9340945446207616, 9.567569719382629, 4.184957652766554, 1.4082697537419349, 1.6459152490272055, 1.47017684791666, 3.6652671139918858, -6.399423591700863, 2.9820892291594054, 3.713898961937716, 0.009175135826946151, -0.979516423827421, 2.3168289444646986, 3.7273919268849967, 3.349523173075592, -0.4673401459854015, 2.4491746835443036, 7.582201328723979, 1.1148481927895457, 0.4242187972200126, 2.9820892291594054, 2.5060344370860927, 7.5484451229838605, 2.9820892291594054, 10.362744284124359, 5.867756365658166, -1.5372085510688835, 1.0146005936605602, 1.0130476626921954, 4.814719443863465, 10.08583266500019, 1.2916105474604633, 4.529237658186001, -0.6154703350402488, 7.7196852459016405, 5.567853039056649, -0.05430264831789311, -25.865378265602324, 0.012776346518966752, 0.8366191503244145, 2.458686256490445, 3.314348374743277, 0.8366191503244145, -0.14928411497730687, 1.321675258617356, 2.5051837967306967, 4.846226208503203, 3.411907683206779, 2.3845674605184755, 2.9093243549358974, 7.834960654385484, 9.918960654385483, 1.578232614091741, -3.490875238858063, 2.4652391528364106, 1.5732039326866085, 1.33741614149894, -0.2881763295243678, 2.742104923850782, 2.4983759648506836, 9.64624909442163, 2.177083123577021, -0.059712959578665736, 0.070248506194166, 5.213298543623159, 3.4011733616866655, 27.196162420382162, 1.9343512452008145, -0.330616131329312, 1.0394342678078647, 0.5919695501730097, 0.6686611311095115, 0.8203628447624485, 30.394267811158805, 2.673751663811184, -3.2068758937025175, 3.9299999965724495, 1.4225002548999288, 22.140172348207756, 4.846601018429426, 5.173038294707766, 2.3380606270483653, 3.490110287222537, 7.443594965206714, 1.6913528741754502, 0.1951363772105536, -0.5762423247094561, 3.349139413021959, 8.018261092930318, 1.1460629311514299, 2.334107526795794, 60.36756363636364, 1.4550369449392329, 1.4555644463444488, 16.295730526369418, -0.6741501494782252, 3.914962002246626, 1.637576240908448, 10.456680226845394, -0.0021344627673862693, 0.329196982302373, 3.8796007631119585, 1.257615203330061, 12.813033251182567, 0.9002226885578355, 1.4227010619332094, 1.2821519963736059, 0.8609563006538103, 3.276546703777213, 1.9459398799085559, 0.9124341862241754, 1.916321702105903, 1.2697563267853191, -2.0851900633326066, 1.4553595918735547, 1.3111156277531741, 1.680664544176046, -0.30219696969696885, 3.4261272898895796, -0.7870240908594518, 12.771915425423387, 0.6182378777134636, -0.9451584758915728, 18.655931182795698, 0.7463712392204052, 10.560736459709375], "nbinsx": 60, "marker": {"color": "#9b59b6", "opacity": 0.8}, "name": "EV per contract (\u00a2)"}], "layout": {"title": "EV per Contract Distribution (fill_ev_per_contract)", "xaxis": {"title": "EV per contract (\u00a2)"}, "yaxis": {"title": "Count"}, "height": 320, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "shapes": [{"type": "line", "x0": 1.7244259697779998, "x1": 1.7244259697779998, "y0": 0, "y1": 1, "yref": "paper", "line": {"color": "#2ecc71", "width": 2, "dash": "dash"}}, {"type": "line", "x0": 2.950808161384597, "x1": 2.950808161384597, "y0": 0, "y1": 1, "yref": "paper", "line": {"color": "#e74c3c", "width": 2, "dash": "dot"}}], "annotations": [{"x": 1.7244259697779998, "y": 1, "yref": "paper", "text": "median +1.724\u00a2", "showarrow": false, "xanchor": "left", "font": {"color": "#2ecc71", "size": 11}}, {"x": 2.950808161384597, "y": 0.88, "yref": "paper", "text": "mean +2.951\u00a2", "showarrow": false, "xanchor": "left", "font": {"color": "#e74c3c", "size": 11}}]}};
+  Plotly.newPlot('chart_ev_dist', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>3. Markout Analysis</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><table><thead><tr><th>Horizon</th><th>Mean Markout</th><th>Std Dev</th><th>Std Error</th><th>N Fills</th></tr></thead><tbody><tr><td>0s (EV)</td><td style='color:#2ecc71'>+3.4047¢</td><td>5.9742¢</td><td>±0.2813¢</td><td>451</td></tr><tr><td>1s</td><td style='color:#2ecc71'>+3.3317¢</td><td>5.8220¢</td><td>±0.2741¢</td><td>451</td></tr><tr><td>5s</td><td style='color:#2ecc71'>+2.8936¢</td><td>6.7630¢</td><td>±0.3213¢</td><td>443</td></tr><tr><td>10s</td><td style='color:#2ecc71'>+2.6417¢</td><td>6.4449¢</td><td>±0.3097¢</td><td>433</td></tr><tr><td>30s</td><td style='color:#2ecc71'>+2.8375¢</td><td>7.1926¢</td><td>±0.3514¢</td><td>419</td></tr><tr><td>60s</td><td style='color:#2ecc71'>+2.6935¢</td><td>8.3087¢</td><td>±0.4118¢</td><td>407</td></tr><tr><td>300s</td><td style='color:#2ecc71'>+3.7363¢</td><td>12.9297¢</td><td>±0.7118¢</td><td>330</td></tr></tbody></table><hr class='divider'><div id="chart_markout" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [3.149341227824264, 2.8293962230043253, 2.1072652062896915, 2.59604598163594, 2.963090956318028, 2.8291809714880882, 4.4694326926022185], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [1.9598634120057163, 1.695529643214872, 1.0370944238125448, 1.092938875605413, 0.9215177181341683, 0.21102433404799914, 0.029266118189649415], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.2)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [2.55460231991499, 2.2624629331095987, 1.5721798150511181, 1.8444924286206765, 1.9423043372260982, 1.5201026527680437, 2.2493494053959338], "mode": "lines+markers", "line": {"color": "#2ecc71", "width": 2.5}, "marker": {"color": "#2ecc71", "size": 7}, "name": "buy (n=202)", "showlegend": true}, {"type": "scatter", "x": ["0s", "300s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [4.960518243434864, 5.042677920511012, 4.996901008186498, 4.189500101856481, 4.476475003745752, 4.62606579936201, 6.499987019313574], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [3.2283180908587568, 3.35562045174039, 2.9259920885282598, 2.3761741578602487, 2.627744370940949, 2.64053839658233, 2.9304347631655006], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.2)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [4.09441816714681, 4.199149186125701, 3.961446548357379, 3.2828371298583647, 3.5521096873433504, 3.63330209797217, 4.715210891239537], "mode": "lines+markers", "line": {"color": "#e67e22", "width": 2.5}, "marker": {"color": "#e67e22", "size": 7}, "name": "sell (n=249)", "showlegend": true}, {"type": "scatter", "x": ["0s", "300s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Markout by Action: Buy vs Sell (95% CI)", "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "showlegend": true, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}, "height": 380, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}}};
+  Plotly.newPlot('chart_markout', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><hr class='divider'><div id="chart_markout_by_price" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [3.2483941661486737, 2.7575314656826286, 2.1158426331897395, 2.955298793476935, 3.7508945042433037, 3.905366915204003, 8.493248340823369], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [1.9411906534203356, 1.546291360892246, 0.9295052263772894, 1.0993636966051208, 1.274108420951454, 0.6960326042713154, 3.1436711415496847], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(231,76,60,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [2.5947924097845045, 2.1519114132874373, 1.5226739297835146, 2.0273312450410277, 2.512501462597379, 2.3006997597376593, 5.818459741186527], "mode": "lines+markers", "name": "0\u201320\u00a2  (n=138)", "line": {"color": "#e74c3c", "width": 2}, "marker": {"color": "#e74c3c", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [5.01710568691838, 5.314878355154106, 4.103578606889495, 3.687513422503813, 4.3804587972062645, 4.071358929466608, 0.5708577161517017], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [0.15694045973475923, 2.950552584880433, 1.760883776931104, 0.8083135314167511, 0.4872368789208674, -1.2248423832081308, -5.694589897035461], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [2.5870230733265696, 4.13271547001727, 2.9322311919102995, 2.247913476960282, 2.4338478380635657, 1.4232582731292385, -2.5618660904418795], "mode": "lines+markers", "name": "20\u201340\u00a2  (n=49)", "line": {"color": "#e67e22", "width": 2}, "marker": {"color": "#e67e22", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [4.26484331028741, 3.990972998044056, 3.861589615117553, 3.416166135386735, 3.0855032684380443, 3.9446764082713806, 4.325684292350772], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [2.688183741930638, 2.5027066071868025, 1.36986142444072, 1.05605559478936, 0.6541688895914308, 1.390736994789065, 0.08218117636559663], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [3.4765135261090236, 3.2468398026154293, 2.6157255197791365, 2.2361108650880475, 1.8698360790147375, 2.6677067015302227, 2.203932734358184], "mode": "lines+markers", "name": "40\u201360\u00a2  (n=99)", "line": {"color": "#2ecc71", "width": 2}, "marker": {"color": "#2ecc71", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [4.742920189741143, 4.562820807792319, 5.560349121440099, 3.762396606977489, 3.8177026558440623, 4.3150541128648054, 8.530269148725734], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [1.9995456815353692, 0.9982100720586089, 1.567604307770514, 1.5328196499299342, 1.4872540620366923, 1.0485689437798889, -0.5024844830916972], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(52,152,219,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [3.3712329356382558, 2.780515439925464, 3.5639767146053067, 2.6476081284537116, 2.6524783589403773, 2.681811528322347, 4.013892332817019], "mode": "lines+markers", "name": "60\u201380\u00a2  (n=62)", "line": {"color": "#3498db", "width": 2}, "marker": {"color": "#3498db", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [6.382203036456333, 6.606900723478969, 6.47775723404048, 5.891437463593274, 6.5690337682258, 6.010321877913492, 9.278724813274252], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [3.2780499345097835, 3.2826085781641297, 2.6649871891861303, 2.2366225164989455, 2.706272663120547, 1.8684664734073433, 2.6416864449869935], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(155,89,182,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [4.830126485483058, 4.944754650821549, 4.571372211613305, 4.06402999004611, 4.637653215673174, 3.939394175660418, 5.9602056291306225], "mode": "lines+markers", "name": "80\u2013100\u00a2  (n=103)", "line": {"color": "#9b59b6", "width": 2}, "marker": {"color": "#9b59b6", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "300s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Markout by Fill Price Bucket (95% CI)", "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "height": 400, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_markout_by_price', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script>
+<table class='stats-table' style='width:100%;border-collapse:collapse;font-size:0.82rem;margin-top:12px;'>
+  <caption style='color:#aaa;text-align:left;padding-bottom:6px;'>
+    Adverse selection significance test — markout at t=300s, H₁: mean &lt; 0 (one-tailed t-test).
+    Bands use naive SE (std/√n); CIs may be too narrow if fills within the same ticker are correlated.
+  </caption>
+  <thead>
+    <tr style='border-bottom:1px solid #444;color:#aaa;'>
+      <th style='text-align:left;padding:4px 8px;'>Price Bucket</th>
+      <th style='text-align:right;padding:4px 8px;'>n fills</th>
+      <th style='text-align:right;padding:4px 8px;'>Mean markout</th>
+      <th style='text-align:right;padding:4px 8px;'>t-stat</th>
+      <th style='text-align:right;padding:4px 8px;'>p-value</th>
+      <th style='text-align:right;padding:4px 8px;'>Significance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>0–20¢</td>
+      <td style='text-align:right;padding:4px 8px;'>83</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#2ecc71'>+5.82¢</span></td>
+      <td style='text-align:right;padding:4px 8px;'>4.26</td>
+      <td style='text-align:right;padding:4px 8px;'>1.000</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>ns</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>20–40¢</td>
+      <td style='text-align:right;padding:4px 8px;'>35</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#e74c3c'>-2.56¢</span></td>
+      <td style='text-align:right;padding:4px 8px;'>-1.60</td>
+      <td style='text-align:right;padding:4px 8px;'>0.059</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#e74c3c;font-weight:bold'>* p<0.10</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>40–60¢</td>
+      <td style='text-align:right;padding:4px 8px;'>89</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#2ecc71'>+2.20¢</span></td>
+      <td style='text-align:right;padding:4px 8px;'>2.04</td>
+      <td style='text-align:right;padding:4px 8px;'>0.978</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>ns</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>60–80¢</td>
+      <td style='text-align:right;padding:4px 8px;'>46</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#2ecc71'>+4.01¢</span></td>
+      <td style='text-align:right;padding:4px 8px;'>1.74</td>
+      <td style='text-align:right;padding:4px 8px;'>0.956</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>ns</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>80–100¢</td>
+      <td style='text-align:right;padding:4px 8px;'>77</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#2ecc71'>+5.96¢</span></td>
+      <td style='text-align:right;padding:4px 8px;'>3.52</td>
+      <td style='text-align:right;padding:4px 8px;'>1.000</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>ns</span></td>
+    </tr>
+  </tbody>
+</table><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Markout measured from fill price. At t=0 the value equals EV captured (fill price vs microprice). A declining curve indicates adverse selection eroding edge over time. Red dashed line = breakeven. Buy = bought YES (long); Sell = sold YES (short).</p><p style='color:#666;font-size:0.78rem;margin-top:6px;'>Price bucket chart: fills grouped by the price they were filled at. Shaded bands = 95% CI (naive SE = std/√n). Near-extreme buckets (0–20¢, 80–100¢) with steeply declining curves indicate adverse selection. Significance table tests H₁: mean markout &lt; 0 at the final horizon. CIs may be too narrow if multiple fills on the same ticker are correlated.</p></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>4. API Activity Rate</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Total API Calls</div>
+  <div class="value">6,031</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Calls / min</div>
+  <div class="value">251.6</div>
+  
+</div>
+    </div>
+    <hr class="divider">
+    <div id="chart_api" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "lines", "x": ["2026-03-12 04:08:00+00:00", "2026-03-12 04:09:00+00:00", "2026-03-12 04:10:00+00:00", "2026-03-12 04:11:00+00:00", "2026-03-12 04:12:00+00:00", "2026-03-12 04:13:00+00:00", "2026-03-12 04:14:00+00:00", "2026-03-12 04:15:00+00:00", "2026-03-12 04:16:00+00:00", "2026-03-12 04:17:00+00:00", "2026-03-12 04:18:00+00:00", "2026-03-12 04:19:00+00:00", "2026-03-12 04:20:00+00:00", "2026-03-12 04:21:00+00:00", "2026-03-12 04:22:00+00:00", "2026-03-12 04:23:00+00:00", "2026-03-12 04:24:00+00:00", "2026-03-12 04:25:00+00:00", "2026-03-12 04:26:00+00:00", "2026-03-12 04:27:00+00:00", "2026-03-12 04:28:00+00:00", "2026-03-12 04:29:00+00:00", "2026-03-12 04:30:00+00:00", "2026-03-12 04:31:00+00:00"], "y": [550, 779, 358, 139, 130, 293, 529, 303, 252, 188, 242, 155, 123, 362, 52, 82, 264, 125, 78, 228, 269, 64, 55, 411], "line": {"color": "#3498db", "width": 2}, "fill": "tozeroy", "fillcolor": "rgba(52,152,219,0.15)", "name": "API calls/min"}], "layout": {"title": "API Call Activity Rate", "xaxis": {"title": "Time"}, "yaxis": {"title": "Calls per minute"}, "height": 300, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}}};
+  Plotly.newPlot('chart_api', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>5. Latency Report</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><table><thead><tr><th>Endpoint</th><th>Count</th><th>p50 ms</th><th>p95 ms</th><th>p99 ms</th><th>Mean ms</th><th>Max ms</th><th>Error %</th><th>Queue p50</th><th>Wire p50</th><th>Parse p50</th><th>OB→Action p50</th></tr></thead><tbody><tr><td>amend_order</td><td>3,653</td><td>36.6</td><td>325.4</td><td>751.2</td><td>85.0</td><td>1534.2</td><td>0.68%</td><td>8.0</td><td>26.6</td><td>0.1</td><td>10.1</td></tr><tr><td>place_order</td><td>1,560</td><td>38.8</td><td>322.8</td><td>748.5</td><td>86.9</td><td>1453.4</td><td>0.64%</td><td>10.2</td><td>26.7</td><td>0.1</td><td>2.7</td></tr><tr><td>cancel_order</td><td>507</td><td>32.3</td><td>84.7</td><td>283.5</td><td>43.2</td><td>1172.6</td><td style="color:#e74c3c">60.55%</td><td>11.5</td><td>20.5</td><td>0.1</td><td>—</td></tr><tr><td>batch_cancel_orders</td><td>311</td><td>29.9</td><td>134.1</td><td>256.3</td><td>46.0</td><td>329.3</td><td style="color:#e74c3c">6.11%</td><td>4.3</td><td>22.9</td><td>0.1</td><td>—</td></tr></tbody></table></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>6. Rate Limits</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card warn">
+  <div class="label">Rate Limit Events</div>
+  <div class="value">1,253</div>
+  <div class="sub">from rate_limits.parquet</div>
+</div>
+      <div class="stat-card">
+  <div class="label">429 HTTP Errors</div>
+  <div class="value">0</div>
+  <div class="sub">from network_latency</div>
+</div>
+    </div><table><thead><tr><th>Bucket</th><th>Events</th></tr></thead><tbody><tr><td>read</td><td>972</td></tr><tr><td>write</td><td>281</td></tr></tbody></table><hr class="divider"><div id="chart_rl" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": ["2026-03-12 04:07:00+00:00", "2026-03-12 04:08:00+00:00", "2026-03-12 04:09:00+00:00", "2026-03-12 04:10:00+00:00", "2026-03-12 04:11:00+00:00", "2026-03-12 04:12:00+00:00", "2026-03-12 04:13:00+00:00", "2026-03-12 04:14:00+00:00", "2026-03-12 04:15:00+00:00", "2026-03-12 04:16:00+00:00", "2026-03-12 04:17:00+00:00", "2026-03-12 04:18:00+00:00", "2026-03-12 04:19:00+00:00", "2026-03-12 04:20:00+00:00", "2026-03-12 04:21:00+00:00", "2026-03-12 04:22:00+00:00", "2026-03-12 04:23:00+00:00", "2026-03-12 04:24:00+00:00", "2026-03-12 04:25:00+00:00", "2026-03-12 04:26:00+00:00", "2026-03-12 04:27:00+00:00", "2026-03-12 04:28:00+00:00", "2026-03-12 04:29:00+00:00", "2026-03-12 04:30:00+00:00", "2026-03-12 04:31:00+00:00", "2026-03-12 04:32:00+00:00"], "y": [31, 941, 1, 0, 0, 0, 0, 3, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 274, 0], "marker": {"color": "#e74c3c"}, "name": "Rate limit hits/min"}], "layout": {"title": "Rate Limit Events per Minute", "xaxis": {"title": "Time"}, "yaxis": {"title": "Events per minute"}, "height": 260, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}}};
+  Plotly.newPlot('chart_rl', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>7. Capital Exhaustion Mode</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><p style='color:#2ecc71'>No capital exhaustion events this session.</p></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>8. Expected Edge vs Actual PnL</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><div id="chart_pnl" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "lines", "x": ["2026-03-12 04:08:29.667551+00:00", "2026-03-12 04:08:35.766191+00:00", "2026-03-12 04:08:36.385539+00:00", "2026-03-12 04:08:38.298666+00:00", "2026-03-12 04:08:38.767636+00:00", "2026-03-12 04:08:39.762980+00:00", "2026-03-12 04:08:41.380315+00:00", "2026-03-12 04:08:41.520781+00:00", "2026-03-12 04:08:42.578287+00:00", "2026-03-12 04:08:42.716539+00:00", "2026-03-12 04:08:43.292813+00:00", "2026-03-12 04:08:43.958321+00:00", "2026-03-12 04:08:45.615534+00:00", "2026-03-12 04:08:46.823891+00:00", "2026-03-12 04:08:46.875529+00:00", "2026-03-12 04:08:50.048557+00:00", "2026-03-12 04:08:52.018977+00:00", "2026-03-12 04:08:53.198688+00:00", "2026-03-12 04:08:53.474496+00:00", "2026-03-12 04:08:53.619639+00:00", "2026-03-12 04:08:54.580514+00:00", "2026-03-12 04:08:54.950702+00:00", "2026-03-12 04:08:57.806017+00:00", "2026-03-12 04:08:59.974394+00:00", "2026-03-12 04:09:03.224933+00:00", "2026-03-12 04:09:03.603214+00:00", "2026-03-12 04:09:04.364754+00:00", "2026-03-12 04:09:04.456760+00:00", "2026-03-12 04:09:04.477239+00:00", "2026-03-12 04:09:05.185377+00:00", "2026-03-12 04:09:05.637994+00:00", "2026-03-12 04:09:07.869071+00:00", "2026-03-12 04:09:11.056768+00:00", "2026-03-12 04:09:12.001855+00:00", "2026-03-12 04:09:12.044221+00:00", "2026-03-12 04:09:12.300291+00:00", "2026-03-12 04:09:14.460396+00:00", "2026-03-12 04:09:15.629232+00:00", "2026-03-12 04:09:15.629730+00:00", "2026-03-12 04:09:16.942910+00:00", "2026-03-12 04:09:20.506595+00:00", "2026-03-12 04:09:21.812344+00:00", "2026-03-12 04:09:22.113966+00:00", "2026-03-12 04:09:22.213099+00:00", "2026-03-12 04:09:29.038759+00:00", "2026-03-12 04:09:29.982469+00:00", "2026-03-12 04:09:32.540374+00:00", "2026-03-12 04:09:38.197201+00:00", "2026-03-12 04:09:38.404975+00:00", "2026-03-12 04:09:40.744513+00:00", "2026-03-12 04:09:40.863686+00:00", "2026-03-12 04:09:42.536495+00:00", "2026-03-12 04:09:44.302518+00:00", "2026-03-12 04:09:44.341095+00:00", "2026-03-12 04:09:45.433551+00:00", "2026-03-12 04:09:46.934219+00:00", "2026-03-12 04:09:46.934722+00:00", "2026-03-12 04:09:47.247067+00:00", "2026-03-12 04:09:47.543690+00:00", "2026-03-12 04:09:52.500580+00:00", "2026-03-12 04:09:55.593754+00:00", "2026-03-12 04:09:56.219048+00:00", "2026-03-12 04:10:00.342403+00:00", "2026-03-12 04:10:02.331069+00:00", "2026-03-12 04:10:04.253201+00:00", "2026-03-12 04:10:05.559329+00:00", "2026-03-12 04:10:08.191887+00:00", "2026-03-12 04:10:09.554039+00:00", "2026-03-12 04:10:13.859183+00:00", "2026-03-12 04:10:15.368665+00:00", "2026-03-12 04:10:16.907889+00:00", "2026-03-12 04:10:17.970138+00:00", "2026-03-12 04:10:19.740665+00:00", "2026-03-12 04:10:27.461316+00:00", "2026-03-12 04:10:32.066843+00:00", "2026-03-12 04:10:32.739193+00:00", "2026-03-12 04:10:33.785458+00:00", "2026-03-12 04:10:34.558241+00:00", "2026-03-12 04:10:34.587390+00:00", "2026-03-12 04:10:34.649410+00:00", "2026-03-12 04:10:36.361021+00:00", "2026-03-12 04:10:36.489034+00:00", "2026-03-12 04:10:37.944317+00:00", "2026-03-12 04:10:39.715924+00:00", "2026-03-12 04:10:41.148956+00:00", "2026-03-12 04:10:42.478146+00:00", "2026-03-12 04:10:43.298123+00:00", "2026-03-12 04:10:43.324749+00:00", "2026-03-12 04:10:49.515840+00:00", "2026-03-12 04:10:54.076952+00:00", "2026-03-12 04:10:54.746732+00:00", "2026-03-12 04:10:59.865259+00:00", "2026-03-12 04:11:00.512249+00:00", "2026-03-12 04:11:03.929383+00:00", "2026-03-12 04:11:04.057522+00:00", "2026-03-12 04:11:04.638372+00:00", "2026-03-12 04:11:05.748648+00:00", "2026-03-12 04:11:06.891719+00:00", "2026-03-12 04:11:08.112453+00:00", "2026-03-12 04:11:14.729328+00:00", "2026-03-12 04:11:15.284287+00:00", "2026-03-12 04:11:18.666940+00:00", "2026-03-12 04:11:19.196142+00:00", "2026-03-12 04:11:19.668025+00:00", "2026-03-12 04:11:20.344481+00:00", "2026-03-12 04:11:21.059096+00:00", "2026-03-12 04:11:21.211409+00:00", "2026-03-12 04:11:25.736834+00:00", "2026-03-12 04:11:26.220320+00:00", "2026-03-12 04:11:34.683376+00:00", "2026-03-12 04:11:36.293098+00:00", "2026-03-12 04:11:37.078446+00:00", "2026-03-12 04:11:39.640725+00:00", "2026-03-12 04:11:40.128597+00:00", "2026-03-12 04:11:41.097556+00:00", "2026-03-12 04:11:44.132897+00:00", "2026-03-12 04:11:46.104989+00:00", "2026-03-12 04:11:49.736963+00:00", "2026-03-12 04:11:53.839414+00:00", "2026-03-12 04:11:57.557946+00:00", "2026-03-12 04:12:00.650075+00:00", "2026-03-12 04:12:02.213306+00:00", "2026-03-12 04:12:03.650622+00:00", "2026-03-12 04:12:06.763121+00:00", "2026-03-12 04:12:08.451674+00:00", "2026-03-12 04:12:08.922242+00:00", "2026-03-12 04:12:09.509652+00:00", "2026-03-12 04:12:10.393924+00:00", "2026-03-12 04:12:11.222205+00:00", "2026-03-12 04:12:11.915850+00:00", "2026-03-12 04:12:12.440699+00:00", "2026-03-12 04:12:12.727453+00:00", "2026-03-12 04:12:14.160785+00:00", "2026-03-12 04:12:20.665216+00:00", "2026-03-12 04:12:22.898001+00:00", "2026-03-12 04:12:28.135536+00:00", "2026-03-12 04:12:31.653476+00:00", "2026-03-12 04:12:34.110135+00:00", "2026-03-12 04:12:42.281746+00:00", "2026-03-12 04:12:43.536058+00:00", "2026-03-12 04:12:45.983137+00:00", "2026-03-12 04:12:47.766502+00:00", "2026-03-12 04:12:53.868574+00:00", "2026-03-12 04:12:55.299676+00:00", "2026-03-12 04:12:56.019199+00:00", "2026-03-12 04:12:56.301360+00:00", "2026-03-12 04:12:58.414969+00:00", "2026-03-12 04:13:04.690083+00:00", "2026-03-12 04:13:06.817952+00:00", "2026-03-12 04:13:08.011223+00:00", "2026-03-12 04:13:08.318900+00:00", "2026-03-12 04:13:08.573200+00:00", "2026-03-12 04:13:10.254515+00:00", "2026-03-12 04:13:14.245032+00:00", "2026-03-12 04:13:19.759261+00:00", "2026-03-12 04:13:22.286691+00:00", "2026-03-12 04:13:25.331196+00:00", "2026-03-12 04:13:28.012337+00:00", "2026-03-12 04:13:28.656927+00:00", "2026-03-12 04:13:28.771283+00:00", "2026-03-12 04:13:29.078533+00:00", "2026-03-12 04:13:29.176778+00:00", "2026-03-12 04:13:33.394682+00:00", "2026-03-12 04:13:33.474315+00:00", "2026-03-12 04:13:34.486644+00:00", "2026-03-12 04:13:35.516637+00:00", "2026-03-12 04:13:37.160356+00:00", "2026-03-12 04:13:38.054147+00:00", "2026-03-12 04:13:38.971481+00:00", "2026-03-12 04:13:39.846120+00:00", "2026-03-12 04:13:39.861503+00:00", "2026-03-12 04:13:40.127834+00:00", "2026-03-12 04:13:40.128338+00:00", "2026-03-12 04:13:41.575667+00:00", "2026-03-12 04:13:41.849969+00:00", "2026-03-12 04:13:43.030002+00:00", "2026-03-12 04:13:46.823135+00:00", "2026-03-12 04:13:47.004346+00:00", "2026-03-12 04:13:47.929348+00:00", "2026-03-12 04:13:49.415946+00:00", "2026-03-12 04:13:49.683450+00:00", "2026-03-12 04:13:51.520054+00:00", "2026-03-12 04:13:51.677476+00:00", "2026-03-12 04:13:52.472250+00:00", "2026-03-12 04:13:56.402114+00:00", "2026-03-12 04:14:00.636066+00:00", "2026-03-12 04:14:00.838036+00:00", "2026-03-12 04:14:02.484686+00:00", "2026-03-12 04:14:02.857375+00:00", "2026-03-12 04:14:03.610274+00:00", "2026-03-12 04:14:04.119276+00:00", "2026-03-12 04:14:04.647214+00:00", "2026-03-12 04:14:08.263781+00:00", "2026-03-12 04:14:11.871530+00:00", "2026-03-12 04:14:12.600644+00:00", "2026-03-12 04:14:13.762445+00:00", "2026-03-12 04:14:13.772303+00:00", "2026-03-12 04:14:15.415323+00:00", "2026-03-12 04:14:16.018317+00:00", "2026-03-12 04:14:16.459564+00:00", "2026-03-12 04:14:17.432217+00:00", "2026-03-12 04:14:18.606364+00:00", "2026-03-12 04:14:21.685778+00:00", "2026-03-12 04:14:21.726719+00:00", "2026-03-12 04:14:23.188161+00:00", "2026-03-12 04:14:23.809349+00:00", "2026-03-12 04:14:24.938575+00:00", "2026-03-12 04:14:25.900899+00:00", "2026-03-12 04:14:27.016617+00:00", "2026-03-12 04:14:27.054721+00:00", "2026-03-12 04:14:27.670727+00:00", "2026-03-12 04:14:29.823546+00:00", "2026-03-12 04:14:29.995820+00:00", "2026-03-12 04:14:30.405762+00:00", "2026-03-12 04:14:30.987174+00:00", "2026-03-12 04:14:31.051171+00:00", "2026-03-12 04:14:32.866113+00:00", "2026-03-12 04:14:33.941019+00:00", "2026-03-12 04:14:35.388488+00:00", "2026-03-12 04:14:35.639313+00:00", "2026-03-12 04:14:36.117646+00:00", "2026-03-12 04:14:36.271186+00:00", "2026-03-12 04:14:37.194230+00:00", "2026-03-12 04:14:42.287881+00:00", "2026-03-12 04:14:42.632961+00:00", "2026-03-12 04:14:43.686407+00:00", "2026-03-12 04:14:45.906262+00:00", "2026-03-12 04:14:51.265250+00:00", "2026-03-12 04:14:55.206109+00:00", "2026-03-12 04:14:57.761328+00:00", "2026-03-12 04:14:58.911561+00:00", "2026-03-12 04:15:00.586937+00:00", "2026-03-12 04:15:04.889824+00:00", "2026-03-12 04:15:07.309270+00:00", "2026-03-12 04:15:09.376344+00:00", "2026-03-12 04:15:14.328629+00:00", "2026-03-12 04:15:18.891227+00:00", "2026-03-12 04:15:21.690240+00:00", "2026-03-12 04:15:23.295259+00:00", "2026-03-12 04:15:23.565829+00:00", "2026-03-12 04:15:31.794612+00:00", "2026-03-12 04:15:32.008320+00:00", "2026-03-12 04:15:34.971717+00:00", "2026-03-12 04:15:36.970975+00:00", "2026-03-12 04:15:38.665403+00:00", "2026-03-12 04:15:43.995884+00:00", "2026-03-12 04:15:44.818954+00:00", "2026-03-12 04:15:57.635225+00:00", "2026-03-12 04:15:58.280051+00:00", "2026-03-12 04:16:01.563761+00:00", "2026-03-12 04:16:01.772641+00:00", "2026-03-12 04:16:02.323441+00:00", "2026-03-12 04:16:03.361721+00:00", "2026-03-12 04:16:05.437038+00:00", "2026-03-12 04:16:05.437521+00:00", "2026-03-12 04:16:05.438687+00:00", "2026-03-12 04:16:12.333020+00:00", "2026-03-12 04:16:12.431434+00:00", "2026-03-12 04:16:14.817763+00:00", "2026-03-12 04:16:15.161012+00:00", "2026-03-12 04:16:16.454684+00:00", "2026-03-12 04:16:17.627156+00:00", "2026-03-12 04:16:19.956264+00:00", "2026-03-12 04:16:22.164695+00:00", "2026-03-12 04:16:24.889375+00:00", "2026-03-12 04:16:28.084369+00:00", "2026-03-12 04:16:35.472190+00:00", "2026-03-12 04:16:38.605782+00:00", "2026-03-12 04:16:43.509593+00:00", "2026-03-12 04:16:45.856532+00:00", "2026-03-12 04:16:55.229355+00:00", "2026-03-12 04:16:55.359793+00:00", "2026-03-12 04:16:57.269873+00:00", "2026-03-12 04:16:58.023688+00:00", "2026-03-12 04:17:00.030526+00:00", "2026-03-12 04:17:06.301270+00:00", "2026-03-12 04:17:08.545478+00:00", "2026-03-12 04:17:14.267270+00:00", "2026-03-12 04:17:17.387157+00:00", "2026-03-12 04:17:24.918959+00:00", "2026-03-12 04:17:25.515734+00:00", "2026-03-12 04:17:26.063939+00:00", "2026-03-12 04:17:30.316502+00:00", "2026-03-12 04:17:31.988600+00:00", "2026-03-12 04:17:32.029265+00:00", "2026-03-12 04:17:32.111346+00:00", "2026-03-12 04:17:32.189285+00:00", "2026-03-12 04:17:32.316229+00:00", "2026-03-12 04:17:32.454593+00:00", "2026-03-12 04:17:32.860489+00:00", "2026-03-12 04:17:35.049173+00:00", "2026-03-12 04:17:35.707747+00:00", "2026-03-12 04:17:42.052170+00:00", "2026-03-12 04:17:42.548079+00:00", "2026-03-12 04:17:43.651438+00:00", "2026-03-12 04:17:45.527382+00:00", "2026-03-12 04:17:46.097180+00:00", "2026-03-12 04:17:49.434962+00:00", "2026-03-12 04:17:50.261213+00:00", "2026-03-12 04:18:19.247553+00:00", "2026-03-12 04:18:23.341390+00:00", "2026-03-12 04:18:58.179293+00:00", "2026-03-12 04:18:59.202840+00:00", "2026-03-12 04:19:01.356188+00:00", "2026-03-12 04:19:05.079847+00:00", "2026-03-12 04:19:12.074394+00:00", "2026-03-12 04:19:17.445730+00:00", "2026-03-12 04:19:28.490307+00:00", "2026-03-12 04:19:34.430738+00:00", "2026-03-12 04:19:34.440181+00:00", "2026-03-12 04:19:37.166605+00:00", "2026-03-12 04:19:37.254545+00:00", "2026-03-12 04:19:40.272050+00:00", "2026-03-12 04:19:41.811639+00:00", "2026-03-12 04:19:45.185250+00:00", "2026-03-12 04:19:58.052177+00:00", "2026-03-12 04:20:08.651031+00:00", "2026-03-12 04:20:09.357401+00:00", "2026-03-12 04:20:11.934691+00:00", "2026-03-12 04:20:12.143009+00:00", "2026-03-12 04:20:15.596824+00:00", "2026-03-12 04:20:16.346603+00:00", "2026-03-12 04:20:20.657490+00:00", "2026-03-12 04:20:27.621374+00:00", "2026-03-12 04:20:33.989799+00:00", "2026-03-12 04:20:34.954107+00:00", "2026-03-12 04:20:38.211041+00:00", "2026-03-12 04:20:39.873329+00:00", "2026-03-12 04:20:59.587122+00:00", "2026-03-12 04:20:59.974554+00:00", "2026-03-12 04:21:12.006909+00:00", "2026-03-12 04:21:20.162276+00:00", "2026-03-12 04:21:20.924678+00:00", "2026-03-12 04:21:21.250422+00:00", "2026-03-12 04:21:23.063428+00:00", "2026-03-12 04:21:26.346446+00:00", "2026-03-12 04:21:28.921019+00:00", "2026-03-12 04:21:29.654976+00:00", "2026-03-12 04:21:32.390559+00:00", "2026-03-12 04:21:32.413512+00:00", "2026-03-12 04:21:32.414051+00:00", "2026-03-12 04:21:33.325671+00:00", "2026-03-12 04:21:34.605614+00:00", "2026-03-12 04:21:34.711212+00:00", "2026-03-12 04:21:34.914274+00:00", "2026-03-12 04:21:36.755630+00:00", "2026-03-12 04:21:36.955571+00:00", "2026-03-12 04:21:42.137056+00:00", "2026-03-12 04:21:42.219719+00:00", "2026-03-12 04:21:44.943235+00:00", "2026-03-12 04:21:44.961243+00:00", "2026-03-12 04:21:44.979824+00:00", "2026-03-12 04:21:46.352472+00:00", "2026-03-12 04:21:46.620245+00:00", "2026-03-12 04:21:47.141126+00:00", "2026-03-12 04:21:48.806627+00:00", "2026-03-12 04:21:50.236557+00:00", "2026-03-12 04:22:05.473503+00:00", "2026-03-12 04:22:08.629738+00:00", "2026-03-12 04:22:09.099746+00:00", "2026-03-12 04:22:09.699963+00:00", "2026-03-12 04:22:17.329217+00:00", "2026-03-12 04:22:18.189384+00:00", "2026-03-12 04:22:22.230226+00:00", "2026-03-12 04:22:25.406515+00:00", "2026-03-12 04:22:30.615682+00:00", "2026-03-12 04:22:41.151762+00:00", "2026-03-12 04:22:45.252417+00:00", "2026-03-12 04:22:45.818500+00:00", "2026-03-12 04:22:46.200632+00:00", "2026-03-12 04:22:54.886625+00:00", "2026-03-12 04:23:02.254841+00:00", "2026-03-12 04:23:03.073699+00:00", "2026-03-12 04:23:10.423296+00:00", "2026-03-12 04:23:10.890197+00:00", "2026-03-12 04:23:18.147946+00:00", "2026-03-12 04:23:25.419051+00:00", "2026-03-12 04:23:33.296472+00:00", "2026-03-12 04:23:36.116507+00:00", "2026-03-12 04:23:38.108883+00:00", "2026-03-12 04:23:43.459324+00:00", "2026-03-12 04:23:43.490611+00:00", "2026-03-12 04:23:43.876772+00:00", "2026-03-12 04:23:47.575810+00:00", "2026-03-12 04:23:48.757822+00:00", "2026-03-12 04:23:49.293758+00:00", "2026-03-12 04:23:49.865164+00:00", "2026-03-12 04:23:53.191634+00:00", "2026-03-12 04:23:53.198314+00:00", "2026-03-12 04:24:03.402819+00:00", "2026-03-12 04:24:08.839803+00:00", "2026-03-12 04:24:08.840326+00:00", "2026-03-12 04:24:09.600801+00:00", "2026-03-12 04:24:12.894596+00:00", "2026-03-12 04:24:14.145228+00:00", "2026-03-12 04:24:15.086840+00:00", "2026-03-12 04:24:15.179044+00:00", "2026-03-12 04:24:16.912567+00:00", "2026-03-12 04:24:24.406025+00:00", "2026-03-12 04:24:35.590401+00:00", "2026-03-12 04:24:36.366073+00:00", "2026-03-12 04:24:37.471535+00:00", "2026-03-12 04:24:39.423930+00:00", "2026-03-12 04:24:49.325830+00:00", "2026-03-12 04:24:51.818012+00:00", "2026-03-12 04:24:56.559981+00:00", "2026-03-12 04:25:00.520787+00:00", "2026-03-12 04:25:04.067380+00:00", "2026-03-12 04:25:05.978136+00:00", "2026-03-12 04:25:06.614307+00:00", "2026-03-12 04:25:16.251362+00:00", "2026-03-12 04:25:20.154928+00:00", "2026-03-12 04:25:23.703294+00:00", "2026-03-12 04:25:32.360183+00:00", "2026-03-12 04:25:37.321198+00:00", "2026-03-12 04:25:42.125518+00:00", "2026-03-12 04:25:45.612942+00:00", "2026-03-12 04:25:46.124390+00:00", "2026-03-12 04:25:47.148806+00:00", "2026-03-12 04:25:53.963464+00:00", "2026-03-12 04:25:56.318709+00:00", "2026-03-12 04:26:03.586123+00:00", "2026-03-12 04:26:03.616279+00:00", "2026-03-12 04:26:05.574836+00:00", "2026-03-12 04:26:21.089577+00:00", "2026-03-12 04:26:22.242700+00:00", "2026-03-12 04:26:30.646554+00:00", "2026-03-12 04:26:31.634737+00:00", "2026-03-12 04:26:46.190998+00:00", "2026-03-12 04:26:50.798253+00:00", "2026-03-12 04:26:58.300222+00:00", "2026-03-12 04:26:58.546602+00:00", "2026-03-12 04:27:01.062786+00:00", "2026-03-12 04:27:03.289394+00:00", "2026-03-12 04:27:08.811744+00:00", "2026-03-12 04:27:09.604070+00:00", "2026-03-12 04:27:18.345810+00:00", "2026-03-12 04:27:28.356014+00:00", "2026-03-12 04:27:29.562172+00:00", "2026-03-12 04:27:36.372119+00:00", "2026-03-12 04:27:42.444178+00:00", "2026-03-12 04:27:48.105788+00:00", "2026-03-12 04:27:49.243919+00:00", "2026-03-12 04:27:50.565600+00:00", "2026-03-12 04:27:51.405434+00:00", "2026-03-12 04:27:52.892254+00:00", "2026-03-12 04:28:02.926351+00:00", "2026-03-12 04:28:03.020207+00:00", "2026-03-12 04:28:07.578250+00:00", "2026-03-12 04:28:10.722718+00:00", "2026-03-12 04:28:18.068819+00:00", "2026-03-12 04:28:23.425715+00:00", "2026-03-12 04:28:27.918774+00:00", "2026-03-12 04:28:30.348723+00:00", "2026-03-12 04:28:31.974948+00:00", "2026-03-12 04:28:32.552009+00:00", "2026-03-12 04:28:53.923453+00:00", "2026-03-12 04:29:58.339623+00:00", "2026-03-12 04:30:05.908388+00:00", "2026-03-12 04:30:18.378649+00:00", "2026-03-12 04:30:24.759480+00:00", "2026-03-12 04:30:26.808095+00:00", "2026-03-12 04:30:35.478306+00:00", "2026-03-12 04:30:40.810240+00:00", "2026-03-12 04:30:49.765517+00:00", "2026-03-12 04:30:58.508626+00:00"], "y": [-8.838541259402522, 15.409300636860511, 50.16291665106027, 320.5169264446272, 355.36428631551513, 407.6834179459163, 514.9179279985549, 568.3057371756194, 616.2459975271521, 607.8016925842346, 607.1258240506444, 637.1238735043872, 673.2473087211001, 648.2682351538883, 635.1049947967106, 638.9472717658055, 662.1352723438401, 670.38858433763, 687.2338963807174, 726.6927434333708, 726.6396991029019, 742.1344473649917, 759.3856640986481, 755.6464047425145, 789.6859720394959, 785.128557189882, 823.3152847787551, 878.4952264244913, 882.1389483234194, 1021.0012550291324, 1074.0831215227681, 848.5956137506889, 895.7278906782603, 935.2971200271229, 1105.8980160701688, 1139.1323135316106, 1133.6685057819832, 1458.6241904077824, 1487.4168922089773, 1518.6650877918516, 1569.1686776235647, 1591.5482160135018, 1707.995682117291, 1853.8144897890843, 1805.6768620644298, 1844.178013659562, 1859.5458224725483, 1860.5094652702169, 2163.061678416599, 2164.102055169446, 2173.1962453378496, 2198.035137809704, 2329.3507902491733, 2367.1348764615896, 2429.3517900570196, 2414.474953040226, 2399.5981160234323, 2409.8269784275567, 2446.5956384521064, 2633.3468326619545, 2796.703422637886, 2830.3968941087564, 2864.02790814503, 2847.085998558124, 2958.7678737141805, 2968.486003926993, 3033.619969906999, 3216.06558383098, 3236.754305836551, 3223.9126031627543, 3246.3503424292844, 3703.2382917656387, 3755.153241218608, 3796.087800586497, 3794.819407559485, 3840.3864388944244, 3930.380522583709, 4017.616134358968, 4025.711679341162, 4114.877567318805, 4162.820042063476, 4214.702663256832, 4292.5729428748855, 4341.844604564307, 4354.931946232425, 4354.5813448548415, 4413.617906058137, 4453.540689056856, 4453.540689056856, 4467.874302200973, 4473.755956750445, 4478.156908799344, 4490.787473298509, 4503.166523215577, 4513.067757445028, 4519.524660380875, 4533.129906817926, 4564.698093613417, 4561.9996219836385, 4561.9996219836385, 4736.604370524067, 4750.677532405656, 4736.16838625181, 4808.020309903703, 4783.865765396712, 4785.661168162484, 4811.396041971169, 4813.912935432888, 4813.387472263584, 4850.3573245184625, 4892.96057638294, 4921.045006522692, 4932.43410854948, 4987.031357231742, 5025.886308258364, 5044.861474734336, 5034.075210063943, 5055.769050719394, 5063.641673140345, 5078.857668950286, 5084.959335748424, 5086.270115050675, 5114.027133923067, 5236.64089924811, 5244.868063644413, 5251.096442591782, 5345.362047799277, 5348.189131394141, 5349.868297700412, 5350.960123941322, 5359.814631294718, 5363.83323400995, 5393.713433527149, 5404.625093332322, 5484.113943015648, 5494.001729181693, 5494.001729181693, 5494.956250885114, 5543.484659715266, 5546.179719253668, 5546.437260019793, 5558.2357885947795, 5580.105544925343, 5589.122523820931, 5663.21733083431, 5768.62564314162, 5768.050502556263, 5775.9239452950815, 5790.208877769783, 5794.602869113681, 5765.682651787455, 5763.554042594193, 5766.504967656955, 5748.830183095227, 5750.268934251956, 5759.4117267719585, 5761.71238452152, 5766.631238050333, 5766.914291228606, 5756.091467893324, 5755.051900436787, 5656.292490579055, 5685.8745415697595, 5713.468121332058, 5941.093329294179, 5945.1787447136585, 6005.5133736993275, 6018.367129807255, 6023.027846505967, 6068.495394836302, 6075.4243857229785, 6076.685666379875, 6077.946947036772, 6086.801196262016, 6060.245233648179, 6039.484844141025, 6038.214414953941, 6040.753685236276, 6075.235549862035, 6174.286887013054, 6141.702015218182, 6142.366821113938, 6152.544703640871, 6165.620281428379, 6195.797726589669, 6207.563587839526, 6208.046372518717, 4728.120707520648, 4741.255430139428, 4807.716174406656, 4827.5286082681205, 5053.418399970882, 5248.580032361833, 5376.911888688754, 5576.755692996567, 5614.416525579825, 5636.26382110981, 5526.374336105848, 5583.9309583191825, 5608.278729610114, 5618.281325137406, 5651.649385215685, 5662.372650744888, 5676.3365962298385, 5731.06115276074, 5793.439065102258, 5842.636522996994, 5859.5734807053295, 6029.764825022043, 6037.457455604169, 6060.093293983828, 6060.093293983828, 6240.988461394817, 6271.169605961588, 6284.915203464034, 6400.908350781341, 6415.770685956969, 6713.703848722777, 6813.321986491018, 6813.321986491018, 6912.7849131058665, 6772.970619139232, 6899.802815952452, 6953.505233083844, 6953.505233083844, 6959.8266384378, 6977.812108761378, 7000.3979718736755, 7064.687386239665, 7162.570526637613, 7206.501458900166, 7370.889005830837, 7547.520693645729, 7562.09925361771, 7881.469385196658, 7907.820472707192, 7914.219270720392, 8042.257091979182, 8075.3454876821625, 8081.137905198962, 8127.000861355596, 8141.610179343448, 8917.452931411564, 8950.621065670533, 9058.576514827084, 9289.232656593604, 9266.903237679144, 9271.686571269784, 9299.897333923027, 9687.934301962601, 9692.52126992696, 9683.264010768553, 9773.300240779836, 9775.23421382597, 9778.495391058272, 9788.773677736739, 9795.10102182171, 9789.337432527731, 9788.767021232337, 9929.20859681781, 9930.204411278917, 9925.516998039091, 9927.184424610918, 9949.489586739459, 9979.022872091333, 10044.104301378162, 10070.957801209954, 10222.911817447628, 10223.556532939863, 10247.458946691879, 10290.333132971879, 10286.089341642399, 10294.893451890874, 10301.192772138285, 10315.601554399183, 10378.003297270312, 10414.372330048705, 10459.189316969654, 10447.377699678198, 10621.739437711552, 10773.427249047016, 10786.922795575196, 10777.075458647285, 10782.570229199433, 10784.725770375904, 10785.81754656638, 10786.71884656638, 10785.786813233048, 10785.786813233048, 10882.407599715305, 10864.871618832669, 10872.922472886723, 10882.125383375884, 10939.315678060939, 10948.232362787163, 10966.62176516497, 10966.359425114733, 10915.542443852713, 10972.390545930513, 11195.906174187337, 11195.304638791406, 11221.991893947925, 11236.159324554483, 11234.257367927978, 11259.704684914685, 11370.039394851052, 11372.680249921947, 11388.01027071088, 11436.058616073577, 11511.122306401026, 11590.30214916503, 11574.665323460995, 11591.295122659878, 11601.846239402743, 11720.684424116118, 11748.2195531102, 11875.695894041566, 11901.552349658095, 11901.834182160668, 11956.668138907482, 11960.828371846294, 11978.18640780135, 11972.815366043107, 12045.659690795583, 12668.458735541206, 12618.216051923166, 12633.477064705065, 12633.477064705065, 12639.108885215242, 12715.293941243035, 12792.218789404995, 12869.138571684123, 12871.502249761654, 12835.254521420056, 12888.532316510946, 12884.779350583221, 12898.318012395566, 12974.858570150627, 13025.078061983826, 13046.202108289956, 13061.015345531201, 13078.657467706202, 13140.967008644064, 12955.383724484738, 13041.864312130361, 13064.147705901987, 13064.294508075218, 13056.458376684599, 13074.993008240317, 13097.357359801626, 13160.998300090063, 13158.194259214151, 13172.889307315418, 13233.54691794521, 13255.843881801002, 13268.146226920382, 13354.626814566005, 13369.663021188522, 13430.050582172393, 13516.531169818016, 13609.795868375135, 13779.960802979222, 13770.737551672808, 13776.825155234772, 13805.190489790153, 13805.190489790153, 13944.817353662194, 14186.8773376222, 14186.8773376222, 14215.29276966633, 14251.526670931818, 14237.370853225893, 14283.688964701303, 14445.156702833945, 14444.179255164223, 13694.083285461755, 13694.453799510804, 13718.715754870213, 13765.430793743531, 13861.546896611086, 13885.808851970494, 13884.913147280631, 13884.913147280631, 13923.241729780535, 13963.324670528225, 13992.402027779244, 13992.402027779244, 14036.756827660933, 14060.602502266118, 14144.972908559259, 14152.807869213644, 14371.025003610124, 14405.746121120143, 14398.764370642426, 14423.41676217079, 14458.027248689894, 14475.41365852938, 14472.820071563661, 14524.920065116827, 14559.897328624736, 14637.06732138011, 14658.83815261588, 14658.36044893925, 14660.39765561888, 14785.516820665836, 14884.15084815475, 15101.720147517806, 15142.341523667023, 15139.696594616387, 15169.840188382816, 15173.392005683854, 15177.40397247051, 15188.889052297185, 15553.62026603109, 15612.442802634936, 15522.650277611265, 15636.620277511865, 15642.310278531466, 15863.712002013543, 15999.416830529566, 16149.434941076091, 16217.238699260493, 16318.451897589946, 16378.0006573116, 16388.148774556652, 16393.80772949576, 16381.13039835215, 16421.320071308415, 16509.520943330648, 16531.296139022525, 16566.30775192446, 16928.513133742643, 16959.068909586367, 16964.891167371745, 17437.467352636457, 17421.961899198457, 17535.495797263608, 17537.133373504515, 17819.46373962934, 17819.40397467185, 17824.012732424086, 17901.604747686324, 17924.241821346266, 18103.62428686282, 18127.930299453885, 18129.353000515817, 18143.456672475928, 18164.11962369162, 18187.05545061806, 18243.48770713541, 18269.94829853591, 18314.023697684344, 18324.181748298626, 18278.30756690531, 18314.69155670215, 18342.224984884968, 18390.964256666073, 18388.546680908497, 18446.79084483662, 18437.34655574631, 18526.749963724273, 18540.351197033968, 18526.173819895594, 18600.797544626777, 18618.71045436807, 18671.514136666618], "name": "Cumulative fill EV (\u00a2)", "line": {"color": "#e67e22", "width": 2, "dash": "dot"}}, {"type": "scatter", "mode": "lines", "x": ["2026-03-12 04:09:01.107914+00:00", "2026-03-12 04:10:26.475905+00:00", "2026-03-12 04:11:21.805385+00:00", "2026-03-12 04:12:12.473156+00:00", "2026-03-12 04:13:01.810310+00:00", "2026-03-12 04:13:57.211732+00:00", "2026-03-12 04:14:59.046783+00:00", "2026-03-12 04:15:56.642978+00:00", "2026-03-12 04:16:49.021069+00:00", "2026-03-12 04:17:42.931876+00:00", "2026-03-12 04:18:42.696179+00:00", "2026-03-12 04:19:39.358220+00:00", "2026-03-12 04:20:37.518087+00:00", "2026-03-12 04:21:28.538270+00:00", "2026-03-12 04:22:21.411977+00:00", "2026-03-12 04:23:10.780199+00:00", "2026-03-12 04:23:59.816876+00:00", "2026-03-12 04:24:49.532966+00:00", "2026-03-12 04:25:39.293024+00:00", "2026-03-12 04:26:26.492565+00:00", "2026-03-12 04:27:14.561531+00:00", "2026-03-12 04:28:02.649831+00:00", "2026-03-12 04:28:52.025856+00:00", "2026-03-12 04:29:39.850641+00:00", "2026-03-12 04:30:28.888596+00:00"], "y": [3116.9999999998254, 1323.9999999997963, -3415.0000000001455, -1788.0000000001019, 5152.999999999884, 6545.999999999913, 4706.999999999971, -1835.0000000002183, -17215.000000000146, -16172.999999999956, -20345.999999999913, -23262.000000000262, -19440.000000000146, -17484.000000000015, -19249.00000000016, -16852.999999999884, -21169.000000000233, -20187.000000000262, -19094.000000000233, -20908.000000000175, -22830.00000000029, -26736.00000000006, -24833.000000000175, -27875.0, -26261.00000000006], "name": "Session PnL (\u00a2)", "line": {"color": "#2ecc71", "width": 2}}], "layout": {"title": "Expected Edge vs Actual PnL", "xaxis": {"title": "Time"}, "yaxis": {"title": "PnL (\u00a2)"}, "height": 350, "margin": {"t": 50, "b": 60, "l": 70, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "legend": {"x": 0.01, "y": 0.99}}};
+  Plotly.newPlot('chart_pnl', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>9. Outlier Fills</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card warn">
+  <div class="label">Outlier Fills</div>
+  <div class="value">6</div>
+  <div class="sub">EV > 20¢</div>
+</div>
+          <div class="stat-card">
+  <div class="label">% of Fills</div>
+  <div class="value">1.3%</div>
+  <div class="sub">of 454 valid fills</div>
+</div>
+          <div class="stat-card warn">
+  <div class="label">EV Share</div>
+  <div class="value">13.7%</div>
+  <div class="sub">of total session EV</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Mean EV (outliers)</div>
+  <div class="value">+33.27¢</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Max EV (outliers)</div>
+  <div class="value">+60.37¢</div>
+  
+</div>
+        </div>
+        <hr class="divider"><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Markout for outlier fills only (fill-price basis)</p><table><thead><tr><th>Horizon</th><th>Mean Markout</th><th>Std Dev</th><th>Std Error</th><th>N</th></tr></thead><tbody><tr><td>0s (EV)</td><td style='color:#2ecc71'>+33.8254¢</td><td>13.5829¢</td><td>±5.5452¢</td><td>6</td></tr><tr><td>1s</td><td style='color:#2ecc71'>+32.6127¢</td><td>15.0224¢</td><td>±6.1329¢</td><td>6</td></tr><tr><td>5s</td><td style='color:#2ecc71'>+35.2643¢</td><td>19.4904¢</td><td>±7.9569¢</td><td>6</td></tr><tr><td>10s</td><td style='color:#2ecc71'>+39.8730¢</td><td>19.2535¢</td><td>±8.6104¢</td><td>5</td></tr><tr><td>30s</td><td style='color:#2ecc71'>+35.8735¢</td><td>19.7769¢</td><td>±8.8445¢</td><td>5</td></tr><tr><td>60s</td><td style='color:#2ecc71'>+34.2245¢</td><td>25.1795¢</td><td>±11.2606¢</td><td>5</td></tr><tr><td>300s</td><td style='color:#e74c3c'>-3.1724¢</td><td>0.0000¢</td><td>±0.0000¢</td><td>2</td></tr></tbody></table><hr class='divider'><div id="chart_outlier_markout" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [33.002022091874885, 21.300569835408055, 20.760974756602344, 36.98327513504343, 42.93606208874641, 53.11806595460874], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [33.002022091874885, 21.300569835408055, 20.760974756602344, 36.98327513504343, 42.93606208874641, 53.11806595460874], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.2)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [33.002022091874885, 21.300569835408055, 20.760974756602344, 36.98327513504343, 42.93606208874641, 53.11806595460874], "mode": "lines+markers", "line": {"color": "#2ecc71", "width": 2.5}, "marker": {"color": "#2ecc71", "size": 7}, "name": "buy (n=1)", "showlegend": true}, {"type": "scatter", "x": ["0s", "60s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [47.29540573932207, 48.55869651540274, 55.95118320182307, 62.30601950226504, 56.0370181317991, 55.366503533317925, -3.172413793103445], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [20.68470008599345, 21.191503530024, 20.37870791028949, 18.88491006474853, 12.178746347177164, 3.635721836301453, -3.172413793103445], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.2)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [33.99005291265776, 34.87510002271337, 38.16494555605628, 40.595464783506785, 34.107882239488134, 29.501112684809687, -3.172413793103445], "mode": "lines+markers", "line": {"color": "#e67e22", "width": 2.5}, "marker": {"color": "#e67e22", "size": 7}, "name": "sell (n=5)", "showlegend": true}, {"type": "scatter", "x": ["0s", "300s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Markout by Action: Buy vs Sell (95% CI)", "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "showlegend": true, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}, "height": 380, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}}};
+  Plotly.newPlot('chart_outlier_markout', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><p style='color:#666;font-size:0.78rem;margin-top:6px;'>If outlier fills have a steeply declining markout curve, the EV was genuine edge that held. A curve dropping quickly toward zero — or going negative — suggests the high EV was driven by a stale order that resolved against you.</p><hr class='divider'><div id="chart_outlier_fills" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "markers", "x": ["2026-03-12 04:20:33.989799+00:00"], "y": [32.77889709187488], "marker": {"color": "#2ecc71", "size": [26.0], "opacity": 0.8, "line": {"width": 1, "color": "rgba(255,255,255,0.25)"}}, "name": "buy", "text": ["KXNBATOTAL-26MAR11HOUDEN-218<br>buy 19 @ 15.0\u00a2<br>mp=48.00\u00a2  ev=+32.78\u00a2<br>spread=36\u00a2"], "hovertemplate": "%{text}<extra></extra>"}, {"type": "scatter", "mode": "markers", "x": ["2026-03-12 04:15:34.971717+00:00", "2026-03-12 04:25:00.520787+00:00", "2026-03-12 04:25:32.360183+00:00", "2026-03-12 04:25:47.148806+00:00", "2026-03-12 04:26:58.546602+00:00"], "y": [26.75319834717643, 27.196162420382162, 30.394267811158805, 22.140172348207756, 60.36756363636364], "marker": {"color": "#e74c3c", "size": [26.0, 11.517241379310345, 14.275862068965518, 12.896551724137932, 10.137931034482758], "opacity": 0.8, "line": {"width": 1, "color": "rgba(255,255,255,0.25)"}}, "name": "sell", "text": ["KXNBATOTAL-26MAR11CHASAC-230<br>sell 29 @ 44.0\u00a2<br>mp=16.82\u00a2  ev=+26.75\u00a2<br>spread=41\u00a2", "KXNBAPTS-26MAR11MINLAC-MINAEDWARDS5-30<br>sell 8 @ 95.0\u00a2<br>mp=67.47\u00a2  ev=+27.20\u00a2<br>spread=33\u00a2", "KXNBAPTS-26MAR11MINLAC-MINAEDWARDS5-35<br>sell 12 @ 82.0\u00a2<br>mp=50.57\u00a2  ev=+30.39\u00a2<br>spread=41\u00a2", "KXNBAPTS-26MAR11MINLAC-MINAEDWARDS5-35<br>sell 10 @ 82.0\u00a2<br>mp=58.83\u00a2  ev=+22.14\u00a2<br>spread=51\u00a2", "KXNBAREB-26MAR11MINLAC-MINJRANDLE30-6<br>sell 6 @ 96.0\u00a2<br>mp=35.36\u00a2  ev=+60.37\u00a2<br>spread=70\u00a2"], "hovertemplate": "%{text}<extra></extra>"}], "layout": {"title": "Outlier Fills Over Session (EV > 20\u00a2) \u2014 marker size \u221d quantity", "xaxis": {"title": "Time"}, "yaxis": {"title": "EV per contract (\u00a2)"}, "height": 360, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "legend": {"x": 0.01, "y": 0.99}}};
+  Plotly.newPlot('chart_outlier_fills', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><hr class='divider'><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Tickers with outlier fills (top 30 by EV total)</p><table><thead><tr><th>Ticker</th><th>Fills</th><th>Mean EV</th><th>Max EV</th><th>EV Total</th></tr></thead><tbody><tr><td>KXNBATOTAL-26MAR11CHASAC-230</td><td>1</td><td style='color:#f0c060'>+26.75¢</td><td style='color:#f0c060'>+26.75¢</td><td style='color:#2ecc71'>+775.84¢</td></tr><tr><td>KXNBATOTAL-26MAR11HOUDEN-218</td><td>1</td><td style='color:#f0c060'>+32.78¢</td><td style='color:#f0c060'>+32.78¢</td><td style='color:#2ecc71'>+622.80¢</td></tr><tr><td>KXNBAPTS-26MAR11MINLAC-MINAEDWARDS5-35</td><td>2</td><td style='color:#f0c060'>+26.27¢</td><td style='color:#f0c060'>+30.39¢</td><td style='color:#2ecc71'>+586.13¢</td></tr><tr><td>KXNBAREB-26MAR11MINLAC-MINJRANDLE30-6</td><td>1</td><td style='color:#f0c060'>+60.37¢</td><td style='color:#f0c060'>+60.37¢</td><td style='color:#2ecc71'>+362.21¢</td></tr><tr><td>KXNBAPTS-26MAR11MINLAC-MINAEDWARDS5-30</td><td>1</td><td style='color:#f0c060'>+27.20¢</td><td style='color:#f0c060'>+27.20¢</td><td style='color:#2ecc71'>+217.57¢</td></tr></tbody></table><hr class='divider'><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Top 50 outlier fills by EV/contract</p><table><thead><tr><th>Time</th><th>Ticker</th><th>Side</th><th>Action</th><th>Fill ¢</th><th>Microprice ¢</th><th>EV/contract</th><th>Spread</th><th>Qty</th><th>EV Total</th></tr></thead><tbody><tr><td style='color:#8888aa;font-size:0.78rem'>2026-03-12 04:26:58</td><td>KXNBAREB-26MAR11MINLAC-MINJRANDLE30-6</td><td>yes</td><td>sell</td><td>96.0¢</td><td>35.36¢</td><td style='color:#f0c060'>+60.37¢</td><td>70¢</td><td>6</td><td style='color:#2ecc71'>+362.21¢</td></tr><tr><td style='color:#8888aa;font-size:0.78rem'>2026-03-12 04:20:33</td><td>KXNBATOTAL-26MAR11HOUDEN-218</td><td>yes</td><td>buy</td><td>15.0¢</td><td>48.00¢</td><td style='color:#f0c060'>+32.78¢</td><td>36¢</td><td>19</td><td style='color:#2ecc71'>+622.80¢</td></tr><tr><td style='color:#8888aa;font-size:0.78rem'>2026-03-12 04:25:32</td><td>KXNBAPTS-26MAR11MINLAC-MINAEDWARDS5-35</td><td>yes</td><td>sell</td><td>82.0¢</td><td>50.57¢</td><td style='color:#f0c060'>+30.39¢</td><td>41¢</td><td>12</td><td style='color:#2ecc71'>+364.73¢</td></tr><tr><td style='color:#8888aa;font-size:0.78rem'>2026-03-12 04:25:00</td><td>KXNBAPTS-26MAR11MINLAC-MINAEDWARDS5-30</td><td>yes</td><td>sell</td><td>95.0¢</td><td>67.47¢</td><td style='color:#f0c060'>+27.20¢</td><td>33¢</td><td>8</td><td style='color:#2ecc71'>+217.57¢</td></tr><tr><td style='color:#8888aa;font-size:0.78rem'>2026-03-12 04:15:34</td><td>KXNBATOTAL-26MAR11CHASAC-230</td><td>yes</td><td>sell</td><td>44.0¢</td><td>16.82¢</td><td style='color:#f0c060'>+26.75¢</td><td>41¢</td><td>29</td><td style='color:#2ecc71'>+775.84¢</td></tr><tr><td style='color:#8888aa;font-size:0.78rem'>2026-03-12 04:25:47</td><td>KXNBAPTS-26MAR11MINLAC-MINAEDWARDS5-35</td><td>yes</td><td>sell</td><td>82.0¢</td><td>58.83¢</td><td style='color:#f0c060'>+22.14¢</td><td>51¢</td><td>10</td><td style='color:#2ecc71'>+221.40¢</td></tr></tbody></table><p style='color:#666;font-size:0.78rem;margin-top:8px;'>These fills had EV &gt; 20¢ vs microprice at fill time. Wide spread indicates an illiquid or wide market; check timing vs near-expiry or large orderbook moves.</p></div>
+</div>
+  </div>
+  <script>
+document.querySelectorAll('.section-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+        header.closest('.section').classList.toggle('collapsed');
+    });
+});
+</script>
+</body>
+</html>
