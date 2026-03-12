@@ -2,6 +2,7 @@
 
 import json
 import re
+import statistics
 from pathlib import Path
 
 REPORTS_DIR = Path(__file__).parent.parent / "reports"
@@ -28,8 +29,6 @@ def extract_meta(html: str) -> dict:
         duration = m.group(1).strip()
 
     # Prefer the Session P&L stat card (only present when session_summary.parquet existed).
-    # This is the only reliable source — the chart trace is mark-to-market and the last
-    # value can be distorted by open positions at market resolution time.
     m = re.search(
         r"Session P&amp;L.*?<div class=\"value\">\s*([+\-$0-9,\.]+)\s*</div>",
         html,
@@ -41,6 +40,32 @@ def extract_meta(html: str) -> dict:
             pnl_cents = float(raw) * 100
         except ValueError:
             pass
+
+    # Fall back to the chart trace when no stat card is available.
+    # Strip outliers (> 3 stdev from median) to avoid end-of-session resolution spikes,
+    # then take the last clean value.
+    if pnl_cents is None:
+        idx = html.find("chart_pnl")
+        if idx != -1:
+            chunk = html[idx:]
+            spec_match = re.search(r"var spec = (.*?);\s*Plotly\.newPlot", chunk, re.DOTALL)
+            if spec_match:
+                try:
+                    spec = json.loads(spec_match.group(1))
+                    for trace in spec.get("data", []):
+                        if trace.get("name") == "Session PnL (\u00a2)":
+                            y = trace.get("y", [])
+                            if len(y) > 1:
+                                med = statistics.median(y)
+                                stdev = statistics.stdev(y)
+                                clean = [v for v in y if stdev == 0 or abs(v - med) <= 3 * stdev]
+                                if clean:
+                                    pnl_cents = clean[-1]
+                            elif y:
+                                pnl_cents = y[-1]
+                            break
+                except (json.JSONDecodeError, KeyError, statistics.StatisticsError):
+                    pass
 
     return {"started": started, "duration": duration, "pnl_cents": pnl_cents}
 
