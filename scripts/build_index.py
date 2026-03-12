@@ -170,6 +170,23 @@ def build_index(reports: list[dict]) -> str:
 """
 
 
+def duration_seconds(duration_str) -> int:
+    """Convert a duration string like '10h 45m' or '2h 28m' to total seconds."""
+    if not duration_str:
+        return 0
+    total = 0
+    m = re.search(r"(\d+)h", duration_str)
+    if m:
+        total += int(m.group(1)) * 3600
+    m = re.search(r"(\d+)m", duration_str)
+    if m:
+        total += int(m.group(1)) * 60
+    m = re.search(r"(\d+)s", duration_str)
+    if m:
+        total += int(m.group(1))
+    return total
+
+
 def main():
     if not REPORTS_DIR.exists():
         print("No reports/ directory found, writing empty index.")
@@ -183,8 +200,19 @@ def main():
         meta["filename"] = path.name
         entries.append(meta)
 
-    # Sort by start datetime descending; unknowns go to the bottom
-    entries.sort(key=lambda r: r["started"] or "", reverse=True)
+    # Drop entries with no known session start
+    entries = [e for e in entries if e["started"]]
+
+    # For duplicate session starts keep the most complete (longest duration)
+    best: dict[str, dict] = {}
+    for e in entries:
+        key = e["started"]
+        if key not in best or duration_seconds(e["duration"]) > duration_seconds(best[key]["duration"]):
+            best[key] = e
+    entries = list(best.values())
+
+    # Sort by start datetime descending
+    entries.sort(key=lambda r: r["started"], reverse=True)
 
     INDEX_PATH.write_text(build_index(entries), encoding="utf-8")
     print(f"Wrote index.html with {len(entries)} report(s).")
