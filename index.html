@@ -17,9 +17,24 @@
       background: linear-gradient(135deg, #1a1a3e 0%, #16213e 100%);
       padding: 24px 32px;
       border-bottom: 2px solid #2a2a5a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
     }
     header h1 { font-size: 1.6rem; font-weight: 700; color: #ffffff; }
     header p { color: #8888aa; margin-top: 4px; font-size: 0.85rem; }
+    header a.schema-link {
+      color: #7788cc;
+      text-decoration: none;
+      font-size: 0.85rem;
+      border: 1px solid #2a2a5a;
+      padding: 6px 14px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    header a.schema-link:hover { color: #aabbff; border-color: #4455aa; }
     .container { max-width: 900px; margin: 0 auto; padding: 32px; }
     table {
       width: 100%;
@@ -74,8 +89,11 @@
 </head>
 <body>
   <header>
-    <h1>Kalshi MM &mdash; Session Reports</h1>
-    <p>24 sessions</p>
+    <div>
+      <h1>Kalshi MM &mdash; Session Reports</h1>
+      <p>23 sessions</p>
+    </div>
+    <a class="schema-link" href="schema.html">Analytics schema &rarr;</a>
   </header>
   <div class="container">
     <table>
@@ -119,12 +137,7 @@
           <td class="positive pnl">+$1,283.58</td>
           <td class="link"><a href="reports/2026-03-14_014755.html">View report &rarr;</a></td>
         </tr>
-        <tr>
-          <td class="date">2026-03-13 19:26:58</td>
-          <td class="duration">5h 19m</td>
-          <td class="negative pnl">$-22,118.27</td>
-          <td class="link"><a href="reports/2026-03-13_192714.html">View report &rarr;</a></td>
-        </tr>
+
         <tr>
           <td class="date">2026-03-13 16:28:46</td>
           <td class="duration">2h 56m</td>
