@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalshi MM — Analytics Schema</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='4' y='18' width='5' height='10' rx='1' fill='%232ecc71'/><rect x='6' y='14' width='1' height='5' fill='%232ecc71'/><rect x='6' y='28' width='1' height='2' fill='%232ecc71'/><rect x='13' y='8' width='5' height='16' rx='1' fill='%23e74c3c'/><rect x='15' y='4' width='1' height='5' fill='%23e74c3c'/><rect x='15' y='24' width='1' height='4' fill='%23e74c3c'/><rect x='22' y='12' width='5' height='12' rx='1' fill='%232ecc71'/><rect x='24' y='8' width='1' height='5' fill='%232ecc71'/><rect x='24' y='24' width='1' height='3' fill='%232ecc71'/></svg>">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f0f1a;
+      color: #e0e0e0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #1a1a3e 0%, #16213e 100%);
+      padding: 24px 32px;
+      border-bottom: 2px solid #2a2a5a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    header h1 { font-size: 1.6rem; font-weight: 700; color: #ffffff; }
+    header p { color: #8888aa; margin-top: 4px; font-size: 0.85rem; }
+    header a.back {
+      color: #7788cc;
+      text-decoration: none;
+      font-size: 0.85rem;
+      border: 1px solid #2a2a5a;
+      padding: 6px 14px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    header a.back:hover { color: #aabbff; border-color: #4455aa; }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 32px; }
+
+    .intro {
+      background: #16213e;
+      border: 1px solid #2a2a5a;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      color: #aab0cc;
+      font-size: 0.9rem;
+    }
+    .intro p + p { margin-top: 8px; }
+
+    .toc {
+      background: #12122a;
+      border: 1px solid #2a2a5a;
+      border-radius: 10px;
+      padding: 18px 24px;
+      margin-bottom: 40px;
+    }
+    .toc h2 {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #6677aa;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 6px 24px;
+    }
+    .toc a {
+      color: #7788cc;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .toc a:hover { color: #aabbff; text-decoration: underline; }
+    .toc-category { margin-top: 14px; }
+    .toc-category-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #555577;
+      margin-bottom: 6px;
+    }
+
+    .category-header {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6677aa;
+      font-weight: 600;
+      padding: 6px 0;
+      border-bottom: 1px solid #2a2a3e;
+      margin-bottom: 20px;
+      margin-top: 48px;
+    }
+    .category-header:first-of-type { margin-top: 0; }
+
+    .event-card {
+      background: #16213e;
+      border: 1px solid #2a2a5a;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .event-header {
+      background: #1a1a3e;
+      padding: 14px 20px;
+      border-bottom: 1px solid #2a2a5a;
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .event-name {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #aabbff;
+    }
+    .event-file {
+      font-size: 0.75rem;
+      color: #555577;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+    }
+    .event-desc {
+      padding: 12px 20px 16px;
+      font-size: 0.88rem;
+      color: #9a9abf;
+      border-bottom: 1px solid #1e1e3a;
+    }
+    .event-desc strong { color: #c0c0e0; }
+
+    .fields-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .fields-table th {
+      padding: 8px 16px;
+      text-align: left;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #555577;
+      font-weight: 600;
+      background: #141428;
+      border-bottom: 1px solid #1e1e3a;
+    }
+    .fields-table td {
+      padding: 8px 16px;
+      border-bottom: 1px solid #1a1a32;
+      vertical-align: top;
+      font-size: 0.83rem;
+    }
+    .fields-table tr:last-child td { border-bottom: none; }
+    .fields-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    td.fname {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+      color: #88aadd;
+      white-space: nowrap;
+    }
+    td.ftype {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+      color: #888888;
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+    td.fdesc { color: #9090b0; }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-right: 4px;
+    }
+    .tag-optional { background: #1a1a3e; color: #7788bb; border: 1px solid #2a2a5e; }
+    .tag-key     { background: #1a3e2e; color: #5dbb8c; border: 1px solid #1e5e3a; }
+
+    .section-group { margin-bottom: 8px; }
+
+    footer {
+      text-align: center;
+      padding: 32px;
+      color: #333355;
+      font-size: 0.78rem;
+      border-top: 1px solid #1a1a2e;
+      margin-top: 48px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Kalshi MM &mdash; Analytics Schema</h1>
+    <p>All event types logged per trading session, with field-level documentation.</p>
+  </div>
+  <a class="back" href="index.html">&larr; Session reports</a>
+</header>
+
+<div class="container">
+
+  <div class="intro">
+    <p>Every trading session emits structured events to parquet files. Each event type maps to one parquet file per session (e.g. <code>fill_events.parquet</code>, <code>markout.parquet</code>). The analytics overview report is generated by joining and aggregating these files.</p>
+    <p>Events share two common fields on every row: <strong>timestamp</strong> (UTC datetime of the event) and <strong>session_id</strong> (UUID identifying the run). Use these to join across tables or to filter to a specific session when files are concatenated.</p>
+  </div>
+
+  <!-- Table of Contents -->
+  <div class="toc">
+    <h2>Event types</h2>
+    <div class="toc-grid">
+      <div class="toc-category">
+        <div class="toc-category-label">Session</div>
+        <a href="#session-summary">SessionSummaryEvent</a>
+      </div>
+      <div class="toc-category">
+        <div class="toc-category-label">Trades</div>
+        <a href="#fill-event">FillEvent</a><br>
+        <a href="#markout">MarkoutEvent</a><br>
+        <a href="#spread-captured">SpreadCapturedEvent</a>
+      </div>
+      <div class="toc-category">
+        <div class="toc-category-label">Orders</div>
+        <a href="#order-placement">OrderPlacementEvent</a><br>
+        <a href="#order-cancellation">OrderCancellationEvent</a><br>
+        <a href="#amend-decision">AmendDecisionEvent</a><br>
+        <a href="#fill-while-cancelling">FillWhileCancellingEvent</a>
+      </div>
+      <div class="toc-category">
+        <div class="toc-category-label">Market &amp; Position</div>
+        <a href="#fill-prob-calibration">FillProbabilityCalibrationEvent</a><br>
+        <a href="#queue-position">QueuePositionEvent</a><br>
+        <a href="#market-selection">MarketSelectionDecisionEvent</a><br>
+        <a href="#position-sizing">PositionSizingEvent</a>
+      </div>
+      <div class="toc-category">
+        <div class="toc-category-label">Portfolio</div>
+        <a href="#inventory-snapshot">InventorySnapshotEvent</a><br>
+        <a href="#capital-exhaustion">CapitalExhaustionModeEvent</a>
+      </div>
+      <div class="toc-category">
+        <div class="toc-category-label">Infrastructure</div>
+        <a href="#network-latency">NetworkLatencyEvent</a><br>
+        <a href="#rate-limit">RateLimitEvent</a><br>
+        <a href="#websocket">WebSocketConnectionEvent</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== SESSION ===== -->
+  <div class="category-header">Session</div>
+
+  <div class="event-card" id="session-summary">
+    <div class="event-header">
+      <span class="event-name">SessionSummaryEvent</span>
+      <span class="event-file">session_summary.parquet</span>
+    </div>
+    <div class="event-desc">
+      Written twice per session: once at boot (<code>event_type = "session_start"</code>) and once at shutdown (<code>event_type = "session_end"</code>). The end row includes the full activity counters, final P&amp;L, and a sanitized JSON snapshot of the config that was live during the run. Duration, fill counts, and P&amp;L are zeroed on the start row.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">event_type</td><td class="ftype">str</td><td class="fdesc"><code>"session_start"</code> or <code>"session_end"</code></td></tr>
+        <tr><td class="fname">start_time</td><td class="ftype">str (ISO)</td><td class="fdesc">When the bot initialized (AnalyticsLogger constructor called)</td></tr>
+        <tr><td class="fname">end_time</td><td class="ftype">str (ISO)</td><td class="fdesc">When <code>stop()</code> was called — equals timestamp on the end row</td></tr>
+        <tr><td class="fname">duration_seconds</td><td class="ftype">float</td><td class="fdesc">Wall-clock session length in seconds (0 on start row)</td></tr>
+        <tr><td class="fname">starting_balance_dollars</td><td class="ftype">float</td><td class="fdesc">Portfolio value at session open (cash + positions)</td></tr>
+        <tr><td class="fname">ending_balance_dollars</td><td class="ftype">float</td><td class="fdesc">Portfolio value at session close</td></tr>
+        <tr><td class="fname">ending_cash_dollars</td><td class="ftype">float</td><td class="fdesc">Unrestricted cash at close</td></tr>
+        <tr><td class="fname">ending_position_value_dollars</td><td class="ftype">float</td><td class="fdesc">Mark-to-market value of open positions at close</td></tr>
+        <tr><td class="fname">session_pnl_dollars</td><td class="ftype">float</td><td class="fdesc">ending_balance − starting_balance</td></tr>
+        <tr><td class="fname">total_fills</td><td class="ftype">int</td><td class="fdesc">Total fill events received</td></tr>
+        <tr><td class="fname">total_orders_placed</td><td class="ftype">int</td><td class="fdesc">Total new orders sent to the exchange</td></tr>
+        <tr><td class="fname">total_cancellations</td><td class="ftype">int</td><td class="fdesc">Total cancel requests issued</td></tr>
+        <tr><td class="fname">distinct_tickers_traded</td><td class="ftype">int</td><td class="fdesc">Number of unique tickers that received at least one fill</td></tr>
+        <tr><td class="fname">exit_reason</td><td class="ftype">str</td><td class="fdesc"><code>"normal"</code>, <code>"stop_loss"</code>, <code>"signal"</code>, or <code>"error"</code></td></tr>
+        <tr><td class="fname">read_requests_throttled</td><td class="ftype">int</td><td class="fdesc">Blocking read-bucket rate-limit waits this session</td></tr>
+        <tr><td class="fname">read_try_acquire_failures</td><td class="ftype">int</td><td class="fdesc">Non-blocking read-bucket misses (request dropped, not queued)</td></tr>
+        <tr><td class="fname">read_total_wait_seconds</td><td class="ftype">float</td><td class="fdesc">Cumulative seconds lost to read rate-limit waits</td></tr>
+        <tr><td class="fname">write_requests_throttled</td><td class="ftype">int</td><td class="fdesc">Blocking write-bucket rate-limit waits (place/amend/cancel)</td></tr>
+        <tr><td class="fname">write_try_acquire_failures</td><td class="ftype">int</td><td class="fdesc">Non-blocking write-bucket misses</td></tr>
+        <tr><td class="fname">write_total_wait_seconds</td><td class="ftype">float</td><td class="fdesc">Cumulative seconds lost to write rate-limit waits</td></tr>
+        <tr><td class="fname">config_json</td><td class="ftype">str (JSON)</td><td class="fdesc">Full sanitized config snapshot — all non-secret parameters active during the run</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ===== TRADES ===== -->
+  <div class="category-header">Trades</div>
+
+  <div class="event-card" id="fill-event">
+    <div class="event-header">
+      <span class="event-name">FillEvent</span>
+      <span class="event-file">fill_events.parquet</span>
+    </div>
+    <div class="event-desc">
+      One row per exchange fill. Captures the full market state at fill time, the inventory change, and the EV of the fill (microprice − fill_price − fee). Join with <strong>MarkoutEvent</strong> on <code>fill_id</code> to measure post-fill adverse selection.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">ticker</td><td class="ftype">str</td><td class="fdesc">Market ticker (e.g. <code>SPX-26MAR06-T5900</code>)</td></tr>
+        <tr><td class="fname">order_id</td><td class="ftype">str</td><td class="fdesc">Exchange order ID that was filled</td></tr>
+        <tr><td class="fname">fill_id <span class="tag tag-key">join key</span></td><td class="ftype">str</td><td class="fdesc">Unique fill ID from the exchange; used to join with MarkoutEvent</td></tr>
+        <tr><td class="fname">side</td><td class="ftype">str</td><td class="fdesc"><code>"yes"</code> or <code>"no"</code> — which contract leg</td></tr>
+        <tr><td class="fname">action</td><td class="ftype">str</td><td class="fdesc"><code>"buy"</code> or <code>"sell"</code></td></tr>
+        <tr><td class="fname">fill_price</td><td class="ftype">int (¢)</td><td class="fdesc">Execution price in cents (1–99)</td></tr>
+        <tr><td class="fname">fill_quantity</td><td class="ftype">int</td><td class="fdesc">Number of contracts filled</td></tr>
+        <tr><td class="fname">microprice_at_fill</td><td class="ftype">float? (¢)</td><td class="fdesc">OBI-weighted fair value at fill time; <code>null</code> if orderbook was one-sided</td></tr>
+        <tr><td class="fname">spread_at_fill</td><td class="ftype">int (¢)</td><td class="fdesc">Best ask − best bid at fill time</td></tr>
+        <tr><td class="fname">best_bid_at_fill</td><td class="ftype">int (¢)</td><td class="fdesc">Top-of-book bid at fill time</td></tr>
+        <tr><td class="fname">best_ask_at_fill</td><td class="ftype">int (¢)</td><td class="fdesc">Top-of-book ask at fill time</td></tr>
+        <tr><td class="fname">inventory_before</td><td class="ftype">int</td><td class="fdesc">Net position in this ticker before this fill (negative = short)</td></tr>
+        <tr><td class="fname">inventory_after</td><td class="ftype">int</td><td class="fdesc">Net position after this fill</td></tr>
+        <tr><td class="fname">estimated_ev_at_placement</td><td class="ftype">float? (¢)</td><td class="fdesc">EV quoted when the order was placed — (edge − fee) × fill_prob. <code>null</code> if order record not found</td></tr>
+        <tr><td class="fname">time_since_placement_ms</td><td class="ftype">int?</td><td class="fdesc">Milliseconds the order rested before filling. <code>null</code> if unavailable</td></tr>
+        <tr><td class="fname">fill_ev_per_contract</td><td class="ftype">float? (¢)</td><td class="fdesc">Realized EV: microprice_at_fill − fill_price − fee_per_contract. Positive = we bought below fair value (or sold above). <code>null</code> when microprice unavailable</td></tr>
+        <tr><td class="fname">fill_ev_total</td><td class="ftype">float? (¢)</td><td class="fdesc">fill_ev_per_contract × fill_quantity</td></tr>
+        <tr><td class="fname">realized_pnl_cents</td><td class="ftype">float (¢)</td><td class="fdesc">Closed P&amp;L if this fill closed an existing position; 0 for position-opening fills</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="event-card" id="markout">
+    <div class="event-header">
+      <span class="event-name">MarkoutEvent</span>
+      <span class="event-file">markout.parquet</span>
+    </div>
+    <div class="event-desc">
+      Adverse selection measurement. After every fill, microprice is sampled asynchronously at 6 horizons (1s, 5s, 10s, 30s, 60s, 300s), producing one row per horizon per fill — up to 6 rows per fill_id. A positive markout means the market moved in our favor after the fill; negative means we were picked off.
+      <br><br><strong>Formula:</strong> buy: <code>microprice_at_horizon − fill_price</code> &nbsp;|&nbsp; sell: <code>fill_price − microprice_at_horizon</code>. Positive = good for us.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">fill_id <span class="tag tag-key">join key</span></td><td class="ftype">str</td><td class="fdesc">Joins to FillEvent.fill_id</td></tr>
+        <tr><td class="fname">ticker</td><td class="ftype">str</td><td class="fdesc">Market ticker</td></tr>
+        <tr><td class="fname">horizon_seconds</td><td class="ftype">int</td><td class="fdesc">Measurement horizon: 1, 5, 10, 30, 60, or 300</td></tr>
+        <tr><td class="fname">microprice_at_fill</td><td class="ftype">float (¢)</td><td class="fdesc">Fair value captured synchronously at fill receipt time (baseline)</td></tr>
+        <tr><td class="fname">microprice_at_horizon</td><td class="ftype">float (¢)</td><td class="fdesc">Fair value at the measurement horizon</td></tr>
+        <tr><td class="fname">markout</td><td class="ftype">float (¢)</td><td class="fdesc">Signed P&amp;L vs fill_price at this horizon. Positive = still in the money</td></tr>
+        <tr><td class="fname">side</td><td class="ftype">str</td><td class="fdesc"><code>"yes"</code> or <code>"no"</code></td></tr>
+        <tr><td class="fname">action</td><td class="ftype">str</td><td class="fdesc"><code>"buy"</code> or <code>"sell"</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="event-card" id="spread-captured">
+    <div class="event-header">
+      <span class="event-name">SpreadCapturedEvent</span>
+      <span class="event-file">spread_captured.parquet</span>
+    </div>
+    <div class="event-desc">
+      Logged when a round-trip completes — a position opened by one fill is closed by a subsequent fill on the same ticker. Measures the spread actually captured net of fees.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">ticker</td><td class="ftype">str</td><td class="fdesc">Market ticker</td></tr>
+        <tr><td class="fname">entry_fill_id</td><td class="ftype">str</td><td class="fdesc">fill_id of the position-opening fill</td></tr>
+        <tr><td class="fname">exit_fill_id</td><td class="ftype">str</td><td class="fdesc">fill_id of the position-closing fill</td></tr>
+        <tr><td class="fname">entry_side</td><td class="ftype">str</td><td class="fdesc"><code>"buy"</code> or <code>"sell"</code></td></tr>
+        <tr><td class="fname">entry_price</td><td class="ftype">int (¢)</td><td class="fdesc">Entry fill price</td></tr>
+        <tr><td class="fname">exit_price</td><td class="ftype">int (¢)</td><td class="fdesc">Exit fill price</td></tr>
+        <tr><td class="fname">quantity</td><td class="ftype">int</td><td class="fdesc">Contracts in the round-trip</td></tr>
+        <tr><td class="fname">spread_captured_cents</td><td class="ftype">float (¢)</td><td class="fdesc">Per-contract spread captured (exit − entry for buy-side)</td></tr>
+        <tr><td class="fname">total_pnl_cents</td><td class="ftype">float (¢)</td><td class="fdesc">spread_captured_cents × quantity</td></tr>
+        <tr><td class="fname">time_between_fills_seconds</td><td class="ftype">float</td><td class="fdesc">Seconds between entry fill and exit fill</td></tr>
+        <tr><td class="fname">microprice_at_exit</td><td class="ftype">float (¢)</td><td class="fdesc">Fair value when position was closed</td></tr>
+        <tr><td class="fname">spread_at_exit</td><td class="ftype">int (¢)</td><td class="fdesc">Bid-ask spread at exit time</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ===== ORDERS ===== -->
+  <div class="category-header">Orders</div>
+
+  <div class="event-card" id="order-placement">
+    <div class="event-header">
+      <span class="event-name">OrderPlacementEvent</span>
+      <span class="event-file">order_placements.parquet</span>
+    </div>
+    <div class="event-desc">
+      One row per new order successfully acknowledged by the exchange. Also covers amends (the amended order receives a new order_id). Captures the pricing rationale at placement time.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">order_id</td><td class="ftype">str</td><td class="fdesc">Exchange-assigned order ID</td></tr>
+        <tr><td class="fname">ticker</td><td class="ftype">str</td><td class="fdesc">Market ticker</td></tr>
+        <tr><td class="fname">side</td><td class="ftype">str</td><td class="fdesc"><code>"bid"</code> or <code>"ask"</code></td></tr>
+        <tr><td class="fname">action</td><td class="ftype">str</td><td class="fdesc"><code>"buy"</code> or <code>"sell"</code></td></tr>
+        <tr><td class="fname">price</td><td class="ftype">int (¢)</td><td class="fdesc">Limit price of the order</td></tr>
+        <tr><td class="fname">quantity</td><td class="ftype">int</td><td class="fdesc">Number of contracts ordered</td></tr>
+        <tr><td class="fname">purpose</td><td class="ftype">str</td><td class="fdesc">Slot label: <code>"bid_1"</code>, <code>"ask_1"</code>, etc.</td></tr>
+        <tr><td class="fname">estimated_ev <span class="tag tag-optional">optional</span></td><td class="ftype">float? (¢)</td><td class="fdesc">Model's expected EV per contract at placement time</td></tr>
+        <tr><td class="fname">fill_probability <span class="tag tag-optional">optional</span></td><td class="ftype">float?</td><td class="fdesc">Model's estimated fill probability (0–1)</td></tr>
+        <tr><td class="fname">histogram_source <span class="tag tag-optional">optional</span></td><td class="ftype">str?</td><td class="fdesc"><code>"series"</code>, <code>"fallback"</code>, or <code>"none"</code> — which trade history backed the estimate</td></tr>
+        <tr><td class="fname">distance_from_fair <span class="tag tag-optional">optional</span></td><td class="ftype">float? (¢)</td><td class="fdesc">Distance from microprice at placement (positive = quoting inside fair value)</td></tr>
+        <tr><td class="fname">depth_ahead <span class="tag tag-optional">optional</span></td><td class="ftype">int?</td><td class="fdesc">Contracts at better prices than ours — queue priority measure</td></tr>
+        <tr><td class="fname">depth_at_price <span class="tag tag-optional">optional</span></td><td class="ftype">int?</td><td class="fdesc">Contracts resting at our exact price level</td></tr>
+        <tr><td class="fname">best_bid <span class="tag tag-optional">optional</span></td><td class="ftype">int? (¢)</td><td class="fdesc">Orderbook best bid at placement time</td></tr>
+        <tr><td class="fname">best_ask <span class="tag tag-optional">optional</span></td><td class="ftype">int? (¢)</td><td class="fdesc">Orderbook best ask at placement time</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="event-card" id="order-cancellation">
+    <div class="event-header">
+      <span class="event-name">OrderCancellationEvent</span>
+      <span class="event-file">order_cancellations.parquet</span>
+    </div>
+    <div class="event-desc">
+      One row per successfully cancelled order. The <code>cancel_reason</code> field explains why — the most common reasons are <code>"requote"</code> (price moved, amend preferred) and <code>"neg_ev_no_replacement"</code> (order became negative EV with no better price available).
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">order_id</td><td class="ftype">str</td><td class="fdesc">Exchange order ID</td></tr>
+        <tr><td class="fname">ticker</td><td class="ftype">str</td><td class="fdesc">Market ticker</td></tr>
+        <tr><td class="fname">side</td><td class="ftype">str</td><td class="fdesc"><code>"bid"</code> or <code>"ask"</code></td></tr>
+        <tr><td class="fname">action</td><td class="ftype">str</td><td class="fdesc"><code>"buy"</code> or <code>"sell"</code></td></tr>
+        <tr><td class="fname">price</td><td class="ftype">int (¢)</td><td class="fdesc">Order price at cancellation</td></tr>
+        <tr><td class="fname">quantity</td><td class="ftype">int</td><td class="fdesc">Original order quantity</td></tr>
+        <tr><td class="fname">filled_quantity</td><td class="ftype">int</td><td class="fdesc">How many contracts had already filled before cancel</td></tr>
+        <tr><td class="fname">cancel_reason</td><td class="ftype">str</td><td class="fdesc"><code>"requote"</code>, <code>"exit_market"</code>, <code>"neg_ev_no_replacement"</code>, <code>"stale"</code>, <code>"shutdown"</code>, <code>"batch"</code>, <code>"unwind_only_flat"</code>, <code>"unwind_only_contra"</code></td></tr>
+        <tr><td class="fname">time_live_seconds</td><td class="ftype">float</td><td class="fdesc">How long the order was resting before cancellation</td></tr>
+        <tr><td class="fname">was_batch</td><td class="ftype">bool</td><td class="fdesc">True if cancelled as part of a batch cancel sweep</td></tr>
+        <tr><td class="fname">best_bid <span class="tag tag-optional">optional</span></td><td class="ftype">int? (¢)</td><td class="fdesc">Top-of-book bid at cancellation time</td></tr>
+        <tr><td class="fname">best_ask <span class="tag tag-optional">optional</span></td><td class="ftype">int? (¢)</td><td class="fdesc">Top-of-book ask at cancellation time</td></tr>
+        <tr><td class="fname">microprice <span class="tag tag-optional">optional</span></td><td class="ftype">float? (¢)</td><td class="fdesc">OBI-weighted fair value at cancellation time</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="event-card" id="amend-decision">
+    <div class="event-header">
+      <span class="event-name">AmendDecisionEvent</span>
+      <span class="event-file">amend_decisions.parquet</span>
+    </div>
+    <div class="event-desc">
+      Logged every time a resting order is evaluated against a new candidate price — on every orderbook update for every active slot. The decision is <strong>KEEP</strong> (queue position advantage outweighs moving), <strong>REPLACE</strong> (EV of the new price exceeds EV of staying), or <strong>CANCEL</strong> (resting order is negative EV with no better alternative). This is the most granular view into the requoting logic.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">ticker</td><td class="ftype">str</td><td class="fdesc">Market ticker</td></tr>
+        <tr><td class="fname">side</td><td class="ftype">str</td><td class="fdesc"><code>"bid"</code> or <code>"ask"</code></td></tr>
+        <tr><td class="fname">decision</td><td class="ftype">str</td><td class="fdesc"><code>"KEEP"</code>, <code>"REPLACE"</code>, or <code>"CANCEL"</code></td></tr>
+        <tr><td class="fname">reason</td><td class="ftype">str</td><td class="fdesc">Fine-grained reason string from <code>should_requote_side</code></td></tr>
+        <tr><td class="fname">current_price</td><td class="ftype">int (¢)</td><td class="fdesc">Price of the currently resting order</td></tr>
+        <tr><td class="fname">new_price <span class="tag tag-optional">optional</span></td><td class="ftype">int? (¢)</td><td class="fdesc">Candidate price computed from the latest orderbook; null if no +EV price exists</td></tr>
+        <tr><td class="fname">microprice</td><td class="ftype">float (¢)</td><td class="fdesc">OBI-weighted fair value at decision time</td></tr>
+        <tr><td class="fname">reservation_price <span class="tag tag-optional">optional</span></td><td class="ftype">float? (¢)</td><td class="fdesc">Inventory-adjusted fair value (Avellaneda-Stoikov reservation price)</td></tr>
+        <tr><td class="fname">best_bid</td><td class="ftype">int (¢)</td><td class="fdesc">Top-of-book bid</td></tr>
+        <tr><td class="fname">best_ask</td><td class="ftype">int (¢)</td><td class="fdesc">Top-of-book ask</td></tr>
+        <tr><td class="fname">spread</td><td class="ftype">int (¢)</td><td class="fdesc">best_ask − best_bid</td></tr>
+        <tr><td class="fname">ev_keep</td><td class="ftype">float (¢)</td><td class="fdesc">Expected value of keeping the resting order (accounts for queue position advantage)</td></tr>
+        <tr><td class="fname">ev_move</td><td class="ftype">float (¢)</td><td class="fdesc">Expected value of moving to the new price (back of queue)</td></tr>
+        <tr><td class="fname">ev_improvement</td><td class="ftype">float (¢)</td><td class="fdesc">ev_move − ev_keep; positive means moving is better</td></tr>
+        <tr><td class="fname">fill_prob_keep</td><td class="ftype">float</td><td class="fdesc">Model's fill probability estimate for the current resting order given its queue position</td></tr>
+        <tr><td class="fname">fill_prob_move</td><td class="ftype">float</td><td class="fdesc">Fill probability estimate if we move to the new price (back of queue)</td></tr>
+        <tr><td class="fname">contracts_ahead_current</td><td class="ftype">int</td><td class="fdesc">Contracts ahead of our current order in the queue</td></tr>
+        <tr><td class="fname">contracts_ahead_new</td><td class="ftype">int</td><td class="fdesc">Contracts ahead if we move to the new price (typically depth at that level)</td></tr>
+        <tr><td class="fname">inventory</td><td class="ftype">int</td><td class="fdesc">Current net inventory in this ticker</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="event-card" id="fill-while-cancelling">
+    <div class="event-header">
+      <span class="event-name">FillWhileCancellingEvent</span>
+      <span class="event-file">fill_while_cancelling.parquet</span>
+    </div>
+    <div class="event-desc">
+      A fill that arrived while a cancel or amend request was in-flight — the fill won the race to the exchange. The state machine handles this correctly; this event provides observability on how often races occur. Also fires on the amend path when a 404 response indicates the order was filled before the amend landed.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">ticker</td><td class="ftype">str</td><td class="fdesc">Market ticker</td></tr>
+        <tr><td class="fname">side</td><td class="ftype">str</td><td class="fdesc"><code>"bid"</code> or <code>"ask"</code></td></tr>
+        <tr><td class="fname">order_id <span class="tag tag-optional">optional</span></td><td class="ftype">str?</td><td class="fdesc">Order ID involved in the race</td></tr>
+        <tr><td class="fname">fill_price</td><td class="ftype">int (¢)</td><td class="fdesc">Price at which the race fill occurred</td></tr>
+        <tr><td class="fname">fill_quantity</td><td class="ftype">int</td><td class="fdesc">Contracts filled in the race</td></tr>
+        <tr><td class="fname">cancel_in_flight_ms <span class="tag tag-optional">optional</span></td><td class="ftype">float?</td><td class="fdesc">Milliseconds the cancel/amend request had been in-flight when the fill arrived</td></tr>
+        <tr><td class="fname">inventory_before <span class="tag tag-optional">optional</span></td><td class="ftype">int?</td><td class="fdesc">Inventory before the race fill; null on the amend path</td></tr>
+        <tr><td class="fname">inventory_after <span class="tag tag-optional">optional</span></td><td class="ftype">int?</td><td class="fdesc">Inventory after the race fill; null on the amend path</td></tr>
+        <tr><td class="fname">request_type</td><td class="ftype">str</td><td class="fdesc"><code>"cancel"</code> or <code>"amend"</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ===== MARKET & POSITION ===== -->
+  <div class="category-header">Market &amp; Position</div>
+
+  <div class="event-card" id="fill-prob-calibration">
+    <div class="event-header">
+      <span class="event-name">FillProbabilityCalibrationEvent</span>
+      <span class="event-file">fill_probability_calibration.parquet</span>
+    </div>
+    <div class="event-desc">
+      Sampled at a 1:200 rate inside <code>estimate_fill_probability()</code>. Each row captures the fill probability model's inputs and output at one call. Three contexts are logged: <strong>quote_sweep</strong> (initial quote calculation), <strong>keep_ev</strong> (EV of keeping a resting order), and <strong>move_ev</strong> (EV of moving to a new price). Join with fill_events on ticker + price + timestamp window for predicted-vs-actual calibration.
+      <br><br>Note: because of the 1:200 sampling rate, a session with 1M+ rows in this table represents roughly 200M fill probability evaluations.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">ticker</td><td class="ftype">str</td><td class="fdesc">Market ticker</td></tr>
+        <tr><td class="fname">series</td><td class="ftype">str</td><td class="fdesc">Series ticker (e.g. <code>SPX-26MAR06</code>)</td></tr>
+        <tr><td class="fname">side</td><td class="ftype">str</td><td class="fdesc"><code>"buy"</code> or <code>"sell"</code></td></tr>
+        <tr><td class="fname">context</td><td class="ftype">str</td><td class="fdesc"><code>"quote_sweep"</code>, <code>"keep_ev"</code>, or <code>"move_ev"</code></td></tr>
+        <tr><td class="fname">price</td><td class="ftype">int (¢)</td><td class="fdesc">Price level the estimate is for</td></tr>
+        <tr><td class="fname">contracts_ahead</td><td class="ftype">int</td><td class="fdesc">Contracts ahead in the queue at this price level</td></tr>
+        <tr><td class="fname">distance_from_touch</td><td class="ftype">int (¢)</td><td class="fdesc">How far our price is from the best bid/ask</td></tr>
+        <tr><td class="fname">histogram_source</td><td class="ftype">str</td><td class="fdesc"><code>"series"</code>, <code>"fallback"</code>, or <code>"none"</code></td></tr>
+        <tr><td class="fname">n_trades</td><td class="ftype">int</td><td class="fdesc">Number of trades in the histogram backing this estimate</td></tr>
+        <tr><td class="fname">estimated_fill_probability</td><td class="ftype">float</td><td class="fdesc">Model output: probability of filling in the expected window (0–1)</td></tr>
+        <tr><td class="fname">best_bid</td><td class="ftype">int (¢)</td><td class="fdesc">Top-of-book bid at estimation time</td></tr>
+        <tr><td class="fname">best_ask</td><td class="ftype">int (¢)</td><td class="fdesc">Top-of-book ask at estimation time</td></tr>
+        <tr><td class="fname">spread</td><td class="ftype">int (¢)</td><td class="fdesc">best_ask − best_bid</td></tr>
+        <tr><td class="fname">microprice <span class="tag tag-optional">optional</span></td><td class="ftype">float? (¢)</td><td class="fdesc">OBI-weighted fair value at estimation time</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="event-card" id="queue-position">
+    <div class="event-header">
+      <span class="event-name">QueuePositionEvent</span>
+      <span class="event-file">queue_positions.parquet</span>
+    </div>
+    <div class="event-desc">
+      Logged on every queue position poll (twice per second) when a change is detected. Tracks how many contracts are ahead of our resting order in the queue. Used for fill probability model calibration and for understanding how queue priority erodes over time when we don't amend.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">order_id</td><td class="ftype">str</td><td class="fdesc">The resting order being tracked</td></tr>
+        <tr><td class="fname">ticker</td><td class="ftype">str</td><td class="fdesc">Market ticker</td></tr>
+        <tr><td class="fname">contracts_ahead</td><td class="ftype">int</td><td class="fdesc">Number of contracts ahead of our order in the queue</td></tr>
+        <tr><td class="fname">change_since_last <span class="tag tag-optional">optional</span></td><td class="ftype">int?</td><td class="fdesc">Change from the previous measurement; null on first observation</td></tr>
+        <tr><td class="fname">price</td><td class="ftype">int (¢)</td><td class="fdesc">Order price</td></tr>
+        <tr><td class="fname">side</td><td class="ftype">str</td><td class="fdesc"><code>"bid"</code> or <code>"ask"</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="event-card" id="market-selection">
+    <div class="event-header">
+      <span class="event-name">MarketSelectionDecisionEvent</span>
+      <span class="event-file">market_selection_decisions.parquet</span>
+    </div>
+    <div class="event-desc">
+      Logged when the opportunity board enters or exits a market. Captures the scoring metrics and portfolio context at decision time.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">ticker</td><td class="ftype">str</td><td class="fdesc">Market ticker</td></tr>
+        <tr><td class="fname">decision</td><td class="ftype">str</td><td class="fdesc"><code>"enter"</code>, <code>"exit"</code>, or <code>"keep"</code></td></tr>
+        <tr><td class="fname">reason</td><td class="ftype">str</td><td class="fdesc">E.g. <code>"top_n"</code>, <code>"inventory"</code>, <code>"dropped_from_top_n"</code>, <code>"diversity"</code></td></tr>
+        <tr><td class="fname">score</td><td class="ftype">float</td><td class="fdesc">Opportunity score used for ranking</td></tr>
+        <tr><td class="fname">rank</td><td class="ftype">int</td><td class="fdesc">Position in the scored market list (1 = highest ranked)</td></tr>
+        <tr><td class="fname">volume_24h</td><td class="ftype">float</td><td class="fdesc">24-hour volume at decision time</td></tr>
+        <tr><td class="fname">spread_cents</td><td class="ftype">int (¢)</td><td class="fdesc">Bid-ask spread at decision time</td></tr>
+        <tr><td class="fname">time_to_expiry_hours</td><td class="ftype">float</td><td class="fdesc">Hours until market resolution</td></tr>
+        <tr><td class="fname">current_inventory</td><td class="ftype">int</td><td class="fdesc">Net position in this ticker at decision time</td></tr>
+        <tr><td class="fname">num_active_markets</td><td class="ftype">int</td><td class="fdesc">Total active markets at decision time</td></tr>
+        <tr><td class="fname">is_top_ranked</td><td class="ftype">bool</td><td class="fdesc">Whether this market was in the top-N selection</td></tr>
+        <tr><td class="fname">portfolio_utilization</td><td class="ftype">float</td><td class="fdesc">Fraction of capital deployed at decision time</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="event-card" id="position-sizing">
+    <div class="event-header">
+      <span class="event-name">PositionSizingEvent</span>
+      <span class="event-file">position_sizing.parquet</span>
+    </div>
+    <div class="event-desc">
+      Logged each time the position sizer calculates order sizes for a market. Captures which constraint was the binding factor and what EV estimates drove the sizing.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">ticker</td><td class="ftype">str</td><td class="fdesc">Market ticker</td></tr>
+        <tr><td class="fname">bid_size</td><td class="ftype">int</td><td class="fdesc">Calculated bid order quantity</td></tr>
+        <tr><td class="fname">ask_size</td><td class="ftype">int</td><td class="fdesc">Calculated ask order quantity</td></tr>
+        <tr><td class="fname">allocated_to_bid_pct</td><td class="ftype">float</td><td class="fdesc">Fraction of budget allocated to the bid side</td></tr>
+        <tr><td class="fname">allocated_to_ask_pct</td><td class="ftype">float</td><td class="fdesc">Fraction of budget allocated to the ask side</td></tr>
+        <tr><td class="fname">limiting_factor</td><td class="ftype">str</td><td class="fdesc"><code>"position_limit"</code>, <code>"risk_limit"</code>, <code>"capital_limit"</code>, or <code>"none"</code></td></tr>
+        <tr><td class="fname">position_limit_hit</td><td class="ftype">bool</td><td class="fdesc">True if max position size was the binding constraint</td></tr>
+        <tr><td class="fname">risk_limit_hit</td><td class="ftype">bool</td><td class="fdesc">True if inventory risk limit was the binding constraint</td></tr>
+        <tr><td class="fname">bid_ev_per_contract</td><td class="ftype">float (¢)</td><td class="fdesc">EV input used for bid sizing</td></tr>
+        <tr><td class="fname">ask_ev_per_contract</td><td class="ftype">float (¢)</td><td class="fdesc">EV input used for ask sizing</td></tr>
+        <tr><td class="fname">current_inventory</td><td class="ftype">int</td><td class="fdesc">Net position at sizing time</td></tr>
+        <tr><td class="fname">max_position</td><td class="ftype">int</td><td class="fdesc">Configured max contracts per market</td></tr>
+        <tr><td class="fname">bankroll</td><td class="ftype">float</td><td class="fdesc">Effective bankroll (in cents) used for Kelly-style sizing</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ===== PORTFOLIO ===== -->
+  <div class="category-header">Portfolio</div>
+
+  <div class="event-card" id="inventory-snapshot">
+    <div class="event-header">
+      <span class="event-name">InventorySnapshotEvent</span>
+      <span class="event-file">inventory_snapshots.parquet</span>
+    </div>
+    <div class="event-desc">
+      Periodic snapshot of portfolio state, logged every housekeeping cycle (~5 seconds). This is the primary time-series for P&amp;L tracking, capital utilization, and inventory buildup charts.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">cash_balance</td><td class="ftype">float ($)</td><td class="fdesc">Unrestricted cash available</td></tr>
+        <tr><td class="fname">position_value</td><td class="ftype">float ($)</td><td class="fdesc">Mark-to-market value of all open positions</td></tr>
+        <tr><td class="fname">total_portfolio_value</td><td class="ftype">float ($)</td><td class="fdesc">cash_balance + position_value</td></tr>
+        <tr><td class="fname">deployed_capital</td><td class="ftype">float ($)</td><td class="fdesc">Cash locked in open positions</td></tr>
+        <tr><td class="fname">utilization_pct</td><td class="ftype">float</td><td class="fdesc">deployed_capital / total_portfolio_value (0–1)</td></tr>
+        <tr><td class="fname">open_orders_value</td><td class="ftype">float ($)</td><td class="fdesc">Notional value at risk in resting orders</td></tr>
+        <tr><td class="fname">num_positions</td><td class="ftype">int</td><td class="fdesc">Number of tickers with non-zero inventory</td></tr>
+        <tr><td class="fname">total_long_contracts</td><td class="ftype">int</td><td class="fdesc">Sum of all positive inventories</td></tr>
+        <tr><td class="fname">total_short_contracts</td><td class="ftype">int</td><td class="fdesc">Absolute sum of all negative inventories</td></tr>
+        <tr><td class="fname">net_inventory</td><td class="ftype">int</td><td class="fdesc">total_long − total_short</td></tr>
+        <tr><td class="fname">num_active_markets</td><td class="ftype">int</td><td class="fdesc">Number of markets currently being quoted</td></tr>
+        <tr><td class="fname">session_pnl_cents</td><td class="ftype">float (¢)</td><td class="fdesc">Cumulative P&amp;L since session start in cents</td></tr>
+        <tr><td class="fname">unrealized_pnl_cents</td><td class="ftype">float (¢)</td><td class="fdesc">Mark-to-market P&amp;L on open positions</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="event-card" id="capital-exhaustion">
+    <div class="event-header">
+      <span class="event-name">CapitalExhaustionModeEvent</span>
+      <span class="event-file">capital_exhaustion_mode.parquet</span>
+    </div>
+    <div class="event-desc">
+      Logged on each transition into or out of capital exhaustion mode. Entry is triggered either reactively (an <code>InsufficientFundsError</code> from the exchange) or proactively (cash drops below a configured threshold fraction of portfolio value). In exhaustion mode, only the side that reduces inventory is quoted. Exit is triggered when cash recovers to the configured recovery threshold.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">mode</td><td class="ftype">str</td><td class="fdesc"><code>"on"</code> (entering exhaustion) or <code>"off"</code> (exiting)</td></tr>
+        <tr><td class="fname">trigger</td><td class="ftype">str</td><td class="fdesc"><code>"insufficient_funds"</code> (reactive), <code>"threshold"</code> (proactive cash-below-limit), or <code>"recovery"</code> (exit)</td></tr>
+        <tr><td class="fname">cash_balance</td><td class="ftype">float ($)</td><td class="fdesc">Cash available at transition time</td></tr>
+        <tr><td class="fname">position_value</td><td class="ftype">float ($)</td><td class="fdesc">Position mark-to-market at transition time</td></tr>
+        <tr><td class="fname">total_portfolio_value</td><td class="ftype">float ($)</td><td class="fdesc">cash_balance + position_value at transition</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ===== INFRASTRUCTURE ===== -->
+  <div class="category-header">Infrastructure</div>
+
+  <div class="event-card" id="network-latency">
+    <div class="event-header">
+      <span class="event-name">NetworkLatencyEvent</span>
+      <span class="event-file">network_latency.parquet</span>
+    </div>
+    <div class="event-desc">
+      One row per API call. Provides end-to-end latency plus a three-way breakdown: queue time (rate-limit wait + signing + serialization), wire time (HTTP round-trip), and parse time (JSON deserialization). The <code>ob_to_placement_ms</code> field measures the full path from orderbook update receipt to API call start — the key latency figure for market making competitiveness.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">endpoint</td><td class="ftype">str</td><td class="fdesc">E.g. <code>"place_order"</code>, <code>"amend_order"</code>, <code>"cancel_order"</code>, <code>"get_markets"</code></td></tr>
+        <tr><td class="fname">method</td><td class="ftype">str</td><td class="fdesc">HTTP method: <code>"GET"</code>, <code>"POST"</code>, <code>"DELETE"</code>, etc.</td></tr>
+        <tr><td class="fname">latency_ms</td><td class="ftype">float</td><td class="fdesc">Total request time from start to response parsed (ms)</td></tr>
+        <tr><td class="fname">success</td><td class="ftype">bool</td><td class="fdesc">True if HTTP 2xx</td></tr>
+        <tr><td class="fname">status_code <span class="tag tag-optional">optional</span></td><td class="ftype">int?</td><td class="fdesc">HTTP status code</td></tr>
+        <tr><td class="fname">ticker <span class="tag tag-optional">optional</span></td><td class="ftype">str?</td><td class="fdesc">Ticker the request was for (where applicable)</td></tr>
+        <tr><td class="fname">order_id <span class="tag tag-optional">optional</span></td><td class="ftype">str?</td><td class="fdesc">Order ID (for place/amend/cancel)</td></tr>
+        <tr><td class="fname">error_message <span class="tag tag-optional">optional</span></td><td class="ftype">str?</td><td class="fdesc">Error message on failure</td></tr>
+        <tr><td class="fname">error_type <span class="tag tag-optional">optional</span></td><td class="ftype">str?</td><td class="fdesc"><code>"timeout"</code>, <code>"network_error"</code>, or <code>"http_error"</code></td></tr>
+        <tr><td class="fname">request_size_bytes <span class="tag tag-optional">optional</span></td><td class="ftype">int?</td><td class="fdesc">Request body size in bytes</td></tr>
+        <tr><td class="fname">response_size_bytes <span class="tag tag-optional">optional</span></td><td class="ftype">int?</td><td class="fdesc">Response body size in bytes</td></tr>
+        <tr><td class="fname">rate_limit_wait_ms <span class="tag tag-optional">optional</span></td><td class="ftype">float?</td><td class="fdesc">Portion of latency_ms spent waiting for rate limit tokens; null for non-blocking calls</td></tr>
+        <tr><td class="fname">queue_ms <span class="tag tag-optional">optional</span></td><td class="ftype">float?</td><td class="fdesc">Rate-limit wait + RSA signing + body serialization time</td></tr>
+        <tr><td class="fname">wire_ms <span class="tag tag-optional">optional</span></td><td class="ftype">float?</td><td class="fdesc">HTTP round-trip time (request sent → response headers received)</td></tr>
+        <tr><td class="fname">parse_ms <span class="tag tag-optional">optional</span></td><td class="ftype">float?</td><td class="fdesc">Response body read + JSON deserialization time</td></tr>
+        <tr><td class="fname">ob_to_placement_ms <span class="tag tag-optional">optional</span></td><td class="ftype">float?</td><td class="fdesc">Time from orderbook update receipt to this API call start. Only on <code>place_order</code> and <code>amend_order</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="event-card" id="rate-limit">
+    <div class="event-header">
+      <span class="event-name">RateLimitEvent</span>
+      <span class="event-file">rate_limits.parquet</span>
+    </div>
+    <div class="event-desc">
+      Logged whenever the rate limiter causes a blocking wait. The exchange enforces separate read and write token buckets; writes (place/amend/cancel) are non-blocking but this event fires when a blocking acquire on the read bucket has to wait.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">bucket</td><td class="ftype">str</td><td class="fdesc"><code>"read"</code> or <code>"write"</code></td></tr>
+        <tr><td class="fname">tokens_requested</td><td class="ftype">float</td><td class="fdesc">Tokens consumed by this request</td></tr>
+        <tr><td class="fname">tokens_available</td><td class="ftype">float</td><td class="fdesc">Tokens in the bucket before the wait</td></tr>
+        <tr><td class="fname">wait_time_seconds</td><td class="ftype">float</td><td class="fdesc">How long the request was blocked waiting for tokens</td></tr>
+        <tr><td class="fname">endpoint <span class="tag tag-optional">optional</span></td><td class="ftype">str?</td><td class="fdesc">API endpoint being called</td></tr>
+        <tr><td class="fname">method <span class="tag tag-optional">optional</span></td><td class="ftype">str?</td><td class="fdesc">HTTP method</td></tr>
+        <tr><td class="fname">bucket_utilization</td><td class="ftype">float</td><td class="fdesc">1 − (remaining_tokens / max_tokens) after the wait completes</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="event-card" id="websocket">
+    <div class="event-header">
+      <span class="event-name">WebSocketConnectionEvent</span>
+      <span class="event-file">websocket_connections.parquet</span>
+    </div>
+    <div class="event-desc">
+      Logged on WebSocket connect, disconnect, and reconnect events. A reconnect gap in the timeline may explain periods of missing orderbook data or delayed fill notifications.
+    </div>
+    <table class="fields-table">
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="fname">event_type</td><td class="ftype">str</td><td class="fdesc"><code>"connected"</code>, <code>"disconnected"</code>, <code>"reconnecting"</code>, or <code>"error"</code></td></tr>
+        <tr><td class="fname">connection_count</td><td class="ftype">int</td><td class="fdesc">Total successful connections this session</td></tr>
+        <tr><td class="fname">reconnect_count</td><td class="ftype">int</td><td class="fdesc">Number of reconnects (connections after the first) this session</td></tr>
+        <tr><td class="fname">error_message <span class="tag tag-optional">optional</span></td><td class="ftype">str?</td><td class="fdesc">Error details on <code>"error"</code> or <code>"disconnected"</code> events</td></tr>
+        <tr><td class="fname">backoff_seconds <span class="tag tag-optional">optional</span></td><td class="ftype">float?</td><td class="fdesc">Current exponential backoff duration before the next reconnect attempt</td></tr>
+        <tr><td class="fname">num_subscribed_tickers</td><td class="ftype">int</td><td class="fdesc">Number of tickers subscribed to orderbook feeds at event time</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer>
+  Kalshi MM &mdash; Analytics Schema &mdash; All prices in US cents (¢) unless noted otherwise.
+</footer>
+
+</body>
+</html>

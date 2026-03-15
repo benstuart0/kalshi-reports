@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kalshi MM — Session Reports</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='4' y='18' width='5' height='10' rx='1' fill='%232ecc71'/><rect x='6' y='14' width='1' height='5' fill='%232ecc71'/><rect x='6' y='28' width='1' height='2' fill='%232ecc71'/><rect x='13' y='8' width='5' height='16' rx='1' fill='%23e74c3c'/><rect x='15' y='4' width='1' height='5' fill='%23e74c3c'/><rect x='15' y='24' width='1' height='4' fill='%23e74c3c'/><rect x='22' y='12' width='5' height='12' rx='1' fill='%232ecc71'/><rect x='24' y='8' width='1' height='5' fill='%232ecc71'/><rect x='24' y='24' width='1' height='3' fill='%232ecc71'/></svg>">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -70,12 +71,29 @@
       text-align: center;
       color: #555577;
     }
+    .header-nav {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+    }
+    .header-nav a {
+      color: #7788cc;
+      text-decoration: none;
+      font-size: 0.8rem;
+      border: 1px solid #2a2a5a;
+      padding: 4px 12px;
+      border-radius: 5px;
+    }
+    .header-nav a:hover { color: #aabbff; border-color: #4455aa; }
   </style>
 </head>
 <body>
   <header>
     <h1>Kalshi MM &mdash; Session Reports</h1>
     <p>20 sessions</p>
+    <div class="header-nav">
+      <a href="schema.html">Analytics schema &rarr;</a>
+    </div>
   </header>
   <div class="container">
     <table>
