@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalshi MM — Analytics Overview: 20260316_073008_15acaa69</title>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0f0f1a;
+    color: #e0e0e0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+header {
+    background: linear-gradient(135deg, #1a1a3e 0%, #16213e 100%);
+    padding: 24px 32px;
+    border-bottom: 2px solid #2a2a5a;
+}
+header h1 { font-size: 1.6rem; font-weight: 700; color: #ffffff; }
+header p { color: #8888aa; margin-top: 4px; font-size: 0.85rem; }
+.container { max-width: 1400px; margin: 0 auto; padding: 24px 32px; }
+.section {
+    background: #16213e;
+    border: 1px solid #2a2a5a;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.section-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    background: #1a1a3e;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid #2a2a5a;
+    gap: 10px;
+}
+.section-header h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #c0c0f0;
+    flex: 1;
+}
+.section-header .toggle { color: #6666aa; font-size: 1.1rem; transition: transform 0.2s; }
+.section-body { padding: 20px; }
+.section.collapsed .section-body { display: none; }
+.section.collapsed .toggle { transform: rotate(-90deg); }
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.stat-card {
+    background: #1a1a3e;
+    border: 1px solid #2a2a5a;
+    border-radius: 8px;
+    padding: 14px 16px;
+}
+.stat-card .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6677aa;
+    margin-bottom: 4px;
+}
+.stat-card .value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #e0e0ff;
+    font-variant-numeric: tabular-nums;
+}
+.stat-card .sub {
+    font-size: 0.78rem;
+    color: #7788aa;
+    margin-top: 2px;
+}
+.stat-card.positive .value { color: #2ecc71; }
+.stat-card.negative .value { color: #e74c3c; }
+.stat-card.neutral .value { color: #3498db; }
+.stat-card.warn { border-color: #f39c12; }
+.stat-card.warn .value { color: #f39c12; }
+.warning-box {
+    background: #2a1a0a;
+    border: 1px solid #f39c12;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    color: #f5c842;
+    font-size: 0.85rem;
+}
+.warning-box .icon { margin-right: 6px; }
+.ok-box {
+    background: #0a1e0a;
+    border: 1px solid #2ecc71;
+    border-radius: 6px;
+    padding: 10px 16px;
+    margin-bottom: 12px;
+    color: #7dffa0;
+    font-size: 0.82rem;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+    margin-top: 8px;
+}
+thead th {
+    background: #1a1a3e;
+    color: #9090cc;
+    text-align: right;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.72rem;
+    border-bottom: 1px solid #2a2a5a;
+}
+thead th:first-child { text-align: left; }
+tbody td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #1a1a2a;
+    text-align: right;
+    color: #c0c0d8;
+    font-variant-numeric: tabular-nums;
+}
+tbody td:first-child { text-align: left; color: #d0d0f0; }
+tbody tr:hover { background: #1e1e3a; }
+.chart-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.chart-row.single { grid-template-columns: 1fr; }
+.chart-wrap {
+    background: #16213e;
+    border: 1px solid #2a2a5a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.divider {
+    border: none;
+    border-top: 1px solid #2a2a5a;
+    margin: 16px 0;
+}
+</style>
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+</head>
+<body>
+  
+    <header>
+      <h1>Kalshi MM — Analytics Overview</h1>
+      <p>Session: <strong>20260316_073008_15acaa69</strong> &nbsp;|&nbsp; Started: 2026-03-16 07:30:09 UTC &nbsp;|&nbsp; Duration: 8m &nbsp;|&nbsp; Generated: 2026-03-16 07:41:23 UTC</p>
+    </header>
+  <div class="container">
+    <div class="section">
+  <div class="section-header">
+    <h2>0. Session Info</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Session ID</div>
+  <div class="value"><span style="font-size:0.85rem;word-break:break-all">20260316_073008_15acaa69</span></div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Start Time</div>
+  <div class="value">2026-03-16 07:30:08 UTC</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">End Time</div>
+  <div class="value">2026-03-16 07:39:02 UTC</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Duration</div>
+  <div class="value">0h 8m 54s</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Exit Reason</div>
+  <div class="value">signal</div>
+  
+</div>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Starting Balance</div>
+  <div class="value">$28105.90</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Ending Balance</div>
+  <div class="value">$28086.41</div>
+  
+</div>
+          <div class="stat-card negative">
+  <div class="label">Session P&amp;L</div>
+  <div class="value">$-19.49</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Fills</div>
+  <div class="value">9</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Orders Placed</div>
+  <div class="value">1079</div>
+  
+</div>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Read Throttled</div>
+  <div class="value">0</div>
+  <div class="sub">blocking waits</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Read Skipped</div>
+  <div class="value">0</div>
+  <div class="sub">non-blocking misses</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Read Wait</div>
+  <div class="value">0.0s</div>
+  <div class="sub">total blocked time</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Throttled</div>
+  <div class="value">15</div>
+  <div class="sub">blocking waits</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Skipped</div>
+  <div class="value">0</div>
+  <div class="sub">non-blocking misses</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Wait</div>
+  <div class="value">0.3s</div>
+  <div class="sub">total blocked time</div>
+</div>
+        </div>
+        <details style="margin-top:12px"><summary style="cursor:pointer;color:#aaa">Config JSON</summary><pre style="font-size:0.72rem;overflow:auto;max-height:300px;background:#111;padding:10px;border-radius:4px">{
+  "max_subscriptions": 300,
+  "trade_tracker_startup_delay_seconds": 15,
+  "trade_volume_lookback_minutes": 5.0,
+  "min_recent_volume": 1,
+  "market_rescan_interval_seconds": 180,
+  "fee_waiver_only": false,
+  "simple_max_contracts": 55,
+  "max_spread_cents": 15,
+  "max_order_size_balance_fraction": 800,
+  "max_position_per_market": 510,
+  "max_risk_per_market_dollars": null,
+  "microprice_levels": 8,
+  "microprice_lambda": 0.3,
+  "as_gamma": 0.001,
+  "size_hard_zero_price": 98,
+  "min_edge_cents": 0.5,
+  "min_move_ev_diff": 0.5,
+  "capital_recovery_fraction": 0.2,
+  "capital_exhaustion_fraction": 0.05,
+  "stop_loss_limit": 3000.0,
+  "stale_order_seconds": 60,
+  "batch_size_cap": 20,
+  "balance_cache_seconds": 10,
+  "place_tokens_per_order": 2.0,
+  "amend_tokens_per_order": 1.0,
+  "enable_analytics_logging": true,
+  "analytics_output_dir": "analytics_data",
+  "analytics_flush_interval_seconds": 30,
+  "analytics_buffer_size": 1000
+}</pre></details></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>1. Activity Summary</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Fills</div>
+  <div class="value">9</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">New Orders</div>
+  <div class="value">438</div>
+  <div class="sub">place_order API calls</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Amends</div>
+  <div class="value">642</div>
+  <div class="sub">amend_order API calls</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / New Order</div>
+  <div class="value">0.0205</div>
+  <div class="sub">fill rate on fresh placements</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Order Touch</div>
+  <div class="value">0.0083</div>
+  <div class="sub">fill rate incl. amends</div>
+</div>
+    </div>
+    <hr class="divider">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Fills / min</div>
+  <div class="value">1.01</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Orders / min</div>
+  <div class="value">49.22</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Amends / min</div>
+  <div class="value">72.15</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">API Calls / min</div>
+  <div class="value">140.0</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Session Duration</div>
+  <div class="value">8m</div>
+  
+</div>
+    </div></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>2. EV &amp; Volume</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="ok-box">&#10003; EV values appear valid (recompute residual: 0.00000¢ at fee rate 0.07). 8 fills with reliable microprice (0 excluded: one-sided book).</div>
+    
+    <div class="stats-grid">
+      <div class="stat-card positive">
+  <div class="label">EV / Contract (median)</div>
+  <div class="value">+6.5473¢</div>
+  <div class="sub">p25=+2.251¢  p75=+8.972¢</div>
+</div>
+      <div class="stat-card">
+  <div class="label">EV / Contract (mean)</div>
+  <div class="value">+6.2483¢</div>
+  <div class="sub">inflated by high-EV outliers</div>
+</div>
+      <div class="stat-card">
+  <div class="label">EV / Order Placed</div>
+  <div class="value">+2.6064¢</div>
+  <div class="sub">$0.026064/order</div>
+</div>
+      <div class="stat-card positive">
+  <div class="label">Total EV</div>
+  <div class="value">+1141.60¢</div>
+  <div class="sub">= $11.4160</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Total Volume</div>
+  <div class="value">$64.20</div>
+  <div class="sub">6,420¢ notional</div>
+</div>
+      <div class="stat-card positive">
+  <div class="label">Net Edge</div>
+  <div class="value">+17.7820%</div>
+  <div class="sub">1778.20 bps</div>
+</div>
+    </div>
+    <hr class="divider">
+    <div id="chart_ev_dist" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": [-0.49008773183098275, -0.26147957370298625, -0.03287141557498979, 0.19573674255300666, 0.42434490068100306, 0.6529530588089996, 0.8815612169369961, 1.1101693750649924, 1.3387775331929888, 1.5673856913209852, 1.7959938494489815, 2.024602007576978, 2.253210165704975, 2.481818323832971, 2.7104264819609676, 2.939034640088964, 3.1676427982169604, 3.3962509563449568, 3.624859114472953, 3.8534672726009496, 4.0820754307289455, 4.310683588856943, 4.539291746984938, 4.767899905112936, 4.996508063240933, 5.225116221368928, 5.453724379496926, 5.682332537624921, 5.9109406957529185, 6.139548853880914, 6.368157012008911, 6.596765170136907, 6.825373328264904, 7.0539814863929, 7.282589644520897, 7.511197802648893, 7.73980596077689, 7.968414118904886, 8.197022277032882, 8.42563043516088, 8.654238593288875, 8.88284675141687, 9.111454909544868, 9.340063067672865, 9.56867122580086, 9.797279383928856, 10.025887542056854, 10.254495700184851, 10.483103858312848, 10.711712016440844, 10.94032017456884, 11.168928332696836, 11.397536490824834, 11.62614464895283, 11.854752807080825, 12.083360965208822, 12.31196912333682, 12.540577281464815, 12.76918543959281, 12.997793597720808], "y": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1], "width": 0.22860815812799645, "name": "EV per contract (\u00a2)", "marker": {"color": "#9b59b6", "opacity": 0.8}}], "layout": {"title": "EV per Contract Distribution (fill_ev_per_contract)", "xaxis": {"title": "EV per contract (\u00a2)"}, "yaxis": {"title": "Count"}, "height": 320, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "shapes": [{"type": "line", "x0": 6.547266838547772, "x1": 6.547266838547772, "y0": 0, "y1": 1, "yref": "paper", "line": {"color": "#2ecc71", "width": 2, "dash": "dash"}}, {"type": "line", "x0": 6.2483212396460885, "x1": 6.2483212396460885, "y0": 0, "y1": 1, "yref": "paper", "line": {"color": "#e74c3c", "width": 2, "dash": "dot"}}], "annotations": [{"x": 6.547266838547772, "y": 1, "yref": "paper", "text": "median +6.547\u00a2", "showarrow": false, "xanchor": "left", "font": {"color": "#2ecc71", "size": 11}}, {"x": 6.2483212396460885, "y": 0.88, "yref": "paper", "text": "mean +6.248\u00a2", "showarrow": false, "xanchor": "left", "font": {"color": "#e74c3c", "size": 11}}]}};
+  Plotly.newPlot('chart_ev_dist', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>3. Markout Analysis</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><table><thead><tr><th>Horizon</th><th>Mean Markout</th><th>Std Dev</th><th>Std Error</th><th>N Fills</th></tr></thead><tbody><tr><td>0s (EV)</td><td style='color:#2ecc71'>+7.4700¢</td><td>5.3487¢</td><td>±1.8910¢</td><td>8</td></tr><tr><td>1s</td><td style='color:#2ecc71'>+5.8363¢</td><td>6.1543¢</td><td>±2.1759¢</td><td>8</td></tr><tr><td>5s</td><td style='color:#2ecc71'>+5.7674¢</td><td>6.2771¢</td><td>±2.2193¢</td><td>8</td></tr><tr><td>10s</td><td style='color:#2ecc71'>+5.2520¢</td><td>4.9234¢</td><td>±1.7407¢</td><td>8</td></tr><tr><td>30s</td><td style='color:#2ecc71'>+3.5009¢</td><td>3.6401¢</td><td>±1.2870¢</td><td>8</td></tr><tr><td>60s</td><td style='color:#2ecc71'>+2.8895¢</td><td>2.9888¢</td><td>±1.0567¢</td><td>8</td></tr><tr><td>300s</td><td style='color:#e74c3c'>-13.2936¢</td><td>16.1122¢</td><td>±11.3930¢</td><td>2</td></tr></tbody></table><hr class='divider'><div id="chart_markout" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [2.9936762667604557, 2.9936762667604557, 3.0340380167399705, 3.0339662455707277, 3.0486354662122577, 2.9465327123082314], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [-1.0890409171616091, -1.0890409171616091, -1.212493371114253, -1.2122720766757542, -1.2575021736538061, -1.190957591580819], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.2)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [0.9523176747994233, 0.9523176747994233, 0.9107723228128588, 0.9108470844474867, 0.8955666462792258, 0.8777875603637062], "mode": "lines+markers", "line": {"color": "#2ecc71", "width": 2.5}, "marker": {"color": "#2ecc71", "size": 7}, "name": "buy (n=2)", "showlegend": true}, {"type": "scatter", "x": ["0s", "60s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [12.93802962846577, 12.516794028154738, 12.578945746459365, 10.571051167511648, 7.410780539655102, 6.077997771779762, 9.036735003935911], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [6.347081894057517, 2.4117698522634354, 2.19366824209641, 2.8270587906241906, 1.32785913128428, 1.042224009972704, -35.623927508301485], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.2)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [9.642555761261644, 7.464281940209086, 7.386306994277887, 6.6990549790679195, 4.369319835469691, 3.560110890876233, -13.293596252182786], "mode": "lines+markers", "line": {"color": "#e67e22", "width": 2.5}, "marker": {"color": "#e67e22", "size": 7}, "name": "sell (n=6)", "showlegend": true}, {"type": "scatter", "x": ["0s", "300s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Markout by Action: Buy vs Sell (95% CI)", "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "showlegend": true, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}, "height": 380, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}}};
+  Plotly.newPlot('chart_markout', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><hr class='divider'><div id="chart_markout_by_price" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [7.001454852479307, 5.560301605507386, 1.9993117087443197, 1.9830344356860037, 2.0402713633617156, 2.01902291083331, null], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [-1.1275557096830462, -0.6978684230737313, -0.5703127614462765, -0.6464766869921627, -1.619149890785501, -1.7525565417691613, null], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(231,76,60,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [2.9369495713981304, 2.4312165912168275, 0.7144994736490217, 0.6682788743469205, 0.21056073628810731, 0.13323318453207436, null], "mode": "lines+markers", "name": "0\u201320\u00a2  (n=3)", "line": {"color": "#e74c3c", "width": 2}, "marker": {"color": "#e74c3c", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [null, null, null, null, null, null, null], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [null, null, null, null, null, null, null], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [null, null, null, null, null, null, null], "mode": "lines+markers", "name": "20\u201340\u00a2  (n=1)", "line": {"color": "#e67e22", "width": 2}, "marker": {"color": "#e67e22", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [15.313855268861783, 16.0332117234976, 15.868495289393614, 12.734094746958473, 8.810440402895274, 6.85700578390759, null], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [5.530568346324007, 0.3414483688750911, 1.9939800182250211, 3.5612867815631857, 2.065194987943465, 1.8320808610825154, null], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s", "300s"], "y": [10.422211807592895, 8.187330046186347, 8.931237653809317, 8.14769076426083, 5.437817695419369, 4.344543322495053, null], "mode": "lines+markers", "name": "40\u201360\u00a2  (n=4)", "line": {"color": "#2ecc71", "width": 2}, "marker": {"color": "#2ecc71", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "300s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Markout by Fill Price Bucket (95% CI)", "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "height": 400, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_markout_by_price', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script>
+<table class='stats-table' style='width:100%;border-collapse:collapse;font-size:0.82rem;margin-top:12px;'>
+  <caption style='color:#aaa;text-align:left;padding-bottom:6px;'>
+    Adverse selection significance test — markout at t=300s, H₁: mean &lt; 0 (one-tailed t-test).
+    Bands use naive SE (std/√n); CIs may be too narrow if fills within the same ticker are correlated.
+  </caption>
+  <thead>
+    <tr style='border-bottom:1px solid #444;color:#aaa;'>
+      <th style='text-align:left;padding:4px 8px;'>Price Bucket</th>
+      <th style='text-align:right;padding:4px 8px;'>n fills</th>
+      <th style='text-align:right;padding:4px 8px;'>Mean markout</th>
+      <th style='text-align:right;padding:4px 8px;'>t-stat</th>
+      <th style='text-align:right;padding:4px 8px;'>p-value</th>
+      <th style='text-align:right;padding:4px 8px;'>Significance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>0–20¢</td>
+      <td style='text-align:right;padding:4px 8px;'>1</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>—</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>20–40¢</td>
+      <td style='text-align:right;padding:4px 8px;'>1</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>—</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>40–60¢</td>
+      <td style='text-align:right;padding:4px 8px;'>0</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>—</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>60–80¢</td>
+      <td style='text-align:right;padding:4px 8px;'>0</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>—</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>80–100¢</td>
+      <td style='text-align:right;padding:4px 8px;'>0</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>—</span></td>
+    </tr>
+  </tbody>
+</table><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Markout measured from fill price. At t=0 the value equals EV captured (fill price vs microprice). A declining curve indicates adverse selection eroding edge over time. Red dashed line = breakeven. Buy = bought YES (long); Sell = sold YES (short).</p><p style='color:#666;font-size:0.78rem;margin-top:6px;'>Price bucket chart: fills grouped by the price they were filled at. Shaded bands = 95% CI (naive SE = std/√n). Near-extreme buckets (0–20¢, 80–100¢) with steeply declining curves indicate adverse selection. Significance table tests H₁: mean markout &lt; 0 at the final horizon. CIs may be too narrow if multiple fills on the same ticker are correlated.</p></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>4. Fill Correlation &amp; Event Clustering</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Unique Events</div>
+  <div class="value">4</div>
+  <div class="sub">correlation clusters</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Event (mean)</div>
+  <div class="value">2.2</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Event (median)</div>
+  <div class="value">2</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Event (max)</div>
+  <div class="value">4</div>
+  
+</div>
+    </div><hr class='divider'><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Naive vs cluster-robust standard errors by horizon</p><table><thead><tr><th>Horizon</th><th>Mean</th><th>Naive SE</th><th>Cluster SE</th><th>Design Effect</th><th>Eff. N</th><th>N Fills</th><th>N Events</th><th>Sig. (p&lt;0.05)</th></tr></thead><tbody><tr><td>0s (EV)</td><td style='color:#2ecc71'>+7.4700¢</td><td>±1.8910¢</td><td>±3.1279¢</td><td style='color:#f0c060'>1.65x</td><td>3</td><td>8</td><td>4</td><td style='color:#e74c3c'>&#10007;</td></tr><tr><td>1s</td><td style='color:#2ecc71'>+5.8363¢</td><td>±2.1759¢</td><td>±2.4491¢</td><td style='color:#2ecc71'>1.13x</td><td>6</td><td>8</td><td>4</td><td style='color:#e74c3c'>&#10007;</td></tr><tr><td>5s</td><td style='color:#2ecc71'>+5.7674¢</td><td>±2.2193¢</td><td>±2.8922¢</td><td style='color:#f0c060'>1.30x</td><td>5</td><td>8</td><td>4</td><td style='color:#e74c3c'>&#10007;</td></tr><tr><td>10s</td><td style='color:#2ecc71'>+5.2520¢</td><td>±1.7407¢</td><td>±2.5708¢</td><td style='color:#f0c060'>1.48x</td><td>4</td><td>8</td><td>4</td><td style='color:#e74c3c'>&#10007;</td></tr><tr><td>30s</td><td style='color:#2ecc71'>+3.5009¢</td><td>±1.2870¢</td><td>±1.8777¢</td><td style='color:#f0c060'>1.46x</td><td>4</td><td>8</td><td>4</td><td style='color:#e74c3c'>&#10007;</td></tr><tr><td>60s</td><td style='color:#2ecc71'>+2.8895¢</td><td>±1.0567¢</td><td>±1.4970¢</td><td style='color:#f0c060'>1.42x</td><td>4</td><td>8</td><td>4</td><td style='color:#e74c3c'>&#10007;</td></tr><tr><td>300s</td><td style='color:#e74c3c'>-13.2936¢</td><td>±11.3930¢</td><td>±11.3930¢</td><td style='color:#2ecc71'>1.00x</td><td>2</td><td>2</td><td>2</td><td style='color:#e74c3c'>&#10007;</td></tr></tbody></table><hr class='divider'><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Worst events by markout (300s horizon)</p><table><thead><tr><th>Event</th><th>Mean Markout</th><th>Std Dev</th><th>Fills</th><th>Mean EV</th></tr></thead><tbody><tr><td>KXHIGHTHOU-26MAR16</td><td style='color:#e74c3c'>-24.6866¢</td><td>—</td><td>1</td><td>+10.083¢</td></tr><tr><td>KXHIGHMIA-26MAR16</td><td style='color:#e74c3c'>-1.9006¢</td><td>—</td><td>1</td><td>+6.063¢</td></tr></tbody></table><hr class='divider'><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Best events by markout (300s horizon)</p><table><thead><tr><th>Event</th><th>Mean Markout</th><th>Std Dev</th><th>Fills</th><th>Mean EV</th></tr></thead><tbody><tr><td>KXHIGHMIA-26MAR16</td><td style='color:#e74c3c'>-1.9006¢</td><td>—</td><td>1</td><td>+6.063¢</td></tr><tr><td>KXHIGHTHOU-26MAR16</td><td style='color:#e74c3c'>-24.6866¢</td><td>—</td><td>1</td><td>+10.083¢</td></tr></tbody></table><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Fills within the same event (e.g. multiple spread brackets on one basketball game) are correlated — their markouts move together. The naive SE (std/&radic;N) treats fills as independent and overstates statistical significance. The cluster-robust SE groups fills by event and accounts for within-event correlation. The design effect (cluster SE / naive SE) shows how much correlation inflates uncertainty; values &gt; 2 mean the effective sample size is &lt; 25% of the raw fill count. If the worst-markout events are concentrated in a few correlated clusters, the session-wide markout may be driven by one or two bad outcomes rather than a systematic edge problem.</p></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>5. API Activity Rate</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Total API Calls</div>
+  <div class="value">1,246</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Calls / min</div>
+  <div class="value">140.0</div>
+  
+</div>
+    </div>
+    <hr class="divider">
+    <div id="chart_api" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "lines", "x": ["2026-03-16 07:31:00+00:00", "2026-03-16 07:32:00+00:00", "2026-03-16 07:33:00+00:00", "2026-03-16 07:34:00+00:00", "2026-03-16 07:35:00+00:00", "2026-03-16 07:36:00+00:00", "2026-03-16 07:37:00+00:00", "2026-03-16 07:38:00+00:00", "2026-03-16 07:39:00+00:00"], "y": [211, 200, 111, 134, 78, 133, 235, 117, 27], "line": {"color": "#3498db", "width": 2}, "fill": "tozeroy", "fillcolor": "rgba(52,152,219,0.15)", "name": "API calls/min"}], "layout": {"title": "API Call Activity Rate", "xaxis": {"title": "Time"}, "yaxis": {"title": "Calls per minute"}, "height": 300, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}}};
+  Plotly.newPlot('chart_api', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>6. Latency Report</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><table><thead><tr><th>Endpoint</th><th>Count</th><th>p50 ms</th><th>p95 ms</th><th>p99 ms</th><th>Mean ms</th><th>Max ms</th><th>Error %</th><th>Queue p50</th><th>Wire p50</th><th>Parse p50</th><th>OB→Action p50</th></tr></thead><tbody><tr><td>amend_order</td><td>642</td><td>25.9</td><td>33.5</td><td>48.8</td><td>26.9</td><td>80.2</td><td>0.16%</td><td>4.0</td><td>21.3</td><td>0.2</td><td>29.7</td></tr><tr><td>place_order</td><td>438</td><td>26.9</td><td>38.4</td><td>50.1</td><td>28.8</td><td>155.9</td><td>0.00%</td><td>4.1</td><td>21.4</td><td>0.0</td><td>25.4</td></tr><tr><td>cancel_order</td><td>130</td><td>26.3</td><td>36.4</td><td>45.5</td><td>27.7</td><td>61.9</td><td style="color:#e74c3c">10.77%</td><td>4.3</td><td>21.3</td><td>0.0</td><td>—</td></tr><tr><td>batch_cancel_orders</td><td>36</td><td>29.5</td><td>93.4</td><td>152.1</td><td>43.3</td><td>164.7</td><td style="color:#e74c3c">5.56%</td><td>4.1</td><td>23.8</td><td>0.1</td><td>—</td></tr></tbody></table></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>7. Rate Limits</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card warn">
+  <div class="label">Rate Limit Events</div>
+  <div class="value">15</div>
+  <div class="sub">from rate_limits.parquet</div>
+</div>
+      <div class="stat-card">
+  <div class="label">429 HTTP Errors</div>
+  <div class="value">0</div>
+  <div class="sub">from network_latency</div>
+</div>
+    </div><table><thead><tr><th>Bucket</th><th>Events</th></tr></thead><tbody><tr><td>write</td><td>15</td></tr></tbody></table><hr class="divider"><div id="chart_rl" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": ["2026-03-16 07:30:00+00:00", "2026-03-16 07:31:00+00:00", "2026-03-16 07:32:00+00:00", "2026-03-16 07:33:00+00:00", "2026-03-16 07:34:00+00:00", "2026-03-16 07:35:00+00:00", "2026-03-16 07:36:00+00:00", "2026-03-16 07:37:00+00:00", "2026-03-16 07:38:00+00:00", "2026-03-16 07:39:00+00:00", "2026-03-16 07:40:00+00:00"], "y": [0, 0, 0, 0, 0, 0, 0, 0, 4, 11, 0], "marker": {"color": "#e74c3c"}, "name": "Rate limit hits/min"}], "layout": {"title": "Rate Limit Events per Minute", "xaxis": {"title": "Time"}, "yaxis": {"title": "Events per minute"}, "height": 260, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}}};
+  Plotly.newPlot('chart_rl', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>8. Capital Exhaustion Mode</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><p style='color:#2ecc71'>No capital exhaustion events this session.</p></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>9. Expected Edge vs Actual PnL</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><div id="chart_pnl" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "lines", "x": ["2026-03-16 07:31:35.678739+00:00", "2026-03-16 07:33:07.464959+00:00", "2026-03-16 07:34:28.012174+00:00", "2026-03-16 07:35:07.847234+00:00", "2026-03-16 07:35:22.068266+00:00", "2026-03-16 07:37:16.783888+00:00", "2026-03-16 07:37:38.877831+00:00", "2026-03-16 07:37:46.377471+00:00", "2026-03-16 07:37:47.249093+00:00"], "y": [282.56666301369864, 500.84954413913823, 753.9698753891382, 950.6513405409103, 1012.3543182525132, 1098.917531408096, 1077.1594262158767, 1141.6040039936545, 1141.6040039936545], "name": "Cumulative fill EV (\u00a2)", "line": {"color": "#e67e22", "width": 2, "dash": "dot"}}, {"type": "scatter", "mode": "lines", "x": ["2026-03-16 07:31:16.819487+00:00", "2026-03-16 07:32:07.752776+00:00", "2026-03-16 07:32:54.577780+00:00", "2026-03-16 07:33:40.910831+00:00", "2026-03-16 07:34:27.022372+00:00", "2026-03-16 07:35:12.916162+00:00", "2026-03-16 07:35:58.872142+00:00", "2026-03-16 07:36:45.265755+00:00", "2026-03-16 07:37:31.008083+00:00", "2026-03-16 07:38:16.759530+00:00"], "y": [2652.9999999998836, 3577.0000000000437, 1220.0000000000728, 840.9999999999854, 1313.9999999999418, -1494.0000000002328, -1630.000000000291, -1641.9999999998254, -2028.0000000002474, -1949.00000000016], "name": "Session PnL (\u00a2)", "line": {"color": "#2ecc71", "width": 2}}], "layout": {"title": "Expected Edge vs Actual PnL", "xaxis": {"title": "Time"}, "yaxis": {"title": "PnL (\u00a2)"}, "height": 350, "margin": {"t": 50, "b": 60, "l": 70, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "legend": {"x": 0.01, "y": 0.99}}};
+  Plotly.newPlot('chart_pnl', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>10. Outlier Fills</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><p style='color:#555'>No outlier fills (EV &gt; 20¢) this session.</p></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>11. Amend Decisions</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">REPLACEs</div>
+  <div class="value">437</div>
+  <div class="sub">642 amend API calls</div>
+</div>
+          <div class="stat-card">
+  <div class="label">CANCELs</div>
+  <div class="value">97</div>
+  <div class="sub">neg-EV cancellations</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Amend / Order Ratio</div>
+  <div class="value">1.47</div>
+  <div class="sub">642 amends / 438 orders</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Median EV Improvement</div>
+  <div class="value">+2.2903¢</div>
+  <div class="sub">on REPLACEs</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Mean EV Improvement</div>
+  <div class="value">+2.8268¢</div>
+  <div class="sub">on REPLACEs</div>
+</div>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Tiny REPLACEs</div>
+  <div class="value">0</div>
+  <div class="sub">0.0% with |improvement| < 0.01¢</div>
+</div>
+          <div class="stat-card warn">
+  <div class="label">Rapid Oscillations</div>
+  <div class="value">158</div>
+  <div class="sub">36% of REPLACEs within 5s on same ticker+side</div>
+</div>
+        </div>
+        <hr class="divider"><div id="chart_amend_ev_imp" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": [0.1451023320532592, 0.2619291471738596, 0.37875596229446007, 0.4955827774150604, 0.6124095925356607, 0.7292364076562612, 0.8460632227768616, 0.9628900378974621, 1.0797168530180623, 1.1965436681386628, 1.3133704832592632, 1.4301972983798636, 1.547024113500464, 1.6638509286210645, 1.7806777437416648, 1.8975045588622652, 2.0143313739828654, 2.1311581891034663, 2.2479850042240663, 2.364811819344667, 2.4816386344652672, 2.598465449585868, 2.715292264706468, 2.832119079827069, 2.948945894947669, 3.06577271006827, 3.18259952518887, 3.29942634030947, 3.416253155430071, 3.533079970550671, 3.6499067856712717, 3.7667336007918717, 3.8835604159124726, 4.000387231033073, 4.1172140461536735, 4.2340408612742735, 4.3508676763948735, 4.467694491515474, 4.584521306636075, 4.701348121756675, 4.818174936877275, 4.935001751997876, 5.051828567118476, 5.168655382239077, 5.285482197359677, 5.402309012480277, 5.519135827600878, 5.635962642721479, 5.752789457842079, 5.869616272962679, 5.98644308808328, 6.103269903203881, 6.220096718324481, 6.336923533445081, 6.453750348565681, 6.5705771636862815, 6.687403978806882, 6.804230793927482, 6.921057609048082, 7.037884424168683, 7.154711239289284, 7.271538054409884, 7.388364869530484, 7.505191684651085, 7.622018499771685, 7.738845314892286, 7.855672130012886, 7.972498945133486, 8.089325760254088, 8.206152575374688, 8.322979390495288, 8.439806205615888, 8.556633020736488, 8.67345983585709, 8.79028665097769, 8.90711346609829, 9.02394028121889, 9.140767096339491, 9.257593911460091, 9.374420726580691], "y": [2, 0, 0, 12, 33, 18, 17, 22, 16, 12, 17, 18, 9, 8, 6, 8, 7, 10, 4, 5, 7, 10, 9, 5, 7, 6, 8, 8, 7, 3, 5, 3, 5, 5, 11, 18, 6, 3, 9, 8, 1, 2, 5, 4, 7, 2, 2, 3, 6, 5, 2, 0, 0, 0, 3, 3, 0, 1, 0, 0, 2, 3, 3, 1, 0, 1, 0, 1, 1, 2, 0, 0, 0, 1, 0, 0, 4, 2, 2, 1], "width": 0.11682681512060039, "name": "EV improvement (\u00a2)", "marker": {"color": "#e67e22", "opacity": 0.8}}], "layout": {"title": "EV Improvement on REPLACE Decisions", "xaxis": {"title": "EV improvement (\u00a2) = ev_move \u2212 ev_keep"}, "yaxis": {"title": "Count"}, "height": 320, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "shapes": [{"type": "line", "x0": 2.290300290226216, "x1": 2.290300290226216, "y0": 0, "y1": 1, "yref": "paper", "line": {"color": "#2ecc71", "width": 2, "dash": "dash"}}], "annotations": [{"x": 2.290300290226216, "y": 1, "yref": "paper", "text": "median +2.2903\u00a2", "showarrow": false, "xanchor": "left", "font": {"color": "#2ecc71", "size": 11}}]}};
+  Plotly.newPlot('chart_amend_ev_imp', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><hr class="divider"><div id="chart_amend_timeline" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "markers", "x": ["2026-03-16 07:31:13.671299+00:00", "2026-03-16 07:31:13.671413+00:00", "2026-03-16 07:31:15.109057+00:00", "2026-03-16 07:31:17.244483+00:00", "2026-03-16 07:31:17.645743+00:00", "2026-03-16 07:31:18.717416+00:00", "2026-03-16 07:31:19.152840+00:00", "2026-03-16 07:31:21.560563+00:00", "2026-03-16 07:31:21.649987+00:00", "2026-03-16 07:31:24.582743+00:00", "2026-03-16 07:31:24.857151+00:00", "2026-03-16 07:31:24.939974+00:00", "2026-03-16 07:31:25.391278+00:00", "2026-03-16 07:31:27.025381+00:00", "2026-03-16 07:31:27.664853+00:00", "2026-03-16 07:31:27.868823+00:00", "2026-03-16 07:31:28.090926+00:00", "2026-03-16 07:31:29.092955+00:00", "2026-03-16 07:31:29.251187+00:00", "2026-03-16 07:31:29.285163+00:00", "2026-03-16 07:31:29.325477+00:00", "2026-03-16 07:31:29.365462+00:00", "2026-03-16 07:31:29.403634+00:00", "2026-03-16 07:31:29.931707+00:00", "2026-03-16 07:31:30.844243+00:00", "2026-03-16 07:31:31.615541+00:00", "2026-03-16 07:31:31.634430+00:00", "2026-03-16 07:31:32.097517+00:00", "2026-03-16 07:31:32.105435+00:00", "2026-03-16 07:31:32.136421+00:00", "2026-03-16 07:31:32.187362+00:00", "2026-03-16 07:31:35.017317+00:00", "2026-03-16 07:31:35.932479+00:00", "2026-03-16 07:31:36.428929+00:00", "2026-03-16 07:31:36.429112+00:00", "2026-03-16 07:31:36.517043+00:00", "2026-03-16 07:31:37.932494+00:00", "2026-03-16 07:31:38.584578+00:00", "2026-03-16 07:31:39.575058+00:00", "2026-03-16 07:31:39.594650+00:00", "2026-03-16 07:31:40.499488+00:00", "2026-03-16 07:31:40.508170+00:00", "2026-03-16 07:31:41.413340+00:00", "2026-03-16 07:31:41.460419+00:00", "2026-03-16 07:31:41.577299+00:00", "2026-03-16 07:31:43.028379+00:00", "2026-03-16 07:31:43.770233+00:00", "2026-03-16 07:31:43.910415+00:00", "2026-03-16 07:31:44.009188+00:00", "2026-03-16 07:31:44.841653+00:00", "2026-03-16 07:31:44.903852+00:00", "2026-03-16 07:31:45.467169+00:00", "2026-03-16 07:31:46.606573+00:00", "2026-03-16 07:31:46.662247+00:00", "2026-03-16 07:31:46.702196+00:00", "2026-03-16 07:31:48.101979+00:00", "2026-03-16 07:31:48.102197+00:00", "2026-03-16 07:31:50.428000+00:00", "2026-03-16 07:31:51.610882+00:00", "2026-03-16 07:31:53.032661+00:00", "2026-03-16 07:31:53.362147+00:00", "2026-03-16 07:31:53.415245+00:00", "2026-03-16 07:31:53.697259+00:00", "2026-03-16 07:31:53.892113+00:00", "2026-03-16 07:31:55.137702+00:00", "2026-03-16 07:31:55.520247+00:00", "2026-03-16 07:31:55.566735+00:00", "2026-03-16 07:31:55.942645+00:00", "2026-03-16 07:31:55.994935+00:00", "2026-03-16 07:31:56.040085+00:00", "2026-03-16 07:31:56.300593+00:00", "2026-03-16 07:31:56.349168+00:00", "2026-03-16 07:31:57.243427+00:00", "2026-03-16 07:31:57.677125+00:00", "2026-03-16 07:31:58.368336+00:00", "2026-03-16 07:31:58.647596+00:00", "2026-03-16 07:31:59.062149+00:00", "2026-03-16 07:32:00.155949+00:00", "2026-03-16 07:32:00.550006+00:00", "2026-03-16 07:32:01.155097+00:00", "2026-03-16 07:32:01.203926+00:00", "2026-03-16 07:32:01.933283+00:00", "2026-03-16 07:32:02.122968+00:00", "2026-03-16 07:32:02.874024+00:00", "2026-03-16 07:32:03.451367+00:00", "2026-03-16 07:32:04.076581+00:00", "2026-03-16 07:32:04.113058+00:00", "2026-03-16 07:32:04.124356+00:00", "2026-03-16 07:32:04.159101+00:00", "2026-03-16 07:32:04.290525+00:00", "2026-03-16 07:32:04.609230+00:00", "2026-03-16 07:32:05.610519+00:00", "2026-03-16 07:32:06.976005+00:00", "2026-03-16 07:32:11.204620+00:00", "2026-03-16 07:32:11.303827+00:00", "2026-03-16 07:32:11.427970+00:00", "2026-03-16 07:32:12.608171+00:00", "2026-03-16 07:32:12.609344+00:00", "2026-03-16 07:32:12.609423+00:00", "2026-03-16 07:32:12.658201+00:00", "2026-03-16 07:32:14.524561+00:00", "2026-03-16 07:32:14.568921+00:00", "2026-03-16 07:32:14.579763+00:00", "2026-03-16 07:32:14.616848+00:00", "2026-03-16 07:32:16.940583+00:00", "2026-03-16 07:32:17.772968+00:00", "2026-03-16 07:32:18.191394+00:00", "2026-03-16 07:32:19.172904+00:00", "2026-03-16 07:32:20.794500+00:00", "2026-03-16 07:32:23.028179+00:00", "2026-03-16 07:32:24.629532+00:00", "2026-03-16 07:32:24.919009+00:00", "2026-03-16 07:32:24.957527+00:00", "2026-03-16 07:32:25.028807+00:00", "2026-03-16 07:32:25.858628+00:00", "2026-03-16 07:32:26.124777+00:00", "2026-03-16 07:32:26.646543+00:00", "2026-03-16 07:32:27.616695+00:00", "2026-03-16 07:32:28.139125+00:00", "2026-03-16 07:32:31.475768+00:00", "2026-03-16 07:32:31.943368+00:00", "2026-03-16 07:32:32.390387+00:00", "2026-03-16 07:32:32.744997+00:00", "2026-03-16 07:32:33.029215+00:00", "2026-03-16 07:32:35.707632+00:00", "2026-03-16 07:32:35.748176+00:00", "2026-03-16 07:32:35.784042+00:00", "2026-03-16 07:32:35.826462+00:00", "2026-03-16 07:32:35.868132+00:00", "2026-03-16 07:32:35.916915+00:00", "2026-03-16 07:32:38.984392+00:00", "2026-03-16 07:32:42.500656+00:00", "2026-03-16 07:32:42.623763+00:00", "2026-03-16 07:32:44.148162+00:00", "2026-03-16 07:32:44.449390+00:00", "2026-03-16 07:32:45.024419+00:00", "2026-03-16 07:32:46.060757+00:00", "2026-03-16 07:32:46.571176+00:00", "2026-03-16 07:32:47.045150+00:00", "2026-03-16 07:32:47.098894+00:00", "2026-03-16 07:32:47.098994+00:00", "2026-03-16 07:32:52.950308+00:00", "2026-03-16 07:32:52.987702+00:00", "2026-03-16 07:32:52.997728+00:00", "2026-03-16 07:32:53.019458+00:00", "2026-03-16 07:32:53.027042+00:00", "2026-03-16 07:32:53.036972+00:00", "2026-03-16 07:32:53.079079+00:00", "2026-03-16 07:32:53.116544+00:00", "2026-03-16 07:32:56.013037+00:00", "2026-03-16 07:32:56.096579+00:00", "2026-03-16 07:32:57.252507+00:00", "2026-03-16 07:32:58.931061+00:00", "2026-03-16 07:32:59.551780+00:00", "2026-03-16 07:33:03.686945+00:00", "2026-03-16 07:33:04.647455+00:00", "2026-03-16 07:33:05.419188+00:00", "2026-03-16 07:33:06.134901+00:00", "2026-03-16 07:33:06.283407+00:00", "2026-03-16 07:33:06.436583+00:00", "2026-03-16 07:33:07.458387+00:00", "2026-03-16 07:33:08.805844+00:00", "2026-03-16 07:33:09.170207+00:00", "2026-03-16 07:33:15.055939+00:00", "2026-03-16 07:33:19.018482+00:00", "2026-03-16 07:33:20.126454+00:00", "2026-03-16 07:33:20.910022+00:00", "2026-03-16 07:33:23.309193+00:00", "2026-03-16 07:33:24.588127+00:00", "2026-03-16 07:33:25.309327+00:00", "2026-03-16 07:33:28.732251+00:00", "2026-03-16 07:33:37.473836+00:00", "2026-03-16 07:33:43.024909+00:00", "2026-03-16 07:33:45.923108+00:00", "2026-03-16 07:33:45.968104+00:00", "2026-03-16 07:33:46.006539+00:00", "2026-03-16 07:33:50.797369+00:00", "2026-03-16 07:33:50.823210+00:00", "2026-03-16 07:33:57.065602+00:00", "2026-03-16 07:33:57.193414+00:00", "2026-03-16 07:33:58.165505+00:00", "2026-03-16 07:33:59.150305+00:00", "2026-03-16 07:34:01.971673+00:00", "2026-03-16 07:34:02.084037+00:00", "2026-03-16 07:34:02.125647+00:00", "2026-03-16 07:34:02.163575+00:00", "2026-03-16 07:34:03.798527+00:00", "2026-03-16 07:34:04.187740+00:00", "2026-03-16 07:34:04.896834+00:00", "2026-03-16 07:34:07.124037+00:00", "2026-03-16 07:34:07.961978+00:00", "2026-03-16 07:34:08.498341+00:00", "2026-03-16 07:34:10.936800+00:00", "2026-03-16 07:34:12.183396+00:00", "2026-03-16 07:34:12.842719+00:00", "2026-03-16 07:34:13.391201+00:00", "2026-03-16 07:34:18.038900+00:00", "2026-03-16 07:34:20.512480+00:00", "2026-03-16 07:34:21.141453+00:00", "2026-03-16 07:34:22.554148+00:00", "2026-03-16 07:34:23.827906+00:00", "2026-03-16 07:34:25.994376+00:00", "2026-03-16 07:34:26.822057+00:00", "2026-03-16 07:34:27.060513+00:00", "2026-03-16 07:34:27.556592+00:00", "2026-03-16 07:34:28.136112+00:00", "2026-03-16 07:34:28.443775+00:00", "2026-03-16 07:34:28.550499+00:00", "2026-03-16 07:34:31.832583+00:00", "2026-03-16 07:34:32.321094+00:00", "2026-03-16 07:34:33.024148+00:00", "2026-03-16 07:34:35.152210+00:00", "2026-03-16 07:34:36.402073+00:00", "2026-03-16 07:34:36.534100+00:00", "2026-03-16 07:34:36.572337+00:00", "2026-03-16 07:34:36.616453+00:00", "2026-03-16 07:34:36.659194+00:00", "2026-03-16 07:34:36.705009+00:00", "2026-03-16 07:34:36.743630+00:00", "2026-03-16 07:34:37.041101+00:00", "2026-03-16 07:34:37.080994+00:00", "2026-03-16 07:34:37.118472+00:00", "2026-03-16 07:34:37.204343+00:00", "2026-03-16 07:34:37.245151+00:00", "2026-03-16 07:34:37.291845+00:00", "2026-03-16 07:34:38.122354+00:00", "2026-03-16 07:34:40.358971+00:00", "2026-03-16 07:34:41.861263+00:00", "2026-03-16 07:34:44.594218+00:00", "2026-03-16 07:34:47.202230+00:00", "2026-03-16 07:34:48.211231+00:00", "2026-03-16 07:34:48.299164+00:00", "2026-03-16 07:34:48.338679+00:00", "2026-03-16 07:34:53.074755+00:00", "2026-03-16 07:34:55.026838+00:00", "2026-03-16 07:34:56.690957+00:00", "2026-03-16 07:35:00.451314+00:00", "2026-03-16 07:35:01.313081+00:00", "2026-03-16 07:35:01.730469+00:00", "2026-03-16 07:35:01.819558+00:00", "2026-03-16 07:35:01.867126+00:00", "2026-03-16 07:35:05.083920+00:00", "2026-03-16 07:35:06.034475+00:00", "2026-03-16 07:35:07.199686+00:00", "2026-03-16 07:35:10.138103+00:00", "2026-03-16 07:35:11.296956+00:00", "2026-03-16 07:35:12.372184+00:00", "2026-03-16 07:35:14.847667+00:00", "2026-03-16 07:35:15.479989+00:00", "2026-03-16 07:35:20.163800+00:00", "2026-03-16 07:35:22.267229+00:00", "2026-03-16 07:35:24.776098+00:00", "2026-03-16 07:35:26.021917+00:00", "2026-03-16 07:35:27.585451+00:00", "2026-03-16 07:35:33.024437+00:00", "2026-03-16 07:35:33.341967+00:00", "2026-03-16 07:35:39.477854+00:00", "2026-03-16 07:35:40.724671+00:00", "2026-03-16 07:35:40.761826+00:00", "2026-03-16 07:35:41.500563+00:00", "2026-03-16 07:35:42.029515+00:00", "2026-03-16 07:35:44.025430+00:00", "2026-03-16 07:35:44.892888+00:00", "2026-03-16 07:35:55.095377+00:00", "2026-03-16 07:36:00.820814+00:00", "2026-03-16 07:36:00.863012+00:00", "2026-03-16 07:36:00.910383+00:00", "2026-03-16 07:36:00.977707+00:00", "2026-03-16 07:36:01.019611+00:00", "2026-03-16 07:36:02.887409+00:00", "2026-03-16 07:36:02.887508+00:00", "2026-03-16 07:36:03.640998+00:00", "2026-03-16 07:36:08.059733+00:00", "2026-03-16 07:36:11.535387+00:00", "2026-03-16 07:36:11.853708+00:00", "2026-03-16 07:36:11.957088+00:00", "2026-03-16 07:36:13.044843+00:00", "2026-03-16 07:36:14.196657+00:00", "2026-03-16 07:36:16.627116+00:00", "2026-03-16 07:36:16.961083+00:00", "2026-03-16 07:36:19.512828+00:00", "2026-03-16 07:36:22.466727+00:00", "2026-03-16 07:36:23.039749+00:00", "2026-03-16 07:36:24.550514+00:00", "2026-03-16 07:36:25.019021+00:00", "2026-03-16 07:36:25.985426+00:00", "2026-03-16 07:36:27.049066+00:00", "2026-03-16 07:36:27.433557+00:00", "2026-03-16 07:36:35.606961+00:00", "2026-03-16 07:36:37.116430+00:00", "2026-03-16 07:36:39.378258+00:00", "2026-03-16 07:36:41.601156+00:00", "2026-03-16 07:36:42.018623+00:00", "2026-03-16 07:36:45.227636+00:00", "2026-03-16 07:36:45.915202+00:00", "2026-03-16 07:36:47.009603+00:00", "2026-03-16 07:36:49.491226+00:00", "2026-03-16 07:36:50.214278+00:00", "2026-03-16 07:36:50.753063+00:00", "2026-03-16 07:36:51.008119+00:00", "2026-03-16 07:36:51.051337+00:00", "2026-03-16 07:36:55.595606+00:00", "2026-03-16 07:36:58.463581+00:00", "2026-03-16 07:36:58.774637+00:00", "2026-03-16 07:36:59.194295+00:00", "2026-03-16 07:36:59.709272+00:00", "2026-03-16 07:37:00.906661+00:00", "2026-03-16 07:37:01.405586+00:00", "2026-03-16 07:37:01.482287+00:00", "2026-03-16 07:37:01.912692+00:00", "2026-03-16 07:37:02.469383+00:00", "2026-03-16 07:37:02.963812+00:00", "2026-03-16 07:37:03.427699+00:00", "2026-03-16 07:37:03.477067+00:00", "2026-03-16 07:37:03.515926+00:00", "2026-03-16 07:37:03.554127+00:00", "2026-03-16 07:37:03.593395+00:00", "2026-03-16 07:37:04.069494+00:00", "2026-03-16 07:37:04.087476+00:00", "2026-03-16 07:37:05.836614+00:00", "2026-03-16 07:37:06.017178+00:00", "2026-03-16 07:37:06.275252+00:00", "2026-03-16 07:37:06.320319+00:00", "2026-03-16 07:37:06.358226+00:00", "2026-03-16 07:37:06.417128+00:00", "2026-03-16 07:37:10.744434+00:00", "2026-03-16 07:37:12.939920+00:00", "2026-03-16 07:37:13.204930+00:00", "2026-03-16 07:37:13.412421+00:00", "2026-03-16 07:37:18.616258+00:00", "2026-03-16 07:37:18.822248+00:00", "2026-03-16 07:37:18.832429+00:00", "2026-03-16 07:37:19.792468+00:00", "2026-03-16 07:37:21.053231+00:00", "2026-03-16 07:37:22.406080+00:00", "2026-03-16 07:37:24.795511+00:00", "2026-03-16 07:37:26.128354+00:00", "2026-03-16 07:37:26.379198+00:00", "2026-03-16 07:37:26.418723+00:00", "2026-03-16 07:37:26.487962+00:00", "2026-03-16 07:37:27.027264+00:00", "2026-03-16 07:37:27.962942+00:00", "2026-03-16 07:37:28.375350+00:00", "2026-03-16 07:37:28.528652+00:00", "2026-03-16 07:37:28.931632+00:00", "2026-03-16 07:37:28.931729+00:00", "2026-03-16 07:37:29.207654+00:00", "2026-03-16 07:37:29.497266+00:00", "2026-03-16 07:37:30.066391+00:00", "2026-03-16 07:37:31.823166+00:00", "2026-03-16 07:37:32.272474+00:00", "2026-03-16 07:37:33.906759+00:00", "2026-03-16 07:37:34.352144+00:00", "2026-03-16 07:37:34.352243+00:00", "2026-03-16 07:37:35.243112+00:00", "2026-03-16 07:37:35.250475+00:00", "2026-03-16 07:37:35.284350+00:00", "2026-03-16 07:37:35.306048+00:00", "2026-03-16 07:37:36.295838+00:00", "2026-03-16 07:37:36.584378+00:00", "2026-03-16 07:37:38.658271+00:00", "2026-03-16 07:37:40.327277+00:00", "2026-03-16 07:37:41.319658+00:00", "2026-03-16 07:37:41.636046+00:00", "2026-03-16 07:37:43.159971+00:00", "2026-03-16 07:37:43.910093+00:00", "2026-03-16 07:37:43.976995+00:00", "2026-03-16 07:37:46.037262+00:00", "2026-03-16 07:37:46.238951+00:00", "2026-03-16 07:37:46.239047+00:00", "2026-03-16 07:37:46.330013+00:00", "2026-03-16 07:37:46.580177+00:00", "2026-03-16 07:37:47.339623+00:00", "2026-03-16 07:37:48.335970+00:00", "2026-03-16 07:37:49.310737+00:00", "2026-03-16 07:37:52.689221+00:00", "2026-03-16 07:37:54.386359+00:00", "2026-03-16 07:37:57.884807+00:00", "2026-03-16 07:37:58.455503+00:00", "2026-03-16 07:37:58.836161+00:00", "2026-03-16 07:37:59.597232+00:00", "2026-03-16 07:37:59.793603+00:00", "2026-03-16 07:38:01.025608+00:00", "2026-03-16 07:38:01.294329+00:00", "2026-03-16 07:38:02.079102+00:00", "2026-03-16 07:38:02.329183+00:00", "2026-03-16 07:38:02.329293+00:00", "2026-03-16 07:38:05.510584+00:00", "2026-03-16 07:38:05.708068+00:00", "2026-03-16 07:38:05.745631+00:00", "2026-03-16 07:38:05.956588+00:00", "2026-03-16 07:38:06.009156+00:00", "2026-03-16 07:38:06.046769+00:00", "2026-03-16 07:38:06.095712+00:00", "2026-03-16 07:38:06.132299+00:00", "2026-03-16 07:38:08.086321+00:00", "2026-03-16 07:38:10.239731+00:00", "2026-03-16 07:38:10.340945+00:00", "2026-03-16 07:38:10.354718+00:00", "2026-03-16 07:38:10.708769+00:00", "2026-03-16 07:38:11.023288+00:00", "2026-03-16 07:38:11.765801+00:00", "2026-03-16 07:38:12.463641+00:00", "2026-03-16 07:38:13.745031+00:00", "2026-03-16 07:38:14.320669+00:00", "2026-03-16 07:38:14.367839+00:00", "2026-03-16 07:38:15.141526+00:00", "2026-03-16 07:38:17.644448+00:00", "2026-03-16 07:38:18.425663+00:00", "2026-03-16 07:38:21.367771+00:00", "2026-03-16 07:38:23.790750+00:00", "2026-03-16 07:38:24.690301+00:00", "2026-03-16 07:38:24.752706+00:00", "2026-03-16 07:38:25.764728+00:00", "2026-03-16 07:38:26.738060+00:00", "2026-03-16 07:38:27.224527+00:00", "2026-03-16 07:38:27.434667+00:00", "2026-03-16 07:38:27.748078+00:00", "2026-03-16 07:38:28.741831+00:00", "2026-03-16 07:38:29.659124+00:00", "2026-03-16 07:38:30.789443+00:00", "2026-03-16 07:38:31.092157+00:00", "2026-03-16 07:38:31.497494+00:00", "2026-03-16 07:38:31.497594+00:00", "2026-03-16 07:38:33.086707+00:00", "2026-03-16 07:38:34.167000+00:00", "2026-03-16 07:38:34.211714+00:00", "2026-03-16 07:38:34.252230+00:00", "2026-03-16 07:38:43.744422+00:00", "2026-03-16 07:38:51.508539+00:00", "2026-03-16 07:38:53.449467+00:00", "2026-03-16 07:38:53.880648+00:00", "2026-03-16 07:38:56.571926+00:00", "2026-03-16 07:38:57.462176+00:00", "2026-03-16 07:38:57.632083+00:00", "2026-03-16 07:38:58.027971+00:00", "2026-03-16 07:38:58.079630+00:00"], "y": [3.3569704444050883, 3.2982970356064847, 5.300591032533584, 1.5684442482170868, 4.2450040027349125, 2.0771555848441476, 2.258631354966718, 2.172479502853489, 1.4363936021621928, 0.6844107001789261, 0.6432858716098485, 0.5839465628239306, 0.8458159986586482, 4.115416335126357, 0.7736624696328827, 3.0948200614032695, 3.765948148148148, 0.6296576949701032, 4.714081769602686, 3.361286910245069, 3.276114864954324, 2.1325082246369975, 1.4144962090852697, 0.7480943203248716, 3.7813387287743705, 1.547764664727691, 4.529302346013441, 2.6238156467200824, 2.4326867427419057, 1.9332157426124703, 2.08285281394338, 2.290300290226216, 3.0380057249048966, 1.3654037769633525, 2.5325392605633805, 1.5363086380683257, 1.6879371248574553, 3.5931190955280905, 1.1058243144950486, 5.02866315612741, 2.386281805015394, 1.8666689185025862, 2.4326867427419057, 1.9332157426124703, 4.019780904361522, 1.4445260282009715, 5.182531683976749, 4.1170179485181055, 0.6722146230380102, 2.008829647759808, 5.101762909744642, 0.8023234959339254, 4.255547046422965, 3.144452768945213, 2.804756066327757, 3.1797071717336434, 1.7707572882155942, 1.1058243144950486, 3.206148695969746, 1.9112035142003738, 2.607321007817588, 2.659436353294255, 0.7369293450427281, 3.136905552525774, 5.090158464194431, 2.4326867427419057, 1.9332157426124703, 0.6070480814614367, 1.6457357539749977, 0.8417211745626394, 5.889636064875056, 5.828364052234624, 3.1206172966713264, 1.6426057759190482, 4.67514517135792, 1.1058243144950486, 2.7153033208166737, 9.230935067640278, 8.035965454109284, 0.9279741579428334, 1.2232737522762376, 2.5579609980480487, 1.1943532178675467, 1.8261751633863554, 6.5472173142566845, 5.575211084983142, 6.479759764704816, 2.1402809777421563, 6.406963438082319, 2.6779925329064636, 0.9296448688031178, 0.901003704884851, 2.2396062774338676, 0.8214648956694086, 6.787897017371643, 1.2316098818820338, 4.2224415081521744, 2.0094097697746123, 1.9024706937828644, 1.2361181623932205, 2.4683125379928827, 1.5358577891707217, 2.587418197522025, 0.7666203418066839, 1.1204930047098072, 0.9660275967443177, 0.695475738450769, 3.97124149416519, 0.8358825887732306, 0.584914441506544, 4.18845001616019, 8.68377922899828, 1.189003903684788, 3.881971351351775, 0.7609530435516341, 4.163186676911491, 4.112170727856025, 4.18845001616019, 1.9194094975969027, 2.961157676190959, 0.6078272132839239, 0.5197472529334402, 0.8203102830675721, 7.40789055323635, 4.27856785611435, 4.298384133532129, 4.084035076347183, 4.044020796696001, 4.112619306972489, 3.8336772368425756, 2.674183208602992, 0.9809272329692549, 5.81616203507132, 0.8289296286563819, 0.6285085583235019, 4.468613162773299, 5.49789374001551, 1.5556629755721958, 2.0504332819044295, 5.586303314024843, 7.137822878858365, 5.050942487566702, 4.926092266876913, 4.2417717462963305, 5.256230772793352, 5.251358999886393, 4.344508996028538, 4.32232115836686, 4.513625192294761, 2.6058760158668752, 0.6768818753946659, 5.769883274096408, 2.0271459537734824, 2.863242749214354, 1.0878583236894397, 7.2466310942594685, 7.197303237154296, 3.114777845559453, 2.385587681267475, 2.4233072455594575, 0.7536637429711233, 0.5692567611408723, 2.5697179739903095, 4.291865971905773, 4.112170727856025, 9.027940046419795, 1.7743387582920966, 1.17627506961424, 7.528032361692736, 0.9020446728784501, 6.5198093738741605, 3.6663524341009466, 0.9831399370532978, 5.996033762760052, 3.6058203957796726, 2.942749815396679, 4.17636709361741, 0.14886164582618658, 5.746157593459813, 5.597553165922781, 2.0744191707628286, 5.769883274096408, 1.4449972455611462, 3.5329740205151343, 4.266332467712028, 2.348689764350765, 9.432834134140991, 7.237226730385345, 0.7536834174643374, 4.73444734091444, 3.1293482026540516, 0.6738723009449037, 2.2421574033277087, 4.723567141421381, 3.438740141430257, 4.048832940179212, 5.40856279302745, 1.834553286587183, 0.602795648871286, 9.027940046419795, 0.5054218040581846, 0.6223881721445286, 0.5518560591041, 0.6213028183081015, 0.5528190770116819, 0.6227634825642192, 0.5363186445740225, 0.8303309274757105, 4.3727764601996935, 4.325541987798776, 0.6525895039777743, 3.6263400967480077, 1.2654263230170277, 4.418990434280231, 3.6996603680728657, 2.727786221775356, 1.7552681506615189, 1.6796507740924724, 1.3070852874302998, 2.1791087922705312, 1.699780645161289, 0.9846627012522364, 1.2059495150179096, 1.0412804355738823, 0.6477159792728981, 1.007435895277558, 1.2615792113323, 8.257641580066169, 0.5357273537762293, 9.004581529920172, 5.883566560199337, 3.384509025677355, 2.7880542463970137, 0.6534816485984876, 1.6787649203601074, 5.337018980240803, 1.1810277593462415, 5.621328881308717, 5.709778112196442, 3.8674449057269955, 2.760672715134704, 1.4452250425165545, 4.5652125980686495, 3.0297349538790304, 3.140750659050455, 1.273385113363603, 5.158793173137865, 2.9391650224605033, 4.190548209263631, 0.6659370308689838, 1.2613353819320992, 9.286618686861862, 5.423476865046946, 1.0080152682406638, 0.5836918113793137, 1.273385113363603, 0.5210808805265892, 0.7151543521698989, 0.564673361550466, 3.304082268065658, 1.023646660031446, 0.580613767504593, 1.2613353819320992, 1.1374110445377756, 4.196082169890662, 4.1876772086414285, 4.630202368604189, 3.3170306285178244, 4.748142409298781, 7.682812790567319, 5.31715028645283, 5.769883274096408, 4.2291200740926245, 0.5707328602913717, 1.448477156738316, 0.7242401396020937, 0.6534816485984876, 1.4163061709273206, 0.9808355235000769, 1.3846742664275125, 0.6387667470915859, 4.569213821351581, 0.9597719094051382, 1.273385113363603, 0.5889888959066965, 0.8714195474135289, 9.027940046419795, 8.257641580066169, 7.293957489524687, 3.9633243065962422, 0.8528170643529207, 3.4838595667787926, 2.1669817224755947, 1.4951246728198415, 1.4213947701741807, 0.9049145984997932, 4.169774252657045, 2.608272908493622, 0.61121019072707, 3.3125414329692413, 1.9033783890999372, 0.6500955464716007, 1.984798230221318, 0.5469756359225293, 1.1414447009300994, 1.5354006098666417, 0.6068838141136725, 3.746537539030818, 0.5465876359300268, 0.6114447202864208, 0.5306524953995482, 0.5993304245628259, 4.196082169890662, 4.1876772086414285, 4.630202368604189, 3.3170306285178244, 4.748142409298781, 2.3222929376859804, 4.144343486771941, 3.383842691301357, 1.67739094901997, 5.186292315112209, 2.9374136154912485, 0.8527780850681967, 0.7350757372251442, 1.4623633918289822, 3.1963056928907125, 3.3992185388254823, 2.952566826058005, 1.2927969408536506, 1.4653869652653313, 5.209996013411663, 1.403961052167888, 1.2613353819320992, 2.425393764225782, 4.569213821351581, 0.9532312150225366, 0.6838818794643924, 0.8428805663038299, 2.0255052831355163, 1.0365899778629062, 2.5845390980715073, 2.7602408030712517, 5.330323432556573, 9.161359684331142, 7.4203814978531675, 3.4529773973076425, 1.4826215672017822, 3.5130194910573476, 0.5242923878006405, 0.9533700250018573, 2.7005658304256555, 2.7910119200367314, 2.1700948940953113, 4.787942897281412, 1.5736658288435392, 2.341155550125932, 2.5439182533028433, 1.03645583608971, 3.907231013121681, 0.8974773979256682, 1.4877621979689986, 2.9523409667762253, 4.592647301229777, 4.102201773385528, 2.624720538107396, 1.282948662550035, 0.6109885018580642, 7.9467385968989195, 6.589274268338474, 0.9576576379526133, 0.9552986452072996, 1.0365697855620135, 1.4882315045823649, 0.6447829319950458, 0.6691062039963247, 0.7032676286072772, 0.9538074421448647, 0.7843860960916286, 2.661936561735076, 3.0333824867197245, 6.40436989693254, 0.5993304245628259, 3.1879910474052275, 1.267000302775386, 1.5565583492374655, 2.016464951390235, 4.3388031543523615, 2.1857117591576616, 1.8032722654608375, 4.196082169890662, 4.1876772086414285, 4.630202368604189, 3.3170306285178244, 4.748142409298781, 3.867755933520097, 0.5566528328924165, 0.8726002020513839, 0.9579484750677313, 1.2601628506378018, 1.0369371400625158, 1.4869240777042636, 5.738505856955929, 1.2197510220255532, 2.9001690965899907, 1.1890733487857488, 3.4744127315414, 4.747013258653288, 1.2349839157923086, 2.8609875028489062, 0.9569123031571525, 1.653724509180325, 1.0359495942074195, 1.4870012127837815, 0.944613578631371, 0.08668892449295901, 4.569213821351581, 1.026749884477174, 1.4749708381355353, 4.991773921805874, 0.9472550065590273, 5.28525557511214, 9.161359684331142, 7.4203814978531675, 1.2819211943850746, 5.890216426546413, 5.967346685393258, 5.05283439849624, 1.3239696206676181, 1.0827870141935696, 0.8764918175403751, 1.028168090316009, 1.0036411053231593, 0.9602351910642354, 4.163667543899072, 0.5242828348098147, 1.2601628506378018], "name": "REPLACE", "marker": {"color": "#e67e22", "size": 4, "opacity": 0.6}}, {"type": "scatter", "mode": "markers", "x": ["2026-03-16 07:31:29.442790+00:00", "2026-03-16 07:31:29.443121+00:00", "2026-03-16 07:31:30.303488+00:00", "2026-03-16 07:31:30.883848+00:00", "2026-03-16 07:31:32.196614+00:00", "2026-03-16 07:31:32.760160+00:00", "2026-03-16 07:31:32.994965+00:00", "2026-03-16 07:31:39.441292+00:00", "2026-03-16 07:31:48.244288+00:00", "2026-03-16 07:31:52.567353+00:00", "2026-03-16 07:31:54.126992+00:00", "2026-03-16 07:31:56.300735+00:00", "2026-03-16 07:31:59.466698+00:00", "2026-03-16 07:32:07.211993+00:00", "2026-03-16 07:32:13.539324+00:00", "2026-03-16 07:32:14.033583+00:00", "2026-03-16 07:32:14.668287+00:00", "2026-03-16 07:32:15.107417+00:00", "2026-03-16 07:32:15.946173+00:00", "2026-03-16 07:32:18.851084+00:00", "2026-03-16 07:32:28.569014+00:00", "2026-03-16 07:32:29.023479+00:00", "2026-03-16 07:32:29.758090+00:00", "2026-03-16 07:32:30.054244+00:00", "2026-03-16 07:32:30.716434+00:00", "2026-03-16 07:32:35.957702+00:00", "2026-03-16 07:32:35.958028+00:00", "2026-03-16 07:32:36.666888+00:00", "2026-03-16 07:32:40.224353+00:00", "2026-03-16 07:32:44.209038+00:00", "2026-03-16 07:32:54.757826+00:00", "2026-03-16 07:32:56.194206+00:00", "2026-03-16 07:32:56.195139+00:00", "2026-03-16 07:32:56.873002+00:00", "2026-03-16 07:32:58.210055+00:00", "2026-03-16 07:32:58.210992+00:00", "2026-03-16 07:32:59.620250+00:00", "2026-03-16 07:32:59.920054+00:00", "2026-03-16 07:33:04.776385+00:00", "2026-03-16 07:33:08.113421+00:00", "2026-03-16 07:33:17.854787+00:00", "2026-03-16 07:33:17.886308+00:00", "2026-03-16 07:33:20.161635+00:00", "2026-03-16 07:33:31.046750+00:00", "2026-03-16 07:33:32.416387+00:00", "2026-03-16 07:33:41.463346+00:00", "2026-03-16 07:33:44.798895+00:00", "2026-03-16 07:33:49.211427+00:00", "2026-03-16 07:33:49.794699+00:00", "2026-03-16 07:33:50.853974+00:00", "2026-03-16 07:33:53.972234+00:00", "2026-03-16 07:33:54.855740+00:00", "2026-03-16 07:33:55.379630+00:00", "2026-03-16 07:33:56.772392+00:00", "2026-03-16 07:33:58.134452+00:00", "2026-03-16 07:33:58.833805+00:00", "2026-03-16 07:34:01.611950+00:00", "2026-03-16 07:34:02.422212+00:00", "2026-03-16 07:34:12.397083+00:00", "2026-03-16 07:34:18.132250+00:00", "2026-03-16 07:34:22.213916+00:00", "2026-03-16 07:34:30.302227+00:00", "2026-03-16 07:34:31.252727+00:00", "2026-03-16 07:34:44.564412+00:00", "2026-03-16 07:34:59.106741+00:00", "2026-03-16 07:35:00.616567+00:00", "2026-03-16 07:35:04.036698+00:00", "2026-03-16 07:35:16.047245+00:00", "2026-03-16 07:35:18.183161+00:00", "2026-03-16 07:35:18.274355+00:00", "2026-03-16 07:35:18.657248+00:00", "2026-03-16 07:35:28.537808+00:00", "2026-03-16 07:35:30.775707+00:00", "2026-03-16 07:35:31.042895+00:00", "2026-03-16 07:36:02.604064+00:00", "2026-03-16 07:36:03.291874+00:00", "2026-03-16 07:36:06.237680+00:00", "2026-03-16 07:36:19.512970+00:00", "2026-03-16 07:36:30.256712+00:00", "2026-03-16 07:36:57.145695+00:00", "2026-03-16 07:37:05.209908+00:00", "2026-03-16 07:37:08.669634+00:00", "2026-03-16 07:37:08.946991+00:00", "2026-03-16 07:37:09.425838+00:00", "2026-03-16 07:37:21.730730+00:00", "2026-03-16 07:37:35.445291+00:00", "2026-03-16 07:37:38.876955+00:00", "2026-03-16 07:37:41.079320+00:00", "2026-03-16 07:37:48.726066+00:00", "2026-03-16 07:38:02.102741+00:00", "2026-03-16 07:38:07.762324+00:00", "2026-03-16 07:38:11.240993+00:00", "2026-03-16 07:38:13.880795+00:00", "2026-03-16 07:38:30.665677+00:00", "2026-03-16 07:38:35.875773+00:00", "2026-03-16 07:38:37.022786+00:00", "2026-03-16 07:38:53.695389+00:00"], "y": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4959844858944593, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "name": "CANCEL", "marker": {"color": "#e74c3c", "size": 4, "opacity": 0.6}}], "layout": {"title": "Amend Decisions Over Time", "xaxis": {"title": "Time"}, "yaxis": {"title": "EV improvement (\u00a2)"}, "height": 320, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "shapes": [{"type": "line", "x0": 0, "x1": 1, "xref": "paper", "y0": 0, "y1": 0, "line": {"color": "#666", "width": 1, "dash": "dash"}}]}};
+  Plotly.newPlot('chart_amend_timeline', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><hr class="divider"><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Top tickers by REPLACE count</p><table><thead><tr><th>Ticker</th><th>REPLACEs</th><th>Median EV Imp</th><th>Median Gap</th></tr></thead><tbody><tr><td>KXHIGHLAX-26MAR16-T86</td><td>40</td><td>+1.0321¢</td><td>2.7s</td></tr><tr><td>KXPGATOUR-MAST26-SSCH</td><td>20</td><td>+0.5942¢</td><td>2.1s</td></tr><tr><td>KXNCAAMBGAME-26MAR18PVLEH-PV</td><td>19</td><td>+5.7699¢</td><td>14.7s</td></tr><tr><td>KXNHLGAME-26MAR16CGYDET-DET</td><td>19</td><td>+4.1961¢</td><td>0.0s</td></tr><tr><td>KXUCLGAME-26MAR18LFCGAL-GAL</td><td>12</td><td>+1.2675¢</td><td>25.0s</td></tr><tr><td>KXNBAGAME-26MAR16LALHOU-LAL</td><td>11</td><td>+5.8836¢</td><td>8.8s</td></tr><tr><td>KXNCAAMBGAME-26MAR17UMBCHOW-UMBC</td><td>10</td><td>+7.4204¢</td><td>0.4s</td></tr><tr><td>KXUCLGAME-26MAR18TOTATM-ATM</td><td>9</td><td>+1.9332¢</td><td>2.5s</td></tr><tr><td>KXNBAGAME-26MAR16LALHOU-HOU</td><td>8</td><td>+2.2415¢</td><td>0.0s</td></tr><tr><td>KXUCLGAME-26MAR17MCIRMA-RMA</td><td>8</td><td>+4.0983¢</td><td>0.0s</td></tr><tr><td>KXUCLGAME-26MAR17CFCPSG-PSG</td><td>8</td><td>+4.1758¢</td><td>1.5s</td></tr><tr><td>KXWTI-26MAR16-T94.99</td><td>8</td><td>+0.8694¢</td><td>1.3s</td></tr><tr><td>KXATPCHALLENGERMATCH-26MAR16PIECAM-CAM</td><td>8</td><td>+4.0813¢</td><td>1.4s</td></tr><tr><td>KXLOWTMIA-26MAR16-B68.5</td><td>7</td><td>+2.0829¢</td><td>4.1s</td></tr><tr><td>KXNBAGAME-26MAR16ORLATL-ORL</td><td>7</td><td>+5.8896¢</td><td>2.5s</td></tr><tr><td>KXWTAMATCH-26MAR15SEISTA-SEI</td><td>6</td><td>+3.0168¢</td><td>0.4s</td></tr><tr><td>KXCS2GAME-26MAR16EXZHER-EXZ</td><td>6</td><td>+1.1236¢</td><td>0.0s</td></tr><tr><td>KXWTI-26MAR16-T93.99</td><td>6</td><td>+0.8179¢</td><td>50.0s</td></tr><tr><td>KXATPMATCH-26MAR16MERSVR-SVR</td><td>6</td><td>+4.3802¢</td><td>8.6s</td></tr><tr><td>KXUCLGAME-26MAR17SPOBOG-SPO</td><td>6</td><td>+3.1064¢</td><td>13.9s</td></tr></tbody></table><hr class="divider"><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>REPLACEs by price move magnitude</p><table><thead><tr><th>Price Move</th><th>Count</th><th>Median EV Imp</th><th>Median Queue Ahead Lost</th></tr></thead><tbody><tr><td>1¢</td><td>168</td><td>+2.1685¢</td><td>486</td></tr><tr><td>2¢</td><td>37</td><td>+1.1890¢</td><td>500</td></tr><tr><td>3¢</td><td>23</td><td>+2.6083¢</td><td>500</td></tr><tr><td>4+¢</td><td>209</td><td>+2.7278¢</td><td>0</td></tr></tbody></table><hr class="divider"><div id="chart_amend_queue" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": [1764.925, 5294.775, 8824.625, 12354.474999999999, 15884.325, 19414.175, 22944.025, 26473.875, 30003.725, 33533.575, 37063.425, 40593.274999999994, 44123.125, 47652.975, 51182.825, 54712.675, 58242.524999999994, 61772.375, 65302.22499999999, 68832.075, 72361.92499999999, 75891.775, 79421.625, 82951.475, 86481.325, 90011.17499999999, 93541.025, 97070.875, 100600.725, 104130.575, 107660.42499999999, 111190.275, 114720.125, 118249.975, 121779.825, 125309.67499999999, 128839.525, 132369.375, 135899.22499999998, 139429.075], "y": [159, 5, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0], "width": 3529.85, "name": "1\u00a2 move", "marker": {"color": "#e67e22", "opacity": 0.6}}, {"type": "bar", "x": [1764.925, 5294.775, 8824.625, 12354.474999999999, 15884.325, 19414.175, 22944.025, 26473.875, 30003.725, 33533.575, 37063.425, 40593.274999999994, 44123.125, 47652.975, 51182.825, 54712.675, 58242.524999999994, 61772.375, 65302.22499999999, 68832.075, 72361.92499999999, 75891.775, 79421.625, 82951.475, 86481.325, 90011.17499999999, 93541.025, 97070.875, 100600.725, 104130.575, 107660.42499999999, 111190.275, 114720.125, 118249.975, 121779.825, 125309.67499999999, 128839.525, 132369.375, 135899.22499999998, 139429.075], "y": [34, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "width": 3529.85, "name": "2\u00a2 move", "marker": {"color": "#9b59b6", "opacity": 0.6}}, {"type": "bar", "x": [1764.925, 5294.775, 8824.625, 12354.474999999999, 15884.325, 19414.175, 22944.025, 26473.875, 30003.725, 33533.575, 37063.425, 40593.274999999994, 44123.125, 47652.975, 51182.825, 54712.675, 58242.524999999994, 61772.375, 65302.22499999999, 68832.075, 72361.92499999999, 75891.775, 79421.625, 82951.475, 86481.325, 90011.17499999999, 93541.025, 97070.875, 100600.725, 104130.575, 107660.42499999999, 111190.275, 114720.125, 118249.975, 121779.825, 125309.67499999999, 128839.525, 132369.375, 135899.22499999998, 139429.075], "y": [222, 0, 3, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1], "width": 3529.85, "name": "3+\u00a2 move", "marker": {"color": "#2ecc71", "opacity": 0.6}}], "layout": {"title": "Queue Position Sacrificed on REPLACE (by price move size)", "xaxis": {"title": "Contracts ahead (current order)"}, "yaxis": {"title": "Count"}, "barmode": "overlay", "height": 320, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}}};
+  Plotly.newPlot('chart_amend_queue', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Only REPLACE and CANCEL decisions are logged (KEEPs are omitted for storage efficiency). Amend API call count from the latency table serves as a cross-check for REPLACE count. Rapid oscillations (multiple REPLACEs within 5s on the same ticker+side) indicate the microprice is jittering around a price boundary. Queue Ahead Lost shows the queue position sacrificed when moving — high values on small price moves suggest the fill model undervalues queue advantage.</p></div>
+</div><div class="section">
+  <div class="section-header">
+    <h2>12. Fill Probability Calibration</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Sampled Predictions</div>
+  <div class="value">1,170</div>
+  <div class="sub">~234,000 total (1:200 rate)</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Median Fill Prob</div>
+  <div class="value">0.3592</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Mean Fill Prob</div>
+  <div class="value">0.3892</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Zero Fill Prob</div>
+  <div class="value">47</div>
+  <div class="sub">4.0% of samples</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Median Contracts Ahead</div>
+  <div class="value">41</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Mean Contracts Ahead</div>
+  <div class="value">951</div>
+  
+</div>
+        </div>
+        <hr class="divider"><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Fill probability by context</p><table><thead><tr><th>Context</th><th>Samples</th><th>Median FP</th><th>Mean FP</th><th>Median Queue</th><th>% Zero</th></tr></thead><tbody><tr><td>keep_ev</td><td>94</td><td>1.0000</td><td>0.9117</td><td>0</td><td>0.0%</td></tr><tr><td>move_ev</td><td>94</td><td>0.3928</td><td>0.3994</td><td>33</td><td>0.0%</td></tr><tr><td>quote_sweep</td><td>982</td><td>0.2943</td><td>0.3383</td><td>50</td><td>4.8%</td></tr></tbody></table><hr class="divider"><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Fill probability by contracts-ahead bucket</p><table><thead><tr><th>Contracts Ahead</th><th>Samples</th><th>Median FP</th><th>Mean FP</th><th>p25 FP</th><th>p75 FP</th></tr></thead><tbody><tr><td>0</td><td>73</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td></tr><tr><td>1-10</td><td>186</td><td>0.7790</td><td>0.7630</td><td>0.6913</td><td>0.8704</td></tr><tr><td>11-50</td><td>396</td><td>0.4927</td><td>0.4721</td><td>0.3850</td><td>0.6133</td></tr><tr><td>51-200</td><td>192</td><td>0.2065</td><td>0.2035</td><td>0.1085</td><td>0.2992</td></tr><tr><td>201-500</td><td>150</td><td>0.0776</td><td>0.0730</td><td>0.0203</td><td>0.1142</td></tr><tr><td>501-1000</td><td>66</td><td>0.0270</td><td>0.0337</td><td>0.0000</td><td>0.0506</td></tr><tr><td>1000+</td><td>107</td><td>0.0085</td><td>0.0121</td><td>0.0038</td><td>0.0150</td></tr></tbody></table><hr class="divider"><div id="chart_fp_vs_ca" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "markers", "x": [0, 0, 3, 3, 2, 10, 3, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 39, 0, 39, 0, 0, 3, 39, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 10, 0, 3, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1522, 3, 0, 0, 0, 10, 0, 0, 10, 0, 0, 0, 0, 0, 0], "y": [1.0, 1.0, 0.8118777654867256, 0.8118777654867256, 0.837038963290426, 0.48695652173913045, 0.6280193236714976, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.6280193236714976, 1.0, 1.0, 1.0, 1.0, 1.0, 0.8118777654867256, 1.0, 1.0, 1.0, 1.0, 0.32883986928104575, 1.0, 0.32883986928104575, 1.0, 1.0, 0.6280193236714976, 0.32883986928104575, 1.0, 1.0, 1.0, 1.0, 1.0, 0.6280193236714976, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.6878638692887613, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.6382783080830196, 1.0, 1.0, 1.0, 0.48695652173913045, 1.0, 0.6280193236714976, 1.0, 0.6878638692887613, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.03929595308336505, 0.8118777654867256, 1.0, 1.0, 1.0, 0.675106734394964, 1.0, 1.0, 0.7899853662502371, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "name": "keep_ev", "marker": {"color": "#3498db", "size": 4, "opacity": 0.5}}, {"type": "scatter", "mode": "markers", "x": [310, 3298, 15, 38, 49, 36, 4, 31, 423, 5, 53, 149, 310, 5629, 46, 2, 1203, 12, 372, 258, 12, 203, 2871, 213, 101, 9, 116, 9, 9, 4, 21, 93, 4, 13, 15, 299, 323, 15, 136, 38, 2898, 260, 17, 12, 1, 3, 17, 26, 1161, 55, 92, 10, 4, 42, 14, 44, 40, 16, 8, 653, 18, 20, 13, 2, 8, 303, 25, 44, 80, 88, 187, 88, 5, 2, 51, 370, 25, 13, 49, 34, 1, 15, 29, 49, 299, 13, 82, 33, 12, 13, 10, 28, 35, 17], "y": [0.01835029069767442, 0.0040556145846877304, 0.5049019607843137, 0.17629716981132076, 0.34629769385575815, 0.43064784053156147, 0.6, 0.4449649334088977, 0.07152002811468489, 0.4362244897959184, 0.3315908064383674, 0.2016030053305172, 0.10225423950218507, 0.012962077782750632, 0.43690675995071787, 0.6632653061224489, 0.11309871495327103, 0.29775280898876405, 0.1081204053319603, 0.11898576893536571, 0.6505729426151546, 0.13743632102934328, 0.013045939993351064, 0.12583924937003296, 0.2200168034674819, 0.6674922600619195, 0.2385645282311011, 0.39609375, 0.7783845406294386, 0.8493851613435669, 0.24609375, 0.2173291954164613, 0.8525280169054094, 0.7378522837706512, 0.7195691886131831, 0.12705243644067796, 0.09375946599000858, 0.5810025464103827, 0.2021899030424607, 0.3891478941140378, 0.011108926880411256, 0.08726037384071135, 0.1989795918367347, 0.6664719821112706, 0.7857142857142857, 0.9296028880866426, 0.5851324585293389, 0.47138882043699687, 0.018384804312889986, 0.3549513149551113, 0.2862921294369939, 0.5026881720430108, 0.8525280169054094, 0.147265625, 0.6825513088542741, 0.39999297086423224, 0.36780433711187777, 0.5606049373563644, 0.7486246109824629, 0.05872882593457944, 0.6217599255057987, 0.34139784946236557, 0.6394384492406076, 0.9113852376137512, 0.6902002539006511, 0.07571784643502547, 0.5172237210231815, 0.38333257805773324, 0.1608695652173913, 0.30185854705682974, 0.21122621345835632, 0.30185854705682974, 0.5411764705882353, 0.7741935483870968, 0.21676587301587302, 0.11540421195652174, 0.5206960330787997, 0.6409453122524634, 0.3979047277936963, 0.43456185798232627, 0.8931979196527294, 0.578424497428705, 0.1377551020408163, 0.38957534160898727, 0.07986809347668464, 0.6421255458195352, 0.074951171875, 0.4408550171876107, 0.6279909898423223, 0.6409453122524634, 0.7350227765882539, 0.4793704373095187, 0.43270751382096534, 0.21544117647058825], "name": "move_ev", "marker": {"color": "#e67e22", "size": 4, "opacity": 0.5}}, {"type": "scatter", "mode": "markers", "x": [186, 200, 49, 12, 5000, 618, 41, 63, 11, 184, 3, 87, 186, 49, 1020, 36, 25, 2761, 665, 8, 4, 36, 783, 1234, 14, 3238, 1030, 2, 186, 18, 57, 1277, 15, 11, 50, 492, 238, 617, 161, 3261, 270, 12, 1242, 3, 50, 11, 168, 1242, 293, 292, 54, 42, 70, 618, 54, 11, 27, 299, 39, 39, 12, 10, 13, 32, 334, 50, 3481, 46, 3292, 2087, 31, 58, 25, 41, 58, 58, 80, 242, 12, 41, 477, 606, 20, 8, 372, 32, 44, 10, 66, 147, 45, 1, 38, 22, 1282, 41, 51, 3, 105, 113, 365, 164, 46, 500, 112, 22, 21, 41, 432, 126, 41, 34, 50, 46, 12, 3327, 341, 365, 157, 40, 397, 12, 22, 38, 1134, 46, 11, 2, 1322, 38, 136, 34, 365, 3629, 16382, 3, 764, 36, 20, 154, 465, 991, 1, 510, 46, 139, 742, 22, 84, 1, 1322, 76, 75, 18, 138, 12, 38, 413, 275, 43, 185, 124, 22, 143, 247, 151, 3145, 378, 1160, 7, 19, 474, 289, 71, 18, 30, 33, 452, 449, 3443, 23, 16, 31, 18, 11, 39, 16, 36, 239, 53, 1206, 25, 749, 18805, 285, 308, 629, 735, 6574, 5732, 10, 53, 6, 666, 36, 763, 46, 46, 46, 106, 56, 370, 460, 51, 34, 369, 65, 636, 1, 370, 234, 649, 1, 3463, 57, 769, 10, 73, 180, 10, 214, 162, 3818, 3818, 137, 10, 740, 7, 304, 2669, 163, 614, 18, 296, 25, 93, 1148, 10, 38, 38, 29, 234, 107, 249, 421, 160522, 216, 11, 46, 22, 245, 4, 18, 22, 25, 335, 40090, 122, 50, 4, 3050, 16, 31, 13, 4, 50, 6, 10, 17, 571, 1036, 40, 358, 552, 2, 22, 345, 128, 2998, 57, 215, 1, 223, 623, 283, 329, 385, 1093, 33, 378, 161028, 74, 3858, 60, 50, 1387, 12, 13, 12, 50, 11, 11, 45020, 189, 19, 41, 50, 50, 21, 3, 15, 2121, 8, 381, 6, 1, 234, 6, 1340, 536, 10, 949, 5, 436, 34, 6, 13, 4, 47, 25, 15, 19, 170, 180, 5, 53, 65, 2818, 4, 15, 4, 275, 10, 40, 30, 5233, 4, 4, 275, 336, 41, 457, 42, 12, 266, 38, 198, 10, 38, 20, 3319, 121, 69, 84, 624, 75, 21, 50, 156, 573, 12, 218, 32, 6, 60, 1, 487, 299, 675, 1316, 18, 186, 56, 4, 889, 50, 5, 23, 4, 50, 4, 129, 2, 1048, 65, 22, 8437, 12, 49, 133, 350, 13, 68, 53, 22, 2073, 45020, 35, 8, 250, 361, 3394, 35, 13, 209, 78, 189, 81080, 463, 1000, 672, 204, 823, 10425, 6391, 36, 36, 912, 36, 294, 2238, 26, 169, 36, 362, 536, 3010, 370, 50, 17, 3142, 374, 256, 40, 7335, 947, 10, 4, 14, 42, 50, 194, 1313, 1, 21, 210, 16, 16, 73, 4, 16, 10, 1192, 52, 511, 143, 77, 10, 370, 47, 571, 219, 2039, 168, 361, 10, 16, 109, 276, 16, 74, 302, 50, 41, 7, 252, 4, 470, 10, 1, 456, 249, 279, 4, 200, 571, 289, 9132, 3129, 589, 3, 50, 486, 384, 4, 70, 21, 336, 182, 368, 3071, 38, 7, 29, 42, 91, 34, 11, 28, 10, 274, 58, 63, 1, 4, 28, 185, 196, 1161, 67, 8, 53, 2014, 136, 16, 146, 24, 25, 14, 38, 3008, 53, 600, 6, 6, 69, 69, 285, 6, 53, 44, 239, 5, 35, 64, 7573, 4, 524, 42, 10, 23, 23, 16, 11, 7, 1, 24, 6, 20, 7429, 2, 12, 3, 16, 10, 3463, 39, 10513, 153, 1, 305, 89, 57, 452, 53, 37, 53, 72, 31, 11, 346, 225, 53, 22, 31, 16, 110, 13, 24, 1, 391, 54, 13, 2, 36, 23, 131, 13, 42, 618, 99, 53, 571, 11, 222, 1, 36, 25, 13, 6, 33, 8, 389, 371, 18, 56, 25, 138, 309, 229, 48, 33, 13, 25, 42, 16, 285, 511, 643, 424, 140, 115, 12, 16, 8, 15, 1375, 5561, 11, 1, 11, 25, 7, 25, 56, 1315, 362, 8, 176, 69, 13, 3, 78, 74, 42, 13, 29, 13, 17, 465, 19, 171, 27, 18, 7, 598, 32, 6, 2, 236, 8, 49, 13, 468, 44, 373, 44, 1, 3463, 18, 617, 15, 43, 7, 160, 1, 6, 25, 43, 71, 71, 33, 8, 25, 33, 29, 14, 5, 1, 76, 168, 8, 50, 620, 7, 19, 113, 60, 56, 25, 20, 370, 12, 49, 21, 14, 763, 16, 25, 424, 265, 8, 160, 25, 186, 55, 13, 25, 148, 29, 29, 215, 13, 219, 12, 12, 12, 36, 199, 7, 33, 59, 41, 11169, 4, 507, 17, 52, 214, 742, 23, 13, 17, 1234, 1213, 7, 13, 102, 50, 13, 181, 6, 7, 54840, 1187, 53, 114, 16, 35, 7, 6, 6, 13, 105, 20, 2, 192, 161, 259, 14, 36, 184, 638, 28, 55, 139, 40, 13, 78, 27, 25, 11, 4726, 1223, 25, 13, 20, 23, 13, 59, 53, 49, 12, 635, 53, 4096, 12, 370, 64, 37, 16, 13, 12, 113, 12, 73, 71, 50, 12, 8, 29, 2489, 628, 638, 36, 8, 37, 636, 20, 428, 242, 624, 1, 3463, 8, 18, 17, 250, 1, 23, 242, 66, 270, 107, 42, 12, 3, 260, 1504, 1628, 74, 102, 24, 74, 429, 212, 546, 223, 6, 206, 3, 22, 28, 203, 8, 50, 416, 102, 54, 7, 183, 2345, 1, 23, 434, 77, 17, 486, 84, 25, 9, 52, 4, 13, 12, 3034, 3249, 11, 128, 113, 1, 30, 11, 18, 16, 44, 3143, 31, 530, 7, 530, 283, 8, 61, 2013, 13, 7, 32, 7, 7, 106, 31, 45, 457, 47, 1000, 176, 3, 12, 13, 214, 10, 50, 3, 974, 15, 31, 8, 1, 13, 219, 38, 192, 543, 12, 12, 28, 2908, 1027, 5, 12, 628, 439, 9, 9, 6647, 80, 28, 60, 10, 41405, 19, 643, 273, 10, 19, 19, 6, 50, 21736, 3489, 9], "y": [0.20248321484992102, 0.027151639344262294, 0.0739247311827957, 0.6288649985729236, 0.002643716366295868, 0.031490705942937285, 0.4290210847187227, 0.3383547735051038, 0.7088574423480084, 0.051470588235294115, 0.8859275210548828, 0.24534623698289865, 0.2306675413486005, 0.1299342105263158, 9.412650602409639e-05, 0.4468973104382078, 0.5200934404082858, 0.013082063312243502, 0.031231239906073356, 0.5794392523364486, 0.8026631640925767, 0.4508038841133397, 0.03895691181298068, 0.02219672517411188, 0.5434131736526946, 0.004498495877672042, 0.040407818314846265, 0.9114318543119324, 0.1789579280155642, 0.5158761738023238, 0.5303550119331742, 0.015230116942639196, 0.6119565691361794, 0.7357778650020892, 0.455368906455863, 0.0, 0.03388671875, 0.0, 0.15888617231215027, 0.004973457264386246, 0.015496926229508197, 0.6505729426151546, 0.017666860817261563, 0.8063104061023707, 0.38420513016455243, 0.7711229596307236, 0.14078796090991214, 0.015590061734396267, 0.07901962617767175, 0.014816810344827586, 0.14166666666666666, 0.4088616867674537, 0.30081003656766414, 0.0, 0.3576063772704102, 0.35714285714285715, 0.5059580397420125, 0.04961688701923077, 0.15416666666666667, 0.15416666666666667, 0.6527815468113976, 0.6486517630790505, 0.6412667353244078, 0.5138528620760993, 0.01716820987654321, 0.19096091205211727, 0.009715527744528043, 0.16414141414141414, 0.004544491525423729, 0.008071210056254711, 0.4449649334088977, 0.3402117473639478, 0.19044117647058822, 0.4088895105399942, 0.3419271585330638, 0.3492934411563905, 0.2573738790428832, 0.020070043103448277, 0.740698429345519, 0.4107634059410859, 0.06870928338762215, 0.0, 0.2932692307692308, 0.7569019174781648, 0.004595588235294118, 0.45948964687687943, 0.402806745063235, 0.6410687830687831, 0.3523550006933027, 0.10820546407185629, 0.40198151352496647, 0.7047619047619048, 0.155, 0.548053768891987, 0.013960248222717386, 0.4078293623992298, 0.07929421768707483, 0.8670947252140293, 0.20870160175155567, 0.20127444787572524, 0.086296672712725, 0.16974447802462786, 0.40352618073931523, 0.12513878608438195, 0.23452645770138186, 0.5113896965477702, 0.3598790322580645, 0.3821882442309272, 0.025449101796407185, 0.07291666666666667, 0.425820429204012, 0.41692176174290513, 0.18631516587677724, 0.38299653956646645, 0.6525011176792013, 0.003994857185617388, 0.07037662751202943, 0.09014082757935522, 0.15493900677482214, 0.42900777748299984, 0.0209228515625, 0.6807353217032451, 0.6351522842639594, 0.4287787934476094, 0.0, 0.3584765689173649, 0.2953125, 0.7321428571428571, 0.013791448393349824, 0.4543831586870828, 0.20341329320586962, 0.4504679194197427, 0.08859962616125987, 0.014838539093379446, 0.0009468568475079816, 0.8147826474256191, 0.047449705567828446, 0.4270147119231998, 0.7231117068284924, 0.18263890710239195, 0.05757487369412571, 0.05819398757309942, 0.9065115706548498, 0.06941768299117759, 0.3933482512111544, 0.2059623887244987, 0.02040264423076923, 0.20166666666666666, 0.24787393408619499, 0.9080208112625656, 0.015591287830324742, 0.27080525921766796, 0.18868172268907563, 0.6067228720756596, 0.15932746600599215, 0.36813186813186816, 0.08826754385964912, 0.009548611111111112, 0.0, 0.1323529411764706, 0.05116421568627451, 0.1806031255848774, 0.5684764991896273, 0.21382274276347008, 0.032568359375, 0.15620961797466512, 0.0, 0.10370773565573771, 0.02791607520596749, 0.7408148443507733, 0.33223684210526316, 0.03315388655462185, 0.0261328125, 0.3078423103769195, 0.15789473684210525, 0.5282995147217822, 0.4096922375743619, 0.07125407166123779, 0.03561580882352941, 0.004251235875706215, 0.4994275710530639, 0.7114568599717115, 0.16416666666666666, 0.6067228720756596, 0.7357778650020892, 0.4209407380669271, 0.6207584830339321, 0.4282089111832399, 0.11400100430833722, 0.35820913320417985, 0.0247739622025901, 0.04411764705882353, 0.0, 0.0, 0.02607996323529412, 0.1398082921979981, 0.0, 0.0, 0.003116020789513221, 0.008767346917920209, 0.7324710217241115, 0.35820913320417985, 0.8703695757887812, 0.0, 0.45409537145319134, 0.03755162346909712, 0.36610617910890353, 0.09134615384615384, 0.3720677302937183, 0.028590425531914893, 0.059375, 0.010667067307692308, 0.07542335645069352, 0.37720433456482516, 0.15284653465346534, 0.0107421875, 0.29020621468926555, 0.0, 0.9345794392523364, 0.09311162451361868, 0.1281940079337053, 0.05262188510531376, 0.9376807221342184, 0.008082737574925074, 0.06317204301075269, 0.027711534809476884, 0.6504201680672269, 0.07445790816326531, 0.006824712643678161, 0.6584124685943022, 0.1491308504608227, 0.15566546135669837, 0.014749940583560842, 0.013165064418427415, 0.03177838164251208, 0.7435456602430467, 0.05738412228796844, 0.8003678005846263, 0.12013573709867205, 0.008694341687325689, 0.008351293103448275, 0.03197171607954843, 0.6093665096902735, 0.17014475908706678, 0.1844059405940594, 0.2783353584560192, 0.029818103084001825, 0.7899853662502371, 0.3927402627333487, 0.40814338151991664, 0.3926005747126437, 0.13037087328357813, 0.06559551886792453, 0.026223352713178296, 0.003822244623655914, 0.0, 0.11744319088925549, 0.6261322751322751, 0.3720677302937183, 0.510174957372674, 0.11620552066980638, 0.8625776626129973, 0.6093665096902735, 0.510174957372674, 0.14443277310924368, 0.08728500120279048, 0.0, 0.17609547862366398, 0.18631516587677724, 0.8746847454241267, 0.004575195100875482, 0.6588154414072425, 0.44929797191887677, 0.6468294606492926, 0.8747831334389379, 0.18631516587677724, 0.5, 0.6486517630790505, 0.6084779922114127, 0.1339385688110749, 0.05478084788602941, 0.544862772695285, 0.035396634615384615, 0.0, 0.9072318247401431, 0.5149636954237127, 0.11419966229978032, 0.16851214292360658, 0.004480179895743766, 0.3632706717749877, 0.00516633064516129, 0.9596110695587136, 0.11923695876171927, 0.024676983173076924, 0.0125, 0.07608852836174045, 0.0, 0.01602724728248971, 0.42299107142857145, 0.09249405386171249, 0.0, 0.035546875, 0.01301315766570739, 0.3058370781145425, 0.15881642512077296, 0.01269507184881715, 0.46774193548387094, 0.5106382978723404, 0.25510204081632654, 0.349371903026332, 0.7357778650020892, 0.7207859488606215, 0.0, 0.1359323633476347, 0.5555424730262031, 0.391804503459147, 0.15881642512077296, 0.33554497354497353, 0.6462575368192152, 0.9329523360631591, 0.5810025464103827, 0.008340360609876028, 0.47674418604651164, 0.03470552884615385, 0.39285714285714285, 0.6813186813186813, 0.13410581354129741, 0.7796661039204652, 0.011545733198267431, 0.13726756198347106, 0.6929048439711947, 0.03322580782130496, 0.8331462075848304, 0.0, 0.45063470462252364, 0.7692838235842374, 0.7378522837706512, 0.8716576838847582, 0.07593201754385964, 0.5432777060740088, 0.5694606733367414, 0.22023809523809523, 0.17312397535893487, 0.03125, 0.8370313349030972, 0.401443969852405, 0.30677164229405385, 0.007540086395605016, 0.8525280169054094, 0.6311434418661906, 0.8746847454241267, 0.10970021360091402, 0.6486517630790505, 0.39182852694788345, 0.5426205613017986, 0.003916236612001088, 0.8625776626129973, 0.8746847454241267, 0.08243887122050148, 0.003884180790960452, 0.5785791573679584, 0.025428185096153848, 0.7048913043478261, 0.6903072885803776, 0.11040956723638674, 0.4075261891581144, 0.24466682646212848, 0.7246678423577588, 0.39774055420969867, 0.5140738498789347, 0.012114354638810198, 0.20218426291311395, 0.05514705882352941, 0.3053606899499635, 0.0, 0.054142441860465115, 0.594211885211208, 0.08120748299319729, 0.02747584541062802, 0.05161747070793329, 0.6640752661549889, 0.12767160572892408, 0.4500349406009783, 0.834654533198517, 0.31040145985401457, 0.9080208112625656, 0.0010500672043010752, 0.11045091501240695, 0.10722044774401474, 0.014859396266770367, 0.6466490205831498, 0.02891355140186916, 0.32946173827875486, 0.8572420215017353, 0.02309578537338574, 0.18631516587677724, 0.4362244897959184, 0.5953599979350728, 0.8716576838847582, 0.20677083333333332, 0.8525280169054094, 0.037662146226415096, 0.8703377282662342, 0.04362490103951535, 0.3557797169541463, 0.6101682130195368, 0.0006207718040413284, 0.46774193548387094, 0.12770061728395063, 0.037367334905660375, 0.015625, 0.21904761904761905, 0.2767725478070593, 0.19817708333333334, 0.6081963068394637, 0.008109268978716, 0.0, 0.4783093837297892, 0.4107142857142857, 0.11275042984226658, 0.022546140939597316, 0.010122317458960329, 0.47923407586196587, 0.651954539064422, 0.12374548756089074, 0.16467391304347825, 0.1370925213117606, 0.0, 0.03826289848993288, 0.021205461108523522, 0.07291666666666667, 0.11175717346992108, 0.026257480788367978, 0.0006468501063945875, 0.004972683965463272, 0.40847802940333344, 0.4010140585388338, 0.005859375, 0.40327050997782704, 0.096795283982806, 0.010038776638220781, 0.46941411670196453, 0.024532004830917876, 0.4126754632229085, 0.11073731013472926, 0.008146367521367522, 0.017010804243311035, 0.11105461045364892, 0.12115384615384615, 0.6172841976099018, 0.004382447490031639, 0.08256194816291655, 0.0, 0.4269385026737968, 0.001939524817839602, 0.0040283203125, 0.685063085642676, 0.8724034202610199, 0.6308021340102, 0.5726854669642253, 0.36818878230748736, 0.02976831896551724, 0.016078432411804615, 0.9212909129034103, 0.6795139230888292, 0.14049517382497623, 0.567783891945973, 0.567783891945973, 0.42217124475607404, 0.8179275658652377, 0.5536040312568465, 0.7278167819584359, 0.03132460092274057, 0.4129103503664291, 9.931144067796611e-05, 0.17908709745613416, 0.4084901769646071, 0.7278167819584359, 0.12740946261682243, 0.3674906649753448, 0.09768525680693069, 0.13197432423609298, 0.012291003184713377, 0.027941176470588237, 0.022363744075829382, 0.765326461833012, 0.5648513224905536, 0.1899634980285855, 0.05393629807692308, 0.5648513224905536, 0.3135656970912738, 0.1863357181425486, 0.18631516587677724, 0.41112942978950173, 0.8421119629893653, 0.106934579703187, 0.8625776626129973, 0.009486607142857142, 0.7100424535207144, 0.8973202557141606, 0.001953125, 0.13052548770924688, 0.11071915581917774, 0.8747831334389379, 0.25454009433962266, 0.12277657645089286, 0.05149489182692308, 0.0008899901514645305, 0.007844244978657303, 0.032647498301704866, 0.5495049504950495, 0.3438070546994815, 0.061401307083948795, 0.009615384615384616, 0.8746847454241267, 0.3248082402997892, 0.18988095238095237, 0.09746834169506077, 0.15502298916105492, 0.0021634615384615386, 0.005452115546085359, 0.49213721788380677, 0.8459945936668669, 0.5251696283122357, 0.4011320818194052, 0.26774992983722234, 0.1597222222222222, 0.7711229596307236, 0.4963587609530229, 0.7063329168897614, 0.11191040820408665, 0.3488048959213076, 0.4542324574323926, 0.7047619047619048, 0.8746847454241267, 0.4933382972656126, 0.13036454369232234, 0.15006541077969648, 0.018384804312889986, 0.27994458847586356, 0.7210237245909065, 0.3328976418069775, 0.00852716425469455, 0.03714622641509434, 0.6040793599624886, 0.20743387864224447, 0.6153904703912315, 0.19171348314606743, 0.7055203540268035, 0.42172508150908244, 0.0044589543326645645, 0.07546768707482993, 0.025540865384615384, 0.803911165578156, 0.803911165578156, 0.0595703125, 0.27588768785415124, 0.0, 0.803911165578156, 0.07546768707482993, 0.40229176361098185, 0.12403231795506903, 0.9049965941419241, 0.45355365246669593, 0.35640529963694656, 0.0, 0.8625776626129973, 0.0, 0.36764705882352944, 0.7063329168897614, 0.5314826663564448, 0.5314826663564448, 0.6040793599624886, 0.7174128674464225, 0.8167578058407753, 0.8973202557141606, 0.5357844012136356, 0.8397226367275398, 0.5348484161870667, 0.0, 0.9114318543119324, 0.664260222105473, 0.6153846153846154, 0.6027692405183612, 0.375, 0.005255740439288335, 0.01838235294117647, 0.0, 0.05109126984126984, 0.9270446480151853, 0.014704014227642276, 0.26014162891882225, 0.20435049019607843, 0.06388155250617213, 0.19817708333333334, 0.44888532674748355, 0.15066425120772947, 0.2694141851393778, 0.46010838374437724, 0.7849938683101692, 0.0691596898487299, 0.0389093137254902, 0.3364733660221764, 0.6426325388340356, 0.46315869851782787, 0.5853658536585366, 0.08232758620689655, 0.6558480027081923, 0.6153904703912315, 0.9441103187559069, 0.09220290345037288, 0.32737435328898745, 0.6421255458195352, 0.9024537149904633, 0.4164136493406444, 0.535267619237943, 0.2114621175143232, 0.6409453122524634, 0.147265625, 0.0, 0.2622950184906308, 0.07546768707482993, 0.1261148368362832, 0.32123655913978494, 0.12733858149325544, 0.9288351171087328, 0.14540816326530612, 0.5321164543990631, 0.6558480027081923, 0.834654533198517, 0.4520005149330587, 0.7102428814372302, 0.009239783653846154, 0.17040676818311212, 0.6466490205831498, 0.06972789115646258, 0.5321164543990631, 0.05853174603174603, 0.019579475308641976, 0.11421256111783969, 0.37906380996739636, 0.40891992390176407, 0.6409453122524634, 0.4849599673808288, 0.4128744738796732, 0.6659323078537053, 0.08424357568365509, 0.061748660850205514, 0.12053004319105691, 0.0, 0.2472923368268133, 0.05498231132075472, 0.18617021276595744, 0.1619047619047619, 0.760540764529162, 0.18095238095238095, 0.014276838664203772, 0.013483845086217867, 0.6773014641942231, 0.9268602387200542, 0.7134146831132955, 0.5321164543990631, 0.7755329642825594, 0.4849599673808288, 0.14251207729468598, 0.013642239807151573, 0.0, 0.8118335955252578, 0.1916599871123894, 0.15128968253968253, 0.6394384492406076, 0.8821428571428571, 0.2889256372398051, 0.26656555391311487, 0.4011320818194052, 0.682741897572037, 0.4749722574508561, 0.6126188094047024, 0.5815161615993059, 0.06189447990556755, 0.6279740999237794, 0.17569372609102973, 0.5139016981408285, 0.5879522976460603, 0.8233822449607996, 0.04614963798446197, 0.03896103896103896, 0.8150455077032592, 0.9059500090563304, 0.03433641975308642, 0.6910816220624212, 0.025162337662337664, 0.6620497517693039, 0.002022058823529412, 0.3785841287666105, 0.01044170673076923, 0.36953888478278724, 0.9009545199326221, 0.005255740439288335, 0.6089976229216454, 0.0, 0.578424497428705, 0.4328352069007327, 0.7773123497396717, 0.04896907216494845, 0.9441103187559069, 0.8350577651887695, 0.5263958296150871, 0.4631724007681554, 0.3208313138540128, 0.3287426383509906, 0.4648388540734109, 0.6804571678960053, 0.5232889107053893, 0.4648388540734109, 0.48000742758108444, 0.6259974708934722, 0.8958713839627644, 0.9270446480151853, 0.2931773921012687, 0.04365079365079365, 0.6940611138491868, 0.13662790697674418, 0.03327077755110715, 0.7773123497396717, 0.6125772454076018, 0.21318460197428002, 0.3837844218920985, 0.10384615384615385, 0.5172237210231815, 0.620077519379845, 0.12740946261682243, 0.6640752661549889, 0.38808862803219063, 0.5897786101846781, 0.6244061481136469, 0.028854160907784168, 0.5940658388680335, 0.6117433994107383, 0.0, 0.09924369207003089, 0.7196209219389776, 0.01, 0.5206960330787997, 0.03284438775510204, 0.21231617647058823, 0.5106382978723404, 0.5270289673656927, 0.0625, 0.46927933477055744, 0.47795195439739413, 0.14097423136308443, 0.6620497517693039, 0.22666471962616822, 0.32677165354330706, 0.39097744360902253, 0.3, 0.28799019607843135, 0.06982421875, 0.7932740498897385, 0.4557741717861859, 0.30629208754208753, 0.27936746987951805, 0.0018594628706543968, 0.844975226966807, 0.030919471153846155, 0.5847079844065839, 0.3480392156862745, 0.10650489773287333, 0.020207331730769232, 0.5887352544657903, 0.6409453122524634, 0.5815161615993059, 0.022637326431872575, 0.04608437262663453, 0.763761626799231, 0.6394384492406076, 0.2751622202770589, 0.411125861484578, 0.6586467660226202, 0.20823566534439236, 0.6314102564102564, 0.7755329642825594, 0.0, 0.014552898980409068, 0.35820913320417985, 0.028561827956989246, 0.6284036708325786, 0.45449865711727844, 0.7457254555964586, 0.813325493682867, 0.8703695757887812, 0.6558480027081923, 0.24211864460746854, 0.1431818181818182, 0.7741935483870968, 0.15828821221002434, 0.17067910614267248, 0.016164888211382115, 0.6254432185092011, 0.43859285745432347, 0.09446022727272728, 0.0, 0.6634139515701408, 0.32821989747590125, 0.014742943548387098, 0.5844728477716914, 0.3528761061946903, 0.28066571330999746, 0.5235891190404987, 0.6501556016597511, 0.7486552072800808, 0.0038697516163330183, 0.01770273599449307, 0.5232889107053893, 0.6620497517693039, 0.22333333333333333, 0.5617736068345106, 0.6620497517693039, 0.3452405125126539, 0.15066425120772947, 0.025162337662337664, 0.46774193548387094, 0.0, 0.38162806431072904, 0.014127144298688193, 0.6170546208803872, 0.12740946261682243, 0.36315939378494655, 0.17878605769230768, 0.6398955928119666, 0.7872137404580153, 0.6210889381621089, 0.2070778021163555, 0.6170546208803872, 0.22674209770114942, 0.1329449152542373, 0.3451651254953765, 0.6807353217032451, 0.6816413005880319, 0.46927933477055744, 0.030153880010834237, 0.0, 0.07674005681818181, 0.44473919807443935, 0.6902002539006511, 0.4377600414824383, 0.0, 0.34139784946236557, 0.0, 0.12063589620590925, 0.03308948531599303, 0.9586550679307986, 0.007378259296507064, 0.7045720984759671, 0.5445567172425517, 0.5952163407409974, 0.2107780612244898, 0.8973202557141606, 0.5224225228577504, 0.12250710678720249, 0.3961269153920837, 0.08294286937494054, 0.2338512849811563, 0.4161815877652719, 0.6627327031259062, 0.7583333333333333, 0.08810417836421486, 0.01764095703427951, 0.04072419462822936, 0.29919014865764365, 0.23289401381599606, 0.5193655508460434, 0.29919014865764365, 0.05623152196075609, 0.1255980178891965, 0.0, 0.06512920673076923, 0.8714576091439344, 0.14315522912461687, 0.6943127962085308, 0.5236507206378411, 0.49823011481944196, 0.14354770893814203, 0.30612244897959184, 0.3852013616706973, 0.0031512605042016808, 0.04702102803738318, 0.2206439393939394, 0.7557913401590116, 0.16679545364000956, 0.021442692454268292, 0.8932971907343519, 0.5314826663564448, 0.0, 0.016776315789473684, 0.6510491814139748, 0.07008734893089556, 0.283123821896174, 0.5452373554777238, 0.475, 0.2708333333333333, 0.6071428571428571, 0.6586467660226202, 0.6235822571588995, 0.003732768054389104, 0.007346440001982686, 0.7088574423480084, 0.20772316950852557, 0.2070778021163555, 0.8927104232349288, 0.45726142488337335, 0.7222234155282528, 0.5977952183867559, 0.5984400616026628, 0.4336303225260306, 0.0035520294641879064, 0.502385084229239, 0.03542737841687137, 0.7457254555964586, 0.03542737841687137, 0.10976615391125062, 0.6892382556616133, 0.3174891026769989, 0.00645157013414476, 0.6586129454458921, 0.7557913401590116, 0.21888412017167383, 0.7357127256843331, 0.7383471327813554, 0.2372501217172151, 0.4935197374118788, 0.3919699969877383, 0.04948515590446705, 0.38382249362109294, 0.0, 0.16344832030243148, 0.9378434156216315, 0.7038735608492094, 0.6620626555409164, 0.17318797686030754, 0.6481753718436527, 0.3801931171081951, 0.833230198019802, 0.07198309748427673, 0.18522727272727274, 0.5085309251788817, 0.7736436037829766, 0.44, 0.2319277108433735, 0.06441803892215568, 0.08870967741935484, 0.15369621715275772, 0.0, 0.7038735608492094, 0.6683266069665529, 0.48559466488595227, 0.005707803548827605, 0.0183798614529562, 0.7751443418013857, 0.6903072885803776, 0.0, 0.09058714315340828, 0.6928537936289306, 0.6918467412312664, 0.0035679633872737356, 0.12025316455696203, 0.4793704373095187, 0.10859375, 0.6481753718436527, 0.0, 0.6125772454076018, 0.0093017578125, 0.015720274390243903, 0.7293714555765596, 0.6306894305232472, 0.5806882545511233, 0.7948925601986826, 0.5200242718446602, 0.0, 0.010335104806082589, 0.7273819583817471], "name": "quote_sweep", "marker": {"color": "#2ecc71", "size": 4, "opacity": 0.5}}], "layout": {"title": "Fill Probability vs Contracts Ahead", "xaxis": {"title": "Contracts ahead in queue"}, "yaxis": {"title": "Estimated fill probability", "range": [0, 1]}, "height": 350, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}}};
+  Plotly.newPlot('chart_fp_vs_ca', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><hr class="divider"><div id="chart_fp_dist" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": [0.01, 0.03, 0.05, 0.07, 0.09, 0.11, 0.13, 0.15000000000000002, 0.16999999999999998, 0.19, 0.21000000000000002, 0.22999999999999998, 0.25, 0.27, 0.29000000000000004, 0.31, 0.33, 0.35, 0.37, 0.39, 0.41000000000000003, 0.43, 0.45, 0.47, 0.49, 0.51, 0.53, 0.55, 0.5700000000000001, 0.59, 0.61, 0.63, 0.65, 0.67, 0.6900000000000001, 0.71, 0.73, 0.75, 0.77, 0.79, 0.81, 0.8300000000000001, 0.85, 0.87, 0.89, 0.91, 0.93, 0.95, 0.97, 0.99], "y": [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 6, 0, 1, 2, 0, 0, 0, 0, 1, 4, 1, 0, 0, 0, 0, 0, 0, 0, 73], "width": 0.02, "name": "keep_ev", "marker": {"color": "#3498db", "opacity": 0.6}}, {"type": "bar", "x": [0.01, 0.03, 0.05, 0.07, 0.09, 0.11, 0.13, 0.15000000000000002, 0.16999999999999998, 0.19, 0.21000000000000002, 0.22999999999999998, 0.25, 0.27, 0.29000000000000004, 0.31, 0.33, 0.35, 0.37, 0.39, 0.41000000000000003, 0.43, 0.45, 0.47, 0.49, 0.51, 0.53, 0.55, 0.5700000000000001, 0.59, 0.61, 0.63, 0.65, 0.67, 0.6900000000000001, 0.71, 0.73, 0.75, 0.77, 0.79, 0.81, 0.8300000000000001, 0.85, 0.87, 0.89, 0.91, 0.93, 0.95, 0.97, 0.99], "y": [6, 0, 1, 4, 2, 5, 4, 1, 2, 1, 6, 2, 1, 0, 2, 2, 1, 3, 1, 6, 0, 5, 2, 2, 0, 3, 1, 1, 2, 2, 1, 3, 4, 3, 2, 1, 2, 1, 2, 1, 0, 0, 3, 0, 1, 1, 1, 0, 0, 0], "width": 0.02, "name": "move_ev", "marker": {"color": "#e67e22", "opacity": 0.6}}, {"type": "bar", "x": [0.01, 0.03, 0.05, 0.07, 0.09, 0.11, 0.13, 0.15000000000000002, 0.16999999999999998, 0.19, 0.21000000000000002, 0.22999999999999998, 0.25, 0.27, 0.29000000000000004, 0.31, 0.33, 0.35, 0.37, 0.39, 0.41000000000000003, 0.43, 0.45, 0.47, 0.49, 0.51, 0.53, 0.55, 0.5700000000000001, 0.59, 0.61, 0.63, 0.65, 0.67, 0.6900000000000001, 0.71, 0.73, 0.75, 0.77, 0.79, 0.81, 0.8300000000000001, 0.85, 0.87, 0.89, 0.91, 0.93, 0.95, 0.97, 0.99], "y": [155, 65, 30, 31, 23, 23, 33, 32, 18, 21, 21, 11, 8, 13, 10, 11, 13, 21, 14, 19, 28, 16, 20, 18, 10, 16, 22, 10, 11, 16, 23, 19, 31, 14, 17, 17, 17, 10, 14, 5, 12, 8, 6, 19, 8, 10, 9, 4, 0, 0], "width": 0.02, "name": "quote_sweep", "marker": {"color": "#2ecc71", "opacity": 0.6}}], "layout": {"title": "Fill Probability Distribution by Context", "xaxis": {"title": "Estimated fill probability"}, "yaxis": {"title": "Count"}, "barmode": "overlay", "height": 320, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}}};
+  Plotly.newPlot('chart_fp_dist', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Sampled at 1:200 from every estimate_fill_probability() call. Context: keep_ev = evaluating a resting order's fill chance with queue advantage; move_ev = estimating fill at a new price (back of queue); quote_sweep = initial quote price search. If keep_ev and move_ev show similar fill probabilities despite very different contracts_ahead, the model is not sensitive enough to queue depth.</p></div>
+</div>
+  </div>
+  <script>
+document.querySelectorAll('.section-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+        header.closest('.section').classList.toggle('collapsed');
+    });
+});
+</script>
+</body>
+</html>
