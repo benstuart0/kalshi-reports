@@ -70,25 +70,27 @@
       text-align: center;
       color: #555577;
     }
+    #content { display: none; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Kalshi MM &mdash; Session Reports</h1>
-    <p>47 sessions</p>
-  </header>
-  <div class="container">
-    <table>
-      <thead>
-        <tr>
-          <th>Session Start (UTC)</th>
-          <th>Duration</th>
-          <th>Session P&amp;L</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        
+  <div id="content">
+    <header>
+      <h1>Kalshi MM &mdash; Session Reports</h1>
+      <p>47 sessions</p>
+    </header>
+    <div class="container">
+      <table>
+        <thead>
+          <tr>
+            <th>Session Start (UTC)</th>
+            <th>Duration</th>
+            <th>Session P&amp;L</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          
         <tr>
           <td class="date">2026-03-23 06:01:11</td>
           <td class="duration">36h 20m</td>
@@ -371,8 +373,18 @@
           <td class="positive pnl">+$8.30</td>
           <td class="link"><a href="reports/mar10_afternoon_ar.html">View report &rarr;</a></td>
         </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
+  <script>
+    function check() {
+      if (window.location.hash === '#dog') {
+        document.getElementById('content').style.display = 'block';
+      }
+    }
+    check();
+    window.addEventListener('hashchange', check);
+  </script>
 </body>
 </html>

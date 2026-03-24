@@ -168,28 +168,40 @@ def build_index(reports: list[dict]) -> str:
       text-align: center;
       color: #555577;
     }}
+    #content {{ display: none; }}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Kalshi MM &mdash; Session Reports</h1>
-    <p>{subtitle}</p>
-  </header>
-  <div class="container">
-    <table>
-      <thead>
-        <tr>
-          <th>Session Start (UTC)</th>
-          <th>Duration</th>
-          <th>Session P&amp;L</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {'<tr><td colspan="4" class="empty">No reports yet.</td></tr>' if not reports else rows}
-      </tbody>
-    </table>
+  <div id="content">
+    <header>
+      <h1>Kalshi MM &mdash; Session Reports</h1>
+      <p>{subtitle}</p>
+    </header>
+    <div class="container">
+      <table>
+        <thead>
+          <tr>
+            <th>Session Start (UTC)</th>
+            <th>Duration</th>
+            <th>Session P&amp;L</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {'<tr><td colspan="4" class="empty">No reports yet.</td></tr>' if not reports else rows}
+        </tbody>
+      </table>
+    </div>
   </div>
+  <script>
+    function check() {{
+      if (window.location.hash === '#dog') {{
+        document.getElementById('content').style.display = 'block';
+      }}
+    }}
+    check();
+    window.addEventListener('hashchange', check);
+  </script>
 </body>
 </html>
 """
