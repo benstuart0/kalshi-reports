@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalshi MM — Analytics Overview: 20260512_184636_277a2db2</title>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0f0f1a;
+    color: #e0e0e0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+header {
+    background: linear-gradient(135deg, #1a1a3e 0%, #16213e 100%);
+    padding: 24px 32px;
+    border-bottom: 2px solid #2a2a5a;
+}
+header h1 { font-size: 1.6rem; font-weight: 700; color: #ffffff; }
+header p { color: #8888aa; margin-top: 4px; font-size: 0.85rem; }
+.container { max-width: 1400px; margin: 0 auto; padding: 24px 32px; }
+.section {
+    background: #16213e;
+    border: 1px solid #2a2a5a;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.section-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    background: #1a1a3e;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid #2a2a5a;
+    gap: 10px;
+}
+.section-header h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #c0c0f0;
+    flex: 1;
+}
+.section-header .toggle { color: #6666aa; font-size: 1.1rem; transition: transform 0.2s; }
+.section-body { padding: 20px; }
+.section.collapsed .section-body { display: none; }
+.section.collapsed .toggle { transform: rotate(-90deg); }
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.stat-card {
+    background: #1a1a3e;
+    border: 1px solid #2a2a5a;
+    border-radius: 8px;
+    padding: 14px 16px;
+}
+.stat-card .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6677aa;
+    margin-bottom: 4px;
+}
+.stat-card .value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #e0e0ff;
+    font-variant-numeric: tabular-nums;
+}
+.stat-card .sub {
+    font-size: 0.78rem;
+    color: #7788aa;
+    margin-top: 2px;
+}
+.stat-card.positive .value { color: #2ecc71; }
+.stat-card.negative .value { color: #e74c3c; }
+.stat-card.neutral .value { color: #3498db; }
+.stat-card.warn { border-color: #f39c12; }
+.stat-card.warn .value { color: #f39c12; }
+.warning-box {
+    background: #2a1a0a;
+    border: 1px solid #f39c12;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    color: #f5c842;
+    font-size: 0.85rem;
+}
+.warning-box .icon { margin-right: 6px; }
+.ok-box {
+    background: #0a1e0a;
+    border: 1px solid #2ecc71;
+    border-radius: 6px;
+    padding: 10px 16px;
+    margin-bottom: 12px;
+    color: #7dffa0;
+    font-size: 0.82rem;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+    margin-top: 8px;
+}
+thead th {
+    background: #1a1a3e;
+    color: #9090cc;
+    text-align: right;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.72rem;
+    border-bottom: 1px solid #2a2a5a;
+}
+thead th:first-child { text-align: left; }
+tbody td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #1a1a2a;
+    text-align: right;
+    color: #c0c0d8;
+    font-variant-numeric: tabular-nums;
+}
+tbody td:first-child { text-align: left; color: #d0d0f0; }
+tbody tr:hover { background: #1e1e3a; }
+.chart-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.chart-row > * { min-width: 0; overflow: hidden; }
+.chart-row.single { grid-template-columns: 1fr; }
+.chart-wrap {
+    background: #16213e;
+    border: 1px solid #2a2a5a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.divider {
+    border: none;
+    border-top: 1px solid #2a2a5a;
+    margin: 16px 0;
+}
+</style>
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+</head>
+<body>
+  
+    <header>
+      <h1>Kalshi MM — Analytics Overview</h1>
+      <p>Session: <strong>20260512_184636_277a2db2</strong> &nbsp;|&nbsp; Started: 2026-05-12 18:46:37 UTC &nbsp;|&nbsp; Duration: 4m &nbsp;|&nbsp; Generated: 2026-05-12 18:51:21 UTC</p>
+      <button id="expand-all-btn" style="margin-top:10px;padding:6px 16px;background:#2a2a4a;color:#c0c0e0;border:1px solid #444;border-radius:4px;cursor:pointer;font-size:0.85rem;">Expand All</button>
+    </header>
+  <div class="container">
+    <div class="section collapsed">
+  <div class="section-header">
+    <h2>0. Session Info</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Session ID</div>
+  <div class="value"><span style="font-size:0.85rem;word-break:break-all">20260512_184636_277a2db2</span></div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Start Time</div>
+  <div class="value">2026-05-12 18:46:36 UTC</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">End Time</div>
+  <div class="value">2026-05-12 18:50:44 UTC</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Duration</div>
+  <div class="value">0h 4m 7s</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Exit Reason</div>
+  <div class="value">signal</div>
+  
+</div>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Starting Balance</div>
+  <div class="value">$271731.07</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Ending Balance</div>
+  <div class="value">$271770.81</div>
+  
+</div>
+          <div class="stat-card positive">
+  <div class="label">Session P&amp;L</div>
+  <div class="value">$+39.74</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Fills</div>
+  <div class="value">85</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Orders Placed</div>
+  <div class="value">3967</div>
+  
+</div>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Read Throttled</div>
+  <div class="value">0</div>
+  <div class="sub">blocking waits</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Read Skipped</div>
+  <div class="value">0</div>
+  <div class="sub">non-blocking misses</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Read Wait</div>
+  <div class="value">0.0s</div>
+  <div class="sub">total blocked time</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Throttled</div>
+  <div class="value">0</div>
+  <div class="sub">blocking waits</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Skipped</div>
+  <div class="value">0</div>
+  <div class="sub">non-blocking misses</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Wait</div>
+  <div class="value">0.0s</div>
+  <div class="sub">total blocked time</div>
+</div>
+        </div>
+        <details style="margin-top:12px"><summary style="cursor:pointer;color:#aaa">Config JSON</summary><pre style="font-size:0.72rem;overflow:auto;max-height:300px;background:#111;padding:10px;border-radius:4px">{
+  "fix_or_rest": "fix",
+  "fix_host": "mm.fix.elections.kalshi.com",
+  "fix_port": 8228,
+  "fix_target_comp_id": "KalshiNR",
+  "fix_smoke_max_risk_usd": 10.0,
+  "fix_smoke_max_per_order_usd": 1.0,
+  "fix_smoke_intentional_fill_budget_usd": 5.0,
+  "max_subscriptions": 50,
+  "trade_tracker_startup_delay_seconds": 25,
+  "min_recent_volume": 125,
+  "market_rescan_interval_seconds": 180,
+  "fee_waiver_only": false,
+  "allowed_series_prefixes": [],
+  "simple_max_contracts": 10,
+  "max_spread_cents": 20,
+  "max_order_size_balance_fraction": 750,
+  "min_quote_size": 4,
+  "sizing_percentile": 55,
+  "buy_sizing_multiplier": 1.0,
+  "max_position_per_market": 20,
+  "sell_max_position_multiplier": 2.0,
+  "sell_priority_multiplier": 2.0,
+  "max_risk_per_market_dollars": null,
+  "microprice_halflife": 1.0,
+  "trade_ewma_halflife": 0.5,
+  "capital_recovery_fraction": 0.2,
+  "capital_exhaustion_fraction": 0.05,
+  "min_edge_threshold": 0.3,
+  "buy_min_edge_threshold_multiplier": 1.5,
+  "min_fill_probability": 0.0005,
+  "stop_loss_limit": 2000.0,
+  "stale_order_seconds": 60,
+  "batch_size_cap": 20,
+  "read_rate_limit": 100.0,
+  "write_rate_limit": 100.0,
+  "cancel_reserve": 15.0,
+  "ntfy_channel": "kalshi-bot-benstu",
+  "status_notification_interval_minutes": 60,
+  "models_dir": "/home/ubuntu/models",
+  "enable_analytics_logging": true,
+  "analytics_output_dir": "analytics_data",
+  "analytics_flush_interval_seconds": 30,
+  "analytics_buffer_size": 1000
+}</pre></details></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>1. Activity Summary</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Fills</div>
+  <div class="value">85</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">New Orders</div>
+  <div class="value">599</div>
+  <div class="sub">place_order API calls</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Amends</div>
+  <div class="value">3,378</div>
+  <div class="sub">amend_order API calls</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / New Order</div>
+  <div class="value">0.1419</div>
+  <div class="sub">fill rate on fresh placements</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Order Touch</div>
+  <div class="value">0.0214</div>
+  <div class="sub">fill rate incl. amends</div>
+</div>
+    </div>
+    <hr class="divider">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Fills / min</div>
+  <div class="value">20.65</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Orders / min</div>
+  <div class="value">145.53</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Amends / min</div>
+  <div class="value">820.72</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">API Calls / min</div>
+  <div class="value">1006.6</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Session Duration</div>
+  <div class="value">4m</div>
+  
+</div>
+    </div></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>2. EV &amp; Volume</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="warning-box"><span class="icon">&#9888;</span>EV recomputation discrepancy: 0.2078¢ mean absolute error vs stored values (best match at fee rate 0.0175). Stored values may use a different fee model or inventory-skewed microprice.</div>
+    
+    <div class="stats-grid">
+      <div class="stat-card positive">
+  <div class="label">EV / Contract (median)</div>
+  <div class="value">+1.4487¢</div>
+  <div class="sub">p25=+0.605¢  p75=+2.509¢</div>
+</div>
+      <div class="stat-card">
+  <div class="label">EV / Contract (mean)</div>
+  <div class="value">+1.8028¢</div>
+  <div class="sub">inflated by high-EV outliers</div>
+</div>
+      <div class="stat-card">
+  <div class="label">EV / Order Placed</div>
+  <div class="value">+2.3594¢</div>
+  <div class="sub">$0.023594/order</div>
+</div>
+      <div class="stat-card positive">
+  <div class="label">Total EV</div>
+  <div class="value">+1413.27¢</div>
+  <div class="sub">= $14.1327</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Total Volume</div>
+  <div class="value">$378.83</div>
+  <div class="sub">37,882¢ notional</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Total Contracts</div>
+  <div class="value">803</div>
+  <div class="sub">contracts filled</div>
+</div>
+      <div class="stat-card neg">
+  <div class="label">Fees Paid</div>
+  <div class="value">76.85¢</div>
+  <div class="sub">= $0.7685</div>
+</div>
+      <div class="stat-card positive">
+  <div class="label">Net Edge</div>
+  <div class="value">+3.7306%</div>
+  <div class="sub">373.06 bps</div>
+</div>
+    </div>
+    <hr class="divider">
+    <div id="chart_ev_dist" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": [-0.6387647152055204, -0.4655467687873907, -0.292328822369261, -0.11911087595113135, 0.05410707046699825, 0.22732501688512796, 0.40054296330325767, 0.5737609097213873, 0.7469788561395169, 0.9201968025576465, 1.0934147489757762, 1.266632695393906, 1.4398506418120356, 1.6130685882301652, 1.7862865346482948, 1.9595044810664244, 2.132722427484554, 2.3059403739026836, 2.4791583203208134, 2.6523762667389432, 2.8255942131570726, 2.9988121595752024, 3.172030105993332, 3.3452480524114616, 3.5184659988295914, 3.691683945247721, 3.8649018916658506, 4.038119838083981, 4.21133778450211, 4.38455573092024, 4.5577736773383695, 4.730991623756498, 4.904209570174629, 5.077427516592758, 5.250645463010888, 5.423863409429018, 5.597081355847147, 5.770299302265277, 5.943517248683406, 6.116735195101536, 6.289953141519666, 6.463171087937795, 6.6363890343559255, 6.8096069807740545, 6.982824927192185, 7.156042873610314, 7.329260820028443, 7.502478766446574, 7.675696712864704, 7.8489146592828325, 8.022132605700962, 8.195350552119091, 8.368568498537222, 8.541786444955353, 8.71500439137348, 8.88822233779161, 9.061440284209741, 9.23465823062787, 9.407876177045999, 9.58109412346413], "y": [2, 2, 2, 3, 5, 5, 1, 2, 8, 6, 1, 5, 4, 5, 3, 4, 3, 2, 1, 0, 2, 4, 1, 3, 0, 1, 0, 1, 0, 1, 0, 2, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1], "width": 0.1732179464181296, "name": "EV per contract (\u00a2)", "marker": {"color": "#9b59b6", "opacity": 0.8}}], "layout": {"title": "EV per Contract Distribution (fill_ev_per_contract)", "height": 320, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "EV per contract (\u00a2)"}, "yaxis": {"title": "Count"}, "shapes": [{"type": "line", "x0": 1.4487419856719903, "x1": 1.4487419856719903, "y0": 0, "y1": 1, "yref": "paper", "line": {"color": "#2ecc71", "width": 2, "dash": "dash"}}, {"type": "line", "x0": 1.8027688422459014, "x1": 1.8027688422459014, "y0": 0, "y1": 1, "yref": "paper", "line": {"color": "#e74c3c", "width": 2, "dash": "dot"}}], "annotations": [{"x": 1.4487419856719903, "y": 1, "yref": "paper", "text": "median +1.449\u00a2", "showarrow": false, "xanchor": "left", "font": {"color": "#2ecc71", "size": 11}}, {"x": 1.8027688422459014, "y": 0.88, "yref": "paper", "text": "mean +1.803\u00a2", "showarrow": false, "xanchor": "left", "font": {"color": "#e74c3c", "size": 11}}]}};
+  Plotly.newPlot('chart_ev_dist', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>3. Markout Analysis</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><table><thead><tr><th>Horizon</th><th>Mean Markout</th><th>Std Dev</th><th>Std Error</th><th>N Fills</th></tr></thead><tbody><tr><td>0s (EV)</td><td style='color:#2ecc71'>+1.8970¢</td><td>1.9131¢</td><td>±0.3273¢</td><td>85</td></tr><tr><td>1s</td><td style='color:#2ecc71'>+0.7113¢</td><td>2.1791¢</td><td>±0.1583¢</td><td>85</td></tr><tr><td>5s</td><td style='color:#2ecc71'>+0.9071¢</td><td>3.3242¢</td><td>±0.2174¢</td><td>85</td></tr><tr><td>10s</td><td style='color:#2ecc71'>+1.3599¢</td><td>4.0374¢</td><td>±0.4897¢</td><td>85</td></tr><tr><td>30s</td><td style='color:#2ecc71'>+1.9813¢</td><td>6.0081¢</td><td>±0.9838¢</td><td>72</td></tr><tr><td>60s</td><td style='color:#2ecc71'>+1.8925¢</td><td>7.8610¢</td><td>±2.1493¢</td><td>52</td></tr></tbody></table><hr class='divider'><p style='color:#a0c4ff;font-size:0.9rem;font-weight:600;margin:18px 0 10px;'>Adverse Selection (Mid-Shift)</p><div class='stats-grid'><div class="stat-card negative">
+  <div class="label">Adverse rate (10s, ≥1¢)</div>
+  <div class="value">48.2%</div>
+  <div class="sub">of 85 fills had mid move ≥1¢ against them</div>
+</div><div class="stat-card negative">
+  <div class="label">Adverse contracts (10s, ≥1¢)</div>
+  <div class="value">49.1%</div>
+  <div class="sub">of 803 contracts traded into ≥1¢ adverse moves</div>
+</div><div class="stat-card negative">
+  <div class="label">Mean mid-shift (10s)</div>
+  <div class="value">-0.694¢</div>
+  <div class="sub">signed against fill direction; 0 = neutral</div>
+</div><div class="stat-card warn">
+  <div class="label">Snipe vs non-snipe gap</div>
+  <div class="value">100% / 46%</div>
+  <div class="sub">snipes / non-snipes adverse rate</div>
+</div></div><table><thead><tr><th>Horizon</th><th>N Fills</th><th>Mean mid-shift</th><th>Adverse ≥1¢</th><th>Adverse &lt;0 (soft)</th></tr></thead><tbody><tr><td>1s</td><td>85</td><td style='color:#e74c3c'>-1.276¢</td><td style='color:#e74c3c'>47.1%</td><td style='color:#888'>65.9%</td></tr><tr><td>5s</td><td>85</td><td style='color:#e74c3c'>-1.141¢</td><td style='color:#e74c3c'>47.1%</td><td style='color:#888'>54.1%</td></tr><tr><td>10s</td><td>85</td><td style='color:#e74c3c'>-0.694¢</td><td style='color:#e74c3c'>48.2%</td><td style='color:#888'>50.6%</td></tr><tr><td>30s</td><td>72</td><td style='color:#e74c3c'>-0.229¢</td><td style='color:#e74c3c'>48.6%</td><td style='color:#888'>58.3%</td></tr><tr><td>60s</td><td>52</td><td style='color:#e74c3c'>-0.356¢</td><td style='color:#e74c3c'>44.2%</td><td style='color:#888'>46.2%</td></tr></tbody></table><p style='color:#8888aa;font-size:0.82rem;margin:12px 0 6px;'>Cohorts at 10s</p><table><thead><tr><th>Cohort</th><th>N Fills</th><th>Adverse ≥1¢</th><th>Mean mid-shift</th></tr></thead><tbody><tr><td>All fills</td><td>85</td><td style='color:#e74c3c'>48.2%</td><td style='color:#e74c3c'>-0.694¢</td></tr><tr><td>Snipes</td><td>3</td><td style='color:#e74c3c'>100.0%</td><td style='color:#e74c3c'>-3.833¢</td></tr><tr><td>Non-snipes</td><td>82</td><td style='color:#e74c3c'>46.3%</td><td style='color:#e74c3c'>-0.579¢</td></tr><tr><td>Buys</td><td>39</td><td style='color:#e74c3c'>51.3%</td><td style='color:#e74c3c'>-0.897¢</td></tr><tr><td>Sells</td><td>46</td><td style='color:#e74c3c'>45.7%</td><td style='color:#e74c3c'>-0.522¢</td></tr></tbody></table><p style='color:#666;font-size:0.78rem;margin-top:8px;'><strong>Mid-shift markout</strong> = sign(side) · (mid_at_horizon − mid_at_fill). Captures whether the BBO mid moved against the fill, independent of the fill's starting EV. Unlike snipe rate, this metric is invariant to compute latency — a fill that gets adversely selected is counted whether or not we attempted to cancel beforehand. <em>Adverse ≥1¢</em> requires a full-tick move against us; <em>soft</em> counts any negative shift.</p><hr class='divider'><p style='color:#a0c4ff;font-size:0.9rem;font-weight:600;margin:18px 0 10px;'>Underwater Rate (Fill vs Mid)</p><div class='stats-grid'><div class="stat-card">
+  <div class="label">Underwater rate (10s)</div>
+  <div class="value">35.3%</div>
+  <div class="sub">of 85 fills are below mid at 10s</div>
+</div><div class="stat-card">
+  <div class="label">Underwater contracts (10s)</div>
+  <div class="value">37.3%</div>
+  <div class="sub">of 803 contracts on the wrong side of mid</div>
+</div><div class="stat-card positive">
+  <div class="label">Mean mid-based markout (10s)</div>
+  <div class="value">+1.406¢</div>
+  <div class="sub">fill price vs mid; positive = in the money</div>
+</div><div class="stat-card warn">
+  <div class="label">Buy vs sell underwater</div>
+  <div class="value">41% / 30%</div>
+  <div class="sub">buys / sells underwater rate</div>
+</div></div><table><thead><tr><th>Horizon</th><th>N Fills</th><th>Mean mid-based markout</th><th>Underwater rate</th></tr></thead><tbody><tr><td>0s (EV)</td><td>85</td><td style='color:#2ecc71'>+2.100¢</td><td style='color:#e0e0e0'>2.4%</td></tr><tr><td>1s</td><td>85</td><td style='color:#2ecc71'>+0.824¢</td><td style='color:#e0e0e0'>24.7%</td></tr><tr><td>5s</td><td>85</td><td style='color:#2ecc71'>+0.959¢</td><td style='color:#e0e0e0'>35.3%</td></tr><tr><td>10s</td><td>85</td><td style='color:#2ecc71'>+1.406¢</td><td style='color:#e0e0e0'>35.3%</td></tr><tr><td>30s</td><td>72</td><td style='color:#2ecc71'>+2.035¢</td><td style='color:#e67e22'>43.1%</td></tr><tr><td>60s</td><td>52</td><td style='color:#2ecc71'>+1.971¢</td><td style='color:#e0e0e0'>36.5%</td></tr></tbody></table><p style='color:#8888aa;font-size:0.82rem;margin:12px 0 6px;'>Cohorts at 10s</p><table><thead><tr><th>Cohort</th><th>N Fills</th><th>Underwater rate</th><th>Mean mid-based markout</th></tr></thead><tbody><tr><td>All fills</td><td>85</td><td style='color:#e0e0e0'>35.3%</td><td style='color:#2ecc71'>+1.406¢</td></tr><tr><td>Snipes</td><td>3</td><td style='color:#e74c3c'>66.7%</td><td style='color:#e74c3c'>-1.667¢</td></tr><tr><td>Non-snipes</td><td>82</td><td style='color:#e0e0e0'>34.1%</td><td style='color:#2ecc71'>+1.518¢</td></tr><tr><td>Buys</td><td>39</td><td style='color:#e67e22'>41.0%</td><td style='color:#2ecc71'>+0.692¢</td></tr><tr><td>Sells</td><td>46</td><td style='color:#e0e0e0'>30.4%</td><td style='color:#2ecc71'>+2.011¢</td></tr></tbody></table><p style='color:#8888aa;font-size:0.82rem;margin:14px 0 6px;'>Underwater rate by fill size</p><div id="chart_underwater_by_size" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "name": "Buy", "x": ["1\u20135", "6\u201310"], "y": [0.0, 45.714285714285715], "text": ["n=4", "n=35"], "textposition": "outside", "textfont": {"size": 10, "color": "#a0a0a0"}, "marker": {"color": "#2ecc71"}, "error_y": {"type": "data", "symmetric": false, "array": [48.990002040399915, 16.09626294557676], "arrayminus": [0.0, 15.248512080524861], "color": "#888", "thickness": 1, "width": 4}, "customdata": [[4, 4.875], [35, 0.21428571428571427]], "hovertemplate": "<b>Buy</b><br>Size: %{x}<br>Underwater: %{y:.1f}%<br>n=%{customdata[0]:,}<br>Mean mid-based markout: %{customdata[1]:+.3f}\u00a2<extra></extra>"}, {"type": "bar", "name": "Sell", "x": ["1\u20135", "6\u201310"], "y": [0.0, 33.33333333333333], "text": ["n=4", "n=42"], "textposition": "outside", "textfont": {"size": 10, "color": "#a0a0a0"}, "marker": {"color": "#e67e22"}, "error_y": {"type": "data", "symmetric": false, "array": [48.990002040399915, 15.114439654999751], "arrayminus": [0.0, 12.32105257136101], "color": "#888", "thickness": 1, "width": 4}, "customdata": [[4, 2.75], [42, 1.9404761904761905]], "hovertemplate": "<b>Sell</b><br>Size: %{x}<br>Underwater: %{y:.1f}%<br>n=%{customdata[0]:,}<br>Mean mid-based markout: %{customdata[1]:+.3f}\u00a2<extra></extra>"}, {"type": "scatter", "x": ["1\u20135", "6\u201310"], "y": [35.294117647058826, 35.294117647058826], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.2, "dash": "dash"}, "name": "Overall (35.3%)", "hoverinfo": "skip"}], "layout": {"title": "Underwater Rate by Fill Size \u2014 10s horizon (95% Wilson CI)", "height": 380, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Fill Size (contracts, bucket width = 5)"}, "yaxis": {"title": "Underwater Rate (%)", "rangemode": "tozero"}, "barmode": "group", "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_underwater_by_size', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><p style='color:#666;font-size:0.78rem;margin-top:6px;'>Grouped bars by fill size; error bars are 95% Wilson score intervals on the proportion. Dashed line marks the overall (both-sides) underwater rate. If larger fills underperform, the per-bucket rate trends upward with size — a signal that big fills get picked off harder.</p><p style='color:#666;font-size:0.78rem;margin-top:8px;'><strong>Underwater rate</strong> = fraction of fills whose price is on the wrong side of the BBO mid at the horizon (i.e. <code>mid_based_markout &lt; 0</code>). For a buy this means mid is now below the fill price; for a sell, mid is above. Combines starting EV at fill <em>and</em> subsequent mid drift — distinct from the mid-shift adverse rate above, which isolates post-trade book movement.</p><hr class='divider'><div id="chart_markout" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [1.731100867192479, 0.821815174660731, 0.8289194569072637, 1.801329661904753, 3.291316398227571, 9.787414872003318], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [0.9612888158888186, -0.24989879405831922, -0.6514069802920458, -0.43712617815366683, -1.5725925091330453, -2.3987017929299017], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.2)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [1.3461948415406488, 0.2859581903012059, 0.08875623830760891, 0.6821017418755431, 0.8593619445472628, 3.694356539536708], "mode": "lines+markers", "line": {"color": "#2ecc71", "width": 2.5}, "marker": {"color": "#2ecc71", "size": 7}, "name": "buy vs microprice (n=39)", "showlegend": true}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [2.2559040343872736, 1.059929275684964, 1.0693741927976235, 1.859897697634816, 3.459286322817979, 9.773201323309953], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [0.9235831450999056, -0.1112113269670153, -0.5565536799771108, -0.47528231301943147, -1.5926196561513126, -2.217645767754398], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.1)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [1.5897435897435896, 0.47435897435897434, 0.2564102564102564, 0.6923076923076923, 0.9333333333333333, 3.7777777777777777], "mode": "lines+markers", "line": {"color": "#2ecc71", "width": 2, "dash": "dash"}, "marker": {"color": "#2ecc71", "size": 6}, "name": "buy vs mid", "showlegend": true}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [3.370285324838224, 1.6663255770825582, 2.5595054424237444, 3.4010498195260666, 5.571165645833592, 4.935977239787924], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [1.3578452304146584, 0.4775425342247277, 0.6423109863770666, 0.46810928017407205, -0.005932695825789924, -3.0589686579530895], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.2)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [2.364065277626441, 1.071934055653643, 1.6009082144004054, 1.9345795498500693, 2.782616475003901, 0.9385042909174174], "mode": "lines+markers", "line": {"color": "#e67e22", "width": 2.5}, "marker": {"color": "#e67e22", "size": 7}, "name": "sell vs microprice (n=46)", "showlegend": true}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [3.4547225231917054, 1.8833799984618, 2.4491485034544533, 3.435239328923466, 5.403766417257424, 4.7475879555899585], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [1.6104948681126423, 0.35575043632080894, 0.65954714871946, 0.5864998015113163, 0.23909072559971944, -2.7181761908840767], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.1)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [2.532608695652174, 1.1195652173913044, 1.5543478260869565, 2.010869565217391, 2.8214285714285716, 1.0147058823529411], "mode": "lines+markers", "line": {"color": "#e67e22", "width": 2, "dash": "dash"}, "marker": {"color": "#e67e22", "size": 6}, "name": "sell vs mid", "showlegend": true}, {"type": "scatter", "x": ["0s", "60s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Markout by Action: Buy vs Sell (95% CI)", "height": 380, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "showlegend": true, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_markout', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><hr class='divider'><div id="chart_markout_by_price" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [2.2560732331743907, 1.0149404836646672, 1.0934722847404263, 2.318668380542289, 3.0233590308397718, 9.748976113333944], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [0.6020409349581294, 0.4243150531052963, 0.3018414678159893, 0.3191982808095415, 0.2526316363009924, 0.46593319166547076], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(231,76,60,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.42905708406626, 0.7196277683849818, 0.6976568762782078, 1.3189333306759152, 1.637995333570382, 5.107454652499707], "mode": "lines+markers", "name": "0\u201320\u00a2  (n=19)", "line": {"color": "#e74c3c", "width": 2}, "marker": {"color": "#e74c3c", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [4.205135250915178, 1.9424951973616713, 2.806720976062765, 2.9814911512019613, 3.0661168726762797, 2.963733418446302], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.4623734591120263, 0.8581416325377356, 0.7152267076890813, 0.5864272333120002, -0.16109478970828084, -4.020334832654231], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [2.833754355013602, 1.4003184149497034, 1.7609738418759233, 1.7839591922569806, 1.4525110414839995, -0.5283007071039643], "mode": "lines+markers", "name": "20\u201340\u00a2  (n=24)", "line": {"color": "#e67e22", "width": 2}, "marker": {"color": "#e67e22", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [2.811128361961625, 1.8223160699613858, 2.617490920796137, 3.186534382322123, 3.7909644039044217, -8.259049597606126], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [0.6565941580370125, -0.5938028562453299, -1.6866969544724526, -1.5586768208287407, -4.881313248895561, -9.150882644648522], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.7338612599993188, 0.614256606858028, 0.4653969831618422, 0.813928780746691, -0.5451744224955696, -8.704966121127324], "mode": "lines+markers", "name": "40\u201360\u00a2  (n=11)", "line": {"color": "#2ecc71", "width": 2}, "marker": {"color": "#2ecc71", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [2.7242962529247707, 0.8409667949147481, 1.3585755087031626, 3.474558228862386, 8.509231521399084, 12.80119200954978], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [0.5082709662928095, -1.407379616842924, -0.9047024980033813, -0.5927607671720512, 0.07325569355168682, 2.0006384497174983], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(52,152,219,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.6162836096087903, -0.2832064109640879, 0.22693650534989057, 1.4408987308451675, 4.291243607475385, 7.40091522963364], "mode": "lines+markers", "name": "60\u201380\u00a2  (n=18)", "line": {"color": "#3498db", "width": 2}, "marker": {"color": "#3498db", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [2.334628399786363, 2.1575887151669817, 2.796858762598074, 3.0050229656436236, 6.892592906761465, 5.555678173264523], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [0.42242292950063476, -0.38502576968661995, -0.8922134716705339, -1.0314107216724193, -1.3568437065530685, -3.361967687472399], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(155,89,182,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.378525664643499, 0.8862814727401809, 0.9523226454637699, 0.9868061219856022, 2.767874600104198, 1.096855242896062], "mode": "lines+markers", "name": "80\u2013100\u00a2  (n=13)", "line": {"color": "#9b59b6", "width": 2}, "marker": {"color": "#9b59b6", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "60s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Markout by Fill Price Bucket (95% CI)", "height": 400, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_markout_by_price', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script>
+<table class='stats-table' style='width:100%;border-collapse:collapse;font-size:0.82rem;margin-top:12px;'>
+  <caption style='color:#aaa;text-align:left;padding-bottom:6px;'>
+    Adverse selection significance test — markout at t=60s, H₁: mean &lt; 0 (one-tailed t-test).
+    Bands use naive SE (std/√n); CIs may be too narrow if fills within the same ticker are correlated.
+  </caption>
+  <thead>
+    <tr style='border-bottom:1px solid #444;color:#aaa;'>
+      <th style='text-align:left;padding:4px 8px;'>Price Bucket</th>
+      <th style='text-align:right;padding:4px 8px;'>n fills</th>
+      <th style='text-align:right;padding:4px 8px;'>Mean markout</th>
+      <th style='text-align:right;padding:4px 8px;'>t-stat</th>
+      <th style='text-align:right;padding:4px 8px;'>p-value</th>
+      <th style='text-align:right;padding:4px 8px;'>Significance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>0–20¢</td>
+      <td style='text-align:right;padding:4px 8px;'>14</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#2ecc71'>+5.11¢</span></td>
+      <td style='text-align:right;padding:4px 8px;'>2.41</td>
+      <td style='text-align:right;padding:4px 8px;'>0.984</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>ns</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>20–40¢</td>
+      <td style='text-align:right;padding:4px 8px;'>16</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#e74c3c'>-0.53¢</span></td>
+      <td style='text-align:right;padding:4px 8px;'>-0.30</td>
+      <td style='text-align:right;padding:4px 8px;'>0.385</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>ns</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>40–60¢</td>
+      <td style='text-align:right;padding:4px 8px;'>4</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#e74c3c'>-8.70¢</span></td>
+      <td style='text-align:right;padding:4px 8px;'>-38.26</td>
+      <td style='text-align:right;padding:4px 8px;'>0.000</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#e74c3c;font-weight:bold'>*** p<0.01</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>60–80¢</td>
+      <td style='text-align:right;padding:4px 8px;'>8</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#2ecc71'>+7.40¢</span></td>
+      <td style='text-align:right;padding:4px 8px;'>3.36</td>
+      <td style='text-align:right;padding:4px 8px;'>0.994</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>ns</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>80–100¢</td>
+      <td style='text-align:right;padding:4px 8px;'>10</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#2ecc71'>+1.10¢</span></td>
+      <td style='text-align:right;padding:4px 8px;'>0.54</td>
+      <td style='text-align:right;padding:4px 8px;'>0.700</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>ns</span></td>
+    </tr>
+  </tbody>
+</table><hr class='divider'><div class='chart-row'><div id="chart_markout_by_price_buys" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [2.38710378019604, 0.6901702958764713, 0.7619211286472561, 2.9292804563176182, 5.163080404515411, 16.603681639963924], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [0.6164860519961007, 0.19335108719868369, 0.19727637102470952, 0.25704670362651694, 0.5720751614192237, 0.1299472386617211], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(231,76,60,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.5017949160960704, 0.44176069153757747, 0.47959874983598283, 1.5931635799720676, 2.8675777829673175, 8.366814439312822], "mode": "lines+markers", "name": "0\u201320\u00a2  (n=13)", "line": {"color": "#e74c3c", "width": 2}, "marker": {"color": "#e74c3c", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [2.2274685293058507, 2.1510889887035916, 3.2485985148135703, 3.528896898517722, 4.69844071655325, 5.956175447351958], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [0.6806851361797984, -0.45786879419405324, -3.0027678485929603, -3.1384645497158266, -2.7287460159496173, 0.9377931720698798], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.4540768327428246, 0.8466100972547691, 0.12291533311030516, 0.19521617440094788, 0.9848473503018162, 3.446984309710919], "mode": "lines+markers", "name": "20\u201340\u00a2  (n=6)", "line": {"color": "#e67e22", "width": 2}, "marker": {"color": "#e67e22", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.8110952429573768, 1.712261963978828, 1.5256315007572518, 1.1769063803234723, -0.27547971871710564, null], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.1046704641885685, -1.116435837010722, -0.0999821612309213, -0.8555090962392506, -3.9193553466234072, null], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.4578828535729726, 0.297913063484053, 0.7128246697631653, 0.16069864204211087, -2.0974175326702564, null], "mode": "lines+markers", "name": "40\u201360\u00a2  (n=5)", "line": {"color": "#2ecc71", "width": 2}, "marker": {"color": "#2ecc71", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [2.1831563206491444, 2.199592444896364, 3.7674292253419885, 6.051735595090593, 6.060747784535201, 6.0817064043695375], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [0.39179582875237295, -2.2532878688809346, -3.304130866198002, -2.6590705950074973, -6.422414750540068, -0.9073035651419548], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(52,152,219,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.2874760747007588, -0.026847711992285132, 0.23164917957199346, 1.6963325000415475, -0.1808334830024331, 2.587201419613791], "mode": "lines+markers", "name": "60\u201380\u00a2  (n=7)", "line": {"color": "#3498db", "width": 2}, "marker": {"color": "#3498db", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.3138841798159362, 1.2284189024081535, 1.8177434396973533, 2.0455915251001575, -0.1435461562816377, -1.3734906823514343], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [0.67413010108638, -1.4713717737192433, -3.991855954285513, -4.0351606159496, -1.1802460564008932, -5.007090746129432], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(155,89,182,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [0.9940071404511581, -0.12147643565554489, -1.0870562572940798, -0.9947845454247215, -0.6618961063412655, -3.190290714240433], "mode": "lines+markers", "name": "80\u2013100\u00a2  (n=8)", "line": {"color": "#9b59b6", "width": 2}, "marker": {"color": "#9b59b6", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "60s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Short-term Markout by Fill Price Bucket \u2014 Buys Only (95% CI)", "height": 300, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_markout_by_price_buys', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><div id="chart_markout_by_price_sells" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [2.232883456207478, 2.4642346189509308, 2.1581153477312176, 1.3834352227441862, 0.2305250066143788, 3.5431645131843106], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [0.31003343979586195, 0.17911158415778528, 0.18211695274150674, 0.06610035832431926, -1.4630033205957114, -2.019881306353193], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(231,76,60,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.2714584480016702, 1.3216731015543581, 1.1701161502363622, 0.7247677905342528, -0.6162391569906663, 0.7616416034155588], "mode": "lines+markers", "name": "0\u201320\u00a2  (n=6)", "line": {"color": "#e74c3c", "width": 2}, "marker": {"color": "#e74c3c", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [4.815031940193233, 2.3671288161028627, 2.7091301726188735, 3.4221761140398645, 3.9390479857270204, 2.4343871961592236], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.7722617846811557, 0.8026468922598334, 1.9048565169767184, 1.2049042823781186, -0.7589296138283259, -5.325735541204791], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [3.2936468624371944, 1.584887854181348, 2.306993344797796, 2.3135401982089916, 1.5900591859493474, -1.4456741725227835], "mode": "lines+markers", "name": "20\u201340\u00a2  (n=18)", "line": {"color": "#e67e22", "width": 2}, "marker": {"color": "#e67e22", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [4.408263022438889, 3.3128141621356684, 3.764451415034941, 6.855475184001976, 7.8055829436858835, -8.259049597606126], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [-0.48057649172967465, -1.5570617094629875, -3.2460369263801283, -4.138900724667628, -7.343688678502336, -9.150882644648522], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.9638432653546072, 0.8778762263363404, 0.25920724432740627, 1.3582872296671742, 0.23094713259177388, -8.704966121127324], "mode": "lines+markers", "name": "40\u201360\u00a2  (n=6)", "line": {"color": "#2ecc71", "width": 2}, "marker": {"color": "#2ecc71", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [3.4230262945142766, 0.994129156027213, 1.8987596929787613, 5.117814771354207, 15.081333892908972, 14.216609848397518], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [0.22802324185898026, -1.8868166857376831, -1.4508846312889292, -2.561114834095629, 0.20926895775852472, 3.794363150882994], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(52,152,219,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.8255247681866285, -0.4463437648552351, 0.22393753084491602, 1.2783499686292894, 7.645301425333749, 9.005486499640256], "mode": "lines+markers", "name": "60\u201380\u00a2  (n=11)", "line": {"color": "#3498db", "width": 2}, "marker": {"color": "#3498db", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [3.8370734444547665, 4.690691372927863, 8.023994014331294, 7.980279148761145, 12.887005474046926, 11.257534985813386], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [0.15043716224772186, 0.30669687941882096, 0.4066637654213663, 0.334423230923095, -0.49171486094760297, -0.48953258574827174], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(155,89,182,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s", "60s"], "y": [1.9937553033512443, 2.498694126173342, 4.2153288898763295, 4.15735118984212, 6.197645306549662, 5.384001200032557], "mode": "lines+markers", "name": "80\u2013100\u00a2  (n=5)", "line": {"color": "#9b59b6", "width": 2}, "marker": {"color": "#9b59b6", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "60s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Short-term Markout by Fill Price Bucket \u2014 Sells Only (95% CI)", "height": 300, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_markout_by_price_sells', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Markout measured from fill price. At t=0 the value equals EV captured (fill price vs microprice). A declining curve indicates adverse selection eroding edge over time. Red dashed line = breakeven. Buy = bought YES (long); Sell = sold YES (short).</p><p style='color:#666;font-size:0.78rem;margin-top:6px;'>Price bucket chart: fills grouped by the price they were filled at. Shaded bands = 95% CI (Liang-Zeger cluster-robust SE, one cluster per event). Near-extreme buckets (0–20¢, 80–100¢) with steeply declining curves indicate adverse selection. Significance table tests H₁: mean markout &lt; 0 at the final horizon.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>4. Fill Correlation &amp; Event Clustering</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Unique Events</div>
+  <div class="value">16</div>
+  <div class="sub">correlation clusters</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Event (mean)</div>
+  <div class="value">5.3</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Event (median)</div>
+  <div class="value">2</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Event (max)</div>
+  <div class="value">17</div>
+  
+</div>
+    </div><hr class='divider'><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Naive vs cluster-robust standard errors by horizon</p><table><thead><tr><th>Horizon</th><th>Mean</th><th>Naive SE</th><th>Cluster SE</th><th>Design Effect</th><th>Eff. N</th><th>N Fills</th><th>N Events</th><th>Sig. (p&lt;0.05)</th></tr></thead><tbody><tr><td>0s (EV)</td><td style='color:#2ecc71'>+1.8970¢</td><td>±0.2075¢</td><td>±0.3273¢</td><td style='color:#f0c060'>1.58x</td><td>34</td><td>85</td><td>16</td><td style='color:#2ecc71'>&#10003;</td></tr><tr><td>1s</td><td style='color:#2ecc71'>+0.7113¢</td><td>±0.2364¢</td><td>±0.1583¢</td><td style='color:#2ecc71'>0.67x</td><td>189</td><td>85</td><td>16</td><td style='color:#2ecc71'>&#10003;</td></tr><tr><td>5s</td><td style='color:#2ecc71'>+0.9071¢</td><td>±0.3606¢</td><td>±0.2174¢</td><td style='color:#2ecc71'>0.60x</td><td>234</td><td>85</td><td>16</td><td style='color:#2ecc71'>&#10003;</td></tr><tr><td>10s</td><td style='color:#2ecc71'>+1.3599¢</td><td>±0.4379¢</td><td>±0.4897¢</td><td style='color:#2ecc71'>1.12x</td><td>68</td><td>85</td><td>16</td><td style='color:#2ecc71'>&#10003;</td></tr><tr><td>30s</td><td style='color:#2ecc71'>+1.9813¢</td><td>±0.7081¢</td><td>±0.9838¢</td><td style='color:#f0c060'>1.39x</td><td>37</td><td>72</td><td>15</td><td style='color:#e74c3c'>&#10007;</td></tr><tr><td>60s</td><td style='color:#2ecc71'>+1.8925¢</td><td>±1.0901¢</td><td>±2.1493¢</td><td style='color:#f0c060'>1.97x</td><td>13</td><td>52</td><td>13</td><td style='color:#e74c3c'>&#10007;</td></tr></tbody></table><hr class='divider'><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Worst events by markout (300s horizon)</p><table><thead><tr><th>Event</th><th>Mean Markout</th><th>Std Dev</th><th>Fills</th><th>Mean EV</th></tr></thead><tbody><tr><td>KXATPCHALLENGERMATCH-26MAY12RONSAK</td><td style='color:#e74c3c'>-5.2214¢</td><td>5.657</td><td>6</td><td>+1.445¢</td></tr><tr><td>KXATPCHALLENGERMATCH-26MAY12SHEGAS</td><td style='color:#e74c3c'>-3.6744¢</td><td>0.740</td><td>3</td><td>+0.976¢</td></tr><tr><td>KXABAGAME-26MAY121300CZVCEO</td><td style='color:#e74c3c'>-1.2790¢</td><td>12.454</td><td>7</td><td>+3.297¢</td></tr><tr><td>KXATPCHALLENGERMATCH-26MAY12TORFER</td><td style='color:#e74c3c'>-0.2412¢</td><td>0.174</td><td>2</td><td>+0.205¢</td></tr><tr><td>KXLALIGAGAME-26MAY12RCCLEV</td><td style='color:#2ecc71'>+0.6714¢</td><td>1.812</td><td>3</td><td>+0.526¢</td></tr><tr><td>KXLALIGAGAME-26MAY12RBBELC</td><td style='color:#2ecc71'>+0.9844¢</td><td>3.544</td><td>4</td><td>+0.805¢</td></tr><tr><td>KXWTAMATCH-26MAY12GAUAND</td><td style='color:#2ecc71'>+1.6546¢</td><td>4.584</td><td>9</td><td>+1.017¢</td></tr><tr><td>KXSAUDIPLGAME-26MAY12ALNHIL</td><td style='color:#2ecc71'>+9.1340¢</td><td>7.396</td><td>13</td><td>+2.630¢</td></tr></tbody></table><hr class='divider'><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Best events by markout (300s horizon)</p><table><thead><tr><th>Event</th><th>Mean Markout</th><th>Std Dev</th><th>Fills</th><th>Mean EV</th></tr></thead><tbody><tr><td>KXSAUDIPLGAME-26MAY12ALNHIL</td><td style='color:#2ecc71'>+9.1340¢</td><td>7.396</td><td>13</td><td>+2.630¢</td></tr><tr><td>KXWTAMATCH-26MAY12GAUAND</td><td style='color:#2ecc71'>+1.6546¢</td><td>4.584</td><td>9</td><td>+1.017¢</td></tr><tr><td>KXLALIGAGAME-26MAY12RBBELC</td><td style='color:#2ecc71'>+0.9844¢</td><td>3.544</td><td>4</td><td>+0.805¢</td></tr><tr><td>KXLALIGAGAME-26MAY12RCCLEV</td><td style='color:#2ecc71'>+0.6714¢</td><td>1.812</td><td>3</td><td>+0.526¢</td></tr><tr><td>KXATPCHALLENGERMATCH-26MAY12TORFER</td><td style='color:#e74c3c'>-0.2412¢</td><td>0.174</td><td>2</td><td>+0.205¢</td></tr><tr><td>KXABAGAME-26MAY121300CZVCEO</td><td style='color:#e74c3c'>-1.2790¢</td><td>12.454</td><td>7</td><td>+3.297¢</td></tr><tr><td>KXATPCHALLENGERMATCH-26MAY12SHEGAS</td><td style='color:#e74c3c'>-3.6744¢</td><td>0.740</td><td>3</td><td>+0.976¢</td></tr><tr><td>KXATPCHALLENGERMATCH-26MAY12RONSAK</td><td style='color:#e74c3c'>-5.2214¢</td><td>5.657</td><td>6</td><td>+1.445¢</td></tr></tbody></table><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Fills within the same event (e.g. multiple spread brackets on one basketball game) are correlated — their markouts move together. The naive SE (std/&radic;N) treats fills as independent and overstates statistical significance. The cluster-robust SE groups fills by event and accounts for within-event correlation. The design effect (cluster SE / naive SE) shows how much correlation inflates uncertainty; values &gt; 2 mean the effective sample size is &lt; 25% of the raw fill count. If the worst-markout events are concentrated in a few correlated clusters, the session-wide markout may be driven by one or two bad outcomes rather than a systematic edge problem.</p></div>
+</div><div style='margin:18px 0 6px;padding:4px 12px;background:#1a1a2e;border-left:3px solid #3498db;color:#6688aa;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;'>PnL Attribution</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>5. PnL Overview</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><table class='stats-table' style='width:100%;border-collapse:collapse;font-size:0.82rem;margin-bottom:20px;'>
+  <caption style='color:#aaa;text-align:left;padding-bottom:8px;font-size:0.78rem;'>EV → PnL reconciliation — how theoretical edge translates to actual portfolio change. Gross edge and 60s estimates exclude outlier fills and one-sided-book fills. The 60s adverse selection estimate is computed on the cohort of fills whose markets were still live 60 seconds after the fill.</caption>
+  <thead>
+    <tr style='border-bottom:1px solid #444;color:#aaa;'>
+      <th style='text-align:left;padding:4px 8px;'>Line</th>
+      <th style='text-align:right;padding:4px 8px;'>Cents</th>
+      <th style='text-align:right;padding:4px 8px;'>Dollars</th>
+      <th style='text-align:left;padding:4px 8px;'>Notes</th>
+    </tr>
+  </thead>
+  <tbody><tr><td colspan='4' style='padding:10px 8px 4px;color:#3498db;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-top:2px solid #2a2a4e;'>Fill EV</td></tr><tr style=''><td style='padding:5px 8px;'>Gross edge at fill time</td><td style='text-align:right;padding:5px 8px;'><span style='color:#2ecc71;font-family:monospace'>+1,490¢</span></td><td style='text-align:right;padding:5px 8px;'><span style='color:#2ecc71;font-family:monospace'>+14.90</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>before fees; outlier fills (EV&nbsp;&gt;&nbsp;20¢) excluded</td></tr><tr style=''><td style='padding:5px 8px;padding-left:20px;'>Less: fees paid</td><td style='text-align:right;padding:5px 8px;'><span style='color:#e74c3c;font-family:monospace'>-77¢</span></td><td style='text-align:right;padding:5px 8px;'><span style='color:#e74c3c;font-family:monospace'>-0.77</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>maker fees across all fills</td></tr><tr style='border-top:1px solid #2a2a4e;'><td style='padding:5px 8px;font-weight:600;'>Net fill EV (after fees)</td><td style='text-align:right;padding:5px 8px;font-weight:600;'><span style='color:#2ecc71;font-family:monospace'>+1,413¢</span></td><td style='text-align:right;padding:5px 8px;font-weight:600;'><span style='color:#2ecc71;font-family:monospace'>+14.13</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>our model's edge estimate at fill time</td></tr><tr style=''><td style='padding:5px 8px;padding-left:20px;'>Adverse selection erosion to 60s (52 fills, 61% of total)</td><td style='text-align:right;padding:5px 8px;'><span style='color:#e74c3c;font-family:monospace'>-316¢</span></td><td style='text-align:right;padding:5px 8px;'><span style='color:#e74c3c;font-family:monospace'>-3.16</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>43% of t=0 gross retained</td></tr><tr style='border-top:1px solid #2a2a4e;'><td style='padding:5px 8px;font-weight:600;'>Edge surviving 60s, net of fees (est.)</td><td style='text-align:right;padding:5px 8px;font-weight:600;'><span style='color:#2ecc71;font-family:monospace'>+563¢</span></td><td style='text-align:right;padding:5px 8px;font-weight:600;'><span style='color:#2ecc71;font-family:monospace'>+5.63</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>excludes fills in markets settled within 60s</td></tr><tr><td colspan='4' style='padding:10px 8px 4px;color:#3498db;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-top:2px solid #2a2a4e;'>Portfolio Change This Session</td></tr><tr style=''><td style='padding:5px 8px;'>Unrealized PnL change</td><td style='text-align:right;padding:5px 8px;'><span style='color:#2ecc71;font-family:monospace'>+66,742¢</span></td><td style='text-align:right;padding:5px 8px;'><span style='color:#2ecc71;font-family:monospace'>+667.42</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>ending (+94,697¢) − starting (+27,955¢); incl. cross-session carry</td></tr>
+  </tbody>
+</table>
+<hr class='divider'><div id="chart_pnl" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "lines", "x": ["2026-05-12 18:48:24.422562+00:00", "2026-05-12 18:48:24.832857+00:00", "2026-05-12 18:48:27.586884+00:00", "2026-05-12 18:48:28.986284+00:00", "2026-05-12 18:48:29.160664+00:00", "2026-05-12 18:48:31.716840+00:00", "2026-05-12 18:48:31.828745+00:00", "2026-05-12 18:48:33.184124+00:00", "2026-05-12 18:48:33.314667+00:00", "2026-05-12 18:48:35.019310+00:00", "2026-05-12 18:48:36.270393+00:00", "2026-05-12 18:48:41.434180+00:00", "2026-05-12 18:48:47.717984+00:00", "2026-05-12 18:48:48.157205+00:00", "2026-05-12 18:48:48.773916+00:00", "2026-05-12 18:48:49.018142+00:00", "2026-05-12 18:48:50.632802+00:00", "2026-05-12 18:48:50.640936+00:00", "2026-05-12 18:48:50.945896+00:00", "2026-05-12 18:48:50.980289+00:00", "2026-05-12 18:48:51.673577+00:00", "2026-05-12 18:48:52.104292+00:00", "2026-05-12 18:48:52.192587+00:00", "2026-05-12 18:48:53.397350+00:00", "2026-05-12 18:48:53.405507+00:00", "2026-05-12 18:48:56.265327+00:00", "2026-05-12 18:48:57.971611+00:00", "2026-05-12 18:48:59.134672+00:00", "2026-05-12 18:49:01.781939+00:00", "2026-05-12 18:49:02.035655+00:00", "2026-05-12 18:49:05.537943+00:00", "2026-05-12 18:49:06.009265+00:00", "2026-05-12 18:49:07.554226+00:00", "2026-05-12 18:49:09.934928+00:00", "2026-05-12 18:49:10.008751+00:00", "2026-05-12 18:49:12.046476+00:00", "2026-05-12 18:49:12.662485+00:00", "2026-05-12 18:49:15.011181+00:00", "2026-05-12 18:49:15.567016+00:00", "2026-05-12 18:49:15.789598+00:00", "2026-05-12 18:49:21.213683+00:00", "2026-05-12 18:49:24.586033+00:00", "2026-05-12 18:49:25.409143+00:00", "2026-05-12 18:49:28.190413+00:00", "2026-05-12 18:49:30.889102+00:00", "2026-05-12 18:49:33.825824+00:00", "2026-05-12 18:49:34.885454+00:00", "2026-05-12 18:49:35.770976+00:00", "2026-05-12 18:49:36.440448+00:00", "2026-05-12 18:49:37.246823+00:00", "2026-05-12 18:49:40.112673+00:00", "2026-05-12 18:49:41.032787+00:00", "2026-05-12 18:49:46.023946+00:00", "2026-05-12 18:49:46.039620+00:00", "2026-05-12 18:49:46.432364+00:00", "2026-05-12 18:49:47.122783+00:00", "2026-05-12 18:49:49.042496+00:00", "2026-05-12 18:49:49.667188+00:00", "2026-05-12 18:49:51.044153+00:00", "2026-05-12 18:49:51.503885+00:00", "2026-05-12 18:49:53.286462+00:00", "2026-05-12 18:49:53.554231+00:00", "2026-05-12 18:49:57.603837+00:00", "2026-05-12 18:49:58.811870+00:00", "2026-05-12 18:49:59.813707+00:00", "2026-05-12 18:50:01.842121+00:00", "2026-05-12 18:50:02.385685+00:00", "2026-05-12 18:50:02.546004+00:00", "2026-05-12 18:50:06.567821+00:00", "2026-05-12 18:50:08.445366+00:00", "2026-05-12 18:50:12.021917+00:00", "2026-05-12 18:50:13.912467+00:00", "2026-05-12 18:50:14.334718+00:00", "2026-05-12 18:50:16.189736+00:00", "2026-05-12 18:50:16.783100+00:00", "2026-05-12 18:50:20.026439+00:00", "2026-05-12 18:50:20.814020+00:00", "2026-05-12 18:50:21.157769+00:00", "2026-05-12 18:50:26.086339+00:00", "2026-05-12 18:50:29.183156+00:00", "2026-05-12 18:50:29.842311+00:00", "2026-05-12 18:50:30.556403+00:00", "2026-05-12 18:50:30.564877+00:00", "2026-05-12 18:50:31.070795+00:00", "2026-05-12 18:50:32.372024+00:00"], "y": [-5.391081075291169, -4.218878982409348, -3.5124953177660503, 15.269159071645444, 37.572265514541826, 52.927630516711915, 75.53716080911376, 91.95454948438827, 109.01272503592655, 115.67328831629852, 109.45552621619817, 150.29474552549507, 149.30501445523154, 164.34092314995937, 163.41591023753583, 199.12934205668225, 295.80637302341415, 316.76947644864856, 317.36271873853116, 365.3602135617258, 386.3448321392438, 401.1977976844578, 413.82283449071116, 431.33361335315715, 443.4018528394375, 445.9917479974727, 459.1945951295801, 479.9171205834627, 548.0175892712314, 553.1159686717587, 578.2067613310644, 578.6861443364393, 577.0797474409677, 586.804696254098, 594.0798968774052, 601.0536701112547, 654.1225930047078, 668.6100128614278, 690.9712469072662, 692.6842574755934, 750.7190401170977, 754.7114734775008, 788.21223074182, 792.4521475333108, 812.623655238201, 827.4651121742106, 856.3596859320447, 876.4941747907686, 873.8845986572874, 893.4694757230443, 904.0035099532923, 912.3907782173958, 944.2594745543493, 974.5232869735438, 976.2325862697786, 992.1713012454807, 1010.3812074448393, 1006.5810085425738, 1008.3326380437661, 1038.200131514458, 1128.3639663515617, 1179.1885102677006, 1186.8461208123574, 1205.460341003391, 1227.752643026557, 1237.6709237611924, 1244.7149733280626, 1282.4803501578579, 1310.277491626192, 1311.3867331035551, 1324.0398512692439, 1332.9491489497882, 1344.9484277868803, 1352.7819238398274, 1359.7260089167205, 1355.5073152143898, 1363.4397225917855, 1371.8833646438686, 1377.933117483214, 1394.3799627877975, 1396.107204395365, 1399.3991963451829, 1392.145459461037, 1403.2559455269238, 1413.2666742039237], "name": "Cumulative fill EV (\u00a2)", "line": {"color": "#e67e22", "width": 2, "dash": "dot"}}, {"type": "scatter", "mode": "lines", "x": ["2026-05-12 18:47:16.284026+00:00", "2026-05-12 18:47:26.421763+00:00", "2026-05-12 18:47:36.572896+00:00", "2026-05-12 18:47:47.267340+00:00", "2026-05-12 18:47:57.443749+00:00", "2026-05-12 18:48:07.596067+00:00", "2026-05-12 18:48:18.310842+00:00", "2026-05-12 18:48:28.469882+00:00", "2026-05-12 18:48:38.600785+00:00", "2026-05-12 18:48:49.360298+00:00", "2026-05-12 18:48:59.559546+00:00", "2026-05-12 18:49:09.697115+00:00", "2026-05-12 18:49:20.462806+00:00", "2026-05-12 18:49:30.627680+00:00", "2026-05-12 18:49:40.796994+00:00", "2026-05-12 18:49:51.538606+00:00", "2026-05-12 18:50:01.680595+00:00", "2026-05-12 18:50:11.821847+00:00", "2026-05-12 18:50:22.596152+00:00", "2026-05-12 18:50:32.756579+00:00"], "y": [9325.0, -6816.99999999837, 8302.999999996973, -6116.99999999837, -8903.999999997905, 21085.999999998603, 21873.99999999907, 21290.99999999744, 2359.000000002561, 2410.999999998603, -5128.000000002794, -7066.00000000326, -2783.00000000163, -7850.0, 5047.000000003027, 5357.0000000006985, 25175.0, 510.999999998603, -120.00000000116415, 3973.9999999990687], "name": "Session PnL (\u00a2)", "line": {"color": "#2ecc71", "width": 2}}, {"type": "scatter", "mode": "lines", "x": ["2026-05-12 18:48:28.469882+00:00", "2026-05-12 18:48:38.600785+00:00", "2026-05-12 18:48:49.360298+00:00", "2026-05-12 18:48:59.559546+00:00", "2026-05-12 18:49:09.697115+00:00", "2026-05-12 18:49:20.462806+00:00", "2026-05-12 18:49:30.627680+00:00", "2026-05-12 18:49:40.796994+00:00", "2026-05-12 18:49:51.538606+00:00", "2026-05-12 18:50:01.680595+00:00", "2026-05-12 18:50:11.821847+00:00", "2026-05-12 18:50:22.596152+00:00", "2026-05-12 18:50:32.756579+00:00"], "y": [27955.203637424165, 34228.622274848356, 116629.54812413576, 124063.11537569127, 122389.17355579787, 120278.37520223412, 109844.9759651466, 110390.6481400641, 95455.9224079262, 98434.22180041371, 93843.51306631572, 100955.35369038185, 94696.90996136022], "name": "Unrealized PnL (\u00a2)", "line": {"color": "#9b59b6", "width": 2, "dash": "dot"}}], "layout": {"title": "Session PnL Attribution", "height": 350, "margin": {"t": 50, "b": 60, "l": 70, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time"}, "yaxis": {"title": "PnL (\u00a2)"}, "legend": {"x": 0.01, "y": 0.99}}};
+  Plotly.newPlot('chart_pnl', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>6. Unrealized PnL</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Starting Unrealized PnL</div>
+  <div class="value">+27955.2¢</div>
+  <div class="sub">first snapshot (incl. cross-session carry)</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Ending Unrealized PnL</div>
+  <div class="value">+94696.9¢</div>
+  <div class="sub">last snapshot</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Peak Unrealized PnL</div>
+  <div class="value">+124063.1¢</div>
+  <div class="sub">session high</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Trough Unrealized PnL</div>
+  <div class="value">+27955.2¢</div>
+  <div class="sub">session low</div>
+</div>
+        </div>
+        <p style='color:#666;font-size:0.78rem;margin-top:6px;'>
+        Starting value includes pre-existing inventory carried from prior sessions.
+        Computed as Σ (mid_price − avg_entry_price) × position for all open positions at each 10s snapshot.
+        Tickers with no live orderbook are excluded from the sum.
+        </p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>7. Settlements (Realized PnL)</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><p style='color:#555'>No markets settled during this session window.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>8. Realized Trading PnL</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Closing Fills</div>
+  <div class="value">37</div>
+  <div class="sub">out of 85 total fills</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Unique Tickers</div>
+  <div class="value">19</div>
+  <div class="sub">markets with position-reducing fills</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Total Realized PnL</div>
+  <div class="value"><span style='color:#2ecc71'>+626.51¢</span></div>
+  <div class="sub">$+6.2651</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Avg PnL per Close</div>
+  <div class="value">+16.93¢</div>
+  <div class="sub">win rate: 64.9%</div>
+</div>
+        </div>
+        <hr class="divider">
+        <div id="chart_realized_pnl_by_ticker" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": ["KXABAGAME-26MAY121300CZVCEO-CZV", "KXWTAMATCH-26MAY12GAUAND-AND", "KXITFWMATCH-26MAY12NAJEBS-NAJ", "KXSAUDIPLGAME-26MAY12ALNHIL-HIL", "KXLALIGAGAME-26MAY12RCCLEV-TIE", "KXLALIGATOTAL-26MAY12RBBELC-3", "KXSAUDIPLGAME-26MAY12ALNHIL-TIE", "KXCS2GAME-26MAY121130VITBB-BB", "KXBRENTD-26MAY1217-T108.50", "KXATPCHALLENGERMATCH-26MAY12RONSAK-SAK", "KXHIGHNY-26MAY12-T66", "KXHIGHCHI-26MAY12-T73", "KXHIGHLAX-26MAY12-T70", "KXLALIGAGAME-26MAY12RBBELC-ELC", "KXATPCHALLENGERMATCH-26MAY12RONSAK-RON", "KXATPCHALLENGERMATCH-26MAY12SHEGAS-SHE", "KXSAUDIPLGAME-26MAY12ALNHIL-ALN", "KXWTAMATCH-26MAY12GAUAND-GAU", "KXLALIGAGAME-26MAY12RCCLEV-LEV"], "y": [1152.0082414364076, 662.7544643886441, 655.3174473259594, 545.9389729271566, 393.1227251516566, 270.0, 181.36538461538464, 129.9562499999999, 100.0, 95.0, 36.584158415841586, 26.25723708755973, 21.64544856852558, -23.999999999999986, -63.33333333333336, -100.0, -146.24497578068627, -1402.631511736603, -1907.2287204266227], "marker": {"color": ["#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c"]}, "name": "Realized PnL (\u00a2)", "text": ["n=4", "n=2", "n=1", "n=5", "n=2", "n=1", "n=2", "n=2", "n=1", "n=1", "n=1", "n=1", "n=1", "n=1", "n=1", "n=1", "n=1", "n=5", "n=4"], "textposition": "outside"}], "layout": {"title": "Realized Trading PnL by Ticker (\u00a2)", "height": 380, "margin": {"t": 50, "b": 120, "l": 70, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Ticker", "tickangle": -35}, "yaxis": {"title": "Total Realized PnL (\u00a2)"}}};
+  Plotly.newPlot('chart_realized_pnl_by_ticker', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script>
+        <hr class="divider">
+        <table><thead><tr><th>Ticker</th><th>Closing Fills</th><th>Total PnL</th><th>Avg PnL/Fill</th></tr></thead><tbody><tr><td>KXABAGAME-26MAY121300CZVCEO-CZV</td><td>4</td><td style='color:#2ecc71'>+1152.01¢</td><td>+288.00¢</td></tr><tr><td>KXWTAMATCH-26MAY12GAUAND-AND</td><td>2</td><td style='color:#2ecc71'>+662.75¢</td><td>+331.38¢</td></tr><tr><td>KXITFWMATCH-26MAY12NAJEBS-NAJ</td><td>1</td><td style='color:#2ecc71'>+655.32¢</td><td>+655.32¢</td></tr><tr><td>KXSAUDIPLGAME-26MAY12ALNHIL-HIL</td><td>5</td><td style='color:#2ecc71'>+545.94¢</td><td>+109.19¢</td></tr><tr><td>KXLALIGAGAME-26MAY12RCCLEV-TIE</td><td>2</td><td style='color:#2ecc71'>+393.12¢</td><td>+196.56¢</td></tr><tr><td>KXLALIGATOTAL-26MAY12RBBELC-3</td><td>1</td><td style='color:#2ecc71'>+270.00¢</td><td>+270.00¢</td></tr><tr><td>KXSAUDIPLGAME-26MAY12ALNHIL-TIE</td><td>2</td><td style='color:#2ecc71'>+181.37¢</td><td>+90.68¢</td></tr><tr><td>KXCS2GAME-26MAY121130VITBB-BB</td><td>2</td><td style='color:#2ecc71'>+129.96¢</td><td>+64.98¢</td></tr><tr><td>KXBRENTD-26MAY1217-T108.50</td><td>1</td><td style='color:#2ecc71'>+100.00¢</td><td>+100.00¢</td></tr><tr><td>KXATPCHALLENGERMATCH-26MAY12RONSAK-SAK</td><td>1</td><td style='color:#2ecc71'>+95.00¢</td><td>+95.00¢</td></tr><tr><td>KXHIGHNY-26MAY12-T66</td><td>1</td><td style='color:#2ecc71'>+36.58¢</td><td>+36.58¢</td></tr><tr><td>KXHIGHCHI-26MAY12-T73</td><td>1</td><td style='color:#2ecc71'>+26.26¢</td><td>+26.26¢</td></tr><tr><td>KXHIGHLAX-26MAY12-T70</td><td>1</td><td style='color:#2ecc71'>+21.65¢</td><td>+21.65¢</td></tr><tr><td>KXLALIGAGAME-26MAY12RBBELC-ELC</td><td>1</td><td style='color:#e74c3c'>-24.00¢</td><td>-24.00¢</td></tr><tr><td>KXATPCHALLENGERMATCH-26MAY12RONSAK-RON</td><td>1</td><td style='color:#e74c3c'>-63.33¢</td><td>-63.33¢</td></tr></tbody></table>
+        <p style='color:#666;font-size:0.78rem;margin-top:8px;'>
+        Realized trading PnL is computed per fill from the position's average entry price.
+        A "closing fill" is any fill that reduces an existing position (buy-then-sell or sell-then-buy).
+        This measures actual round-trip returns from two-way trading, independent of settlement.
+        Fees are NOT deducted (see fill_ev for fee-adjusted metrics).
+        </p></div>
+</div><div style='margin:18px 0 6px;padding:4px 12px;background:#1a1a2e;border-left:3px solid #3498db;color:#6688aa;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;'>Operational</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>9. Sniped Fills</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Sniped Fills</div>
+  <div class="value">4</div>
+  <div class="sub">fills received while cancel/amend in-flight</div>
+</div>
+          <div class="stat-card">
+  <div class="label">% of Total Fills</div>
+  <div class="value"><span style='color:#e67e22'>4.71%</span></div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Cancel Races</div>
+  <div class="value">0</div>
+  <div class="sub">filled while cancel was in-flight</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Amend Races</div>
+  <div class="value">4</div>
+  <div class="sub">filled while amend was in-flight (404 path)</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Matched to fill_id</div>
+  <div class="value">3</div>
+  <div class="sub">joins available for markout chart</div>
+</div>
+        </div>
+        <hr class="divider">
+        <div style='background:#1a1a2e;border-left:3px solid #e67e22;padding:8px 12px;margin:10px 0;font-size:0.82rem;color:#ccaa88;'>1 sniped event(s) could not be matched to a fill_id (order_id was None on the amend path) and are excluded from the markout chart.</div>
+        <div id="chart_sniped_markout" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [4.788979541355667, 1.8660617505826742, 3.769123545919922, 2.9246555487835533, 12.842338215675232, 14.696484444342834], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [-1.6206025176576018, -4.058760394281779, -5.97613159859321, -5.933965128170197, -9.276825798881868, -16.41052497603853], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(231,76,60,0.15)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [1.5841885118490329, -1.0963493218495526, -1.103504026336644, -1.5046547896933216, 1.7827562083966821, -0.8570202658478472], "mode": "lines+markers", "line": {"color": "#e74c3c", "width": 2.5}, "marker": {"color": "#e74c3c", "size": 7}, "name": "Sniped vs microprice (n=3)", "showlegend": true}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [5.623781713124398, 3.4416468925985617, 3.211506944202239, 3.211506944202239, 12.54, 13.459999999999999], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [-1.2904483797910649, -3.4416468925985617, -6.544840277535573, -6.544840277535573, -8.04, -14.959999999999999], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(231,76,60,0.08)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [2.1666666666666665, 0.0, -1.6666666666666667, -1.6666666666666667, 2.25, -0.75], "mode": "lines+markers", "line": {"color": "#e74c3c", "width": 2, "dash": "dash"}, "marker": {"color": "#e74c3c", "size": 6}, "name": "Sniped vs mid", "showlegend": true}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [2.52045043094035, 1.1834801097965453, 1.3190880712313884, 2.3773606491687764, 3.7842728848222027, 6.009232075310678], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [1.2965260582146376, 0.3714073035537786, 0.642223714998498, 0.5520684141319391, 0.18959105431460643, -2.004367909928732], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.15)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [1.9084882445774938, 0.7774437066751619, 0.9806558931149432, 1.4647145316503578, 1.9869319695684047, 2.0024320826909725], "mode": "lines+markers", "line": {"color": "#2ecc71", "width": 2.5}, "marker": {"color": "#2ecc71", "size": 7}, "name": "Normal vs microprice (n=82)", "showlegend": true}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [2.737812393765869, 1.2253540810068377, 1.4288709281870313, 2.4564227736209863, 3.7684632478685773, 5.892516818231931], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [1.4573095574536432, 0.4819629921638939, 0.6808851693739444, 0.5801625922326722, 0.2886796092742796, -1.732516818231931], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.08)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s", "60s"], "y": [2.097560975609756, 0.8536585365853658, 1.0548780487804879, 1.5182926829268293, 2.0285714285714285, 2.08], "mode": "lines+markers", "line": {"color": "#2ecc71", "width": 2, "dash": "dash"}, "marker": {"color": "#2ecc71", "size": 6}, "name": "Normal vs mid", "showlegend": true}, {"type": "scatter", "x": ["0s", "60s"], "y": [0, 0], "mode": "lines", "line": {"color": "#888", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Markout: Sniped Fills vs Normal Fills (95% CI)", "height": 380, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "showlegend": true, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_sniped_markout', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script>
+        <p style='color:#666;font-size:0.78rem;margin-top:8px;'>
+        A "sniped fill" is a fill that arrived while we were already in the process of cancelling
+        or amending the order. If the sniped markout curve is more negative than normal fills,
+        it suggests these fills occur disproportionately on orders that were moving against us
+        (we tried to cancel for a reason). Red = sniped, green = normal fills.
+        </p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>10. API Activity Rate</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Total API Calls</div>
+  <div class="value">4,143</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Calls / min</div>
+  <div class="value">1006.6</div>
+  
+</div>
+    </div>
+    <hr class="divider">
+    <div id="chart_api" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "lines", "x": ["2026-05-12 18:48:00+00:00", "2026-05-12 18:49:00+00:00", "2026-05-12 18:50:00+00:00"], "y": [1177, 1991, 975], "line": {"color": "#3498db", "width": 2}, "fill": "tozeroy", "fillcolor": "rgba(52,152,219,0.15)", "name": "API calls/min"}], "layout": {"title": "API Call Activity Rate", "height": 300, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time"}, "yaxis": {"title": "Calls per minute"}}};
+  Plotly.newPlot('chart_api', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>11. Latency Report</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><table><thead><tr><th>Endpoint</th><th>Count</th><th>p50 ms</th><th>p95 ms</th><th>p99 ms</th><th>Mean ms</th><th>Max ms</th><th>Error %</th><th>Queue p50</th><th>Queue p99</th><th>Wire p50</th><th>Wire p99</th><th>Parse p50</th><th>OB→Action p50</th></tr></thead><tbody><tr><td>amend_order</td><td>3,378</td><td>49.2</td><td>71.8</td><td>84.9</td><td>51.0</td><td>299.8</td><td>0.15%</td><td>8.0</td><td>23.4</td><td>40.1</td><td>74.0</td><td>7.5</td><td>50.0</td></tr><tr><td>place_order</td><td>599</td><td>50.9</td><td>73.9</td><td>170.4</td><td>54.0</td><td>422.9</td><td>0.83%</td><td>7.9</td><td>23.2</td><td>42.2</td><td>163.0</td><td>7.5</td><td>9.5</td></tr><tr><td>cancel_order</td><td>147</td><td>51.2</td><td>69.8</td><td>82.2</td><td>51.5</td><td>104.9</td><td>0.00%</td><td>8.1</td><td>26.9</td><td>41.5</td><td>72.1</td><td>7.5</td><td>—</td></tr><tr><td>batch_cancel_orders</td><td>19</td><td>303.6</td><td>323.3</td><td>339.5</td><td>297.7</td><td>343.6</td><td>0.00%</td><td>265.9</td><td>312.6</td><td>39.5</td><td>55.1</td><td>—</td><td>—</td></tr></tbody></table><h4 style='margin-top:16px;margin-bottom:6px;color:#c0c0e0;'>Pipeline Latency — place/amend (p50 / p95 ms)</h4><table><thead><tr><th>Endpoint</th><th>Network p50</th><th>Network p95</th><th>Consumer Queue p50</th><th>Consumer Queue p95</th><th>Handler Compute p50</th><th>Handler Compute p95</th><th>Executor Queue p50</th><th>Executor Queue p95</th><th>OB→Action p50</th><th>OB→Action p95</th></tr></thead><tbody><tr><td>amend_order</td><td>46.3</td><td>61.4</td><td>0.5</td><td>23.1</td><td>0.2</td><td>0.5</td><td>0.4</td><td>7.8</td><td>50.0</td><td>80.2</td></tr><tr><td>place_order</td><td>-0.0</td><td>60.8</td><td>0.5</td><td>29.7</td><td>0.2</td><td>0.3</td><td>0.4</td><td>8.3</td><td>9.5</td><td>85.9</td></tr></tbody></table><p style='font-size:0.78rem;color:#888;margin-top:6px;'>network_ms may be negative or near-zero if exchange and local clocks are unsynchronised. All four stages should sum to OB→Action when all checkpoints are present.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>12. Rate Limits</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Rate Limit Events</div>
+  <div class="value">0</div>
+  <div class="sub">from rate_limits.parquet</div>
+</div>
+      <div class="stat-card">
+  <div class="label">429 HTTP Errors</div>
+  <div class="value">0</div>
+  <div class="sub">from network_latency</div>
+</div>
+      <div class="stat-card">
+  <div class="label">% of API Calls</div>
+  <div class="value">0.00%</div>
+  <div class="sub">of 4,143 total calls</div>
+</div>
+    </div><div id="chart_rl" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": ["2026-05-12 18:46:00+00:00", "2026-05-12 18:47:00+00:00", "2026-05-12 18:48:00+00:00", "2026-05-12 18:49:00+00:00", "2026-05-12 18:50:00+00:00", "2026-05-12 18:51:00+00:00"], "y": [0, 0, 0, 0, 0, 0], "marker": {"color": "#e74c3c"}, "name": "Rate limit hits/min"}], "layout": {"title": "Rate Limit Events per Minute", "height": 260, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time"}, "yaxis": {"title": "Events per minute"}}};
+  Plotly.newPlot('chart_rl', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>13. Capital Exhaustion Mode</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><p style='color:#2ecc71'>No capital exhaustion events this session.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>14. Outlier Fills</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><p style='color:#555'>No outlier fills (EV &gt; 20¢) this session.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>15. Amend Decisions</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">REPLACEs</div>
+  <div class="value">3,378</div>
+  <div class="sub">3,378 amend API calls</div>
+</div>
+          <div class="stat-card">
+  <div class="label">CANCELs</div>
+  <div class="value">120</div>
+  <div class="sub">neg-EV cancellations</div>
+</div>
+          <div class="stat-card negative">
+  <div class="label">Amend / Order Ratio</div>
+  <div class="value">5.64</div>
+  <div class="sub">3,378 amends / 599 orders</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Median EV Improvement</div>
+  <div class="value">+0.0841¢</div>
+  <div class="sub">on REPLACEs</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Mean EV Improvement</div>
+  <div class="value">+0.3607¢</div>
+  <div class="sub">on REPLACEs</div>
+</div>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Tiny REPLACEs</div>
+  <div class="value">796</div>
+  <div class="sub">23.6% with |improvement| < 0.01¢</div>
+</div>
+          <div class="stat-card negative">
+  <div class="label">Rapid Oscillations</div>
+  <div class="value">2,935</div>
+  <div class="sub">87% of REPLACEs within 5s on same ticker+side</div>
+</div>
+        </div>
+        <hr class="divider"><div id="chart_amend_ev_imp" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": [0.04606987177561948, 0.13820794311330148, 0.23034601445098346, 0.3224840857886655, 0.4146221571263474, 0.5067602284640295, 0.5988982998017114, 0.6910363711393934, 0.7831744424770755, 0.8753125138147575, 0.9674505851524394, 1.0595886564901216, 1.1517267278278034, 1.2438647991654854, 1.3360028705031675, 1.4281409418408493, 1.5202790131785315, 1.6124170845162134, 1.7045551558538954, 1.7966932271915774, 1.8888312985292592, 1.9809693698669415, 2.0731074412046233, 2.165245512542305, 2.2573835838799874, 2.3495216552176696, 2.4416597265553515, 2.5337977978930333, 2.625935869230715, 2.7180739405683974, 2.8102120119060796, 2.9023500832437614, 2.9944881545814432, 3.086626225919125, 3.1787642972568073, 3.2709023685944896, 3.3630404399321714, 3.455178511269853, 3.547316582607535, 3.6394546539452173, 3.7315927252828995, 3.8237307966205814, 3.915868867958263, 4.008006939295945, 4.100145010633627, 4.1922830819713095, 4.284421153308991, 4.376559224646673, 4.468697295984356, 4.560835367322037, 4.6529734386597195, 4.745111509997401, 4.837249581335083, 4.929387652672766, 5.021525724010447, 5.113663795348129, 5.205801866685811, 5.297939938023493, 5.390078009361176, 5.482216080698857, 5.574354152036539, 5.666492223374221, 5.758630294711903, 5.850768366049586, 5.942906437387267, 6.035044508724949, 6.127182580062631, 6.219320651400313, 6.311458722737996, 6.403596794075677, 6.495734865413359, 6.587872936751041, 6.680011008088723, 6.772149079426406, 6.864287150764087, 6.956425222101769, 7.048563293439451, 7.140701364777133, 7.232839436114816, 7.3249775074524965], "y": [1745, 367, 239, 177, 118, 111, 81, 53, 57, 42, 42, 32, 25, 31, 21, 22, 20, 21, 5, 14, 17, 7, 18, 9, 4, 6, 9, 15, 7, 8, 5, 4, 0, 4, 0, 2, 2, 3, 0, 2, 1, 1, 12, 0, 0, 0, 0, 0, 4, 0, 2, 0, 1, 2, 5, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], "width": 0.092138071337682, "name": "EV improvement (\u00a2)", "marker": {"color": "#e67e22", "opacity": 0.8}}], "layout": {"title": "EV Improvement on REPLACE Decisions", "height": 320, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "EV improvement (\u00a2) = ev_move \u2212 ev_keep"}, "yaxis": {"title": "Count"}, "shapes": [{"type": "line", "x0": 0.08413062989711761, "x1": 0.08413062989711761, "y0": 0, "y1": 1, "yref": "paper", "line": {"color": "#2ecc71", "width": 2, "dash": "dash"}}], "annotations": [{"x": 0.08413062989711761, "y": 1, "yref": "paper", "text": "median +0.0841\u00a2", "showarrow": false, "xanchor": "left", "font": {"color": "#2ecc71", "size": 11}}]}};
+  Plotly.newPlot('chart_amend_ev_imp', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><hr class="divider"><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Only REPLACE and CANCEL decisions are logged (KEEPs are omitted for storage efficiency). Amend API call count from the latency table serves as a cross-check for REPLACE count. Rapid oscillations (multiple REPLACEs within 5s on the same ticker+side) indicate the microprice is jittering around a price boundary.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>16. Fill Probability Calibration</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Sampled Predictions</div>
+  <div class="value">1,083</div>
+  <div class="sub">~216,600 total (1:200 rate)</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Median Fill Prob</div>
+  <div class="value">0.0082</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Mean Fill Prob</div>
+  <div class="value">0.0990</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Zero Fill Prob</div>
+  <div class="value">370</div>
+  <div class="sub">34.2% of samples</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Median Contracts Ahead</div>
+  <div class="value">2,841</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Mean Contracts Ahead</div>
+  <div class="value">42,732</div>
+  
+</div>
+        </div>
+        <hr class="divider"><div id="chart_fp_vs_ca" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "markers", "x": [12278.91, 306.88, 8199.0, 12.0, 1212.0, 50718.51, 25029.68, 5048.0, 4095.38, 109379.94, 170515.6, 9782.0, 88679.31, 710.9300000000001, 448664.26999999996, 4291.13, 9579.0, 306.88, 214819.07, 9614.0, 6331.88, 483.44, 6356.88, 6656.400000000001, 176546.1, 409803.26, 448655.26999999996, 203.03, 450314.26999999996, 12031.47, 448736.26999999996, 7924.48, 410799.26, 119667.66, 41158.72, 605.15, 9018.0, 2446.0, 1425.7, 3148.2, 28413.0, 14277.65, 52684.04, 801.7, 50.0, 1700.0, 2696.0, 321.23, 2165.0, 42479.0, 346.23, 110.0, 57392.95, 411505.26, 12189.019999999999, 343.45, 8579.9, 183.96, 200.0, 50002.1, 1671.65, 8860.9, 371487.35, 307.25, 3976.7, 2564.5, 346.58, 26497.1, 371469.35, 420.0, 100480.0, 50.0, 44945.1, 21558.0, 12177.12, 870.7, 312.0, 9010.0, 942.0, 8475.0, 120.0, 3174.1, 1700.0, 52684.04, 232.0, 24529.91, 45789.7, 24878.18, 200.0, 12.0, 6540.0, 5320.41, 7246.72, 6993.1900000000005, 29831.940000000002, 1746.3700000000001, 2733.9999999999995, 321586.08999999997, 6.88, 525.7, 1712.91, 58999.43, 47304.28, 31538.91, 4278.96, 5664.0, 107.57, 2848.5099999999998, 11168.67, 200.0, 42959.04, 7623.08, 53805.24, 2170.0, 123.45, 295.44, 1000.0, 6738.67, 5.0, 16.95, 2964.9300000000003, 1668.96, 1395.5900000000001, 9308.65, 7362.340000000001, 857.29, 54675.24, 10.0, 1681.3700000000001, 6935.0, 6258.08, 371425.35, 4404.72, 65535.14, 2352.17, 4.0, 37480.12, 3855.14, 1853.66, 510.0, 966.12, 212842.11000000002, 445.44, 1995.79, 982.29, 7.0, 57528.12, 41272.06, 2544.7200000000003, 42.0, 32.39, 10047.720000000001, 1694.0, 2990.0, 27460.91, 7148.58, 5.0, 449.0, 2.0, 2999.7799999999997, 876.0, 1545.79, 703001.0899999999, 7846.08, 20550.300000000003, 7931.83, 63.0, 55.0, 2222.01, 371634.35, 191.0, 142.06, 146.0, 906.0, 150.0, 16254.419999999998, 250.0, 46.0, 3063.0, 52684.04, 450071.26999999996, 448527.26999999996, 6141.02, 1765.55, 146.0, 964.0, 448419.26999999996, 46.0, 484976.47, 3161.18, 27507.85, 9495.1, 200.0, 265.32, 42858.0, 21875.59, 373544.35, 457.5, 22.0, 635.48, 73248.4, 10925.91, 625.5699999999999, 17778.719999999998, 146.04, 150.0, 2239.14, 8217.18, 406.0, 409494.26, 24438.510000000002, 125950.65, 173487.28999999998, 25.0, 7525.71, 1342.75, 47552.91, 367684.35, 12441.32, 180620.26, 7523.68, 17238.510000000002, 3528.75, 90.0, 2623.64, 90.0, 12758.07, 19431.64, 6784.38, 5951.0, 95.0, 98742.42, 32.0, 45.0, 806.0, 35.45, 1553.66, 189832.55, 400.0, 8236.72, 160.0, 3078.68, 371776.35, 191.04, 258.0, 99.0, 806.0, 4682.0, 49.0, 656.0, 194.21, 210.0, 6870.9400000000005, 9938.3, 25492.82, 25.0, 569.0, 7.0, 448659.26999999996, 19979.789999999997, 20.0, 18.44, 1371.1599999999999, 8168.47, 70785.39, 90.19, 14898.869999999999, 4782.73, 2.0, 14071.539999999999, 12539.05, 584.73, 52684.04, 17978.71, 20.0, 34445.32, 131179.68, 629.73, 1184.87, 195647.08, 43.14, 188256.59000000003, 2678.14, 34445.53, 2337.0, 5669.87, 5434.22, 1968.04, 7294.0, 850.0, 1234.63, 877.0699999999999, 8.0, 1024.03, 187807.71000000002, 1835.32, 94.03, 1373.24, 6136.26, 4207.0, 10.91, 52.36, 4252.889999999999, 176992.81, 2843.0, 52684.04, 5.0, 13593.44, 3750.9700000000003, 863.3299999999999, 5.0, 100141.84, 44959.04, 314.0, 32141.04, 9.22, 38231.049999999996, 2219.04, 412.0, 1369.11, 208352.93, 1687.0, 847.0, 1.0, 7169.849999999999, 4831.74, 175340.28999999998, 205.0, 108080.34, 402795.35, 2568.88, 10021.85, 1686.0, 1496.45, 25.0, 1331.0, 151845.68, 27347.95, 86236.47, 21906.61, 11682.61, 6.0, 12128.91, 76493.0, 2567.88, 162.2, 4124.0, 809.5, 2414.76, 23050.620000000003, 1571.74, 8.0, 19412.059999999998, 21998.0, 14663.06, 10.0, 6292.0, 16.0, 2104.0, 55261.75, 5137.610000000001, 2559.62, 781.62, 36314.6, 5985.1900000000005, 7162.24, 448913.26999999996, 2721.62, 746.2199999999999, 2027.22, 2559.62, 199.57, 59.0, 12.0, 26049.0, 7327.46, 3393.9, 86.13, 7840.0, 347.5, 149.57999999999998, 9340.7, 1134.23, 3373.23, 656.11, 8541.28, 3040.67, 6247.73, 231.11, 2837.2, 21985.870000000003, 834.83, 14013.0, 26.0, 47988.21, 620.0, 353309.56000000006, 947.11, 25154.66, 46217.5, 3134.8099999999995, 41175.5, 119.8, 314.03, 200.0, 73758.95000000001, 3089.37, 661.03, 687.03, 842.91, 162.8, 521.0, 19765.79, 775.6, 100420.0, 480922.22, 89319.19, 165.0, 244.41, 47.04, 1640.0, 2510.69, 562.0, 45118.990000000005, 1174.65, 1128.1399999999999, 34.0, 3187.87, 3.0, 23360.78, 74034.87, 19123.39, 61914.64, 5.0, 164.0, 22579.12, 42942.21, 32061.27, 6597.97, 410.03, 19301.14, 150.55, 1219.0, 2454.61, 13910.19, 249.38, 41866.97, 391.32, 144084.16, 826.0600000000001, 629.7, 6628.97, 738.2199999999999, 6400.0, 4247.0, 622.5699999999999, 35.2, 55.0, 4367.67, 19226.14, 7730.719999999999, 58.1, 6932.21, 22438.829999999998, 108121.13999999998, 2233.0, 10.0, 196.4, 21958.829999999998, 204202.66000000003, 834.9, 2746.04, 4975.0, 22225.92, 377.62, 3159.43, 10587.0, 971.34, 27.22, 346953.59, 4879.02, 278.94, 12.0, 12.2, 5190.0, 6380.16, 254.0, 199.35000000000002, 6681.7, 1210.06, 1508.7, 125.38, 7802.21, 67.33, 6507.24, 2429.0, 4830.16, 9558.3, 6198.21, 7941.959999999999, 7.0, 50.0, 19763.96, 226656.74000000002, 10.0, 2813.04, 118087.70999999999, 33.0, 4998.21, 781.5699999999999, 66827.83, 141153.56, 4772.0, 27133.12, 5516.0, 6445.0, 240.0, 726.45, 2189.61, 49347.81, 352311.56000000006, 428.0, 2293.0, 472.89, 6312.96, 6717.44, 1405.0, 259.26, 305.0, 30.0, 372.5, 2821.4, 57.44, 60.53, 6841.91, 695.0, 1428.04, 8216.720000000001, 8566.0, 3798.8, 576.85, 39894.11, 32.72, 449.47, 1523.7, 6865.46, 46.13, 481123.22, 7851.7, 18.82, 209333.34999999998, 143700.86000000002, 20.0, 88.0, 226.45, 152.38, 26473.98, 1742.96, 4.99, 3042.96, 351402.56000000006, 109.0, 3374.55, 19376.14, 4934.950000000001, 21.07, 3536.91, 1407.0, 682.87, 5730.39, 1200.0, 28378.010000000002, 372.5, 139.0, 958.7, 2261.61, 1767.1399999999999, 1490.1399999999999, 7605.47, 554.0, 4225.139999999999, 669.87, 234228.15000000002, 2056.0, 484774.79, 48709.35999999999, 17883.37, 450728.26999999996, 6169.41, 448656.26999999996, 31.53, 777.0, 5763.18, 24790.95, 2272.92, 1004.3299999999999, 504.0, 11.0, 1334.01, 532.04, 2326.87, 28692.760000000002, 2298.93, 4314.0, 1466.55, 4454.0, 5142.0, 2566.96, 38322.0, 743.7, 9402.0, 450204.26999999996, 60.0, 3517.57, 1408.3600000000001, 793.9300000000001, 19060.0, 580.0, 396227.92000000004, 464.04, 20730.04, 282.7, 12865.939999999999, 702.06, 702657.1099999999, 1840.87, 3537.62, 65.0, 65.0, 528.03, 45216.64, 2215.0, 1405.0, 3971.55, 354374.47000000003, 419.0, 42256.69, 46020.64, 215929.36000000002, 1834.4, 953.1600000000001, 826.1600000000001, 7773.58, 371580.35, 4020.87, 67291.0, 68454.0, 55583.0, 823.06, 97544.91, 351192.56000000006, 2505.4, 2414.76, 30510.06, 50.0, 8127.91, 75978.91, 3800.7, 971.5699999999999, 1786.07, 978.1600000000001, 63998.0, 6600.0, 9691.0, 1728.07, 824.0, 125880.81, 28940.61, 24443.44, 5667.67, 2248.0, 23.0, 24476.619999999995, 2221.85, 99.0, 4398.84, 25354.899999999994, 11011.0, 28178.159999999996, 6870.57, 30.0, 25227.85, 837.0, 14020.85, 52953.59, 39498.729999999996, 1227.31, 34954.44, 1462.75, 89473.12000000001, 10026.0, 35.0, 30.0, 4099.0, 36051.91, 37378.91, 1090.0, 18.21, 270.0, 27878.010000000002, 9739.0, 468.0, 9.23, 5949.0, 10135.27, 1522.19, 3417.04, 49.0, 42794.0, 1050.0, 1150.0, 5159.7, 16979.07, 4778.139999999999, 166.31, 1.0, 21418.44, 34.0, 256.24, 11380.3, 332951.24000000005, 80153.7, 1255.3700000000001, 565.88, 351396.56000000006, 50.0, 352380.56000000006, 95.0, 773.6600000000001, 82.0, 8501.68, 187.0, 8322.7, 352294.56000000006, 286531.65, 205.0, 13369.04, 54.0, 2209.0, 15160.41, 282.7, 57.0, 19.0, 2478.14, 162.0, 3888.04, 770899.49, 77631.48000000001, 138759.16, 54.0, 7239.54, 1547.9, 880.94, 67387.93, 1.0, 1757.93, 184278.19000000003, 407.94, 545.0, 5000.0, 93.0, 168.0, 8023.74, 10.0, 260.0, 385.0, 285.02, 23887.179999999997, 120.45, 214.0, 876.0, 105028.79999999999, 24309.0, 8593.07, 361.91999999999996, 191669.49, 40.0, 153129.37, 11.43, 22170.69, 3217.75, 908.14, 12.0, 191669.49, 50.0, 9202.720000000001, 22.72, 202.0, 100420.0, 172511.14, 150893.09, 37007.95, 44859.04, 2920.87, 19735.0, 3258.87, 57633.03, 152501.91, 441.6, 2608.23, 80.0, 34742.04, 60.0, 60804.81, 3528.72, 8180.72, 17.32, 40.0, 636.72, 154690.65, 52684.04, 16786.91, 490.57, 61110.03, 98892.15, 2227.38, 19746.89, 605747.1099999999, 136.48000000000002, 6992.7, 540.91, 6945.139999999999, 124155.47999999998, 220.05, 52684.04, 140.89, 1450.1399999999999, 1252.4699999999998, 5225.5599999999995, 333052.56000000006, 179.94, 28456.07, 8.530000000000001, 39.0, 42663.29, 7.43, 7.43, 368849.22, 47918.34, 452.2, 8.0, 5240.0, 14719.0, 6022.469999999999, 500.0, 3619.14, 16024.83, 2296.0, 2550.0, 3002.56, 20.0, 360.0, 20334.06, 1399.79, 2302.7, 418289.60000000003, 102.31, 30830.07, 448682.26999999996, 200.0, 1915.17, 8957.720000000001, 405.95, 2665.6, 2514.37, 65016.07, 7923.670000000001, 68075.16, 8314.12, 52684.04, 3803.19, 764.0, 1285.8000000000002, 71787.74, 51287.740000000005, 15761.72, 54986.880000000005, 394875.74000000005, 5.0, 935999.24, 40.91, 82.0, 1009.0, 2076.2, 53745.83, 1912.6399999999999, 3775.0, 47132.83, 3716.7200000000003, 948.5699999999999, 512.89, 352297.56000000006, 45.0, 206113.14, 334.0, 206015.14, 880.8199999999999, 54472.04, 1916.77, 24245.13, 8.0, 386.0, 2515.37, 675.92, 1450.1399999999999, 256.24, 395655.74000000005, 361.0, 21671.0, 2327.24, 294.38, 510.44, 1951.5300000000002, 582.31, 120800.85999999999, 98080.35, 3550.91, 16061.67, 228.31, 2841.0, 202.0, 175.0, 8.0, 150.0, 1699.1399999999999, 161.55, 20.0, 1563.1399999999999, 320868.22, 48.43, 7599.719999999999, 5009.139999999999, 159.57, 8234.34, 160.0, 530.0, 71.08, 14.0, 2649.67, 2206.0, 2688.14, 29166.95, 5509.45, 6348.33, 24982.4, 1040.0, 2279.67, 2192.2599999999998, 373.19999999999993, 10457.37, 395567.18000000005, 15.0, 3054.0, 122.56, 8867.1, 1112.22, 14169.14, 58232.58, 8485.7, 34.0, 25.01, 2156.0, 1223.0, 100.0, 20525.78, 19157.47, 328.0, 91.15, 175.0, 514.61, 1794.12, 9090.5, 5389.02, 346688.18000000005, 56055.69, 3972.92, 10872.13, 7576.0, 8263.24, 944.77, 16563.72, 8.0, 528.69, 3624.42, 3274.92, 52539.25, 42040.24999999999, 2916.26, 1536.0, 9.0, 34810.799999999996, 1497.7, 496.76, 36055.05, 234.0, 50.0, 5450.0, 394744.18000000005, 546.3199999999999, 91.01, 5200.0, 12565.33, 913.0, 83.0, 11230.21, 843.95, 4682.139999999999, 469.39, 35504.19, 53293.28, 702848.0899999999, 351365.56000000006, 12154.29, 5131.91, 20357.38, 208925.15000000002, 25579.95, 15511.27, 353.9, 102.0, 7307.75, 764.16, 37.56, 352374.56000000006, 1007.3199999999999, 2258.0, 27.0, 886.0, 606.0, 73.0, 50.0, 192.51999999999998, 205805.14, 2227.0, 1341.61, 97.03999999999999, 74189.42000000001, 51.0, 346771.85000000003, 1802.18, 12026.0, 6397.0, 26495.96, 185.3, 6892.04, 1016.5, 1533.0, 6397.0, 5252.1900000000005, 396621.18000000005, 54.0, 26388.96, 983.6999999999999, 101.0, 446.8, 5378.04, 5.0, 40.08, 1300.5, 212.0, 409130.45999999996, 2426.2200000000003, 65.0, 47725.72, 394734.18000000005, 2333.0, 449456.4699999999, 1521.1399999999999, 3559.0, 2289.31, 1727.81, 10392.75, 424058.45999999996, 1980.0, 2840.0, 286.36, 14963.07, 61228.39, 9009.25, 8007.05, 1606.5099999999998, 1799.5700000000002, 529.6], "y": [0.001101315676510989, 0.13954564144736842, 0.03707096862544737, 0.6751824817518248, 0.017391304347826087, 0.0, 0.0, 0.007333548964968153, 0.0038910505836575876, 0.0, 0.0, 0.0, 0.0, 0.06128763669262527, 0.0, 0.004348682388699086, 0.0017109958322605561, 0.11797657537967728, 0.0, 0.005509440104166667, 0.0, 0.05289564220183487, 0.0030210822128388147, 0.003350834546040036, 0.0, 0.0, 0.0, 0.14867411607738493, 0.0, 0.000622801875732708, 0.0, 0.0026062259361754637, 0.0, 0.0, 0.0, 0.10091229838709678, 0.0, 0.06396371607967669, 0.010955554096638655, 0.0, 0.0, 0.0020905176420285545, 0.0, 0.018070509453781514, 0.501201923076923, 0.022023142842258803, 0.03046875, 0.10975587891927951, 0.0, 0.0, 0.10905563730552115, 0.4801699716713881, 0.0, 0.0, 0.0017301038062283738, 0.03680555555555556, 0.0, 0.14982689312623648, 0.21751412429378533, 0.0, 0.059004934210526314, 0.0, 0.0, 0.11932699635294758, 0.004445821297268907, 0.011386827471526403, 0.03654513888888889, 0.0, 0.0, 0.08019808883121614, 0.0, 0.4567307692307693, 0.0, 0.0, 0.0027073841402057244, 0.016371783088235295, 0.11095754819314449, 0.00245941662397541, 0.04122363416320885, 0.0, 0.41172839506172837, 0.014499208003139953, 0.020337782019143116, 0.0, 0.07291666666666666, 0.0, 0.0, 0.0, 0.14537037037037037, 0.5, 0.0039868802602141375, 0.005753320952557955, 0.0, 0.002322226445365009, 0.0, 0.019919630957039903, 0.008871863424838866, 0.0, 0.7577527851326372, 0.03424781976744186, 0.019971858291218048, 0.0, 0.0, 0.0, 0.006192287875196559, 0.013167317708333334, 0.08888888888888888, 0.00986714003733506, 0.0, 0.08057228915662651, 0.0, 0.003011006444425557, 0.0, 0.01687330163043478, 0.2475, 0.11419470888774534, 0.050565944881889764, 0.0, 0.8637387387387387, 0.5624259959512624, 0.010027435495709124, 0.02143441838088298, 0.024324084691730828, 0.004553811755497862, 0.003089768833182156, 0.04377156825153374, 0.0, 0.6637078651685393, 0.02011221782819185, 0.014898418809808613, 0.004010655560210658, 0.0, 0.008678221207344215, 0.0, 0.012812051637994395, 0.8490619596913628, 0.0, 0.0010463169642857143, 0.009830191115702479, 0.14731787420382164, 0.059457632211538464, 0.0, 0.0819106424134382, 0.01521677404917922, 0.031225509404388715, 0.8182941825234842, 0.0, 0.0, 0.01226657774390244, 0.549247250457073, 0.42769910868315125, 0.0, 0.05816543311403509, 0.0034507288338658146, 0.0, 0.0023752655532682963, 0.8637387387387387, 0.13614013236168948, 0.6666666666666666, 0.013346695026178012, 0.02393830128205128, 0.022965018703978924, 0.0, 0.0005084216234909456, 0.0, 0.0056625114538790475, 0.3243427515251784, 0.46078187250996017, 0.013420856342761925, 0.0, 0.32758298444976075, 0.19901653083560011, 0.2717255976095618, 0.0674705615942029, 0.15234375, 0.003035198237120089, 0.12590714458025087, 0.5043724279835391, 0.006904821122034957, 0.0, 0.0, 0.0, 0.0015713917778649921, 0.018787615162268425, 0.2717255976095618, 0.048006398252184765, 0.0, 0.422611724564253, 0.0, 0.0127668929973822, 0.0, 0.0022895775031094526, 0.11112924281984335, 0.09633902616279069, 0.0, 0.0, 0.0, 0.07932791709549364, 0.6441717791411042, 0.0, 0.0, 0.005142777054398148, 0.007197627314814815, 0.0, 0.18345786516853935, 0.2683325812274368, 0.0, 0.0010427052007060669, 0.14155065165876776, 0.0, 0.0, 0.0, 0.0, 0.5445987654320987, 0.0013779462394067797, 0.026460337959366344, 0.0, 0.0, 0.0, 0.0, 0.0015385465801886792, 0.0, 0.007775983825353694, 0.3226156814992157, 0.010391333921053032, 0.4430732484076433, 0.0, 0.0, 0.001336598674610895, 0.0017177994996075354, 0.2594509780565071, 0.0, 0.5679012345679012, 0.39835436094349974, 0.05679760514018691, 0.5237499999999999, 0.012996973167539267, 0.0, 0.11995515695067263, 0.0, 0.20861678004535147, 0.008159366461748634, 0.0, 0.15030463038180342, 0.1556664937759336, 0.2503508602258499, 0.05679760514018691, 0.0, 0.374131014252036, 0.05817655515706159, 0.09971281152647973, 0.16018446735944852, 0.0032686800570101353, 0.0, 0.0, 0.5445987654320987, 0.025716145833333332, 0.8106296025487022, 0.0, 0.0, 0.5047039291643608, 0.53561350124528, 0.004445588440597515, 0.0025169448097153465, 0.0, 0.42560695409675264, 0.001474520766177173, 0.0050198947082984845, 0.775, 0.00021045977815063385, 0.0017301038062283738, 0.06727396985459046, 0.0, 0.0, 0.5249040259868096, 0.0, 0.0, 0.062460899219515614, 0.015229532541322314, 0.0, 0.4058258389541177, 0.0, 0.01064453125, 0.0, 0.012, 0.005172628990664634, 0.006664313892326733, 0.049083918437136206, 0.01280059814453125, 0.054388142523364484, 0.027107512831131754, 0.005760732323232324, 0.8533475248351281, 0.04209498355263158, 0.0, 0.016366525423728812, 0.3988425925925926, 0.02272719030934134, 0.0, 0.007148189821105072, 0.6432555668688299, 0.35456313054627664, 0.00909090909090909, 0.0, 0.0, 0.0, 0.8095238095238095, 0.0, 0.005319332486749116, 0.00390625, 0.8631327408947428, 0.0, 0.0, 0.09410794322709164, 0.0, 0.8885542168674699, 0.0, 0.011623123416658051, 0.03090277777777778, 0.036529876373626376, 0.0, 0.01708308176274361, 0.03874213287270964, 0.9815950920245399, 0.0026538017605457816, 0.013541666666666667, 0.0, 0.14738308644625733, 0.0, 0.0, 0.01409044150355872, 0.0, 0.021637580954144246, 0.0, 0.5501876592151587, 0.027584796276434773, 0.0, 0.0, 0.0, 0.0, 0.001866187118902439, 0.7487422643693513, 0.004689534505208333, 0.0, 0.012911170678255146, 0.1968367502320365, 0.01351265285326087, 0.038136873332970445, 0.010629328060247089, 0.0, 0.021281330949280135, 0.0, 0.0, 0.0, 0.0006063853790613718, 0.6708296492779251, 0.013069621468058968, 0.6202860858257477, 0.00947585500963391, 0.0, 0.004805575692643183, 0.012023154585575237, 0.055662779756491865, 0.0, 0.007835178983631785, 0.006602747773746701, 0.0, 0.012708051807256149, 0.0505694079852918, 0.011582010213109709, 0.012023154585575237, 0.20602544910179638, 0.3589002917274432, 0.7245510461181237, 0.0, 0.0063901715039577835, 0.009727241435099582, 0.2789385746559009, 0.0, 0.1262361111111111, 0.16932397959183673, 0.0025212352226906157, 0.1231353661003236, 0.012013561320754717, 0.0464742799898237, 0.0027112100290697673, 0.016966073293871866, 0.004103942312553718, 0.16552197802197802, 0.0, 0.0, 0.04331820714786616, 0.002495075094288793, 0.5261532125205931, 0.0, 0.10497998386295929, 0.0, 0.03226906564677292, 0.0, 0.0, 0.010029150507111555, 0.0, 0.0859375, 0.10522253002488118, 0.13802083333333331, 0.0, 0.0, 0.04618036411364737, 0.05339643704575603, 0.05823646212621892, 0.0681640625, 0.05790476418711656, 0.0, 0.07980182926829268, 0.0, 0.0, 0.0, 0.254590395480226, 0.12655058730552285, 0.3883670520231214, 0.023933531746031744, 0.014764782188086304, 0.05698624786128449, 0.0, 0.02507467830882353, 0.032929002192982455, 0.47990416622334364, 0.007556855366492147, 0.8189826906901589, 0.0, 0.0, 0.0, 0.0, 0.832352213702696, 0.26557617187500004, 0.0, 0.0, 0.0, 0.003443895188053097, 0.10233165390440929, 0.0, 0.12220112928348908, 0.025527978616666454, 0.0, 0.002295664508079848, 0.0, 0.0, 0.09747581721147432, 0.0, 0.044415358626179874, 0.04595269097222222, 0.0037653374475453763, 0.05317034276378166, 0.0033396946564885495, 0.0, 0.0, 0.5363821138211382, 0.3291079175704989, 0.0193359375, 0.0, 0.0, 0.3591602730703503, 0.0, 0.0, 0.0, 0.007774939903846155, 0.7878205128205128, 0.16781874243341405, 0.0, 0.0, 0.05206453680364409, 0.00672134088010204, 0.0, 0.0, 0.08198748615654056, 0.012032373559720297, 0.0005602863036916072, 0.031042926111140127, 0.6137623469492747, 0.0, 0.002538755886970173, 0.12391959536215716, 0.5, 0.34879032258064513, 0.002334108777866242, 0.004481135187922297, 0.12916340125391848, 0.1665026591749046, 0.0015489594275210083, 0.02665050871852904, 0.020518847104519775, 0.20003101807585486, 0.0003391810825892857, 0.317573234190924, 0.0020252847906403943, 0.012454643068720378, 0.002576315983124019, 0.0027366574486700664, 0.005746916523129921, 0.0024545568282918146, 0.7362962526050882, 0.4372051886792453, 0.0, 0.0, 0.6692406639004149, 0.0, 0.0, 0.4784737527549589, 0.007001511594082447, 0.05523616956798539, 0.0, 0.0, 0.018349609375, 0.0, 0.0020806379378980893, 0.004149377593360996, 0.11790597287750414, 0.13407505580357143, 0.0, 0.0, 0.0, 0.07829495398169112, 0.013084086196682464, 0.06629591240458958, 0.00428966547818792, 0.0010522318165204678, 0.02946417455179283, 0.11553721910112359, 0.0923951295045045, 0.4657322403107945, 0.10162287255531616, 0.011960730525431012, 0.5630587318087318, 0.3104012999134909, 0.001989475918008048, 0.06265134759395256, 0.02951625703075006, 0.0, 0.002723190463334849, 0.01279747681832848, 0.07064090526153267, 0.0, 0.4415566923685251, 0.12437013790664782, 0.0030459449404761905, 0.00373150835220838, 0.27493351063829785, 0.0, 0.0003532247340425532, 0.6331888145142843, 0.0, 0.0, 0.5736654804270462, 0.296077009827614, 0.09558572404371585, 0.1797668539325843, 0.0, 0.02415303164308176, 0.967815344603381, 0.016777397853185595, 0.0, 0.22618650278111455, 0.00938053479226705, 0.0, 0.0, 0.3179611650485437, 0.009712080081997174, 0.02442973024556604, 0.16085219109195403, 0.016419757911048282, 0.06275674882629109, 0.0, 0.10162287255531616, 0.0, 0.008975074404761904, 0.0, 0.016117125984251968, 0.013319085405759162, 0.002473264160661015, 0.06274490595611285, 0.004670072598472669, 0.15743815104166667, 0.0, 0.014323713076563287, 0.0, 0.0, 0.0, 0.0, 0.005807674632352941, 0.0, 0.4972357392168352, 0.04195907241316148, 0.004195540187618619, 0.0, 0.0038461538461538464, 0.00046386718750000003, 0.06814166233535743, 0.7904950867018091, 0.022880497685185186, 0.0711820298816411, 0.027446407513477086, 0.0, 0.006855010986328125, 0.0036320472831156718, 0.02679973486206179, 0.02148325765160183, 0.0023714296377388535, 0.02375615834097159, 0.0, 0.020452949438202247, 0.0011126565559725849, 0.0, 0.0, 0.008622786255759334, 0.016278872282608693, 0.04748158325537886, 0.0, 0.08544921875, 0.0, 0.006479779411764705, 0.0, 0.09903971354166667, 0.0013132824445718655, 0.049721707991658426, 0.0, 0.03873261561662199, 0.017190426029962548, 0.32474235612957186, 0.3466796875, 0.07529943680111448, 0.0, 0.007850060096153848, 0.02946417455179283, 0.006894389891172276, 0.0, 0.008, 0.0, 0.0, 0.0, 0.01735309043819124, 0.029015676944949807, 0.02408288043478261, 0.000144547848796034, 0.0, 0.008159348060344827, 0.0, 0.0, 0.0, 0.04052915892193308, 0.0, 0.0, 0.011359528668801626, 0.010629328060247089, 0.0, 0.0889945652173913, 9.43158953722334e-05, 0.0, 0.0, 0.03764056757377581, 0.020352984729306925, 0.027546097564068166, 0.0, 0.010691754694835682, 0.0018526453550170069, 0.02067502459448812, 0.011160714285714286, 0.0, 0.0, 0.0, 0.0, 0.020036057692307693, 0.5914713541666666, 0.0, 0.016630325756914484, 0.4053435257177033, 0.0, 0.0, 0.0017080307006835938, 0.0, 0.0032455793773854963, 0.5169788394669148, 0.0, 0.16136352144012944, 0.0, 0.0, 0.0, 0.031279447726852275, 0.0, 0.02519373403455212, 0.0, 0.007234717095213849, 0.4677074923826141, 0.5169788394669148, 0.003568812779017857, 0.0, 0.0, 0.10251709483640081, 0.5418122202234029, 0.1310627455795678, 0.0, 0.001054820840783485, 0.07352257802413072, 0.7243589743589745, 0.0, 0.0019235695145018916, 0.010519935344827586, 0.0077923665862555894, 0.12393707482993196, 0.0, 0.032107469512195126, 0.012768388605442178, 0.0, 0.0, 0.004553289361338798, 0.16242110790854963, 0.9044044943820224, 0.0, 0.22120786516853932, 0.15733180686058912, 0.0023809598573151123, 0.0, 0.0, 0.034103951890034366, 0.011235955056179775, 0.0, 0.3894000515767757, 0.0, 0.2964650483311441, 0.051723938581074824, 0.2806152091582028, 0.0, 0.18092049607471578, 0.0, 0.0, 0.0, 0.17732551690478304, 0.0034873636551914578, 0.1859375, 0.006267936862244898, 0.00046873466934850864, 0.09903971354166667, 0.4662236650152042, 0.6002373207647371, 0.0, 0.19306468974873187, 0.009826826464577656, 0.0, 0.0, 0.0, 0.2916666666666667, 0.0012656716070096941, 0.020611525521271414, 0.03981338936327712, 0.0, 0.9494003040711751, 0.020158622007231355, 0.0, 0.09267523381192083, 0.08707065076903192, 0.004629235356772733, 0.28652229326273093, 0.1828757174856503, 0.0, 0.8089397574303612, 0.15184396382086635, 0.09503949611298979, 0.1180444379185889, 0.0, 0.25426602774585455, 0.16281674834760404, 0.03717160946627722, 0.0, 0.0, 0.0029259314903846154, 0.09277856948968513, 0.0, 0.5304558082107212, 0.0, 0.7340204290326657, 0.0, 0.009044865518544729, 0.05115727219626168, 0.7925627425080493, 0.0, 0.47246168582375475, 0.0, 0.49352888949597046, 0.17060108250713535, 0.0, 0.0, 0.0, 0.0, 0.0, 0.008298850070224718, 0.0, 0.007335520779620717, 0.0, 0.0, 0.07898351648351648, 0.01020408163265306, 0.10855263157894736, 0.0, 0.4596354166666667, 0.0, 0.0010689400337837837, 0.0, 0.7212837837837838, 0.5650224215246636, 0.061132645613785244, 0.0, 0.0, 0.0, 0.07376158759018592, 0.0, 0.0, 0.011951939902494262, 0.0, 0.0, 0.19593803775685797, 0.0037909812591642228, 0.060773026315789486, 0.003243943560585956, 0.0, 0.14567587209302327, 0.0, 0.21880678766798223, 0.025557084517045456, 0.024514824308114587, 0.004617332229103874, 0.0, 0.19498321739780844, 0.0, 0.6772850719024086, 0.42286566732074504, 0.0, 0.7578369905956113, 0.7578369905956113, 0.0, 0.0, 0.0854612716415264, 0.6988241244152231, 0.00847571066978193, 0.001209465164276184, 0.003490404019696769, 0.03652184959349594, 0.009274675546448088, 0.0, 0.0341936099796334, 0.025558770467589465, 0.007792944950751422, 0.7520215633423181, 0.13892431972789115, 0.0, 0.035885989010989015, 0.01630859375, 0.0, 0.23661851559523162, 0.0, 0.0, 0.17745535714285715, 0.011638208762886598, 0.0, 0.11960730179864673, 0.008957832459949217, 0.012213674532312925, 0.0, 0.0018636541636335275, 0.0, 0.001987160613019464, 0.0, 0.00737890012766065, 0.07303945645055665, 0.024326601841733825, 0.0, 0.0, 0.0, 0.0, 0.0, 0.774894140144789, 0.0, 0.40619247583985274, 0.44096452328159647, 0.03394679954184364, 0.011436153356774503, 0.0, 0.017042385482679435, 0.001051934773489933, 0.0, 0.008144177337022558, 0.03665005200315226, 0.14442908653846154, 0.0, 0.43684158817489194, 0.0, 0.1099947868582346, 0.0, 0.02462312133431085, 0.0, 0.011725541116133519, 0.0, 0.8533475248351281, 0.12668052134646962, 0.011591860534314803, 0.06444384840495157, 0.025557084517045456, 0.15733180686058912, 0.0, 0.10360726680373486, 0.0, 0.011327898770320687, 0.11910102728904394, 0.07182876107856392, 0.012703086921202275, 0.011235955056179775, 0.0, 0.0, 0.0, 0.0013007592498435546, 0.14105504587155965, 0.0023659960183397685, 0.146625, 0.0, 0.7251954074572722, 0.0, 0.017267400568181816, 0.2044246765249538, 0.8219612229679344, 0.0242890625, 0.0, 0.40370087626128515, 0.00227250393081761, 0.005128205128205128, 0.20846550630292665, 0.0, 0.19086702512666737, 0.17363160934291583, 0.3198331555598652, 0.0, 0.009009879663593052, 0.012, 0.008832522087696335, 0.0, 0.005952592329545454, 0.0029362466751367096, 0.0, 0.02736739909718534, 0.01021347124785676, 0.01075712619649818, 0.10532133537312344, 0.0, 0.0, 0.5929122590928851, 0.011403586647727271, 0.20466014648088604, 0.0048415855870712395, 0.007776772103658538, 0.0, 0.0, 0.0, 0.882554945054945, 0.6843729152768512, 0.012, 0.03442091010956175, 0.3052385892116183, 0.0, 0.0, 0.11429073033707865, 0.4229903268845897, 0.0, 0.1760980813655031, 0.01713650984761357, 0.0015121919459315065, 0.002647927722091195, 0.0, 0.0, 0.006699438483516092, 0.0003253830675634825, 0.0012260105298913043, 0.005230664577836412, 0.03244273903355696, 0.0, 0.8446253401321656, 0.05897672322571119, 0.005396491994473342, 0.008904235553209084, 0.0, 0.0, 0.009437330044763947, 0.024533130980553555, 0.30376344086021506, 0.0, 0.008826462765957447, 0.21012269938650308, 0.0, 0.19741289272497853, 0.45504840940525587, 0.002624895587657233, 0.0, 0.03085302337398374, 0.19636524822695034, 0.0, 0.0059932863481040564, 0.04428066037735849, 0.37369272908366535, 0.0013013908296635051, 0.025682734604105573, 0.00674558624507874, 0.022898706896551723, 0.0, 0.0, 0.0, 0.0, 0.0019443892714218454, 0.003991907374153235, 0.0, 0.0, 0.0, 0.0008947675711743772, 0.0970438151934671, 0.27230782918149465, 0.0, 0.14222357683121017, 0.28521825396825395, 0.0, 0.03308556542592717, 0.0, 0.5059691011235955, 0.05241676401869159, 0.054340011503067484, 0.29652470850524887, 0.460423197492163, 0.16107859825660803, 0.0, 0.0, 0.023653252180232558, 0.3401417960837272, 0.0, 0.44951590594744123, 0.0, 0.008514288260456273, 0.0, 0.0, 0.0, 0.17661937260536398, 0.008945404919164037, 0.035653312732693884, 0.006646647852422908, 0.0, 0.007550731893050541, 0.0, 0.382577442184237, 0.0, 0.030448143265499876, 0.2785416666666667, 0.09723167289908942, 0.009748164694107588, 0.8637387387387387, 0.5109351432880844, 0.026806380714636265, 0.1669377794242436, 0.0, 0.0076045627376425855, 0.32474235612957186, 0.0, 0.0, 0.008020861395474138, 0.0, 0.021620117837283355, 0.008397922934171177, 0.010486745084269663, 0.0, 0.0016275368646070235, 0.0, 0.01657604448843509, 0.002367881274131274, 0.140797842920354, 0.0012820736392513735, 0.0, 0.002270806029393016, 0.00014306329617834394, 0.01912917598444163, 0.015127928335128481, 0.06692148023204755], "name": "quote_sweep", "marker": {"color": "#2ecc71", "size": 4, "opacity": 0.5}}], "layout": {"title": "Fill Probability vs Contracts Ahead", "height": 350, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Contracts ahead in queue"}, "yaxis": {"title": "Estimated fill probability", "range": [0, 1]}}};
+  Plotly.newPlot('chart_fp_vs_ca', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Sampled at 1:200 from every estimate_fill_probability() call. If fill probability doesn't decline with higher contracts_ahead, the model is not sensitive enough to queue depth.</p></div>
+</div>
+  </div>
+  <script>
+document.querySelectorAll('.section-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+        header.closest('.section').classList.toggle('collapsed');
+    });
+});
+document.getElementById('expand-all-btn').addEventListener('click', function() {
+    var sections = document.querySelectorAll('.section');
+    var anyCollapsed = Array.from(sections).some(function(s) { return s.classList.contains('collapsed'); });
+    sections.forEach(function(s) {
+        if (anyCollapsed) s.classList.remove('collapsed');
+        else s.classList.add('collapsed');
+    });
+    this.textContent = anyCollapsed ? 'Collapse All' : 'Expand All';
+});
+</script>
+</body>
+</html>
