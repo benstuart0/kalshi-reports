@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalshi MM — Analytics Overview: 20260512_012936_b00a497a</title>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0f0f1a;
+    color: #e0e0e0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+header {
+    background: linear-gradient(135deg, #1a1a3e 0%, #16213e 100%);
+    padding: 24px 32px;
+    border-bottom: 2px solid #2a2a5a;
+}
+header h1 { font-size: 1.6rem; font-weight: 700; color: #ffffff; }
+header p { color: #8888aa; margin-top: 4px; font-size: 0.85rem; }
+.container { max-width: 1400px; margin: 0 auto; padding: 24px 32px; }
+.section {
+    background: #16213e;
+    border: 1px solid #2a2a5a;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.section-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    background: #1a1a3e;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid #2a2a5a;
+    gap: 10px;
+}
+.section-header h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #c0c0f0;
+    flex: 1;
+}
+.section-header .toggle { color: #6666aa; font-size: 1.1rem; transition: transform 0.2s; }
+.section-body { padding: 20px; }
+.section.collapsed .section-body { display: none; }
+.section.collapsed .toggle { transform: rotate(-90deg); }
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.stat-card {
+    background: #1a1a3e;
+    border: 1px solid #2a2a5a;
+    border-radius: 8px;
+    padding: 14px 16px;
+}
+.stat-card .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6677aa;
+    margin-bottom: 4px;
+}
+.stat-card .value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #e0e0ff;
+    font-variant-numeric: tabular-nums;
+}
+.stat-card .sub {
+    font-size: 0.78rem;
+    color: #7788aa;
+    margin-top: 2px;
+}
+.stat-card.positive .value { color: #2ecc71; }
+.stat-card.negative .value { color: #e74c3c; }
+.stat-card.neutral .value { color: #3498db; }
+.stat-card.warn { border-color: #f39c12; }
+.stat-card.warn .value { color: #f39c12; }
+.warning-box {
+    background: #2a1a0a;
+    border: 1px solid #f39c12;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    color: #f5c842;
+    font-size: 0.85rem;
+}
+.warning-box .icon { margin-right: 6px; }
+.ok-box {
+    background: #0a1e0a;
+    border: 1px solid #2ecc71;
+    border-radius: 6px;
+    padding: 10px 16px;
+    margin-bottom: 12px;
+    color: #7dffa0;
+    font-size: 0.82rem;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+    margin-top: 8px;
+}
+thead th {
+    background: #1a1a3e;
+    color: #9090cc;
+    text-align: right;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.72rem;
+    border-bottom: 1px solid #2a2a5a;
+}
+thead th:first-child { text-align: left; }
+tbody td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #1a1a2a;
+    text-align: right;
+    color: #c0c0d8;
+    font-variant-numeric: tabular-nums;
+}
+tbody td:first-child { text-align: left; color: #d0d0f0; }
+tbody tr:hover { background: #1e1e3a; }
+.chart-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.chart-row > * { min-width: 0; overflow: hidden; }
+.chart-row.single { grid-template-columns: 1fr; }
+.chart-wrap {
+    background: #16213e;
+    border: 1px solid #2a2a5a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.divider {
+    border: none;
+    border-top: 1px solid #2a2a5a;
+    margin: 16px 0;
+}
+</style>
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+</head>
+<body>
+  
+    <header>
+      <h1>Kalshi MM — Analytics Overview</h1>
+      <p>Session: <strong>20260512_012936_b00a497a</strong> &nbsp;|&nbsp; Started: 2026-05-12 01:29:36 UTC &nbsp;|&nbsp; Duration: 2m &nbsp;|&nbsp; Generated: 2026-05-12 01:49:14 UTC</p>
+      <button id="expand-all-btn" style="margin-top:10px;padding:6px 16px;background:#2a2a4a;color:#c0c0e0;border:1px solid #444;border-radius:4px;cursor:pointer;font-size:0.85rem;">Expand All</button>
+    </header>
+  <div class="container">
+    <div class="section collapsed">
+  <div class="section-header">
+    <h2>0. Session Info</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Session ID</div>
+  <div class="value"><span style="font-size:0.85rem;word-break:break-all">20260512_012936_b00a497a</span></div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Start Time</div>
+  <div class="value">2026-05-12 01:29:36 UTC</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">End Time</div>
+  <div class="value">2026-05-12 01:32:05 UTC</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Duration</div>
+  <div class="value">0h 2m 29s</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Exit Reason</div>
+  <div class="value">signal</div>
+  
+</div>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Starting Balance</div>
+  <div class="value">$275666.89</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Ending Balance</div>
+  <div class="value">$275560.28</div>
+  
+</div>
+          <div class="stat-card negative">
+  <div class="label">Session P&amp;L</div>
+  <div class="value">$-106.61</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Fills</div>
+  <div class="value">35</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Orders Placed</div>
+  <div class="value">314</div>
+  
+</div>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Read Throttled</div>
+  <div class="value">0</div>
+  <div class="sub">blocking waits</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Read Skipped</div>
+  <div class="value">0</div>
+  <div class="sub">non-blocking misses</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Read Wait</div>
+  <div class="value">0.0s</div>
+  <div class="sub">total blocked time</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Throttled</div>
+  <div class="value">0</div>
+  <div class="sub">blocking waits</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Skipped</div>
+  <div class="value">0</div>
+  <div class="sub">non-blocking misses</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Wait</div>
+  <div class="value">0.0s</div>
+  <div class="sub">total blocked time</div>
+</div>
+        </div>
+        <details style="margin-top:12px"><summary style="cursor:pointer;color:#aaa">Config JSON</summary><pre style="font-size:0.72rem;overflow:auto;max-height:300px;background:#111;padding:10px;border-radius:4px">{
+  "fix_or_rest": "fix",
+  "fix_host": "mm.fix.elections.kalshi.com",
+  "fix_port": 8228,
+  "fix_target_comp_id": "KalshiNR",
+  "fix_smoke_max_risk_usd": 10.0,
+  "fix_smoke_max_per_order_usd": 1.0,
+  "fix_smoke_intentional_fill_budget_usd": 5.0,
+  "max_subscriptions": 350,
+  "trade_tracker_startup_delay_seconds": 25,
+  "min_recent_volume": 125,
+  "market_rescan_interval_seconds": 180,
+  "fee_waiver_only": false,
+  "allowed_series_prefixes": [],
+  "simple_max_contracts": 55,
+  "max_spread_cents": 20,
+  "max_order_size_balance_fraction": 750,
+  "min_quote_size": 4,
+  "max_position_per_market": 120,
+  "sell_max_position_multiplier": 3.0,
+  "sell_priority_multiplier": 2.0,
+  "max_risk_per_market_dollars": null,
+  "microprice_halflife": 1.0,
+  "trade_ewma_halflife": 0.5,
+  "capital_recovery_fraction": 0.2,
+  "capital_exhaustion_fraction": 0.05,
+  "min_edge_threshold": 0.25,
+  "buy_min_edge_threshold_multiplier": 1.5,
+  "min_fill_probability": 0.0005,
+  "stop_loss_limit": 7000.0,
+  "stale_order_seconds": 60,
+  "batch_size_cap": 20,
+  "read_rate_limit": 100.0,
+  "write_rate_limit": 100.0,
+  "cancel_reserve": 15.0,
+  "ntfy_channel": "kalshi-bot-benstu",
+  "status_notification_interval_minutes": 60,
+  "models_dir": "/home/ubuntu/models",
+  "enable_analytics_logging": true,
+  "analytics_output_dir": "analytics_data",
+  "analytics_flush_interval_seconds": 30,
+  "analytics_buffer_size": 1000
+}</pre></details></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>1. Activity Summary</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Fills</div>
+  <div class="value">35</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">New Orders</div>
+  <div class="value">210</div>
+  <div class="sub">place_order API calls</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Amends</div>
+  <div class="value">1,318</div>
+  <div class="sub">amend_order API calls</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / New Order</div>
+  <div class="value">0.1667</div>
+  <div class="sub">fill rate on fresh placements</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Order Touch</div>
+  <div class="value">0.0229</div>
+  <div class="sub">fill rate incl. amends</div>
+</div>
+    </div>
+    <hr class="divider">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Fills / min</div>
+  <div class="value">14.07</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Orders / min</div>
+  <div class="value">84.44</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Amends / min</div>
+  <div class="value">529.94</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">API Calls / min</div>
+  <div class="value">657.8</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Session Duration</div>
+  <div class="value">2m</div>
+  
+</div>
+    </div></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>2. EV &amp; Volume</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="warning-box"><span class="icon">&#9888;</span>EV recomputation discrepancy: 0.0969¢ mean absolute error vs stored values (best match at fee rate 0.0175). Stored values may use a different fee model or inventory-skewed microprice.</div>
+    
+    <div class="stats-grid">
+      <div class="stat-card negative">
+  <div class="label">EV / Contract (median)</div>
+  <div class="value">-0.6942¢</div>
+  <div class="sub">p25=-1.213¢  p75=+0.552¢</div>
+</div>
+      <div class="stat-card">
+  <div class="label">EV / Contract (mean)</div>
+  <div class="value">-0.2640¢</div>
+  <div class="sub">inflated by high-EV outliers</div>
+</div>
+      <div class="stat-card">
+  <div class="label">EV / Order Placed</div>
+  <div class="value">-1.3804¢</div>
+  <div class="sub">$-0.013804/order</div>
+</div>
+      <div class="stat-card negative">
+  <div class="label">Total EV</div>
+  <div class="value">-289.89¢</div>
+  <div class="sub">= $-2.8989</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Total Volume</div>
+  <div class="value">$425.68</div>
+  <div class="sub">42,567¢ notional</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Total Contracts</div>
+  <div class="value">848</div>
+  <div class="sub">contracts filled</div>
+</div>
+      <div class="stat-card neg">
+  <div class="label">Fees Paid</div>
+  <div class="value">250.61¢</div>
+  <div class="sub">= $2.5061</div>
+</div>
+      <div class="stat-card negative">
+  <div class="label">Net Edge</div>
+  <div class="value">-0.6810%</div>
+  <div class="sub">-68.10 bps</div>
+</div>
+    </div>
+    <hr class="divider">
+    <div id="chart_ev_dist" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": [-2.0428460157093786, -1.9613781665580254, -1.8799103174066718, -1.7984424682553186, -1.716974619103965, -1.6355067699526118, -1.5540389208012584, -1.472571071649905, -1.3911032224985516, -1.3096353733471982, -1.2281675241958447, -1.1466996750444913, -1.0652318258931381, -0.9837639767417846, -0.9022961275904312, -0.8208282784390778, -0.7393604292877244, -0.657892580136371, -0.5764247309850176, -0.49495688183366415, -0.41348903268231074, -0.33202118353095733, -0.2505533343796039, -0.16908548522825062, -0.08761763607689721, -0.006149786925543799, 0.07531806222580961, 0.15678591137716302, 0.23825376052851643, 0.31972160967986984, 0.40118945883122326, 0.48265730798257667, 0.5641251571339299, 0.6455930062852833, 0.7270608554366367, 0.8085287045879901, 0.8899965537393435, 0.9714644028906969, 1.0529322520420503, 1.1344001011934037, 1.2158679503447571, 1.2973357994961106, 1.378803648647464, 1.4602714977988174, 1.5417393469501708, 1.6232071961015242, 1.7046750452528776, 1.7861428944042308, 1.8676107435555842, 1.9490785927069378, 2.030546441858291, 2.112014291009644, 2.193482140160998, 2.2749499893123515, 2.3564178384637047, 2.437885687615058, 2.5193535367664115, 2.600821385917765, 2.6822892350691183, 2.7637570842204715], "y": [1, 0, 0, 0, 1, 0, 1, 0, 4, 1, 2, 2, 1, 0, 1, 2, 1, 2, 1, 0, 0, 1, 0, 0, 1, 0, 2, 0, 0, 1, 0, 0, 2, 2, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1], "width": 0.08146784915135319, "name": "EV per contract (\u00a2)", "marker": {"color": "#9b59b6", "opacity": 0.8}}], "layout": {"title": "EV per Contract Distribution (fill_ev_per_contract)", "height": 320, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "EV per contract (\u00a2)"}, "yaxis": {"title": "Count"}, "shapes": [{"type": "line", "x0": -0.6942057083303224, "x1": -0.6942057083303224, "y0": 0, "y1": 1, "yref": "paper", "line": {"color": "#2ecc71", "width": 2, "dash": "dash"}}, {"type": "line", "x0": -0.2640469420925598, "x1": -0.2640469420925598, "y0": 0, "y1": 1, "yref": "paper", "line": {"color": "#e74c3c", "width": 2, "dash": "dot"}}], "annotations": [{"x": -0.6942057083303224, "y": 1, "yref": "paper", "text": "median -0.694\u00a2", "showarrow": false, "xanchor": "left", "font": {"color": "#2ecc71", "size": 11}}, {"x": -0.2640469420925598, "y": 0.88, "yref": "paper", "text": "mean -0.264\u00a2", "showarrow": false, "xanchor": "left", "font": {"color": "#e74c3c", "size": 11}}]}};
+  Plotly.newPlot('chart_ev_dist', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>3. Markout Analysis</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><table><thead><tr><th>Horizon</th><th>Mean Markout</th><th>Std Dev</th><th>Std Error</th><th>N Fills</th></tr></thead><tbody><tr><td>0s (EV)</td><td style='color:#2ecc71'>+0.0012¢</td><td>1.2112¢</td><td>±0.2306¢</td><td>35</td></tr><tr><td>1s</td><td style='color:#e74c3c'>-0.0476¢</td><td>2.0425¢</td><td>±0.4084¢</td><td>35</td></tr><tr><td>5s</td><td style='color:#e74c3c'>-0.1336¢</td><td>2.8201¢</td><td>±0.4641¢</td><td>35</td></tr><tr><td>10s</td><td style='color:#2ecc71'>+0.0437¢</td><td>2.6964¢</td><td>±0.5462¢</td><td>35</td></tr><tr><td>30s</td><td style='color:#e74c3c'>-0.7734¢</td><td>2.8304¢</td><td>±0.5557¢</td><td>18</td></tr></tbody></table><hr class='divider'><p style='color:#a0c4ff;font-size:0.9rem;font-weight:600;margin:18px 0 10px;'>Adverse Selection (Mid-Shift)</p><div class='stats-grid'><div class="stat-card negative">
+  <div class="label">Adverse rate (10s, ≥1¢)</div>
+  <div class="value">34.3%</div>
+  <div class="sub">of 35 fills had mid move ≥1¢ against them</div>
+</div><div class="stat-card negative">
+  <div class="label">Adverse contracts (10s, ≥1¢)</div>
+  <div class="value">38.1%</div>
+  <div class="sub">of 848 contracts traded into ≥1¢ adverse moves</div>
+</div><div class="stat-card positive">
+  <div class="label">Mean mid-shift (10s)</div>
+  <div class="value">+0.029¢</div>
+  <div class="sub">signed against fill direction; 0 = neutral</div>
+</div></div><table><thead><tr><th>Horizon</th><th>N Fills</th><th>Mean mid-shift</th><th>Adverse ≥1¢</th><th>Adverse &lt;0 (soft)</th></tr></thead><tbody><tr><td>1s</td><td>35</td><td style='color:#e74c3c'>+0.000¢</td><td style='color:#e67e22'>22.9%</td><td style='color:#888'>34.3%</td></tr><tr><td>5s</td><td>35</td><td style='color:#e74c3c'>-0.157¢</td><td style='color:#e74c3c'>34.3%</td><td style='color:#888'>45.7%</td></tr><tr><td>10s</td><td>35</td><td style='color:#2ecc71'>+0.029¢</td><td style='color:#e74c3c'>34.3%</td><td style='color:#888'>45.7%</td></tr><tr><td>30s</td><td>18</td><td style='color:#e74c3c'>-0.472¢</td><td style='color:#e74c3c'>55.6%</td><td style='color:#888'>55.6%</td></tr></tbody></table><p style='color:#8888aa;font-size:0.82rem;margin:12px 0 6px;'>Cohorts at 10s</p><table><thead><tr><th>Cohort</th><th>N Fills</th><th>Adverse ≥1¢</th><th>Mean mid-shift</th></tr></thead><tbody><tr><td>All fills</td><td>35</td><td style='color:#e74c3c'>34.3%</td><td style='color:#2ecc71'>+0.029¢</td></tr><tr><td>Buys</td><td>11</td><td style='color:#e74c3c'>36.4%</td><td style='color:#2ecc71'>+0.136¢</td></tr><tr><td>Sells</td><td>24</td><td style='color:#e74c3c'>33.3%</td><td style='color:#e74c3c'>-0.021¢</td></tr></tbody></table><p style='color:#666;font-size:0.78rem;margin-top:8px;'><strong>Mid-shift markout</strong> = sign(side) · (mid_at_horizon − mid_at_fill). Captures whether the BBO mid moved against the fill, independent of the fill's starting EV. Unlike snipe rate, this metric is invariant to compute latency — a fill that gets adversely selected is counted whether or not we attempted to cancel beforehand. <em>Adverse ≥1¢</em> requires a full-tick move against us; <em>soft</em> counts any negative shift.</p><hr class='divider'><p style='color:#a0c4ff;font-size:0.9rem;font-weight:600;margin:18px 0 10px;'>Underwater Rate (Fill vs Mid)</p><div class='stats-grid'><div class="stat-card warn">
+  <div class="label">Underwater rate (10s)</div>
+  <div class="value">51.4%</div>
+  <div class="sub">of 35 fills are below mid at 10s</div>
+</div><div class="stat-card negative">
+  <div class="label">Underwater contracts (10s)</div>
+  <div class="value">56.0%</div>
+  <div class="sub">of 848 contracts on the wrong side of mid</div>
+</div><div class="stat-card positive">
+  <div class="label">Mean mid-based markout (10s)</div>
+  <div class="value">+0.200¢</div>
+  <div class="sub">fill price vs mid; positive = in the money</div>
+</div><div class="stat-card">
+  <div class="label">Buy vs sell underwater</div>
+  <div class="value">55% / 50%</div>
+  <div class="sub">buys / sells underwater rate</div>
+</div></div><table><thead><tr><th>Horizon</th><th>N Fills</th><th>Mean mid-based markout</th><th>Underwater rate</th></tr></thead><tbody><tr><td>0s (EV)</td><td>35</td><td style='color:#2ecc71'>+0.171¢</td><td style='color:#e67e22'>45.7%</td></tr><tr><td>1s</td><td>35</td><td style='color:#2ecc71'>+0.171¢</td><td style='color:#e67e22'>45.7%</td></tr><tr><td>5s</td><td>35</td><td style='color:#2ecc71'>+0.014¢</td><td style='color:#e67e22'>45.7%</td></tr><tr><td>10s</td><td>35</td><td style='color:#2ecc71'>+0.200¢</td><td style='color:#e67e22'>51.4%</td></tr><tr><td>30s</td><td>18</td><td style='color:#e74c3c'>-0.639¢</td><td style='color:#e74c3c'>72.2%</td></tr></tbody></table><p style='color:#8888aa;font-size:0.82rem;margin:12px 0 6px;'>Cohorts at 10s</p><table><thead><tr><th>Cohort</th><th>N Fills</th><th>Underwater rate</th><th>Mean mid-based markout</th></tr></thead><tbody><tr><td>All fills</td><td>35</td><td style='color:#e67e22'>51.4%</td><td style='color:#2ecc71'>+0.200¢</td></tr><tr><td>Buys</td><td>11</td><td style='color:#e67e22'>54.5%</td><td style='color:#2ecc71'>+0.273¢</td></tr><tr><td>Sells</td><td>24</td><td style='color:#e67e22'>50.0%</td><td style='color:#2ecc71'>+0.167¢</td></tr></tbody></table><p style='color:#8888aa;font-size:0.82rem;margin:14px 0 6px;'>Underwater rate by fill size</p><div id="chart_underwater_by_size" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "name": "Buy", "x": ["1\u20135", "6\u201310", "11\u201315", "16\u201320", "21\u201325", "26\u201330", "31\u201335", "36\u201340"], "y": [0.0, null, 100.0, 50.0, 50.0, 50.0, 100.0, 50.0], "text": ["n=1", "", "n=1", "n=2", "n=2", "n=2", "n=1", "n=2"], "textposition": "outside", "textfont": {"size": 10, "color": "#a0a0a0"}, "marker": {"color": "#2ecc71"}, "error_y": {"type": "data", "symmetric": false, "array": [79.34567085261071, 0.0, 0.0, 40.547134519913385, 40.547134519913385, 40.547134519913385, 0.0, 40.547134519913385], "arrayminus": [0.0, 0.0, 79.34567085261071, 40.547134519913385, 40.547134519913385, 40.547134519913385, 79.34567085261071, 40.547134519913385], "color": "#888", "thickness": 1, "width": 4}, "customdata": [[1, 3.5], [0, NaN], [1, -0.5], [2, 1.5], [2, -0.5], [2, -0.5], [1, -1.0], [2, 0.0]], "hovertemplate": "<b>Buy</b><br>Size: %{x}<br>Underwater: %{y:.1f}%<br>n=%{customdata[0]:,}<br>Mean mid-based markout: %{customdata[1]:+.3f}\u00a2<extra></extra>"}, {"type": "bar", "name": "Sell", "x": ["1\u20135", "6\u201310", "11\u201315", "16\u201320", "21\u201325", "26\u201330", "31\u201335", "36\u201340"], "y": [33.33333333333333, null, null, 50.0, 33.33333333333333, 66.66666666666666, 66.66666666666666, 75.0], "text": ["n=3", "", "", "n=2", "n=9", "n=3", "n=3", "n=4"], "textposition": "outside", "textfont": {"size": 10, "color": "#a0a0a0"}, "marker": {"color": "#e67e22"}, "error_y": {"type": "data", "symmetric": false, "array": [45.90117115401788, 0.0, 0.0, 40.547134519913385, 31.246931916757685, 27.184301805717283, 27.184301805717283, 20.441393735536373], "arrayminus": [27.184301805717283, 0.0, 0.0, 40.547134519913385, 21.275173465059037, 45.901171154017874, 45.901171154017874, 44.936394755736345], "color": "#888", "thickness": 1, "width": 4}, "customdata": [[3, 0.3333333333333333], [0, NaN], [0, NaN], [2, 2.0], [9, 0.0], [3, 0.6666666666666666], [3, -0.6666666666666666], [4, -0.25]], "hovertemplate": "<b>Sell</b><br>Size: %{x}<br>Underwater: %{y:.1f}%<br>n=%{customdata[0]:,}<br>Mean mid-based markout: %{customdata[1]:+.3f}\u00a2<extra></extra>"}, {"type": "scatter", "x": ["1\u20135", "6\u201310", "11\u201315", "16\u201320", "21\u201325", "26\u201330", "31\u201335", "36\u201340"], "y": [51.42857142857142, 51.42857142857142, 51.42857142857142, 51.42857142857142, 51.42857142857142, 51.42857142857142, 51.42857142857142, 51.42857142857142], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.2, "dash": "dash"}, "name": "Overall (51.4%)", "hoverinfo": "skip"}], "layout": {"title": "Underwater Rate by Fill Size \u2014 10s horizon (95% Wilson CI)", "height": 380, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Fill Size (contracts, bucket width = 5)"}, "yaxis": {"title": "Underwater Rate (%)", "rangemode": "tozero"}, "barmode": "group", "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_underwater_by_size', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><p style='color:#666;font-size:0.78rem;margin-top:6px;'>Grouped bars by fill size; error bars are 95% Wilson score intervals on the proportion. Dashed line marks the overall (both-sides) underwater rate. If larger fills underperform, the per-bucket rate trends upward with size — a signal that big fills get picked off harder.</p><p style='color:#666;font-size:0.78rem;margin-top:8px;'><strong>Underwater rate</strong> = fraction of fills whose price is on the wrong side of the BBO mid at the horizon (i.e. <code>mid_based_markout &lt; 0</code>). For a buy this means mid is now below the fill price; for a sell, mid is above. Combines starting EV at fill <em>and</em> subsequent mid drift — distinct from the mid-shift adverse rate above, which isolates post-trade book movement.</p><hr class='divider'><div id="chart_markout" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s"], "y": [0.6578091323797193, 0.8226495809227939, 1.0490046986028478, 1.6655063192342188, 0.9332565053495072], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s"], "y": [-1.0115843727212661, -1.233858216626053, -1.7084876312992059, -1.844857977727063, -4.2223373968106115], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.2)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s"], "y": [-0.17688762017077345, -0.2056043178516295, -0.3297414663481791, -0.0896758292464222, -1.6445404457305521], "mode": "lines+markers", "line": {"color": "#2ecc71", "width": 2.5}, "marker": {"color": "#2ecc71", "size": 7}, "name": "buy vs microprice (n=11)", "showlegend": true}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s"], "y": [0.8336079355381587, 1.0227847892105584, 1.0186531141982, 2.0688603045223, 0.8832604156068009], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s"], "y": [-0.560880662810886, -0.7500575164832857, -1.3822894778345638, -1.5234057590677548, -4.1332604156068005], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.1)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s"], "y": [0.13636363636363635, 0.13636363636363635, -0.18181818181818182, 0.2727272727272727, -1.625], "mode": "lines+markers", "line": {"color": "#2ecc71", "width": 2, "dash": "dash"}, "marker": {"color": "#2ecc71", "size": 6}, "name": "buy vs mid", "showlegend": true}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s"], "y": [0.6009423726609656, 1.0601882469388049, 1.1843452568845174, 1.3554837127675057, 1.0168043417567463], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s"], "y": [-0.43530105194105595, -1.0104943312195023, -1.2717171558459703, -1.1459136202939801, -2.0656983067887893], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.2)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s"], "y": [0.08282066035995485, 0.02484695785965137, -0.04368594948072646, 0.1047850462367627, -0.5244469825160216], "mode": "lines+markers", "line": {"color": "#e67e22", "width": 2.5}, "marker": {"color": "#e67e22", "size": 7}, "name": "sell vs microprice (n=24)", "showlegend": true}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s"], "y": [0.5928476456909395, 0.9149243376408212, 1.2112502977100184, 1.2475937218425057, 1.2591079484769472], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s"], "y": [-0.21784764569093956, -0.5399243376408212, -1.0029169643766849, -0.9142603885091724, -1.9733936627626616], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.1)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s", "5s", "10s", "30s"], "y": [0.1875, 0.1875, 0.10416666666666667, 0.16666666666666666, -0.35714285714285715], "mode": "lines+markers", "line": {"color": "#e67e22", "width": 2, "dash": "dash"}, "marker": {"color": "#e67e22", "size": 6}, "name": "sell vs mid", "showlegend": true}, {"type": "scatter", "x": ["0s", "30s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Markout by Action: Buy vs Sell (95% CI)", "height": 380, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "showlegend": true, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_markout', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><hr class='divider'><div id="chart_markout_by_price" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [1.4152947002878145, 2.0537487436290136, 1.068135906960561, 1.2260706549959999, null], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [0.23189769409723082, -0.13327362906676166, 0.11885400957059433, -0.4329480154978451, null], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(231,76,60,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [0.8235961971925226, 0.960237557281126, 0.5934949582655776, 0.3965613197490774, null], "mode": "lines+markers", "name": "0\u201320\u00a2  (n=4)", "line": {"color": "#e74c3c", "width": 2}, "marker": {"color": "#e74c3c", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [1.0264048360948028, 1.9470401549578547, 2.0800686412138685, 2.689968846155077, 1.5579875929114073], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-1.0847209198765901, -1.29274705939402, -1.1398601659143535, -1.1399187890989935, -1.7713589229307423], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.02915804189089357, 0.3271465477819174, 0.47010423764975756, 0.7750250285280419, -0.10668566500966747], "mode": "lines+markers", "name": "20\u201340\u00a2  (n=10)", "line": {"color": "#e67e22", "width": 2}, "marker": {"color": "#e67e22", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [1.2624997909240845, 1.8486319922980337, 2.339403374775878, 2.117629957391112, 2.4377561552320404], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.6341753172402282, -1.54953719778289, -2.624654390666403, -2.4822909115439984, -3.9174170515653075], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [0.3141622368419282, 0.1495473972575717, -0.1426255079452624, -0.18233047707644326, -0.7398304481666335], "mode": "lines+markers", "name": "40\u201360\u00a2  (n=9)", "line": {"color": "#2ecc71", "width": 2}, "marker": {"color": "#2ecc71", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.014435223694157007, -0.25128826352437705, 0.09208112965353876, 0.9166313409543532, -0.33746197161218383], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.8204090246261233, -1.3981362433561513, -1.8278140732764991, -1.792229374687926, -2.7981970988102507], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(52,152,219,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.41742212416014013, -0.8247122534402642, -0.8678664718114802, -0.4377990168667864, -1.5678295352112173], "mode": "lines+markers", "name": "60\u201380\u00a2  (n=10)", "line": {"color": "#3498db", "width": 2}, "marker": {"color": "#3498db", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.4367172000090409, -0.9366117106122158, 0.09172604595210065, 0.08743698632280483, -1.0427298918049968], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-1.1773940330676578, -0.9399285449832564, -1.880072883257228, -1.8765611002720186, -1.3664515920010831], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(155,89,182,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.8070556165383493, -0.9382701277977361, -0.8941734186525636, -0.8945620569746069, -1.20459074190304], "mode": "lines+markers", "name": "80\u2013100\u00a2  (n=2)", "line": {"color": "#9b59b6", "width": 2}, "marker": {"color": "#9b59b6", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "30s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Markout by Fill Price Bucket (95% CI)", "height": 400, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_markout_by_price', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script>
+<table class='stats-table' style='width:100%;border-collapse:collapse;font-size:0.82rem;margin-top:12px;'>
+  <caption style='color:#aaa;text-align:left;padding-bottom:6px;'>
+    Adverse selection significance test — markout at t=30s, H₁: mean &lt; 0 (one-tailed t-test).
+    Bands use naive SE (std/√n); CIs may be too narrow if fills within the same ticker are correlated.
+  </caption>
+  <thead>
+    <tr style='border-bottom:1px solid #444;color:#aaa;'>
+      <th style='text-align:left;padding:4px 8px;'>Price Bucket</th>
+      <th style='text-align:right;padding:4px 8px;'>n fills</th>
+      <th style='text-align:right;padding:4px 8px;'>Mean markout</th>
+      <th style='text-align:right;padding:4px 8px;'>t-stat</th>
+      <th style='text-align:right;padding:4px 8px;'>p-value</th>
+      <th style='text-align:right;padding:4px 8px;'>Significance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>0–20¢</td>
+      <td style='text-align:right;padding:4px 8px;'>1</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>—</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>20–40¢</td>
+      <td style='text-align:right;padding:4px 8px;'>4</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#e74c3c'>-0.11¢</span></td>
+      <td style='text-align:right;padding:4px 8px;'>-0.04</td>
+      <td style='text-align:right;padding:4px 8px;'>0.485</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>ns</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>40–60¢</td>
+      <td style='text-align:right;padding:4px 8px;'>6</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#e74c3c'>-0.74¢</span></td>
+      <td style='text-align:right;padding:4px 8px;'>-0.68</td>
+      <td style='text-align:right;padding:4px 8px;'>0.264</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>ns</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>60–80¢</td>
+      <td style='text-align:right;padding:4px 8px;'>5</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#e74c3c'>-1.57¢</span></td>
+      <td style='text-align:right;padding:4px 8px;'>-2.87</td>
+      <td style='text-align:right;padding:4px 8px;'>0.023</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#e74c3c;font-weight:bold'>** p<0.05</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>80–100¢</td>
+      <td style='text-align:right;padding:4px 8px;'>2</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#e74c3c'>-1.20¢</span></td>
+      <td style='text-align:right;padding:4px 8px;'>-14.59</td>
+      <td style='text-align:right;padding:4px 8px;'>0.022</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#e74c3c;font-weight:bold'>** p<0.05</span></td>
+    </tr>
+  </tbody>
+</table><hr class='divider'><div class='chart-row'><div id="chart_markout_by_price_buys" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.47041669720463664, 0.04294693065857769, 0.42190712301116085, 1.6402499604388083, -1.5362668133258086], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.9997540930481985, -1.6100720654264988, -2.604699495306931, -3.168473581455853, -3.829168835684561], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.7350853951264176, -0.7835625673839606, -1.0913961861478851, -0.7641118105085223, -2.682717824505185], "mode": "lines+markers", "name": "20\u201340\u00a2  (n=8)", "line": {"color": "#e67e22", "width": 2}, "marker": {"color": "#e67e22", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [2.848400813251029, 3.591494495829598, 3.560223821372549, 3.193800369909914, null], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.2251212538291405, -0.9202591340270911, -0.15754824847047466, 0.22383987166177577, null], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [1.3116397797109443, 1.3356176809012534, 1.701337786451037, 1.7088201207858447, null], "mode": "lines+markers", "name": "40\u201360\u00a2  (n=3)", "line": {"color": "#2ecc71", "width": 2}, "marker": {"color": "#2ecc71", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "30s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Short-term Markout by Fill Price Bucket \u2014 Buys Only (95% CI)", "height": 300, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_markout_by_price_buys', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><div id="chart_markout_by_price_sells" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [1.4152947002878145, 2.0537487436290136, 1.068135906960561, 1.2260706549959999, null], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [0.23189769409723082, -0.13327362906676166, 0.11885400957059433, -0.4329480154978451, null], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(231,76,60,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [0.8235961971925226, 0.960237557281126, 0.5934949582655776, 0.3965613197490774, null], "mode": "lines+markers", "name": "0\u201320\u00a2  (n=4)", "line": {"color": "#e74c3c", "width": 2}, "marker": {"color": "#e74c3c", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [2.8140330610312962, 7.903604005657366, 7.476362306105443, 8.064278896181145, null], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [2.7750696810711086, 1.636362011233493, 5.9558495595752134, 5.798865873167452, null], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [2.7945513710512024, 4.769983008445429, 6.716105932840328, 6.931572384674299, null], "mode": "lines+markers", "name": "20\u201340\u00a2  (n=2)", "line": {"color": "#e67e22", "width": 2}, "marker": {"color": "#e67e22", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [0.40953798182877055, 1.6230373702837242, 1.8981336454442415, 1.4603121357073454, 1.5923320341372855], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.7786910510139302, -2.5100128594122624, -4.027347955731066, -3.71612368772252, -3.955921785974544], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(46,204,113,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.18457653459257983, -0.4434877445642691, -1.0646071551434122, -1.1279057760075872, -1.1817948759186294], "mode": "lines+markers", "name": "40\u201360\u00a2  (n=6)", "line": {"color": "#2ecc71", "width": 2}, "marker": {"color": "#2ecc71", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.014435223694157007, -0.25128826352437705, 0.09208112965353876, 0.9166313409543532, -0.33746197161218383], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.8204090246261233, -1.3981362433561513, -1.8278140732764991, -1.792229374687926, -2.7981970988102507], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(52,152,219,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.41742212416014013, -0.8247122534402642, -0.8678664718114802, -0.4377990168667864, -1.5678295352112173], "mode": "lines+markers", "name": "60\u201380\u00a2  (n=10)", "line": {"color": "#3498db", "width": 2}, "marker": {"color": "#3498db", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.4367172000090409, -0.9366117106122158, 0.09172604595210065, 0.08743698632280483, -1.0427298918049968], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-1.1773940330676578, -0.9399285449832564, -1.880072883257228, -1.8765611002720186, -1.3664515920010831], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(155,89,182,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s", "5s", "10s", "30s"], "y": [-0.8070556165383493, -0.9382701277977361, -0.8941734186525636, -0.8945620569746069, -1.20459074190304], "mode": "lines+markers", "name": "80\u2013100\u00a2  (n=2)", "line": {"color": "#9b59b6", "width": 2}, "marker": {"color": "#9b59b6", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "30s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Short-term Markout by Fill Price Bucket \u2014 Sells Only (95% CI)", "height": 300, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_markout_by_price_sells', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Markout measured from fill price. At t=0 the value equals EV captured (fill price vs microprice). A declining curve indicates adverse selection eroding edge over time. Red dashed line = breakeven. Buy = bought YES (long); Sell = sold YES (short).</p><p style='color:#666;font-size:0.78rem;margin-top:6px;'>Price bucket chart: fills grouped by the price they were filled at. Shaded bands = 95% CI (Liang-Zeger cluster-robust SE, one cluster per event). Near-extreme buckets (0–20¢, 80–100¢) with steeply declining curves indicate adverse selection. Significance table tests H₁: mean markout &lt; 0 at the final horizon.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>4. Fill Correlation &amp; Event Clustering</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Unique Events</div>
+  <div class="value">11</div>
+  <div class="sub">correlation clusters</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Event (mean)</div>
+  <div class="value">3.2</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Event (median)</div>
+  <div class="value">1</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Event (max)</div>
+  <div class="value">10</div>
+  
+</div>
+    </div><hr class='divider'><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Naive vs cluster-robust standard errors by horizon</p><table><thead><tr><th>Horizon</th><th>Mean</th><th>Naive SE</th><th>Cluster SE</th><th>Design Effect</th><th>Eff. N</th><th>N Fills</th><th>N Events</th><th>Sig. (p&lt;0.05)</th></tr></thead><tbody><tr><td>0s (EV)</td><td style='color:#2ecc71'>+0.0012¢</td><td>±0.2047¢</td><td>±0.2306¢</td><td style='color:#2ecc71'>1.13x</td><td>28</td><td>35</td><td>11</td><td style='color:#e74c3c'>&#10007;</td></tr><tr><td>1s</td><td style='color:#e74c3c'>-0.0476¢</td><td>±0.3453¢</td><td>±0.4084¢</td><td style='color:#2ecc71'>1.18x</td><td>25</td><td>35</td><td>11</td><td style='color:#e74c3c'>&#10007;</td></tr><tr><td>5s</td><td style='color:#e74c3c'>-0.1336¢</td><td>±0.4767¢</td><td>±0.4641¢</td><td style='color:#2ecc71'>0.97x</td><td>37</td><td>35</td><td>11</td><td style='color:#e74c3c'>&#10007;</td></tr><tr><td>10s</td><td style='color:#2ecc71'>+0.0437¢</td><td>±0.4558¢</td><td>±0.5462¢</td><td style='color:#2ecc71'>1.20x</td><td>24</td><td>35</td><td>11</td><td style='color:#e74c3c'>&#10007;</td></tr><tr><td>30s</td><td style='color:#e74c3c'>-0.7734¢</td><td>±0.6671¢</td><td>±0.5557¢</td><td style='color:#2ecc71'>0.83x</td><td>26</td><td>18</td><td>4</td><td style='color:#e74c3c'>&#10007;</td></tr></tbody></table><hr class='divider'><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Worst events by markout (300s horizon)</p><table><thead><tr><th>Event</th><th>Mean Markout</th><th>Std Dev</th><th>Fills</th><th>Mean EV</th></tr></thead><tbody><tr><td>KXNBATOTAL-26MAY11DETCLE</td><td style='color:#e74c3c'>-1.4650¢</td><td>1.287</td><td>7</td><td>-0.681¢</td></tr><tr><td>KXNBASPREAD-26MAY11DETCLE</td><td style='color:#e74c3c'>-1.4624¢</td><td>1.572</td><td>4</td><td>-0.973¢</td></tr><tr><td>KXNBAGAME-26MAY11DETCLE</td><td style='color:#e74c3c'>-0.5637¢</td><td>4.738</td><td>5</td><td>-0.514¢</td></tr><tr><td>KXNHLGAME-26MAY11COLMIN</td><td style='color:#2ecc71'>+2.5014¢</td><td>1.459</td><td>2</td><td>+0.751¢</td></tr></tbody></table><hr class='divider'><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Best events by markout (300s horizon)</p><table><thead><tr><th>Event</th><th>Mean Markout</th><th>Std Dev</th><th>Fills</th><th>Mean EV</th></tr></thead><tbody><tr><td>KXNHLGAME-26MAY11COLMIN</td><td style='color:#2ecc71'>+2.5014¢</td><td>1.459</td><td>2</td><td>+0.751¢</td></tr><tr><td>KXNBAGAME-26MAY11DETCLE</td><td style='color:#e74c3c'>-0.5637¢</td><td>4.738</td><td>5</td><td>-0.514¢</td></tr><tr><td>KXNBASPREAD-26MAY11DETCLE</td><td style='color:#e74c3c'>-1.4624¢</td><td>1.572</td><td>4</td><td>-0.973¢</td></tr><tr><td>KXNBATOTAL-26MAY11DETCLE</td><td style='color:#e74c3c'>-1.4650¢</td><td>1.287</td><td>7</td><td>-0.681¢</td></tr></tbody></table><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Fills within the same event (e.g. multiple spread brackets on one basketball game) are correlated — their markouts move together. The naive SE (std/&radic;N) treats fills as independent and overstates statistical significance. The cluster-robust SE groups fills by event and accounts for within-event correlation. The design effect (cluster SE / naive SE) shows how much correlation inflates uncertainty; values &gt; 2 mean the effective sample size is &lt; 25% of the raw fill count. If the worst-markout events are concentrated in a few correlated clusters, the session-wide markout may be driven by one or two bad outcomes rather than a systematic edge problem.</p></div>
+</div><div style='margin:18px 0 6px;padding:4px 12px;background:#1a1a2e;border-left:3px solid #3498db;color:#6688aa;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;'>PnL Attribution</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>5. PnL Overview</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><table class='stats-table' style='width:100%;border-collapse:collapse;font-size:0.82rem;margin-bottom:20px;'>
+  <caption style='color:#aaa;text-align:left;padding-bottom:8px;font-size:0.78rem;'>EV → PnL reconciliation — how theoretical edge translates to actual portfolio change. Gross edge and 60s estimates exclude outlier fills and one-sided-book fills. The 60s adverse selection estimate is computed on the cohort of fills whose markets were still live 60 seconds after the fill.</caption>
+  <thead>
+    <tr style='border-bottom:1px solid #444;color:#aaa;'>
+      <th style='text-align:left;padding:4px 8px;'>Line</th>
+      <th style='text-align:right;padding:4px 8px;'>Cents</th>
+      <th style='text-align:right;padding:4px 8px;'>Dollars</th>
+      <th style='text-align:left;padding:4px 8px;'>Notes</th>
+    </tr>
+  </thead>
+  <tbody><tr><td colspan='4' style='padding:10px 8px 4px;color:#3498db;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-top:2px solid #2a2a4e;'>Fill EV</td></tr><tr style=''><td style='padding:5px 8px;'>Gross edge at fill time</td><td style='text-align:right;padding:5px 8px;'><span style='color:#e74c3c;font-family:monospace'>-39¢</span></td><td style='text-align:right;padding:5px 8px;'><span style='color:#e74c3c;font-family:monospace'>-0.39</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>before fees; outlier fills (EV&nbsp;&gt;&nbsp;20¢) excluded</td></tr><tr style=''><td style='padding:5px 8px;padding-left:20px;'>Less: fees paid</td><td style='text-align:right;padding:5px 8px;'><span style='color:#e74c3c;font-family:monospace'>-251¢</span></td><td style='text-align:right;padding:5px 8px;'><span style='color:#e74c3c;font-family:monospace'>-2.51</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>maker fees across all fills</td></tr><tr style='border-top:1px solid #2a2a4e;'><td style='padding:5px 8px;font-weight:600;'>Net fill EV (after fees)</td><td style='text-align:right;padding:5px 8px;font-weight:600;'><span style='color:#e74c3c;font-family:monospace'>-290¢</span></td><td style='text-align:right;padding:5px 8px;font-weight:600;'><span style='color:#e74c3c;font-family:monospace'>-2.90</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>our model's edge estimate at fill time</td></tr><tr><td colspan='4' style='padding:10px 8px 4px;color:#3498db;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-top:2px solid #2a2a4e;'>Portfolio Change This Session</td></tr><tr style=''><td style='padding:5px 8px;'>Unrealized PnL change</td><td style='text-align:right;padding:5px 8px;'><span style='color:#e74c3c;font-family:monospace'>-6,844¢</span></td><td style='text-align:right;padding:5px 8px;'><span style='color:#e74c3c;font-family:monospace'>-68.44</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>ending (-2,312¢) − starting (+4,532¢); incl. cross-session carry</td></tr>
+  </tbody>
+</table>
+<hr class='divider'><div id="chart_pnl" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "lines", "x": ["2026-05-12 01:31:22.898442+00:00", "2026-05-12 01:31:25.203284+00:00", "2026-05-12 01:31:29.554072+00:00", "2026-05-12 01:31:30.585919+00:00", "2026-05-12 01:31:30.586277+00:00", "2026-05-12 01:31:31.067694+00:00", "2026-05-12 01:31:31.754131+00:00", "2026-05-12 01:31:31.894352+00:00", "2026-05-12 01:31:32.119373+00:00", "2026-05-12 01:31:32.219145+00:00", "2026-05-12 01:31:32.348736+00:00", "2026-05-12 01:31:32.652862+00:00", "2026-05-12 01:31:32.696519+00:00", "2026-05-12 01:31:32.868532+00:00", "2026-05-12 01:31:32.868922+00:00", "2026-05-12 01:31:32.887645+00:00", "2026-05-12 01:31:33.853503+00:00", "2026-05-12 01:31:34.508336+00:00", "2026-05-12 01:31:36.575504+00:00", "2026-05-12 01:31:36.745708+00:00", "2026-05-12 01:31:36.796684+00:00", "2026-05-12 01:31:37.572613+00:00", "2026-05-12 01:31:38.259112+00:00", "2026-05-12 01:31:38.895377+00:00", "2026-05-12 01:31:39.948036+00:00", "2026-05-12 01:31:40.065007+00:00", "2026-05-12 01:31:40.950950+00:00", "2026-05-12 01:31:41.760002+00:00", "2026-05-12 01:31:42.376997+00:00", "2026-05-12 01:31:42.934385+00:00", "2026-05-12 01:31:43.410291+00:00", "2026-05-12 01:31:44.270906+00:00", "2026-05-12 01:31:46.922592+00:00", "2026-05-12 01:31:47.678915+00:00", "2026-05-12 01:31:47.796717+00:00"], "y": [12.67508537788709, 51.60841289751711, 136.73443529654236, 122.25639066208949, 91.33260708072397, 52.074383314438, 19.54493718852907, -8.75840483547632, -8.019322048804195, -60.98554512237982, -102.15802494385761, -183.41764261497477, -234.03876460558297, -254.4497108368966, -252.63464729110024, -278.578069933979, -313.8972623693253, -315.013512772162, -337.24047336061795, -339.68280713811413, -347.36946479658, -369.26486890223293, -344.4513437450279, -341.4762717361427, -274.64477631438433, -286.2714285028392, -278.6648304311774, -302.26782451440835, -291.318960087633, -272.70393263860393, -289.1091972118997, -293.0176898405915, -345.6662726296228, -297.87774583973646, -289.88951036477744], "name": "Cumulative fill EV (\u00a2)", "line": {"color": "#e67e22", "width": 2, "dash": "dot"}}, {"type": "scatter", "mode": "lines", "x": ["2026-05-12 01:30:16.008922+00:00", "2026-05-12 01:30:26.139061+00:00", "2026-05-12 01:30:36.275891+00:00", "2026-05-12 01:30:47.078459+00:00", "2026-05-12 01:30:57.254065+00:00", "2026-05-12 01:31:07.446682+00:00", "2026-05-12 01:31:18.363718+00:00", "2026-05-12 01:31:28.535730+00:00", "2026-05-12 01:31:38.759430+00:00"], "y": [-2313.0000000004657, -5622.999999998137, 32.00000000069849, -179.99999999883585, 2141.99999999837, -10916.00000000326, -11383.00000000163, -11308.00000000163, -10660.999999998603], "name": "Session PnL (\u00a2)", "line": {"color": "#2ecc71", "width": 2}}, {"type": "scatter", "mode": "lines", "x": ["2026-05-12 01:31:28.535730+00:00", "2026-05-12 01:31:38.759430+00:00"], "y": [4531.75, -2312.2396882186554], "name": "Unrealized PnL (\u00a2)", "line": {"color": "#9b59b6", "width": 2, "dash": "dot"}}], "layout": {"title": "Session PnL Attribution", "height": 350, "margin": {"t": 50, "b": 60, "l": 70, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time"}, "yaxis": {"title": "PnL (\u00a2)"}, "legend": {"x": 0.01, "y": 0.99}}};
+  Plotly.newPlot('chart_pnl', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>6. Unrealized PnL</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Starting Unrealized PnL</div>
+  <div class="value">+4531.8¢</div>
+  <div class="sub">first snapshot (incl. cross-session carry)</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Ending Unrealized PnL</div>
+  <div class="value">-2312.2¢</div>
+  <div class="sub">last snapshot</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Peak Unrealized PnL</div>
+  <div class="value">+4531.8¢</div>
+  <div class="sub">session high</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Trough Unrealized PnL</div>
+  <div class="value">-2312.2¢</div>
+  <div class="sub">session low</div>
+</div>
+        </div>
+        <p style='color:#666;font-size:0.78rem;margin-top:6px;'>
+        Starting value includes pre-existing inventory carried from prior sessions.
+        Computed as Σ (mid_price − avg_entry_price) × position for all open positions at each 10s snapshot.
+        Tickers with no live orderbook are excluded from the sum.
+        </p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>7. Settlements (Realized PnL)</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><p style='color:#555'>No markets settled during this session window.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>8. Realized Trading PnL</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Closing Fills</div>
+  <div class="value">9</div>
+  <div class="sub">out of 35 total fills</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Unique Tickers</div>
+  <div class="value">5</div>
+  <div class="sub">markets with position-reducing fills</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Total Realized PnL</div>
+  <div class="value"><span style='color:#2ecc71'>+2649.03¢</span></div>
+  <div class="sub">$+26.4903</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Avg PnL per Close</div>
+  <div class="value">+294.34¢</div>
+  <div class="sub">win rate: 100.0%</div>
+</div>
+        </div>
+        <hr class="divider">
+        <div id="chart_realized_pnl_by_ticker" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": ["KXITFMATCH-26MAY11DEDZAN-DED", "KXNBAGAME-26MAY11DETCLE-DET", "KXNBASPREAD-26MAY11DETCLE-CLE1", "KXNHLGAME-26MAY11COLMIN-MIN", "KXNBATOTAL-26MAY11DETCLE-214"], "y": [1565.463114224602, 648.826, 216.97999999999993, 120.0, 97.75999999999999], "marker": {"color": ["#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71"]}, "name": "Realized PnL (\u00a2)", "text": ["n=3", "n=2", "n=2", "n=1", "n=1"], "textposition": "outside"}], "layout": {"title": "Realized Trading PnL by Ticker (\u00a2)", "height": 380, "margin": {"t": 50, "b": 120, "l": 70, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Ticker", "tickangle": -35}, "yaxis": {"title": "Total Realized PnL (\u00a2)"}}};
+  Plotly.newPlot('chart_realized_pnl_by_ticker', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script>
+        <hr class="divider">
+        <table><thead><tr><th>Ticker</th><th>Closing Fills</th><th>Total PnL</th><th>Avg PnL/Fill</th></tr></thead><tbody><tr><td>KXITFMATCH-26MAY11DEDZAN-DED</td><td>3</td><td style='color:#2ecc71'>+1565.46¢</td><td>+521.82¢</td></tr><tr><td>KXNBAGAME-26MAY11DETCLE-DET</td><td>2</td><td style='color:#2ecc71'>+648.83¢</td><td>+324.41¢</td></tr><tr><td>KXNBASPREAD-26MAY11DETCLE-CLE1</td><td>2</td><td style='color:#2ecc71'>+216.98¢</td><td>+108.49¢</td></tr><tr><td>KXNHLGAME-26MAY11COLMIN-MIN</td><td>1</td><td style='color:#2ecc71'>+120.00¢</td><td>+120.00¢</td></tr><tr><td>KXNBATOTAL-26MAY11DETCLE-214</td><td>1</td><td style='color:#2ecc71'>+97.76¢</td><td>+97.76¢</td></tr></tbody></table>
+        <p style='color:#666;font-size:0.78rem;margin-top:8px;'>
+        Realized trading PnL is computed per fill from the position's average entry price.
+        A "closing fill" is any fill that reduces an existing position (buy-then-sell or sell-then-buy).
+        This measures actual round-trip returns from two-way trading, independent of settlement.
+        Fees are NOT deducted (see fill_ev for fee-adjusted metrics).
+        </p></div>
+</div><div style='margin:18px 0 6px;padding:4px 12px;background:#1a1a2e;border-left:3px solid #3498db;color:#6688aa;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;'>Operational</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>9. Sniped Fills</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><p style='color:#2ecc71'>No sniped fills this session.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>10. API Activity Rate</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Total API Calls</div>
+  <div class="value">1,636</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Calls / min</div>
+  <div class="value">657.8</div>
+  
+</div>
+    </div>
+    <hr class="divider">
+    <div id="chart_api" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "lines", "x": ["2026-05-12 01:31:00+00:00"], "y": [1636], "line": {"color": "#3498db", "width": 2}, "fill": "tozeroy", "fillcolor": "rgba(52,152,219,0.15)", "name": "API calls/min"}], "layout": {"title": "API Call Activity Rate", "height": 300, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time"}, "yaxis": {"title": "Calls per minute"}}};
+  Plotly.newPlot('chart_api', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>11. Latency Report</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><table><thead><tr><th>Endpoint</th><th>Count</th><th>p50 ms</th><th>p95 ms</th><th>p99 ms</th><th>Mean ms</th><th>Max ms</th><th>Error %</th><th>Queue p50</th><th>Queue p99</th><th>Wire p50</th><th>Wire p99</th><th>Parse p50</th><th>OB→Action p50</th></tr></thead><tbody><tr><td>amend_order</td><td>1,318</td><td>64.9</td><td>114.1</td><td>146.9</td><td>67.6</td><td>385.0</td><td style="color:#e74c3c">92.11%</td><td>18.0</td><td>58.3</td><td>41.3</td><td>112.8</td><td>—</td><td>147.0</td></tr><tr><td>place_order</td><td>210</td><td>96.7</td><td>281.5</td><td>470.4</td><td>112.8</td><td>554.4</td><td>0.00%</td><td>18.4</td><td>66.8</td><td>73.0</td><td>454.8</td><td>—</td><td>210.5</td></tr><tr><td>cancel_order</td><td>108</td><td>45.1</td><td>114.2</td><td>297.3</td><td>51.3</td><td>352.9</td><td>0.00%</td><td>1.0</td><td>34.3</td><td>36.7</td><td>286.7</td><td>0.0</td><td>—</td></tr></tbody></table><h4 style='margin-top:16px;margin-bottom:6px;color:#c0c0e0;'>Pipeline Latency — place/amend (p50 / p95 ms)</h4><table><thead><tr><th>Endpoint</th><th>Network p50</th><th>Network p95</th><th>Consumer Queue p50</th><th>Consumer Queue p95</th><th>Handler Compute p50</th><th>Handler Compute p95</th><th>Executor Queue p50</th><th>Executor Queue p95</th><th>OB→Action p50</th><th>OB→Action p95</th></tr></thead><tbody><tr><td>amend_order</td><td>69.9</td><td>370.4</td><td>43.7</td><td>490.4</td><td>0.5</td><td>0.9</td><td>8.0</td><td>30.5</td><td>147.0</td><td>594.8</td></tr><tr><td>place_order</td><td>41.9</td><td>383.4</td><td>90.3</td><td>554.7</td><td>0.4</td><td>0.7</td><td>23.5</td><td>56.7</td><td>210.5</td><td>609.8</td></tr></tbody></table><p style='font-size:0.78rem;color:#888;margin-top:6px;'>network_ms may be negative or near-zero if exchange and local clocks are unsynchronised. All four stages should sum to OB→Action when all checkpoints are present.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>12. Rate Limits</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Rate Limit Events</div>
+  <div class="value">0</div>
+  <div class="sub">from rate_limits.parquet</div>
+</div>
+      <div class="stat-card">
+  <div class="label">429 HTTP Errors</div>
+  <div class="value">0</div>
+  <div class="sub">from network_latency</div>
+</div>
+      <div class="stat-card">
+  <div class="label">% of API Calls</div>
+  <div class="value">0.00%</div>
+  <div class="sub">of 1,636 total calls</div>
+</div>
+    </div><div id="chart_rl" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": ["2026-05-12 01:29:00+00:00", "2026-05-12 01:30:00+00:00", "2026-05-12 01:31:00+00:00", "2026-05-12 01:32:00+00:00", "2026-05-12 01:33:00+00:00"], "y": [0, 0, 0, 0, 0], "marker": {"color": "#e74c3c"}, "name": "Rate limit hits/min"}], "layout": {"title": "Rate Limit Events per Minute", "height": 260, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time"}, "yaxis": {"title": "Events per minute"}}};
+  Plotly.newPlot('chart_rl', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>13. Capital Exhaustion Mode</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><p style='color:#2ecc71'>No capital exhaustion events this session.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>14. Outlier Fills</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><p style='color:#555'>No outlier fills (EV &gt; 20¢) this session.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>15. Amend Decisions</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">REPLACEs</div>
+  <div class="value">1,318</div>
+  <div class="sub">1,318 amend API calls</div>
+</div>
+          <div class="stat-card">
+  <div class="label">CANCELs</div>
+  <div class="value">23</div>
+  <div class="sub">neg-EV cancellations</div>
+</div>
+          <div class="stat-card negative">
+  <div class="label">Amend / Order Ratio</div>
+  <div class="value">6.28</div>
+  <div class="sub">1,318 amends / 210 orders</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Median EV Improvement</div>
+  <div class="value">+0.0884¢</div>
+  <div class="sub">on REPLACEs</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Mean EV Improvement</div>
+  <div class="value">+0.4484¢</div>
+  <div class="sub">on REPLACEs</div>
+</div>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Tiny REPLACEs</div>
+  <div class="value">271</div>
+  <div class="sub">20.6% with |improvement| < 0.01¢</div>
+</div>
+          <div class="stat-card negative">
+  <div class="label">Rapid Oscillations</div>
+  <div class="value">1,214</div>
+  <div class="sub">92% of REPLACEs within 5s on same ticker+side</div>
+</div>
+        </div>
+        <hr class="divider"><div id="chart_amend_ev_imp" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": [0.03576143856508622, 0.1072699230971267, 0.1787784076291672, 0.25028689216120764, 0.32179537669324815, 0.3933038612252886, 0.4648123457573291, 0.5363208302893696, 0.60782931482141, 0.6793377993534506, 0.750846283885491, 0.8223547684175314, 0.893863252949572, 0.9653717374816124, 1.0368802220136528, 1.1083887065456934, 1.1798971910777338, 1.2514056756097744, 1.3229141601418148, 1.3944226446738552, 1.4659311292058959, 1.5374396137379363, 1.6089480982699769, 1.6804565828020173, 1.7519650673340577, 1.823473551866098, 1.8949820363981387, 1.966490520930179, 2.0379990054622192, 2.10950748999426, 2.181015974526301, 2.252524459058341, 2.3240329435903817, 2.3955414281224217, 2.4670499126544625, 2.5385583971865033, 2.6100668817185433, 2.681575366250584, 2.753083850782624, 2.824592335314665, 2.8961008198467058, 2.9676093043787457, 3.0391177889107865, 3.1106262734428265, 3.1821347579748673, 3.2536432425069077, 3.325151727038948, 3.396660211570989, 3.468168696103029, 3.5396771806350698, 3.61118566516711, 3.6826941496991505, 3.7542026342311914, 3.8257111187632313, 3.897219603295272, 3.968728087827312, 4.040236572359353, 4.111745056891394, 4.183253541423434, 4.254762025955475, 4.3262705104875145, 4.397778995019555, 4.469287479551596, 4.540795964083636, 4.612304448615677, 4.683812933147717, 4.755321417679758, 4.826829902211799, 4.898338386743839, 4.969846871275879, 5.041355355807919, 5.11286384033996, 5.184372324872001, 5.255880809404041, 5.327389293936082, 5.398897778468122, 5.470406263000163, 5.5419147475322035, 5.613423232064243, 5.684931716596284], "y": [620, 130, 112, 68, 36, 10, 18, 21, 9, 19, 31, 31, 25, 8, 8, 10, 3, 4, 9, 17, 7, 10, 3, 4, 14, 1, 5, 1, 8, 2, 1, 2, 1, 0, 2, 4, 2, 11, 10, 4, 6, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 3, 8, 3, 0, 3, 1, 0, 1, 0, 0, 3, 0, 0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], "width": 0.07150848453204048, "name": "EV improvement (\u00a2)", "marker": {"color": "#e67e22", "opacity": 0.8}}], "layout": {"title": "EV Improvement on REPLACE Decisions", "height": 320, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "EV improvement (\u00a2) = ev_move \u2212 ev_keep"}, "yaxis": {"title": "Count"}, "shapes": [{"type": "line", "x0": 0.08835574984550476, "x1": 0.08835574984550476, "y0": 0, "y1": 1, "yref": "paper", "line": {"color": "#2ecc71", "width": 2, "dash": "dash"}}], "annotations": [{"x": 0.08835574984550476, "y": 1, "yref": "paper", "text": "median +0.0884\u00a2", "showarrow": false, "xanchor": "left", "font": {"color": "#2ecc71", "size": 11}}]}};
+  Plotly.newPlot('chart_amend_ev_imp', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><hr class="divider"><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Only REPLACE and CANCEL decisions are logged (KEEPs are omitted for storage efficiency). Amend API call count from the latency table serves as a cross-check for REPLACE count. Rapid oscillations (multiple REPLACEs within 5s on the same ticker+side) indicate the microprice is jittering around a price boundary.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>16. Fill Probability Calibration</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Sampled Predictions</div>
+  <div class="value">47</div>
+  <div class="sub">~9,400 total (1:200 rate)</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Median Fill Prob</div>
+  <div class="value">0.0000</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Mean Fill Prob</div>
+  <div class="value">0.0225</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Zero Fill Prob</div>
+  <div class="value">28</div>
+  <div class="sub">59.6% of samples</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Median Contracts Ahead</div>
+  <div class="value">12,625</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Mean Contracts Ahead</div>
+  <div class="value">388,657</div>
+  
+</div>
+        </div>
+        <hr class="divider"><div id="chart_fp_vs_ca" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "markers", "x": [939.65, 78369.66, 152881.0, 18403.88, 30386.0, 1970.44, 113422.04, 12625.0, 5301.0, 180301.77000000002, 35455.5, 175731.5, 185969.36000000002, 129446.65, 21770.13, 5371.629999999999, 6521.629999999999, 18489.08, 3030.8100000000004, 5436.0, 24625.0, 4965.59, 6393.4, 5214.43, 9868.15, 11430.0, 3841.0, 30914.36, 430984.74, 223.22, 638171.48, 9207.1, 1879.0, 69857.43, 12769014.04, 182.67, 95200.09, 19887.1, 4326.38, 5184.68, 61.0, 5917.0, 9838.1, 583872.34, 4681.83, 638147.48, 1701183.6199999999], "y": [0.023986311983471075, 0.0, 0.0, 0.0, 0.0, 0.018121269311797753, 0.0, 0.0016077471981286063, 0.030004390152045965, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.030176267101990048, 0.012345679012345678, 0.0, 0.015903049045138888, 0.0038115788755458515, 0.0, 0.013957426819620254, 0.0, 0.004400029912725225, 0.0, 0.0, 0.0262736382885514, 0.0, 0.0, 0.19736842105263158, 0.0, 0.0, 0.01556945240825688, 0.0, 0.0, 0.31900847615499256, 0.0, 0.0, 0.00416989094937544, 0.0013299472090126812, 0.3240607247374763, 0.005119077620967742, 0.0, 0.0, 0.009033058491928318, 0.0, 0.0], "name": "quote_sweep", "marker": {"color": "#2ecc71", "size": 4, "opacity": 0.5}}], "layout": {"title": "Fill Probability vs Contracts Ahead", "height": 350, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Contracts ahead in queue"}, "yaxis": {"title": "Estimated fill probability", "range": [0, 1]}}};
+  Plotly.newPlot('chart_fp_vs_ca', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Sampled at 1:200 from every estimate_fill_probability() call. If fill probability doesn't decline with higher contracts_ahead, the model is not sensitive enough to queue depth.</p></div>
+</div>
+  </div>
+  <script>
+document.querySelectorAll('.section-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+        header.closest('.section').classList.toggle('collapsed');
+    });
+});
+document.getElementById('expand-all-btn').addEventListener('click', function() {
+    var sections = document.querySelectorAll('.section');
+    var anyCollapsed = Array.from(sections).some(function(s) { return s.classList.contains('collapsed'); });
+    sections.forEach(function(s) {
+        if (anyCollapsed) s.classList.remove('collapsed');
+        else s.classList.add('collapsed');
+    });
+    this.textContent = anyCollapsed ? 'Collapse All' : 'Expand All';
+});
+</script>
+</body>
+</html>
