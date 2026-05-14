@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalshi MM — Analytics Overview: 20260514_021245_532337bd</title>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0f0f1a;
+    color: #e0e0e0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+header {
+    background: linear-gradient(135deg, #1a1a3e 0%, #16213e 100%);
+    padding: 24px 32px;
+    border-bottom: 2px solid #2a2a5a;
+}
+header h1 { font-size: 1.6rem; font-weight: 700; color: #ffffff; }
+header p { color: #8888aa; margin-top: 4px; font-size: 0.85rem; }
+.container { max-width: 1400px; margin: 0 auto; padding: 24px 32px; }
+.section {
+    background: #16213e;
+    border: 1px solid #2a2a5a;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.section-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    background: #1a1a3e;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid #2a2a5a;
+    gap: 10px;
+}
+.section-header h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #c0c0f0;
+    flex: 1;
+}
+.section-header .toggle { color: #6666aa; font-size: 1.1rem; transition: transform 0.2s; }
+.section-body { padding: 20px; }
+.section.collapsed .section-body { display: none; }
+.section.collapsed .toggle { transform: rotate(-90deg); }
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.stat-card {
+    background: #1a1a3e;
+    border: 1px solid #2a2a5a;
+    border-radius: 8px;
+    padding: 14px 16px;
+}
+.stat-card .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6677aa;
+    margin-bottom: 4px;
+}
+.stat-card .value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #e0e0ff;
+    font-variant-numeric: tabular-nums;
+}
+.stat-card .sub {
+    font-size: 0.78rem;
+    color: #7788aa;
+    margin-top: 2px;
+}
+.stat-card.positive .value { color: #2ecc71; }
+.stat-card.negative .value { color: #e74c3c; }
+.stat-card.neutral .value { color: #3498db; }
+.stat-card.warn { border-color: #f39c12; }
+.stat-card.warn .value { color: #f39c12; }
+.warning-box {
+    background: #2a1a0a;
+    border: 1px solid #f39c12;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    color: #f5c842;
+    font-size: 0.85rem;
+}
+.warning-box .icon { margin-right: 6px; }
+.ok-box {
+    background: #0a1e0a;
+    border: 1px solid #2ecc71;
+    border-radius: 6px;
+    padding: 10px 16px;
+    margin-bottom: 12px;
+    color: #7dffa0;
+    font-size: 0.82rem;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+    margin-top: 8px;
+}
+thead th {
+    background: #1a1a3e;
+    color: #9090cc;
+    text-align: right;
+    padding: 8px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.72rem;
+    border-bottom: 1px solid #2a2a5a;
+}
+thead th:first-child { text-align: left; }
+tbody td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #1a1a2a;
+    text-align: right;
+    color: #c0c0d8;
+    font-variant-numeric: tabular-nums;
+}
+tbody td:first-child { text-align: left; color: #d0d0f0; }
+tbody tr:hover { background: #1e1e3a; }
+.chart-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.chart-row > * { min-width: 0; overflow: hidden; }
+.chart-row.single { grid-template-columns: 1fr; }
+.chart-wrap {
+    background: #16213e;
+    border: 1px solid #2a2a5a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.divider {
+    border: none;
+    border-top: 1px solid #2a2a5a;
+    margin: 16px 0;
+}
+</style>
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+</head>
+<body>
+  
+    <header>
+      <h1>Kalshi MM — Analytics Overview</h1>
+      <p>Session: <strong>20260514_021245_532337bd</strong> &nbsp;|&nbsp; Started: 2026-05-14 02:12:45 UTC &nbsp;|&nbsp; Duration: 1m &nbsp;|&nbsp; Generated: 2026-05-14 03:45:00 UTC</p>
+      <button id="expand-all-btn" style="margin-top:10px;padding:6px 16px;background:#2a2a4a;color:#c0c0e0;border:1px solid #444;border-radius:4px;cursor:pointer;font-size:0.85rem;">Expand All</button>
+    </header>
+  <div class="container">
+    <div class="section collapsed">
+  <div class="section-header">
+    <h2>0. Session Info</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Session ID</div>
+  <div class="value"><span style="font-size:0.85rem;word-break:break-all">20260514_021245_532337bd</span></div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Start Time</div>
+  <div class="value">2026-05-14 02:12:45 UTC</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">End Time</div>
+  <div class="value">2026-05-14 02:14:38 UTC</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Duration</div>
+  <div class="value">0h 1m 53s</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Exit Reason</div>
+  <div class="value">signal</div>
+  
+</div>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Starting Balance</div>
+  <div class="value">$35914.64</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Ending Balance</div>
+  <div class="value">$35888.59</div>
+  
+</div>
+          <div class="stat-card negative">
+  <div class="label">Session P&amp;L</div>
+  <div class="value">$-26.05</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Fills</div>
+  <div class="value">2</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Orders Placed</div>
+  <div class="value">202</div>
+  
+</div>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Read Throttled</div>
+  <div class="value">0</div>
+  <div class="sub">blocking waits</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Read Skipped</div>
+  <div class="value">0</div>
+  <div class="sub">non-blocking misses</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Read Wait</div>
+  <div class="value">0.0s</div>
+  <div class="sub">total blocked time</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Throttled</div>
+  <div class="value">0</div>
+  <div class="sub">blocking waits</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Skipped</div>
+  <div class="value">0</div>
+  <div class="sub">non-blocking misses</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Write Wait</div>
+  <div class="value">0.0s</div>
+  <div class="sub">total blocked time</div>
+</div>
+        </div>
+        <details style="margin-top:12px"><summary style="cursor:pointer;color:#aaa">Config JSON</summary><pre style="font-size:0.72rem;overflow:auto;max-height:300px;background:#111;padding:10px;border-radius:4px">{
+  "max_subscriptions": 200,
+  "trade_tracker_startup_delay_seconds": 25,
+  "min_recent_volume": 125,
+  "market_rescan_interval_seconds": 180,
+  "fee_waiver_only": true,
+  "simple_max_contracts": 45,
+  "max_spread_cents": 13,
+  "max_order_size_balance_fraction": 300,
+  "min_quote_size": 4,
+  "sizing_percentile": 50,
+  "buy_sizing_multiplier": 0.4,
+  "max_position_per_market": 50,
+  "sell_max_position_multiplier": 2.0,
+  "sell_priority_multiplier": 2.0,
+  "max_risk_per_market_dollars": null,
+  "microprice_halflife": 1.0,
+  "trade_ewma_halflife": 0.5,
+  "capital_recovery_fraction": 0.3,
+  "capital_exhaustion_fraction": 0.1,
+  "min_edge_threshold": 0.0,
+  "buy_min_edge_threshold_multiplier": 2.0,
+  "min_fill_probability": 0.0,
+  "stop_loss_limit": 1000.0,
+  "stale_order_seconds": 60,
+  "batch_size_cap": 20,
+  "read_rate_limit": 30.0,
+  "write_rate_limit": 30.0,
+  "cancel_reserve": 5.0,
+  "disable_uvloop": false,
+  "consumer_queue_gate_threshold": 0.0001,
+  "ntfy_channel": "kalshi-bot-grace",
+  "status_notification_interval_minutes": 60,
+  "models_dir": "/home/ubuntu/models",
+  "enable_analytics_logging": true,
+  "analytics_output_dir": "analytics_data",
+  "analytics_flush_interval_seconds": 30,
+  "analytics_buffer_size": 1000
+}</pre></details></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>1. Activity Summary</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Fills</div>
+  <div class="value">2</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">New Orders</div>
+  <div class="value">93</div>
+  <div class="sub">place_order API calls</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Amends</div>
+  <div class="value">109</div>
+  <div class="sub">amend_order API calls</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / New Order</div>
+  <div class="value">0.0215</div>
+  <div class="sub">fill rate on fresh placements</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Order Touch</div>
+  <div class="value">0.0099</div>
+  <div class="sub">fill rate incl. amends</div>
+</div>
+    </div>
+    <hr class="divider">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Fills / min</div>
+  <div class="value">1.06</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Orders / min</div>
+  <div class="value">49.24</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Amends / min</div>
+  <div class="value">57.71</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">API Calls / min</div>
+  <div class="value">156.2</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Session Duration</div>
+  <div class="value">1m</div>
+  
+</div>
+    </div></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>2. EV &amp; Volume</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="warning-box"><span class="icon">&#9888;</span>EV recomputation discrepancy: 0.3367¢ mean absolute error vs stored values (best match at fee rate 0.0175). Stored values may use a different fee model or inventory-skewed microprice.</div>
+    
+    <div class="stats-grid">
+      <div class="stat-card positive">
+  <div class="label">EV / Contract (median)</div>
+  <div class="value">+0.7248¢</div>
+  <div class="sub">p25=+0.725¢  p75=+0.725¢</div>
+</div>
+      <div class="stat-card">
+  <div class="label">EV / Contract (mean)</div>
+  <div class="value">+0.7248¢</div>
+  <div class="sub">inflated by high-EV outliers</div>
+</div>
+      <div class="stat-card">
+  <div class="label">EV / Order Placed</div>
+  <div class="value">+0.2494¢</div>
+  <div class="sub">$0.002494/order</div>
+</div>
+      <div class="stat-card positive">
+  <div class="label">Total EV</div>
+  <div class="value">+23.19¢</div>
+  <div class="sub">= $0.2319</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Total Volume</div>
+  <div class="value">$47.52</div>
+  <div class="sub">4,752¢ notional</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Total Contracts</div>
+  <div class="value">72</div>
+  <div class="sub">contracts filled</div>
+</div>
+      <div class="stat-card neg">
+  <div class="label">Fees Paid</div>
+  <div class="value">0.00¢</div>
+  <div class="sub">= $0.0000</div>
+</div>
+      <div class="stat-card positive">
+  <div class="label">Net Edge</div>
+  <div class="value">+0.4881%</div>
+  <div class="sub">48.81 bps</div>
+</div>
+    </div>
+    <hr class="divider">
+    <div id="chart_ev_dist" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": [0.23315596169519684, 0.2498226283618635, 0.26648929502853014, 0.28315596169519686, 0.29982262836186346, 0.3164892950285302, 0.33315596169519684, 0.3498226283618635, 0.36648929502853017, 0.38315596169519683, 0.3998226283618635, 0.41648929502853016, 0.4331559616951969, 0.4498226283618635, 0.4664892950285302, 0.4831559616951968, 0.49982262836186353, 0.5164892950285302, 0.5331559616951969, 0.5498226283618635, 0.5664892950285301, 0.5831559616951969, 0.5998226283618635, 0.6164892950285301, 0.633155961695197, 0.6498226283618636, 0.6664892950285302, 0.6831559616951968, 0.6998226283618636, 0.7164892950285302, 0.7331559616951968, 0.7498226283618634, 0.7664892950285302, 0.7831559616951969, 0.7998226283618635, 0.8164892950285302, 0.8331559616951969, 0.8498226283618635, 0.8664892950285301, 0.8831559616951968, 0.8998226283618636, 0.9164892950285302, 0.9331559616951968, 0.9498226283618635, 0.9664892950285302, 0.9831559616951968, 0.9998226283618634, 1.01648929502853, 1.0331559616951969, 1.0498226283618637, 1.0664892950285303, 1.083155961695197, 1.0998226283618635, 1.1164892950285301, 1.1331559616951967, 1.1498226283618633, 1.1664892950285302, 1.183155961695197, 1.1998226283618636, 1.2164892950285302], "y": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "width": 0.016666666666666663, "name": "EV per contract (\u00a2)", "marker": {"color": "#9b59b6", "opacity": 0.8}}], "layout": {"title": "EV per Contract Distribution (fill_ev_per_contract)", "height": 320, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "EV per contract (\u00a2)"}, "yaxis": {"title": "Count"}, "shapes": [{"type": "line", "x0": 0.7248226283618635, "x1": 0.7248226283618635, "y0": 0, "y1": 1, "yref": "paper", "line": {"color": "#2ecc71", "width": 2, "dash": "dash"}}, {"type": "line", "x0": 0.7248226283618635, "x1": 0.7248226283618635, "y0": 0, "y1": 1, "yref": "paper", "line": {"color": "#e74c3c", "width": 2, "dash": "dot"}}], "annotations": [{"x": 0.7248226283618635, "y": 1, "yref": "paper", "text": "median +0.725\u00a2", "showarrow": false, "xanchor": "left", "font": {"color": "#2ecc71", "size": 11}}, {"x": 0.7248226283618635, "y": 0.88, "yref": "paper", "text": "mean +0.725\u00a2", "showarrow": false, "xanchor": "left", "font": {"color": "#e74c3c", "size": 11}}]}};
+  Plotly.newPlot('chart_ev_dist', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>3. Markout Analysis</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><table><thead><tr><th>Horizon</th><th>Mean Markout</th><th>Std Dev</th><th>Std Error</th><th>N Fills</th></tr></thead><tbody><tr><td>0s (EV)</td><td style='color:#2ecc71'>+0.7248¢</td><td>nan¢</td><td>±0.0000¢</td><td>1</td></tr><tr><td>1s</td><td style='color:#2ecc71'>+0.7573¢</td><td>nan¢</td><td>±0.0000¢</td><td>1</td></tr></tbody></table><hr class='divider'><p style='color:#a0c4ff;font-size:0.9rem;font-weight:600;margin:18px 0 10px;'>Adverse Selection (Mid-Shift)</p><table><thead><tr><th>Horizon</th><th>N Fills</th><th>Mean mid-shift</th><th>Adverse ≥1¢</th><th>Adverse &lt;0 (soft)</th></tr></thead><tbody><tr><td>1s</td><td>1</td><td style='color:#2ecc71'>+0.500¢</td><td style='color:#e0e0e0'>0.0%</td><td style='color:#888'>0.0%</td></tr></tbody></table><p style='color:#666;font-size:0.78rem;margin-top:8px;'><strong>Mid-shift markout</strong> = sign(side) · (mid_at_horizon − mid_at_fill). Captures whether the BBO mid moved against the fill, independent of the fill's starting EV. Unlike snipe rate, this metric is invariant to compute latency — a fill that gets adversely selected is counted whether or not we attempted to cancel beforehand. <em>Adverse ≥1¢</em> requires a full-tick move against us; <em>soft</em> counts any negative shift.</p><hr class='divider'><p style='color:#a0c4ff;font-size:0.9rem;font-weight:600;margin:18px 0 10px;'>Underwater Rate (Fill vs Mid)</p><table><thead><tr><th>Horizon</th><th>N Fills</th><th>Mean mid-based markout</th><th>Underwater rate</th></tr></thead><tbody><tr><td>0s (EV)</td><td>1</td><td style='color:#2ecc71'>+0.500¢</td><td style='color:#e0e0e0'>0.0%</td></tr><tr><td>1s</td><td>1</td><td style='color:#2ecc71'>+1.000¢</td><td style='color:#e0e0e0'>0.0%</td></tr></tbody></table><p style='color:#8888aa;font-size:0.82rem;margin:14px 0 6px;'>Underwater rate by fill size</p><div id="chart_underwater_by_size" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "name": "Buy", "x": ["1\u20135", "6\u201310", "11\u201315", "16\u201320", "21\u201325", "26\u201330", "31\u201335"], "y": [null, null, null, null, null, null, null], "text": ["", "", "", "", "", "", ""], "textposition": "outside", "textfont": {"size": 10, "color": "#a0a0a0"}, "marker": {"color": "#2ecc71"}, "error_y": {"type": "data", "symmetric": false, "array": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "arrayminus": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "color": "#888", "thickness": 1, "width": 4}, "customdata": [[0, NaN], [0, NaN], [0, NaN], [0, NaN], [0, NaN], [0, NaN], [0, NaN]], "hovertemplate": "<b>Buy</b><br>Size: %{x}<br>Underwater: %{y:.1f}%<br>n=%{customdata[0]:,}<br>Mean mid-based markout: %{customdata[1]:+.3f}\u00a2<extra></extra>"}, {"type": "bar", "name": "Sell", "x": ["1\u20135", "6\u201310", "11\u201315", "16\u201320", "21\u201325", "26\u201330", "31\u201335"], "y": [null, null, null, null, null, null, 0.0], "text": ["", "", "", "", "", "", "n=1"], "textposition": "outside", "textfont": {"size": 10, "color": "#a0a0a0"}, "marker": {"color": "#e67e22"}, "error_y": {"type": "data", "symmetric": false, "array": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 79.34567085261071], "arrayminus": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "color": "#888", "thickness": 1, "width": 4}, "customdata": [[0, NaN], [0, NaN], [0, NaN], [0, NaN], [0, NaN], [0, NaN], [1, 1.0]], "hovertemplate": "<b>Sell</b><br>Size: %{x}<br>Underwater: %{y:.1f}%<br>n=%{customdata[0]:,}<br>Mean mid-based markout: %{customdata[1]:+.3f}\u00a2<extra></extra>"}, {"type": "scatter", "x": ["1\u20135", "6\u201310", "11\u201315", "16\u201320", "21\u201325", "26\u201330", "31\u201335"], "y": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.2, "dash": "dash"}, "name": "Overall (0.0%)", "hoverinfo": "skip"}], "layout": {"title": "Underwater Rate by Fill Size \u2014 1s horizon (95% Wilson CI)", "height": 380, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Fill Size (contracts, bucket width = 5)"}, "yaxis": {"title": "Underwater Rate (%)", "rangemode": "tozero"}, "barmode": "group", "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_underwater_by_size', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><p style='color:#666;font-size:0.78rem;margin-top:6px;'>Grouped bars by fill size; error bars are 95% Wilson score intervals on the proportion. Dashed line marks the overall (both-sides) underwater rate. If larger fills underperform, the per-bucket rate trends upward with size — a signal that big fills get picked off harder.</p><p style='color:#666;font-size:0.78rem;margin-top:8px;'><strong>Underwater rate</strong> = fraction of fills whose price is on the wrong side of the BBO mid at the horizon (i.e. <code>mid_based_markout &lt; 0</code>). For a buy this means mid is now below the fill price; for a sell, mid is above. Combines starting EV at fill <em>and</em> subsequent mid drift — distinct from the mid-shift adverse rate above, which isolates post-trade book movement.</p><hr class='divider'><div id="chart_markout" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s", "1s"], "y": [0.7248226283618635, 0.7573445355905051], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s"], "y": [0.7248226283618635, 0.7573445355905051], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.2)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s"], "y": [0.7248226283618635, 0.7573445355905051], "mode": "lines+markers", "line": {"color": "#e67e22", "width": 2.5}, "marker": {"color": "#e67e22", "size": 7}, "name": "sell vs microprice (n=1)", "showlegend": true}, {"type": "scatter", "x": ["0s", "1s"], "y": [0.5, 1.0], "mode": "lines", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s"], "y": [0.5, 1.0], "mode": "lines", "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.1)", "line": {"width": 0}, "showlegend": false}, {"type": "scatter", "x": ["0s", "1s"], "y": [0.5, 1.0], "mode": "lines+markers", "line": {"color": "#e67e22", "width": 2, "dash": "dash"}, "marker": {"color": "#e67e22", "size": 6}, "name": "sell vs mid", "showlegend": true}, {"type": "scatter", "x": ["0s", "1s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Markout by Action: Buy vs Sell (95% CI)", "height": 380, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "showlegend": true, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_markout', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><hr class='divider'><div id="chart_markout_by_price" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s (EV)", "1s"], "y": [null, null], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s"], "y": [null, null], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s"], "y": [null, null], "mode": "lines+markers", "name": "20\u201340\u00a2  (n=1)", "line": {"color": "#e67e22", "width": 2}, "marker": {"color": "#e67e22", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Markout by Fill Price Bucket (95% CI)", "height": 400, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_markout_by_price', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script>
+<table class='stats-table' style='width:100%;border-collapse:collapse;font-size:0.82rem;margin-top:12px;'>
+  <caption style='color:#aaa;text-align:left;padding-bottom:6px;'>
+    Adverse selection significance test — markout at t=1s, H₁: mean &lt; 0 (one-tailed t-test).
+    Bands use naive SE (std/√n); CIs may be too narrow if fills within the same ticker are correlated.
+  </caption>
+  <thead>
+    <tr style='border-bottom:1px solid #444;color:#aaa;'>
+      <th style='text-align:left;padding:4px 8px;'>Price Bucket</th>
+      <th style='text-align:right;padding:4px 8px;'>n fills</th>
+      <th style='text-align:right;padding:4px 8px;'>Mean markout</th>
+      <th style='text-align:right;padding:4px 8px;'>t-stat</th>
+      <th style='text-align:right;padding:4px 8px;'>p-value</th>
+      <th style='text-align:right;padding:4px 8px;'>Significance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>0–20¢</td>
+      <td style='text-align:right;padding:4px 8px;'>0</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>—</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>20–40¢</td>
+      <td style='text-align:right;padding:4px 8px;'>1</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>—</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>40–60¢</td>
+      <td style='text-align:right;padding:4px 8px;'>0</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>—</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>60–80¢</td>
+      <td style='text-align:right;padding:4px 8px;'>0</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>—</span></td>
+    </tr>
+    <tr style='border-bottom:1px solid #2a2a3e;'>
+      <td style='padding:4px 8px;'>80–100¢</td>
+      <td style='text-align:right;padding:4px 8px;'>0</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'>—</td>
+      <td style='text-align:right;padding:4px 8px;'><span style='color:#888'>—</span></td>
+    </tr>
+  </tbody>
+</table><hr class='divider'><p style="color:#555;padding:8px;">No data available.</p><div id="chart_markout_by_price_sells" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "x": ["0s (EV)", "1s"], "y": [null, null], "mode": "lines", "line": {"width": 0}, "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s"], "y": [null, null], "mode": "lines", "line": {"width": 0}, "fill": "tonexty", "fillcolor": "rgba(230,126,34,0.15)", "showlegend": false, "connectgaps": true, "hoverinfo": "skip"}, {"type": "scatter", "x": ["0s (EV)", "1s"], "y": [null, null], "mode": "lines+markers", "name": "20\u201340\u00a2  (n=1)", "line": {"color": "#e67e22", "width": 2}, "marker": {"color": "#e67e22", "size": 6}, "connectgaps": true}, {"type": "scatter", "x": ["0s (EV)", "1s"], "y": [0, 0], "mode": "lines", "line": {"color": "#e74c3c", "width": 1.5, "dash": "dash"}, "showlegend": false}], "layout": {"title": "Short-term Markout by Fill Price Bucket \u2014 Sells Only (95% CI)", "height": 300, "margin": {"t": 55, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time After Fill"}, "yaxis": {"title": "Mean Markout (\u00a2/contract)"}, "legend": {"x": 0.01, "y": 0.99, "bgcolor": "rgba(0,0,0,0)"}}};
+  Plotly.newPlot('chart_markout_by_price_sells', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Markout measured from fill price. At t=0 the value equals EV captured (fill price vs microprice). A declining curve indicates adverse selection eroding edge over time. Red dashed line = breakeven. Buy = bought YES (long); Sell = sold YES (short).</p><p style='color:#666;font-size:0.78rem;margin-top:6px;'>Price bucket chart: fills grouped by the price they were filled at. Shaded bands = 95% CI (Liang-Zeger cluster-robust SE, one cluster per event). Near-extreme buckets (0–20¢, 80–100¢) with steeply declining curves indicate adverse selection. Significance table tests H₁: mean markout &lt; 0 at the final horizon.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>4. Fill Correlation &amp; Event Clustering</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Unique Events</div>
+  <div class="value">2</div>
+  <div class="sub">correlation clusters</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Event (mean)</div>
+  <div class="value">1.0</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Event (median)</div>
+  <div class="value">1</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Fills / Event (max)</div>
+  <div class="value">1</div>
+  
+</div>
+    </div><hr class='divider'><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Worst events by markout (300s horizon)</p><table><thead><tr><th>Event</th><th>Mean Markout</th><th>Std Dev</th><th>Fills</th><th>Mean EV</th></tr></thead><tbody><tr><td>KXMLSGAME-26MAY13STLLAFC</td><td style='color:#2ecc71'>+0.7573¢</td><td>—</td><td>1</td><td>+0.725¢</td></tr></tbody></table><hr class='divider'><p style='color:#8888aa;font-size:0.82rem;margin-bottom:8px;'>Best events by markout (300s horizon)</p><table><thead><tr><th>Event</th><th>Mean Markout</th><th>Std Dev</th><th>Fills</th><th>Mean EV</th></tr></thead><tbody><tr><td>KXMLSGAME-26MAY13STLLAFC</td><td style='color:#2ecc71'>+0.7573¢</td><td>—</td><td>1</td><td>+0.725¢</td></tr></tbody></table><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Fills within the same event (e.g. multiple spread brackets on one basketball game) are correlated — their markouts move together. The naive SE (std/&radic;N) treats fills as independent and overstates statistical significance. The cluster-robust SE groups fills by event and accounts for within-event correlation. The design effect (cluster SE / naive SE) shows how much correlation inflates uncertainty; values &gt; 2 mean the effective sample size is &lt; 25% of the raw fill count. If the worst-markout events are concentrated in a few correlated clusters, the session-wide markout may be driven by one or two bad outcomes rather than a systematic edge problem.</p></div>
+</div><div style='margin:18px 0 6px;padding:4px 12px;background:#1a1a2e;border-left:3px solid #3498db;color:#6688aa;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;'>PnL Attribution</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>5. PnL Overview</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><table class='stats-table' style='width:100%;border-collapse:collapse;font-size:0.82rem;margin-bottom:20px;'>
+  <caption style='color:#aaa;text-align:left;padding-bottom:8px;font-size:0.78rem;'>EV → PnL reconciliation — how theoretical edge translates to actual portfolio change. Gross edge and 60s estimates exclude outlier fills and one-sided-book fills. The 60s adverse selection estimate is computed on the cohort of fills whose markets were still live 60 seconds after the fill.</caption>
+  <thead>
+    <tr style='border-bottom:1px solid #444;color:#aaa;'>
+      <th style='text-align:left;padding:4px 8px;'>Line</th>
+      <th style='text-align:right;padding:4px 8px;'>Cents</th>
+      <th style='text-align:right;padding:4px 8px;'>Dollars</th>
+      <th style='text-align:left;padding:4px 8px;'>Notes</th>
+    </tr>
+  </thead>
+  <tbody><tr><td colspan='4' style='padding:10px 8px 4px;color:#3498db;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-top:2px solid #2a2a4e;'>Fill EV</td></tr><tr style=''><td style='padding:5px 8px;'>Gross edge at fill time</td><td style='text-align:right;padding:5px 8px;'><span style='color:#2ecc71;font-family:monospace'>+23¢</span></td><td style='text-align:right;padding:5px 8px;'><span style='color:#2ecc71;font-family:monospace'>+0.23</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>before fees; outlier fills (EV&nbsp;&gt;&nbsp;20¢) excluded</td></tr><tr style=''><td style='padding:5px 8px;padding-left:20px;'>Less: fees paid</td><td style='text-align:right;padding:5px 8px;'><span style='color:#2ecc71;font-family:monospace'>-0¢</span></td><td style='text-align:right;padding:5px 8px;'><span style='color:#2ecc71;font-family:monospace'>-0.00</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>maker fees across all fills</td></tr><tr style='border-top:1px solid #2a2a4e;'><td style='padding:5px 8px;font-weight:600;'>Net fill EV (after fees)</td><td style='text-align:right;padding:5px 8px;font-weight:600;'><span style='color:#2ecc71;font-family:monospace'>+23¢</span></td><td style='text-align:right;padding:5px 8px;font-weight:600;'><span style='color:#2ecc71;font-family:monospace'>+0.23</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>our model's edge estimate at fill time</td></tr><tr><td colspan='4' style='padding:10px 8px 4px;color:#3498db;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-top:2px solid #2a2a4e;'>Portfolio Change This Session</td></tr><tr style=''><td style='padding:5px 8px;'>Realized P&L (3 settled markets)</td><td style='text-align:right;padding:5px 8px;'><span style='color:#e74c3c;font-family:monospace'>-26,334¢</span></td><td style='text-align:right;padding:5px 8px;'><span style='color:#e74c3c;font-family:monospace'>-263.34</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>from settlements during session window</td></tr><tr style=''><td style='padding:5px 8px;'>Unrealized PnL change</td><td style='text-align:right;padding:5px 8px;'><span style='color:#2ecc71;font-family:monospace'>+23,369¢</span></td><td style='text-align:right;padding:5px 8px;'><span style='color:#2ecc71;font-family:monospace'>+233.69</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>ending (+21,514¢) − starting (-1,855¢); incl. cross-session carry</td></tr><tr style='border-top:1px solid #2a2a4e;'><td style='padding:5px 8px;font-weight:600;'>Total portfolio change</td><td style='text-align:right;padding:5px 8px;font-weight:600;'><span style='color:#e74c3c;font-family:monospace'>-2,965¢</span></td><td style='text-align:right;padding:5px 8px;font-weight:600;'><span style='color:#e74c3c;font-family:monospace'>-29.65</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>realized + unrealized delta</td></tr><tr><td colspan='4' style='padding:10px 8px 4px;color:#3498db;font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-top:2px solid #2a2a4e;'>Attribution</td></tr><tr style=''><td style='padding:5px 8px;'>Unsettled / open positions (est.)</td><td style='text-align:right;padding:5px 8px;'><span style='color:#2ecc71;font-family:monospace'>+2,988¢</span></td><td style='text-align:right;padding:5px 8px;'><span style='color:#2ecc71;font-family:monospace'>+29.88</span></td><td style='padding:5px 8px;color:#666;font-size:0.78rem;'>net fill EV − total portfolio change; primarily fill EV in markets not yet settled</td></tr>
+  </tbody>
+</table>
+<hr class='divider'><div id="chart_pnl" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "lines", "x": ["2026-05-14 02:14:28.910673+00:00", "2026-05-14 02:14:33.935351+00:00"], "y": [0.0, 23.194324107579632], "name": "Cumulative fill EV (\u00a2)", "line": {"color": "#e67e22", "width": 2, "dash": "dot"}}, {"type": "scatter", "mode": "lines", "x": ["2026-05-14 02:13:23.763487+00:00", "2026-05-14 02:13:33.816725+00:00", "2026-05-14 02:13:43.881993+00:00", "2026-05-14 02:13:54.079466+00:00", "2026-05-14 02:14:04.183813+00:00", "2026-05-14 02:14:14.260382+00:00", "2026-05-14 02:14:24.711501+00:00", "2026-05-14 02:14:34.782662+00:00"], "y": [-6155.999999999767, 1044.999999999709, -1411.9999999995343, -4366.000000000349, -2061.000000000058, -2805.999999999767, -4734.9999999998545, -2605.000000000291], "name": "Session PnL (\u00a2)", "line": {"color": "#2ecc71", "width": 2}}, {"type": "scatter", "mode": "lines", "x": ["2026-05-14 02:14:24.711501+00:00", "2026-05-14 02:14:34.782662+00:00"], "y": [-1854.8250000000023, 21514.405499999986], "name": "Unrealized PnL (\u00a2)", "line": {"color": "#9b59b6", "width": 2, "dash": "dot"}}], "layout": {"title": "Session PnL Attribution", "height": 350, "margin": {"t": 50, "b": 60, "l": 70, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time"}, "yaxis": {"title": "PnL (\u00a2)"}, "legend": {"x": 0.01, "y": 0.99}}};
+  Plotly.newPlot('chart_pnl', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>6. Unrealized PnL</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Starting Unrealized PnL</div>
+  <div class="value">-1854.8¢</div>
+  <div class="sub">first snapshot (incl. cross-session carry)</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Ending Unrealized PnL</div>
+  <div class="value">+21514.4¢</div>
+  <div class="sub">last snapshot</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Peak Unrealized PnL</div>
+  <div class="value">+21514.4¢</div>
+  <div class="sub">session high</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Trough Unrealized PnL</div>
+  <div class="value">-1854.8¢</div>
+  <div class="sub">session low</div>
+</div>
+        </div>
+        <p style='color:#666;font-size:0.78rem;margin-top:6px;'>
+        Starting value includes pre-existing inventory carried from prior sessions.
+        Computed as Σ (mid_price − avg_entry_price) × position for all open positions at each 10s snapshot.
+        Tickers with no live orderbook are excluded from the sum.
+        </p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>7. Settlements (Realized PnL)</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Settled Markets</div>
+  <div class="value">3</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Net PnL</div>
+  <div class="value"><span style='color:#e74c3c'>$-263.34</span></div>
+  <div class="sub">-26,333.999999999985¢</div>
+</div>
+      <div class="stat-card">
+  <div class="label">Total Fees</div>
+  <div class="value">2,527.77¢</div>
+  <div class="sub">$25.28</div>
+</div>
+    </div>
+    <hr class="divider"><p style='color:#8888aa;font-size:0.82rem;margin-bottom:6px;'>Top 20 wins this session</p><table><thead><tr><th>Settled</th><th>Ticker</th><th>Result</th><th>YES qty</th><th>NO qty</th><th>Revenue</th><th>Cost</th><th>Fees</th><th>Net PnL</th></tr></thead><tbody><tr><td style='color:#8888aa;font-size:0.78rem'>2026-05-14 02:13</td><td>KXMLBGAME-26MAY131907TBTOR-TB</td><td style='color:#e74c3c'>NO</td><td>831.05</td><td>2,939.16</td><td>210,811.0¢</td><td>173,845.3¢</td><td>1,441.7¢</td><td style='color:#2ecc71;font-weight:bold'>+118,629.00000000001¢</td></tr><tr><td style='color:#8888aa;font-size:0.78rem'>2026-05-14 02:13</td><td>KXMLSTOTAL-26MAY13DALVAN-3</td><td style='color:#2ecc71'>YES</td><td>0.0</td><td>96.0</td><td>0.0¢</td><td>1,680.0¢</td><td>0.0¢</td><td style='color:#e74c3c;font-weight:bold'>-1,680.0¢</td></tr><tr><td style='color:#8888aa;font-size:0.78rem'>2026-05-14 02:13</td><td>KXMLBGAME-26MAY131907TBTOR-TOR</td><td style='color:#2ecc71'>YES</td><td>277.51</td><td>2,597.86</td><td>0.0¢</td><td>169,947.93¢</td><td>1,086.07¢</td><td style='color:#e74c3c;font-weight:bold'>-143,283.0¢</td></tr></tbody></table><hr class='divider'><p style='color:#8888aa;font-size:0.82rem;margin-bottom:6px;'>Top 20 losses this session</p><table><thead><tr><th>Settled</th><th>Ticker</th><th>Result</th><th>YES qty</th><th>NO qty</th><th>Revenue</th><th>Cost</th><th>Fees</th><th>Net PnL</th></tr></thead><tbody><tr><td style='color:#8888aa;font-size:0.78rem'>2026-05-14 02:13</td><td>KXMLBGAME-26MAY131907TBTOR-TOR</td><td style='color:#2ecc71'>YES</td><td>277.51</td><td>2,597.86</td><td>0.0¢</td><td>169,947.93¢</td><td>1,086.07¢</td><td style='color:#e74c3c;font-weight:bold'>-143,283.0¢</td></tr><tr><td style='color:#8888aa;font-size:0.78rem'>2026-05-14 02:13</td><td>KXMLSTOTAL-26MAY13DALVAN-3</td><td style='color:#2ecc71'>YES</td><td>0.0</td><td>96.0</td><td>0.0¢</td><td>1,680.0¢</td><td>0.0¢</td><td style='color:#e74c3c;font-weight:bold'>-1,680.0¢</td></tr><tr><td style='color:#8888aa;font-size:0.78rem'>2026-05-14 02:13</td><td>KXMLBGAME-26MAY131907TBTOR-TB</td><td style='color:#e74c3c'>NO</td><td>831.05</td><td>2,939.16</td><td>210,811.0¢</td><td>173,845.3¢</td><td>1,441.7¢</td><td style='color:#2ecc71;font-weight:bold'>+118,629.00000000001¢</td></tr></tbody></table></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>8. Realized Trading PnL</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><p style='color:#555'>Realized trading PnL not available (pre-upgrade session or no fills).</p></div>
+</div><div style='margin:18px 0 6px;padding:4px 12px;background:#1a1a2e;border-left:3px solid #3498db;color:#6688aa;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;'>Operational</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>9. Sniped Fills</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Sniped Fills</div>
+  <div class="value">1</div>
+  <div class="sub">fills received while cancel/amend in-flight</div>
+</div>
+          <div class="stat-card">
+  <div class="label">% of Total Fills</div>
+  <div class="value"><span style='color:#e74c3c'>50.00%</span></div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Cancel Races</div>
+  <div class="value">1</div>
+  <div class="sub">filled while cancel was in-flight</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Amend Races</div>
+  <div class="value">0</div>
+  <div class="sub">filled while amend was in-flight (404 path)</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Matched to fill_id</div>
+  <div class="value">1</div>
+  <div class="sub">joins available for markout chart</div>
+</div>
+        </div>
+        <hr class="divider">
+        
+        <p style="color:#555;padding:8px;">No data available.</p>
+        <p style='color:#666;font-size:0.78rem;margin-top:8px;'>
+        A "sniped fill" is a fill that arrived while we were already in the process of cancelling
+        or amending the order. If the sniped markout curve is more negative than normal fills,
+        it suggests these fills occur disproportionately on orders that were moving against us
+        (we tried to cancel for a reason). Red = sniped, green = normal fills.
+        </p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>10. API Activity Rate</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Total API Calls</div>
+  <div class="value">295</div>
+  
+</div>
+      <div class="stat-card">
+  <div class="label">Calls / min</div>
+  <div class="value">156.2</div>
+  
+</div>
+    </div>
+    <hr class="divider">
+    <div id="chart_api" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "lines", "x": ["2026-05-14 02:14:00+00:00"], "y": [295], "line": {"color": "#3498db", "width": 2}, "fill": "tozeroy", "fillcolor": "rgba(52,152,219,0.15)", "name": "API calls/min"}], "layout": {"title": "API Call Activity Rate", "height": 300, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time"}, "yaxis": {"title": "Calls per minute"}}};
+  Plotly.newPlot('chart_api', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>11. Latency Report</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><table><thead><tr><th>Endpoint</th><th>Count</th><th>p50 ms</th><th>p95 ms</th><th>p99 ms</th><th>Mean ms</th><th>Max ms</th><th>Error %</th><th>Queue p50</th><th>Queue p99</th><th>Wire p50</th><th>Wire p99</th><th>Parse p50</th><th>Post-resp p50</th><th>Post-resp p99</th><th>OB→Action p50</th></tr></thead><tbody><tr><td>amend_order</td><td>109</td><td>14.9</td><td>38.5</td><td>137.2</td><td>20.3</td><td>268.4</td><td>0.00%</td><td>0.0</td><td>0.0</td><td>14.8</td><td>137.1</td><td>0.0</td><td>—</td><td>—</td><td>53.1</td></tr><tr><td>place_order</td><td>93</td><td>15.6</td><td>88.0</td><td>267.7</td><td>28.4</td><td>284.9</td><td>0.00%</td><td>0.0</td><td>0.0</td><td>13.8</td><td>266.2</td><td>0.0</td><td>—</td><td>—</td><td>0.5</td></tr><tr><td>cancel_order</td><td>88</td><td>11.7</td><td>25.9</td><td>40.2</td><td>13.2</td><td>44.9</td><td style="color:#e74c3c">95.45%</td><td>0.0</td><td>0.0</td><td>11.6</td><td>40.1</td><td>0.0</td><td>—</td><td>—</td><td>45.3</td></tr><tr><td>batch_cancel_orders</td><td>5</td><td>19.0</td><td>22.7</td><td>22.8</td><td>19.2</td><td>22.8</td><td>0.00%</td><td>0.0</td><td>0.0</td><td>18.8</td><td>22.3</td><td>0.1</td><td>—</td><td>—</td><td>—</td></tr></tbody></table><h4 style='margin-top:16px;margin-bottom:6px;color:#c0c0e0;'>Pipeline Latency — place/amend (p50 / p95 ms)</h4><table><thead><tr><th>Endpoint</th><th>Network p50</th><th>Network p95</th><th>Consumer Queue p50</th><th>Consumer Queue p95</th><th>Handler Compute p50</th><th>Handler Compute p95</th><th>Executor Queue p50</th><th>Executor Queue p95</th><th>OB→Action p50</th><th>OB→Action p95</th></tr></thead><tbody><tr><td>amend_order</td><td>52.5</td><td>474.9</td><td>0.0</td><td>0.4</td><td>0.3</td><td>0.5</td><td>0.2</td><td>0.3</td><td>53.1</td><td>475.4</td></tr><tr><td>place_order</td><td>-0.0</td><td>15.2</td><td>0.1</td><td>0.4</td><td>0.2</td><td>0.3</td><td>0.1</td><td>0.4</td><td>0.5</td><td>19.0</td></tr></tbody></table><p style='font-size:0.78rem;color:#888;margin-top:6px;'>network_ms may be negative or near-zero if exchange and local clocks are unsynchronised. All four stages should sum to OB→Action when all checkpoints are present.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>12. Rate Limits</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="stats-grid">
+      <div class="stat-card">
+  <div class="label">Rate Limit Events</div>
+  <div class="value">0</div>
+  <div class="sub">from rate_limits.parquet</div>
+</div>
+      <div class="stat-card">
+  <div class="label">429 HTTP Errors</div>
+  <div class="value">0</div>
+  <div class="sub">from network_latency</div>
+</div>
+      <div class="stat-card">
+  <div class="label">% of API Calls</div>
+  <div class="value">0.00%</div>
+  <div class="sub">of 295 total calls</div>
+</div>
+    </div><div id="chart_rl" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": ["2026-05-14 02:12:00+00:00", "2026-05-14 02:13:00+00:00", "2026-05-14 02:14:00+00:00", "2026-05-14 02:15:00+00:00"], "y": [0, 0, 0, 0], "marker": {"color": "#e74c3c"}, "name": "Rate limit hits/min"}], "layout": {"title": "Rate Limit Events per Minute", "height": 260, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Time"}, "yaxis": {"title": "Events per minute"}}};
+  Plotly.newPlot('chart_rl', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>13. Capital Exhaustion Mode</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><p style='color:#2ecc71'>No capital exhaustion events this session.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>14. Outlier Fills</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body"><p style='color:#555'>No outlier fills (EV &gt; 20¢) this session.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>15. Amend Decisions</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">REPLACEs</div>
+  <div class="value">110</div>
+  <div class="sub">109 amend API calls</div>
+</div>
+          <div class="stat-card">
+  <div class="label">CANCELs</div>
+  <div class="value">3</div>
+  <div class="sub">neg-EV cancellations</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Amend / Order Ratio</div>
+  <div class="value">1.17</div>
+  <div class="sub">109 amends / 93 orders</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Median EV Improvement</div>
+  <div class="value">+0.0878¢</div>
+  <div class="sub">on REPLACEs</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Mean EV Improvement</div>
+  <div class="value">+0.3371¢</div>
+  <div class="sub">on REPLACEs</div>
+</div>
+        </div>
+        <hr class="divider">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Tiny REPLACEs</div>
+  <div class="value">27</div>
+  <div class="sub">24.5% with |improvement| < 0.01¢</div>
+</div>
+          <div class="stat-card negative">
+  <div class="label">Rapid Oscillations</div>
+  <div class="value">73</div>
+  <div class="sub">66% of REPLACEs within 5s on same ticker+side</div>
+</div>
+        </div>
+        <hr class="divider"><div id="chart_amend_ev_imp" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "bar", "x": [0.020148072051324562, 0.06007432465876264, 0.10000057726620071, 0.1399268298736388, 0.17985308248107684, 0.21977933508851494, 0.259705587695953, 0.2996318403033911, 0.33955809291082917, 0.37948434551826726, 0.4194105981257053, 0.4593368507331434, 0.4992631033405815, 0.5391893559480195, 0.5791156085554576, 0.6190418611628956, 0.6589681137703338, 0.6988943663777718, 0.7388206189852099, 0.778746871592648, 0.818673124200086, 0.8585993768075242, 0.8985256294149622, 0.9384518820224004, 0.9783781346298384, 1.0183043872372766, 1.0582306398447145, 1.0981568924521525, 1.1380831450595905, 1.1780093976670287, 1.217935650274467, 1.257861902881905, 1.297788155489343, 1.3377144080967809, 1.377640660704219, 1.4175669133116573, 1.4574931659190953, 1.4974194185265333, 1.5373456711339712, 1.5772719237414095, 1.6171981763488477, 1.6571244289562856, 1.6970506815637236, 1.7369769341711616, 1.7769031867785998, 1.816829439386038, 1.856755691993476, 1.896681944600914, 1.9366081972083522, 1.9765344498157902, 2.0164607024232284, 2.0563869550306664, 2.0963132076381044, 2.136239460245543, 2.1761657128529803, 2.2160919654604188, 2.2560182180678567, 2.2959444706752947, 2.335870723282733, 2.3757969758901707, 2.415723228497609, 2.455649481105047, 2.495575733712485, 2.5355019863199235, 2.575428238927361, 2.6153544915347995, 2.6552807441422375, 2.6952069967496755, 2.735133249357114, 2.7750595019645514, 2.81498575457199, 2.854912007179428, 2.894838259786866, 2.9347645123943042, 2.974690765001742, 3.01461701760918, 3.054543270216618, 3.094469522824056, 3.1343957754314946, 3.174322028038932], "y": [41, 12, 6, 11, 2, 3, 2, 0, 4, 2, 2, 1, 2, 0, 2, 1, 1, 1, 0, 0, 2, 0, 3, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], "width": 0.039926252607438074, "name": "EV improvement (\u00a2)", "marker": {"color": "#e67e22", "opacity": 0.8}}], "layout": {"title": "EV Improvement on REPLACE Decisions", "height": 320, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "EV improvement (\u00a2) = ev_move \u2212 ev_keep"}, "yaxis": {"title": "Count"}, "shapes": [{"type": "line", "x0": 0.08783914148807526, "x1": 0.08783914148807526, "y0": 0, "y1": 1, "yref": "paper", "line": {"color": "#2ecc71", "width": 2, "dash": "dash"}}], "annotations": [{"x": 0.08783914148807526, "y": 1, "yref": "paper", "text": "median +0.0878\u00a2", "showarrow": false, "xanchor": "left", "font": {"color": "#2ecc71", "size": 11}}]}};
+  Plotly.newPlot('chart_amend_ev_imp', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><hr class="divider"><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Only REPLACE and CANCEL decisions are logged (KEEPs are omitted for storage efficiency). Amend API call count from the latency table serves as a cross-check for REPLACE count. Rapid oscillations (multiple REPLACEs within 5s on the same ticker+side) indicate the microprice is jittering around a price boundary.</p></div>
+</div><div class="section collapsed">
+  <div class="section-header">
+    <h2>16. Fill Probability Calibration</h2><span class="toggle">&#9660;</span>
+  </div>
+  <div class="section-body">
+        <div class="stats-grid">
+          <div class="stat-card">
+  <div class="label">Sampled Predictions</div>
+  <div class="value">12</div>
+  <div class="sub">~2,400 total (1:200 rate)</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Median Fill Prob</div>
+  <div class="value">0.0069</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Mean Fill Prob</div>
+  <div class="value">0.0930</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Zero Fill Prob</div>
+  <div class="value">3</div>
+  <div class="sub">25.0% of samples</div>
+</div>
+          <div class="stat-card">
+  <div class="label">Median Contracts Ahead</div>
+  <div class="value">3,420</div>
+  
+</div>
+          <div class="stat-card">
+  <div class="label">Mean Contracts Ahead</div>
+  <div class="value">5,319</div>
+  
+</div>
+        </div>
+        <hr class="divider"><div id="chart_fp_vs_ca" style="width:100%;"></div>
+<script>
+(function() {
+  var spec = {"data": [{"type": "scatter", "mode": "markers", "x": [12857.85, 1063.94, 2583.18, 2.0, 12770.0, 128.0, 4454.360000000001, 4258.51, 536.0, 16129.27, 948.35, 8096.38], "y": [0.0, 0.009514232673267327, 0.0, 0.7719033232628398, 0.0017549691656182603, 0.21314102564102563, 0.004374511718750001, 0.0, 0.07601880877742948, 0.0009317721277677362, 0.025390625, 0.01261556512088684], "name": "quote_sweep", "marker": {"color": "#2ecc71", "size": 4, "opacity": 0.5}}], "layout": {"title": "Fill Probability vs Contracts Ahead", "height": 350, "margin": {"t": 50, "b": 60, "l": 60, "r": 30}, "plot_bgcolor": "#1a1a2e", "paper_bgcolor": "#16213e", "font": {"color": "#e0e0e0"}, "xaxis": {"title": "Contracts ahead in queue"}, "yaxis": {"title": "Estimated fill probability", "range": [0, 1]}}};
+  Plotly.newPlot('chart_fp_vs_ca', spec.data, spec.layout, {responsive: true, displayModeBar: false});
+})();
+</script><p style='color:#666;font-size:0.78rem;margin-top:8px;'>Sampled at 1:200 from every estimate_fill_probability() call. If fill probability doesn't decline with higher contracts_ahead, the model is not sensitive enough to queue depth.</p></div>
+</div>
+  </div>
+  <script>
+document.querySelectorAll('.section-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+        header.closest('.section').classList.toggle('collapsed');
+    });
+});
+document.getElementById('expand-all-btn').addEventListener('click', function() {
+    var sections = document.querySelectorAll('.section');
+    var anyCollapsed = Array.from(sections).some(function(s) { return s.classList.contains('collapsed'); });
+    sections.forEach(function(s) {
+        if (anyCollapsed) s.classList.remove('collapsed');
+        else s.classList.add('collapsed');
+    });
+    this.textContent = anyCollapsed ? 'Collapse All' : 'Expand All';
+});
+</script>
+</body>
+</html>
